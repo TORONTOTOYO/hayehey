@@ -25,7 +25,7 @@ const Profile = () => {
         // Generate a unique link identifier
         const uniqueLinkId = uuidv4();
         // Use localhost for development
-        const uniqueLink = `http://localhost:3000/message/${uniqueLinkId}/${userId}`;
+        const uniqueLink = `https://anonytalks.vercel.app/message/${uniqueLinkId}/${userId}`;
 
         // Store the unique link in Firestore
         await setDoc(userDoc, { customLink: uniqueLink }, { merge: true });
