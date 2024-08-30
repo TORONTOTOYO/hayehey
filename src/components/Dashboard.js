@@ -297,7 +297,7 @@ const StyledModal = styled.div`
 
 const StyledEnvelope = styled.div`
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(75px, 1fr)); /* Adjust column size dynamically */
   gap: 1rem;
   justify-content: center;
   padding: 1rem;
@@ -385,36 +385,18 @@ const StyledEnvelope = styled.div`
   }
 
   @media (max-width: 1024px) {
-    grid-template-columns: repeat(4, 1fr);
-
-    .tooltip-container {
-      height: 65px;
-      width: 100px;
-    }
-
-    .tooltip-container .text {
-      font-size: 32px;
-    }
-
-    .tooltip {
-      font-size: 12px;
-      max-width: 180px;
-    }
-
-    .tooltip-container:hover .tooltip {
-      top: -65px;
-    }
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); /* Adjust column count based on available space */
   }
 
   @media (max-width: 768px) {
-    grid-template-columns: repeat(3, 1fr);
-
+    grid-template-columns: repeat(4, 1fr); /* Fixed to 4 columns for mobile view */
+    
     .tooltip-container {
       height: 60px;
       width: 90px;
     }
 
-    .tooltip-container .text {
+    .text {
       font-size: 28px;
     }
 
@@ -429,6 +411,7 @@ const StyledEnvelope = styled.div`
   }
 
   @media (max-width: 480px) {
+    grid-template-columns: repeat(4, 1fr); /* Fixed to 4 columns per row */
 
     .tooltip-container {
       height: 50px;
@@ -436,7 +419,7 @@ const StyledEnvelope = styled.div`
       margin-left: 2.5rem;
     }
 
-    .tooltip-container .text {
+    .text {
       font-size: 24px;
     }
 
@@ -452,16 +435,16 @@ const StyledEnvelope = styled.div`
   }
 
   @media (max-width: 300px) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* Adjust to 2 columns for very small screens */
     gap: 0.25rem;
 
     .tooltip-container {
       height: 40px;
-      width: 12rem;
-      margin-left: 0.5rem;
+      width: 60px;
+      margin-left: 0.7rem;
     }
 
-    .tooltip-container .text {
+    .text {
       font-size: 20px;
     }
 
@@ -476,6 +459,7 @@ const StyledEnvelope = styled.div`
     }
   }
 `;
+
 
 const StyledWrapper = styled.div`
   display: flex;
