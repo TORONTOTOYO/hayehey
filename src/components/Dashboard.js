@@ -237,7 +237,7 @@ const StyledModal = styled.div`
   }
 
   .message-content {
-    font-family: 'Press Start 2P', cursive; /* Retro pixel font */
+    font-family: 'Press Start 2P'; /* Retro pixel font */
   }
 
   .message-content h4 {
