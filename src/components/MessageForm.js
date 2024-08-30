@@ -216,7 +216,7 @@ const StyledWrapper = styled.div`
     }
 
     button {
-      width: 50%; /* Full width on mobile */
+      width: 40%; /* Full width on mobile */
       border-radius: 40px; /* Adjust radius for mobile */
     }
   }

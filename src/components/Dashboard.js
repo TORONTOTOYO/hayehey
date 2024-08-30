@@ -59,7 +59,7 @@ const Profile = () => {
         // Generate a unique link identifier
         const uniqueLinkId = uuidv4();
         // Use localhost for development
-        const uniqueLink = `https://anonytalks.vercel.app/message/${uniqueLinkId}/${userId}`;
+        const uniqueLink = `http://localhost:3000/message/${uniqueLinkId}/${userId}`;
 
         // Store the unique link in Firestore
         await setDoc(userDoc, { customLink: uniqueLink }, { merge: true });
@@ -296,93 +296,145 @@ const StyledModal = styled.div`
 `;
 
 const StyledEnvelope = styled.div`
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  justify-content: center;
+  padding: 1rem;
+
   .tooltip-container {
-    height: 60px;
-    width: 95px;
-    border-radius: 8px;
-    background: linear-gradient(to left bottom, #222, #111);
-    border: 1px solid #444;
+    height: 70px;
+    width: 110px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #2c3e50, #1a2533);
+    border: 2px solid #34495e;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     position: relative;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: all 0.3s ease;
     z-index: 1;
-  }
+    margin: 0 auto;
+    margin-top: 1rem;
 
-  .tooltip-container::before {
-    position: absolute;
-    content: "";
-    top: -50%;
-    clip-path: polygon(50% 0, 0 100%, 100% 100%);
-    border-radius: 8px;
-    background: linear-gradient(to left bottom, #333, #222);
-    width: 100%;
-    height: 50%;
-    transform: perspective(1000px) rotateX(-150deg) translateY(-110%);
-    transition: transform 0.3s;
-    z-index: -1;
-  }
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
 
-  .tooltip-container .text {
-    color: #ffcc00; /* Yellow text */
-    font-weight: bold;
-    font-size: 30px;
-    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      top: -40%;
+      left: 0;
+      right: 0;
+      height: 40%;
+      background: linear-gradient(135deg, #34495e, #2c3e50);
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      transform: perspective(1000px) rotateX(-60deg);
+      transform-origin: bottom;
+      transition: all 0.3s ease;
+      z-index: -1;
+    }
+
+    &:hover::before {
+      transform: perspective(1000px) rotateX(0deg);
+    }
+
+    .text {
+      color: #f1c40f;
+      font-weight: bold;
+      font-size: 36px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    &:hover .text {
+      transform: scale(1.1);
+    }
   }
 
   .tooltip {
     position: absolute;
-    top: -20px;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
     opacity: 0;
-    background: linear-gradient(-90deg, rgba(0, 0, 0, 0.1) 1px, white 1px),
-                linear-gradient(rgba(0, 0, 0, 0.1) 1px, white 1px),
-                linear-gradient(-90deg, rgba(0, 0, 0, 0.1) 1px, white 1px),
-                linear-gradient(rgba(0, 0, 0, 0.1) 1px, white 1px),
-                linear-gradient(white 3px, #f2f2f2 3px, #f2f2f2 78px, white 78px),
-                linear-gradient(-90deg, #aaa 1px, white 1px),
-                linear-gradient(-90deg, white 3px, #f2f2f2 3px, #f2f2f2 78px, white 78px),
-                linear-gradient(#aaa 1px, white 1px),
-                #f2f2f2;
-    background-size: 4px 4px, 4px 4px, 80px 80px, 80px 80px, 80px 80px, 80px 80px,
-                    80px 80px, 80px 80px;
-    padding: 5px 10px;
-    border: 1px solid #666;
-    height: 60px;
-    width: 95px;
+    background: linear-gradient(135deg, #ecf0f1, #bdc3c7);
+    padding: 10px 15px;
+    border: 1px solid #95a5a6;
     border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.3s, top 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
     pointer-events: none;
-    letter-spacing: 0.5px;
+    width: max-content;
+    max-width: 200px;
+    text-align: center;
     font-size: 14px;
     font-weight: 600;
-    color: #333;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-  }
-
-  .tooltip-container:hover {
-    border-radius: 0;
-  }
-
-  .tooltip-container:hover::before {
-    transform: rotateY(0);
-    background: linear-gradient(to left bottom, #222, #111);
+    color: #2c3e50;
+    letter-spacing: 0.5px;
+    z-index: 2;
   }
 
   .tooltip-container:hover .tooltip {
-    top: -80px;
+    top: -70px;
     opacity: 1;
   }
 
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+
+    .tooltip-container {
+      height: 65px;
+      width: 100px;
+    }
+
+    .tooltip-container .text {
+      font-size: 32px;
+    }
+
+    .tooltip {
+      font-size: 12px;
+      max-width: 180px;
+    }
+
+    .tooltip-container:hover .tooltip {
+      top: -65px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+
+    .tooltip-container {
+      height: 60px;
+      width: 90px;
+    }
+
+    .tooltip-container .text {
+      font-size: 28px;
+    }
+
+    .tooltip {
+      font-size: 11px;
+      max-width: 150px;
+    }
+
+    .tooltip-container:hover .tooltip {
+      top: -60px;
+    }
+  }
+
   @media (max-width: 480px) {
+    grid-template-columns: repeat(3, 1fr);
+
     .tooltip-container {
       height: 50px;
-      width: 80px;
+      width: 75px;
+      margin-left: 2rem;
     }
 
     .tooltip-container .text {
@@ -390,13 +442,38 @@ const StyledEnvelope = styled.div`
     }
 
     .tooltip {
-      height: 50px;
-      width: 80px;
-      font-size: 12px;
+      font-size: 10px;
+      max-width: 120px;
+      padding: 8px 12px;
     }
 
     .tooltip-container:hover .tooltip {
-      top: -70px;
+      top: -50px;
+    }
+  }
+
+  @media (max-width: 300px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.25rem;
+
+    .tooltip-container {
+      height: 40px;
+      width: 12rem;
+      margin-left: 0.5rem;
+    }
+
+    .tooltip-container .text {
+      font-size: 20px;
+    }
+
+    .tooltip {
+      font-size: 9px;
+      max-width: 100px;
+      padding: 6px 10px;
+    }
+
+    .tooltip-container:hover .tooltip {
+      top: -45px;
     }
   }
 `;
