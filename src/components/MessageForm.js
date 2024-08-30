@@ -97,28 +97,30 @@ const StyledWrapper = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(to bottom, #1b1b1b, #333);
+  background: linear-gradient(to bottom, #f0f0f0, #d9d9d9);
   padding: 20px;
   box-sizing: border-box;
 
   .container {
     width: 100%;
     max-width: 600px;
-    border-radius: 15px;
+    border-radius: 12px;
     overflow: hidden;
-    background: #222;
-    color: #f0f0f0;
+    background: #ffffff;
+    color: #333333;
     padding: 20px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid #e0e0e0;
   }
 
   h2 {
     margin-bottom: 20px;
-    font-size: 1.8em;
-    font-family: 'Courier New', Courier, monospace;
-    color: #e0e0e0;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    font-size: 2em;
+    font-family: 'Roboto', sans-serif;
+    color: #333333;
+    font-weight: 500;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   }
 
   .form-group {
@@ -128,31 +130,31 @@ const StyledWrapper = styled.div`
   label {
     display: block;
     margin-bottom: 8px;
-    font-size: 1.2em;
-    color: #ccc;
+    font-size: 1.1em;
+    color: #666666;
   }
 
   textarea {
     width: 100%;
     padding: 12px;
-    border: 2px solid #444;
+    border: 1px solid #cccccc;
     border-radius: 8px;
-    background: #333;
-    color: #e0e0e0;
+    background: #f9f9f9;
+    color: #333333;
     font-size: 1em;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Roboto', sans-serif;
     resize: vertical;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
     transition: background 0.3s, border-color 0.3s;
   }
 
   textarea:focus {
-    background: #444;
-    border-color: #666;
+    background: #ffffff;
+    border-color: #999999;
     outline: none;
   }
 
-  button {
+   button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -218,6 +220,13 @@ const StyledWrapper = styled.div`
     button {
       width: 40%; /* Full width on mobile */
       border-radius: 40px; /* Adjust radius for mobile */
+    }
+  }
+;
+
+  @media (max-width: 600px) {
+    .container {
+      padding: 15px;
     }
   }
 `;
