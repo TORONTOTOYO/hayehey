@@ -216,7 +216,7 @@ const StyledModal = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.5); /* Subtle dark overlay */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -224,64 +224,66 @@ const StyledModal = styled.div`
   }
 
   .modal-content {
-    background: linear-gradient(145deg, #1e1e1e, #3a3a3a);
-    color: #f5f5f5;
-    border-radius: 15px;
+    background: #ffffff; /* Clean white background */
+    color: #333333; /* Dark text for contrast */
+    border-radius: 12px;
     padding: 20px;
     width: 100%;
-    max-width: 300px;
+    max-width: 400px;
     max-height: 80vh;
     overflow-y: auto;
     text-align: center;
-    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
   }
 
   .message-content {
-    font-family: 'Press Start 2P'; /* Retro pixel font */
+    font-family: 'Roboto', sans-serif; /* Modern, clean font */
   }
 
   .message-content h4 {
     margin: 0;
-    font-size: 1.4em;
+    font-size: 1.6em;
     font-weight: 600;
-    color: #ffcc00; /* Yellow, resembling the crewmates */
+    color: #007bff; /* Modern blue */
   }
 
   .message-content p {
     margin: 20px 0;
     font-size: 1em;
-    color: #d0d0d0;
+    color: #555555; /* Slightly lighter text for readability */
   }
 
   .message-content small {
-    color: #a0a0a0;
-    font-size: 0.8em;
+    color: #888888; /* Light gray for less emphasis */
+    font-size: 0.9em;
   }
 
   .butt {
-    height: 40px;
-    width: 40px;
+    height: 45px;
+    width: 45px;
     border-radius: 50%;
     border: none;
-    background: linear-gradient(45deg, #ff0055, #ff6600, #ffcc00, #00cc99);
+    background: #007bff; /* Modern blue button */
+    color: #ffffff; /* White icon for contrast */
+    font-size: 1.2em;
     margin-top: 20px;
     cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
   }
 
   .butt:hover {
-    box-shadow: 0 0 15px rgba(255, 105, 180, 0.5); /* Pinkish glow */
-    transform: scale(1.1);
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05);
   }
 
   @media (max-width: 480px) {
     .modal-content {
-      width: 95%;
+      width: 90%;
       padding: 15px;
     }
 
     .message-content h4 {
-      font-size: 1.2em;
+      font-size: 1.4em;
     }
 
     .message-content p {
@@ -289,30 +291,31 @@ const StyledModal = styled.div`
     }
 
     .butt {
-      height: 35px;
-      width: 35px;
+      height: 40px;
+      width: 40px;
     }
   }
 `;
 
+
 const StyledEnvelope = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(75px, 1fr)); /* Adjust column size dynamically */
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Adjust column size dynamically */
   gap: 1rem;
   justify-content: center;
   padding: 1rem;
 
   .tooltip-container {
-    height: 70px;
-    width: 110px;
-    border-radius: 12px;
-    background: linear-gradient(135deg, #2c3e50, #1a2533);
-    border: 2px solid #34495e;
+    height: 80px;
+    width: 120px;
+    border-radius: 8px;
+    background: #ffffff; /* Clean white background */
+    border: 1px solid #dddddd; /* Subtle border */
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
     position: relative;
     transition: all 0.3s ease;
     z-index: 1;
@@ -320,34 +323,32 @@ const StyledEnvelope = styled.div`
     margin-top: 1rem;
 
     &:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     }
 
     &::before {
       content: "";
       position: absolute;
-      top: -40%;
+      top: -30%;
       left: 0;
       right: 0;
-      height: 40%;
-      background: linear-gradient(135deg, #34495e, #2c3e50);
+      height: 30%;
+      background: #f8f9fa; /* Light background */
+      border-bottom: 1px solid #dddddd;
       clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-      transform: perspective(1000px) rotateX(-60deg);
-      transform-origin: bottom;
       transition: all 0.3s ease;
       z-index: -1;
     }
 
     &:hover::before {
-      transform: perspective(1000px) rotateX(0deg);
+      transform: scaleY(1.1);
     }
 
     .text {
-      color: #f1c40f;
-      font-weight: bold;
-      font-size: 36px;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      color: #007bff; /* Modern blue text */
+      font-weight: 600;
+      font-size: 32px;
       transition: all 0.3s ease;
     }
 
@@ -358,29 +359,29 @@ const StyledEnvelope = styled.div`
 
   .tooltip {
     position: absolute;
-    top: -30px;
+    top: -40px;
     left: 50%;
     transform: translateX(-50%);
     opacity: 0;
-    background: linear-gradient(135deg, #ecf0f1, #bdc3c7);
-    padding: 10px 15px;
-    border: 1px solid #95a5a6;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background: #ffffff; /* Light background for tooltip */
+    padding: 8px 12px;
+    border: 1px solid #cccccc; /* Subtle border */
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     pointer-events: none;
     width: max-content;
-    max-width: 200px;
+    max-width: 180px;
     text-align: center;
     font-size: 14px;
-    font-weight: 600;
-    color: #2c3e50;
-    letter-spacing: 0.5px;
+    font-weight: 500;
+    color: #333333; /* Dark text for contrast */
+    letter-spacing: 0.3px;
     z-index: 2;
   }
 
   .tooltip-container:hover .tooltip {
-    top: -70px;
+    top: -60px;
     opacity: 1;
   }
 
@@ -392,8 +393,9 @@ const StyledEnvelope = styled.div`
     grid-template-columns: repeat(4, 1fr); /* Fixed to 4 columns for mobile view */
     
     .tooltip-container {
-      height: 60px;
-      width: 90px;
+      height: 70px;
+      width: 100px;
+      margin-left: 2rem;
     }
 
     .text {
@@ -401,32 +403,8 @@ const StyledEnvelope = styled.div`
     }
 
     .tooltip {
-      font-size: 11px;
+      font-size: 12px;
       max-width: 150px;
-    }
-
-    .tooltip-container:hover .tooltip {
-      top: -60px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    grid-template-columns: repeat(4, 1fr); /* Fixed to 4 columns per row */
-
-    .tooltip-container {
-      height: 50px;
-      width: 75px;
-      margin-left: 2.5rem;
-    }
-
-    .text {
-      font-size: 24px;
-    }
-
-    .tooltip {
-      font-size: 10px;
-      max-width: 120px;
-      padding: 8px 12px;
     }
 
     .tooltip-container:hover .tooltip {
@@ -434,23 +412,22 @@ const StyledEnvelope = styled.div`
     }
   }
 
-  @media (max-width: 300px) {
-    grid-template-columns: repeat(2, 1fr); /* Adjust to 2 columns for very small screens */
-    gap: 0.25rem;
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(4, 1fr); /* Fixed to 4 columns per row */
 
     .tooltip-container {
-      height: 40px;
-      width: 60px;
-      margin-left: 0.7rem;
+      height: 60px;
+      width: 85px;
+      margin-left: 1.5rem;
     }
 
     .text {
-      font-size: 20px;
+      font-size: 24px;
     }
 
     .tooltip {
-      font-size: 9px;
-      max-width: 100px;
+      font-size: 11px;
+      max-width: 130px;
       padding: 6px 10px;
     }
 
@@ -458,27 +435,51 @@ const StyledEnvelope = styled.div`
       top: -45px;
     }
   }
-`;
 
+  @media (max-width: 300px) {
+    grid-template-columns: repeat(2, 1fr); /* Adjust to 2 columns for very small screens */
+    gap: 0.5rem;
+
+    .tooltip-container {
+      height: 50px;
+      width: 70px;
+      margin-left: 0.5rem;
+    }
+
+    .text {
+      font-size: 20px;
+    }
+
+    .tooltip {
+      font-size: 10px;
+      max-width: 100px;
+      padding: 4px 8px;
+    }
+
+    .tooltip-container:hover .tooltip {
+      top: -40px;
+    }
+  }
+`;
 
 const StyledWrapper = styled.div`
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   min-height: 100vh;
-  background: linear-gradient(to bottom, #1e1e1e, #2a2a2a);
+  background: #f7f9fc; /* Light background for a clean look */
   padding: 20px;
   box-sizing: border-box;
 
   .container {
     width: 100%;
     max-width: 900px;
-    border-radius: 15px;
+    border-radius: 12px;
     overflow: hidden;
-    background: linear-gradient(145deg, #2c2c2c, #3a3a3a);
-    color: #f5f5f5;
+    background: #ffffff; /* Clean white background */
+    color: #333333; /* Dark text for contrast */
     padding: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -492,40 +493,40 @@ const StyledWrapper = styled.div`
   }
 
   .profile_picture {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     object-fit: cover;
-    margin-right: 20px;
-    border: 4px solid #444;
+    margin-right: 15px;
+    border: 3px solid #e0e0e0; /* Subtle border */
   }
 
   .username {
-    font-size: 1.6em;
-    font-weight: 700;
-    color: #ffcc00; /* Yellow, resembling the crewmates */
+    font-size: 1.4em;
+    font-weight: 600;
+    color: #007bff; /* Modern blue */
     position: relative;
-    padding-right: 140px;
+    padding-right: 120px;
   }
 
   .label {
-    font-weight: 600;
-    color: #aaa;
+    font-weight: 500;
+    color: #666666; /* Subtle gray for a modern feel */
   }
 
   .button {
-    height: 30px;
+    height: 35px;
     position: absolute;
     right: 0;
     top: 50%;
     transform: translateY(-50%);
-    padding: 0.75em 0.5em;
-    font-size: 1em;
-    color: #fff;
-    background: #444;
-    border-radius: 8px;
+    padding: 0.5em 0.6em;
+    font-size: 0.9em;
+    color: #ffffff;
+    background: #007bff; /* Modern blue */
+    border-radius: 6px;
     border: none;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -533,13 +534,13 @@ const StyledWrapper = styled.div`
   }
 
   .button:hover {
-    background: linear-gradient(45deg, #333, #444);
+    background: #0056b3; /* Darker blue on hover */
     transform: scale(1.05);
   }
 
   .icon {
-    fill: #fff;
-    width: 24px;
+    fill: #ffffff;
+    width: 20px;
     margin-right: 8px;
   }
 
@@ -550,8 +551,8 @@ const StyledWrapper = styled.div`
 
   .messages_section h3 {
     margin-bottom: 15px;
-    font-size: 1.5em;
-    color: #ffcc00; /* Yellow text */
+    font-size: 1.4em;
+    color: #007bff; /* Modern blue text */
   }
 
   .messages_grid {
@@ -561,28 +562,28 @@ const StyledWrapper = styled.div`
   }
 
   .message_item {
-    background: linear-gradient(145deg, #333, #222);
+    background: #ffffff; /* Clean white background */
     padding: 15px;
     border-radius: 8px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     transition: transform 0.2s;
   }
 
   .message_item:hover {
-    transform: translateY(-5px);
+    transform: translateY(-3px);
   }
 
   .message_item p {
     margin: 0;
     font-size: 0.9em;
-    color: #ddd;
+    color: #333333;
   }
 
   .message_item small {
     display: block;
     margin-top: 5px;
     font-size: 0.8em;
-    color: #888;
+    color: #888888;
   }
 
   @media (max-width: 480px) {
@@ -598,14 +599,14 @@ const StyledWrapper = styled.div`
     }
 
     .profile_picture {
-      width: 90px;
-      height: 90px;
+      width: 80px;
+      height: 80px;
       margin-right: 0;
       margin-bottom: 15px;
     }
 
     .username {
-      font-size: 1.3em;
+      font-size: 1.2em;
       padding-right: 0;
       margin-bottom: 10px;
     }
@@ -615,7 +616,7 @@ const StyledWrapper = styled.div`
       transform: none;
       margin-top: 10px;
       padding: 0.5em 1em;
-      font-size: 0.9em;
+      font-size: 0.8em;
     }
 
     .messages_section h3 {
@@ -639,7 +640,7 @@ const StyledWrapper = styled.div`
       font-size: 0.7em;
     }
   }
-
 `;
+
 
 export default Profile;
