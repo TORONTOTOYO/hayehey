@@ -429,12 +429,11 @@ const StyledEnvelope = styled.div`
   }
 
   @media (max-width: 480px) {
-    grid-template-columns: repeat(3, 1fr);
 
     .tooltip-container {
       height: 50px;
       width: 75px;
-      margin-left: 2rem;
+      margin-left: 2.5rem;
     }
 
     .tooltip-container .text {
