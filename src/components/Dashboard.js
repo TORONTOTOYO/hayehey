@@ -308,7 +308,7 @@ const StyledModal = styled.div`
     box-shadow: 0 6px 12px rgba(0, 255, 255, 0.4); /* Enhanced cyan glow */
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 380px) {
     .modal-content {
       width: 100%;
       padding: 15px;
@@ -327,6 +327,7 @@ const StyledModal = styled.div`
       width: 44px;
     }
   }
+    
 `;
 
 const StyledEnvelope = styled.div`
@@ -470,7 +471,7 @@ const StyledEnvelope = styled.div`
   }
 
   @media (max-width: 300px) {
-    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr)); /* Ensure grid responsiveness */
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); /* Ensure grid responsiveness */
     gap: 0.4rem;
 
     .tooltip-container {

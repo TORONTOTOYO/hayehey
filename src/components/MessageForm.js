@@ -1,12 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getFirestore, collection, addDoc, doc, getDoc } from "firebase/firestore";
 
 const MessageForm = () => {
   const { userId } = useParams(); // Get userId from URL
   const [message, setMessage] = useState("");
+  const [username, setUsername] = useState("");
   const db = getFirestore();
+
+  // Fetch the username of the user who provided the link
+  useEffect(() => {
+    const fetchUsername = async () => {
+      try {
+        const userDoc = doc(db, "users", userId);
+        const userSnap = await getDoc(userDoc);
+        if (userSnap.exists()) {
+          setUsername(userSnap.data().username);
+        } else {
+          console.error("No such user!");
+        }
+      } catch (error) {
+        console.error("Error fetching user:", error);
+      }
+    };
+
+    fetchUsername();
+  }, [db, userId]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,7 +50,7 @@ const MessageForm = () => {
   return (
     <StyledWrapper>
       <div className="container">
-        <h2>Send a Message</h2>
+        <h2>Send a Message to {username}</h2> {/* Display the username here */}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="message">Message:</label>
