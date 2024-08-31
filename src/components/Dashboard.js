@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc, collection, query, where, getDocs, updateDoc, onSnapshot } from "firebase/firestore";
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { v4 as uuidv4 } from "uuid";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -113,6 +113,7 @@ const Profile = () => {
         })
         .catch((error) => {
           console.error("Failed to copy link: ", error);
+          toast.error("Failed to copy link. Please try again.");
         });
     }
   };
@@ -202,6 +203,7 @@ const Profile = () => {
       height: '60px', // Adjust this value to resize the icon
       margin: '0 auto',
     },
+    
   };
 
   const CatFaceIcon = ({ status }) => {
@@ -227,6 +229,7 @@ const Profile = () => {
 
   return (
     <div style={amongUsStyles.container}>
+            <ToastContainer />
       <Container>
         <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
           <h2 style={amongUsStyles.header}>Meowmate: {username}</h2>
