@@ -281,9 +281,31 @@ const Profile = () => {
           </div>
         )}
       </Modal>
+      <StyledFooter>
+        <p>EchoInBox || CJ</p>
+      </StyledFooter>
     </StyledWrapper>
   );
 };
+
+const StyledFooter = styled.footer`
+  width: 100%;
+  text-align: center;
+  padding: 15px;
+  background: #1b2a3e; /* Match container background */
+  color: #e0e0e0; /* Light gray text */
+  border-top: 3px solid #00ffff; /* Cyan border-top */
+  margin-top: auto; /* Push footer to the bottom */
+  font-family: 'VT323', monospace;
+  font-size: 1em;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
+`;
 
 const StyledModal = styled.div`
   .modal-overlay {

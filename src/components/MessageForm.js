@@ -399,6 +399,12 @@ const Footer = styled.footer`
   margin-top: auto; /* Push footer to the bottom */
   font-family: 'VT323', monospace;
   font-size: 1em;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
 `;
 
 export default MessageForm;
