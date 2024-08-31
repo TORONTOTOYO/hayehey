@@ -310,7 +310,7 @@ const StyledModal = styled.div`
 
   @media (max-width: 480px) {
     .modal-content {
-      width: 90%;
+      width: 100%;
       padding: 15px;
     }
 
@@ -334,7 +334,6 @@ const StyledEnvelope = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
   gap: 1rem;
   justify-content: center;
-  padding: 1rem;
 
   .tooltip-container {
     height: 80px;
@@ -471,7 +470,7 @@ const StyledEnvelope = styled.div`
   }
 
   @media (max-width: 300px) {
-    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); /* Ensure grid responsiveness */
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr)); /* Ensure grid responsiveness */
     gap: 0.4rem;
 
     .tooltip-container {
@@ -518,6 +517,7 @@ const StyledEnvelope = styled.div`
     }
   `}
 `;
+
 
 const StyledWrapper = styled.div`
   display: flex;
