@@ -264,7 +264,7 @@ const Profile = () => {
               ))}
             </Row>
           ) : (
-            <p style={{color: '#f5a9a9', fontSize: '1.2rem'}}>No meow messages yet. The cats are quiet...</p>
+            <p style={{color: '#f5a9a9', fontSize: '1.2rem'}}>No meowssages yet. The cats are quiet...</p>
           )}
 
         <Modal show={isModalOpen} onHide={closeModal} dialogClassName="modal-dialog-centered">
