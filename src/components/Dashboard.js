@@ -1,9 +1,11 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged,signOut } from "firebase/auth";
 import { getFirestore, doc,getDoc, setDoc, collection, query, where, getDocs, updateDoc, onSnapshot} from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Modal = ({ isOpen, onClose, children }) => {
@@ -79,27 +81,33 @@ const Profile = () => {
       const q = query(messagesRef, where("recipientId", "==", userId));
   
       // Set up a real-time listener
-      const unsubscribe = onSnapshot(q, (querySnapshot) => {
-        const fetchedMessages = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
+      const unsubscribe = onSnapshot(
+        q, 
+        (querySnapshot) => {
+          const fetchedMessages = querySnapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }));
   
-        setMessages(fetchedMessages);
+          setMessages(fetchedMessages);
   
-        // Count unread messages
-        const unreadMessages = fetchedMessages.filter(
-          (message) => !message.isRead
-        );
-        setUnreadCount(unreadMessages.length);
+          const unreadMessages = fetchedMessages.filter(
+            (message) => !message.isRead
+          );
+          setUnreadCount(unreadMessages.length);
   
-        // Check if there's a new unread message and notify the user
-        if (unreadMessages.length > 0) {
-          alert("You have a new message!");
+          // Replace alert with toast
+          if (unreadMessages.length > 0) {
+            toast.success("You have a new message!", { position: "top-right" });
+          }
+        },
+        (error) => {
+          console.error("Failed to fetch messages:", error);
+          toast.error("Failed to fetch messages. Please try again later.");
         }
-      });
+      );
   
-      return unsubscribe; // Return the unsubscribe function
+      return unsubscribe;
     },
     [db]
   );
@@ -172,8 +180,17 @@ const Profile = () => {
     setSelectedMessage(null);
   }, []);
 
-  
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      navigate("/"); // Redirect to the login page after logout
+    } catch (error) {
+      console.error("Error signing out: ", error);
+      toast.error("Failed to log out. Please try again.");
+    }
+  };
 
+  
   return (
     <StyledWrapper>
       <div className="container">
@@ -187,16 +204,29 @@ const Profile = () => {
           )}
           <div className="username">
             <span className="label">Username:</span> {username}
-            <button className="button" onClick={handleShareClick}>
-              <svg
-                viewBox="0 0 512 512"
-                xmlns="http://www.w3.org/2000/svg"
-                className="icon"
-              >
-                <path d="M307 34.8c-11.5 5.1-19 16.6-19 29.2v64H176C78.8 128 0 206.8 0 304C0 417.3 81.5 467.9 100.2 478.1c2.5 1.4 5.3 1.9 8.1 1.9c10.9 0 19.7-8.9 19.7-19.7c0-7.5-4.3-14.4-9.8-19.5C108.8 431.9 96 414.4 96 384c0-53 43-96 96-96h96v64c0 12.6 7.4 24.1 19 29.2s25 3 34.4-5.4l160-144c6.7-6.1 10.6-14.7 10.6-23.8s-3.8-17.7-10.6-23.8l-160-144c-9.4-8.5-22.9-10.6-34.4-5.4z" />
-              </svg>
-              Share
-            </button>
+              <div className="button-container">
+  <button className="button" onClick={handleShareClick}>
+    <svg
+      viewBox="0 0 512 512"
+      xmlns="http://www.w3.org/2000/svg"
+      className="icon"
+    >
+      <path d="M307 34.8c-11.5 5.1-19 16.6-19 29.2v64H176C78.8 128 0 206.8 0 304C0 417.3 81.5 467.9 100.2 478.1c2.5 1.4 5.3 1.9 8.1 1.9c10.9 0 19.7-8.9 19.7-19.7c0-7.5-4.3-14.4-9.8-19.5C108.8 431.9 96 414.4 96 384c0-53 43-96 96-96h96v64c0 12.6 7.4 24.1 19 29.2s25 3 34.4-5.4l160-144c6.7-6.1 10.6-14.7 10.6-23.8s-3.8-17.7-10.6-23.8l-160-144c-9.4-8.5-22.9-10.6-34.4-5.4z" />
+    </svg>
+    Share
+  </button>
+  <button className="button" onClick={handleLogout}>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="icon"
+      viewBox="0 0 512 512"
+      height="1.5em"
+    >
+      <path d="M256 8C119.8 8 8 119.8 8 256S119.8 504 256 504 504 392.2 504 256 392.2 8 256 8zm0 464c-88.4 0-160-71.6-160-160 0-88.4 71.6-160 160-160 88.4 0 160 71.6 160 160 0 88.4-71.6 160-160 160zm-32-264v-72c0-13.3 10.7-24 24-24s24 10.7 24 24v72c0 13.3-10.7 24-24 24s-24-10.7-24-24zm8-72h16v72h-16v-72zm-16 0v72h-16v-72h16z"/>
+    </svg>
+    Logout
+  </button>
+</div>
           </div>
         </div>
 
@@ -221,26 +251,34 @@ const Profile = () => {
 
       <Modal isOpen={isModalOpen} onClose={closeModal}>
         {selectedMessage && (
-              <div className="modal-content">
-                  <div className="message-content">
-                    <h4>Message</h4>
-                    <p>{selectedMessage.content}</p>
-                    <small>
-                      Received on:{" "}
-                      {new Date(selectedMessage.createdAt.seconds * 1000).toLocaleDateString()}
-                    </small>
-                  </div>
-                  <button className="butt">
-                  <svg  
-            className="svgIcon"
-            viewBox="0 0 448 512"
-            height="1.5em"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
-          </svg>
-                  </button>
+          <div className="modal-content">
+            <div className="message-content">
+              <h4>Message</h4>
+              <p>{selectedMessage.content}</p>
+              <small>
+                Received on:{" "}
+                {new Date(selectedMessage.createdAt.seconds * 1000).toLocaleDateString()}
+              </small>
+            </div>
+            {selectedMessage.audio && (
+              <div className="audio-player">
+                <audio controls>
+                  <source src={selectedMessage.audio} type="audio/wav" />
+                  Your browser does not support the audio element.
+                </audio>
               </div>
+            )}
+            <button className="butt">
+              <svg  
+                className="svgIcon"
+                viewBox="0 0 448 512"
+                height="1.5em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+              </svg>
+            </button>
+          </div>
         )}
       </Modal>
     </StyledWrapper>
@@ -299,6 +337,17 @@ const StyledModal = styled.div`
     color: #00ffff; /* Cyan color for timestamps */
     font-size: 0.9em;
   }
+
+  .audio-player {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.audio-player audio {
+  width: 100%; /* Full width for better visibility */
+  border-radius: 8px; /* Rounded corners for a softer look */
+}
 
   .butt {
     height: 50px;
@@ -558,6 +607,7 @@ const StyledWrapper = styled.div`
     position: relative;
   }
 
+  /* Profile information section */
   .profile_info {
     display: flex;
     align-items: center;
@@ -589,22 +639,30 @@ const StyledWrapper = styled.div`
     color: #ff1616; /* Red color for labels */
   }
 
-  .button {
-    height: 40px;
+
+  /* Button container positioning */
+  .button-container {
     position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 0.6em 0.2em;
-    font-size: 1em;
+    top: 1.5em; /* Distance from the top of the container */
+    right: auto; /* Distance from the right side of the container */
+    display: flex;
+    flex-direction: row; /* Stack buttons vertically */
+    gap: 10px; /* Space between buttons */
+  }
+
+
+  .button {
+    font-size: 0.7rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Make buttons circular */
     color: #fff;
     background: #ff1616; /* Red background like emergency button */
-    border-radius: 8px;
     border: none;
     box-shadow: 0 6px 12px rgba(255, 22, 22, 0.4);
-    cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: center;
     transition: background 0.3s, transform 0.3s;
     font-family: 'VT323', monospace; /* Retro font similar to Among Us */
   }
@@ -615,9 +673,8 @@ const StyledWrapper = styled.div`
   }
 
   .icon {
-    fill: #ffffff;
-    width: 24px;
-    margin-right: 8px;
+    height: 1.5em; /* Adjust icon size */
+    width: auto; /* Maintain aspect ratio */
   }
 
   .messages_section {
@@ -636,19 +693,37 @@ const StyledWrapper = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
+    animation: fadeIn 0.5s ease-in-out; /* Adds entrance animation */
   }
 
   .message_item {
-    background: #1c2b4f; /* Slightly lighter blue background */
+    background: #1c2b4f;
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-    border: 1px solid #00ffff; /* Cyan border */
-    transition: transform 0.2s;
-  }
+    border: 1px solid #00ffff;
+    transition: transform 0.2s, background 0.3s;
+    cursor: pointer;
+  } 
 
   .message_item:hover {
     transform: translateY(-5px);
+    background: #273e66; /* Changes background slightly on hover */
+  }
+
+  .button:focus {
+    outline: 3px solid #00ffff; /* Adds visible focus for accessibility */
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .message_item p {
@@ -687,14 +762,6 @@ const StyledWrapper = styled.div`
       font-size: 1.4em;
       padding-right: 0;
       margin-bottom: 10px;
-    }
-
-    .button {
-      position: static;
-      transform: none;
-      margin-top: 10px;
-      padding: 0.6em 1.2em;
-      font-size: 0.9em;
     }
 
     .messages_section h3 {
