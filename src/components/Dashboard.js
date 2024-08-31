@@ -64,7 +64,7 @@ const Profile = () => {
   
       if (username && !userData.customLink) {
         // Generate a unique link with the username
-        const uniqueLink = `http://localhost:3000/message/${username}`;
+        const uniqueLink = `https://echoinbox.vercel.app/message/${userId}`;
   
         // Store the unique link in Firestore
         await setDoc(userDoc, { customLink: uniqueLink }, { merge: true });
@@ -417,9 +417,12 @@ const StyledModal = styled.div`
 
 const StyledEnvelope = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Adjusts columns based on container size */
+  grid-auto-rows: max-content; /* Rows adjust to content size */
+  gap: 0.3rem; /* Reduced gap between items for tighter spacing */
   justify-content: center;
+  align-items: start;
+  padding: 1rem; /* Optional padding for overall spacing from edges */
 
   .tooltip-container {
     height: 80px;
@@ -435,7 +438,6 @@ const StyledEnvelope = styled.div`
     position: relative;
     transition: all 0.3s ease;
     margin: 0 auto;
-    margin-top: 1rem;
 
     &:hover {
       transform: translateY(-6px);
@@ -503,82 +505,6 @@ const StyledEnvelope = styled.div`
     opacity: 1;
   }
 
-  @media (max-width: 1024px) {
-    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-  }
-
-  @media (max-width: 768px) {
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Ensure grid responsiveness */
-    gap: 0.8rem;
-
-    .tooltip-container {
-      height: 70px;
-      width: 100px;
-      margin: 0 auto;
-    }
-
-    .text {
-      font-size: 26px;
-    }
-
-    .tooltip {
-      font-size: 12px;
-      max-width: 150px;
-    }
-
-    .tooltip-container:hover .tooltip {
-      top: -60px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr)); /* Ensure grid responsiveness */
-    gap: 0.6rem;
-
-    .tooltip-container {
-      height: 60px;
-      width: 85px;
-    }
-
-    .text {
-      font-size: 22px;
-    }
-
-    .tooltip {
-      font-size: 11px;
-      max-width: 130px;
-      padding: 6px 10px;
-    }
-
-    .tooltip-container:hover .tooltip {
-      top: -55px;
-    }
-  }
-
-  @media (max-width: 300px) {
-    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); /* Ensure grid responsiveness */
-    gap: 0.4rem;
-
-    .tooltip-container {
-      height: 50px;
-      width: 70px;
-    }
-
-    .text {
-      font-size: 18px;
-    }
-
-    .tooltip {
-      font-size: 10px;
-      max-width: 100px;
-      padding: 4px 8px;
-    }
-
-    .tooltip-container:hover .tooltip {
-      top: -50px;
-    }
-  }
-
   .new-indicator {
     position: absolute;
     top: -10px;
@@ -592,18 +518,19 @@ const StyledEnvelope = styled.div`
     font-family: 'VT323', monospace; /* Among Us style font */
   }
 
-  ${props => props.isNew && `
+  ${({ isNew }) =>
+    isNew &&
+    `
     .tooltip-container .tooltip {
       background-color: #ff1616; /* Red background for new messages */
       font-weight: bold;
     }
-    
+
     .text {
       color: #ff1616; /* Red text for new messages */
     }
   `}
 `;
-
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -696,36 +623,17 @@ const StyledWrapper = styled.div`
 
   .messages_section {
     margin-top: 20px;
-    width: 100%;
-  }
 
-  .messages_section h3 {
-    margin-bottom: 15px;
-    font-size: 1.6em;
-    color: #00ffff; /* Cyan for headings */
-    text-shadow: 1px 1px 3px rgba(0, 255, 255, 0.4);
-  }
+    h3 {
+      font-size: 1.5rem;
+      padding-bottom: 5px;
+    }
 
-  .messages_grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-    animation: fadeIn 0.5s ease-in-out; /* Adds entrance animation */
-  }
-
-  .message_item {
-    background: #1c2b4f;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-    border: 1px solid #00ffff;
-    transition: transform 0.2s, background 0.3s;
-    cursor: pointer;
-  } 
-
-  .message_item:hover {
-    transform: translateY(-5px);
-    background: #273e66; /* Changes background slightly on hover */
+    .messages_grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
   }
 
   .button:focus {

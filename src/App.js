@@ -13,7 +13,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/message/:username" element={<MessageForm />} /> {/* Add this line */}
+        <Route path="/message/:userId" element={<MessageForm />} /> {/* Add this line */}
       </Routes>
     </Router>
   );

@@ -17,6 +17,11 @@ const MessageForm = () => {
 
   useEffect(() => {
     const fetchUsername = async () => {
+      if (!userId) {
+        console.error("userId is undefined.");
+        return;
+      }
+      
       try {
         const userDoc = doc(db, "users", userId);
         const userSnap = await getDoc(userDoc);
@@ -42,7 +47,6 @@ const MessageForm = () => {
         const reader = new FileReader();
         reader.onloadend = () => {
           setAudio(reader.result);
-          // Insert audio reference into message
           setMessage(prevMessage => prevMessage + "\n[Audio Message Recorded]");
         };
         reader.readAsDataURL(audioBlob);
@@ -61,7 +65,6 @@ const MessageForm = () => {
 
   const handleAudioRemoval = () => {
     setAudio(null);
-    // Remove the audio placeholder text from the message
     setMessage(prevMessage => prevMessage.replace("\n[Audio Message Recorded]", ""));
   };
 
@@ -69,21 +72,32 @@ const MessageForm = () => {
     e.preventDefault();
     if (message.trim() === "" && !audio) return;
 
-    const messagesRef = collection(db, "messages");
-    await addDoc(messagesRef, {
-      recipientId: userId,
-      content: message,
-      createdAt: new Date(),
-      isAnonymous: false,
-      senderId: null, // You might want to add senderId here if it's available
-      isRead: false,
-      isAnswered: false,
-      audio: audio // Store the audio as base64 string
-    });
+    if (!userId) {
+      console.error("Cannot send message: recipientId (userId) is undefined.");
+      alert("Failed to send message. Please try again.");
+      return;
+    }
 
-    setMessage("");
-    setAudio(null);
-    alert("Message sent!");
+    try {
+      const messagesRef = collection(db, "messages");
+      await addDoc(messagesRef, {
+        recipientId: userId,
+        content: message,
+        createdAt: new Date(),
+        isAnonymous: false,
+        senderId: null, // Set to null or provide the senderId if available
+        isRead: false,
+        isAnswered: false,
+        audio: audio // Store the audio as base64 string
+      });
+
+      setMessage("");
+      setAudio(null);
+      alert("Message sent!");
+    } catch (error) {
+      console.error("Error adding document:", error);
+      alert("Failed to send message. Please try again.");
+    }
   };
 
   return (
