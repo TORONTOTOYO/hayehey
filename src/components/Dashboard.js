@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { getFirestore, doc,getDoc, setDoc, collection, query, where, getDocs, updateDoc} from "firebase/firestore";
+import { getFirestore, doc,getDoc, setDoc, collection, query, where, getDocs, updateDoc, onSnapshot} from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
 
 
@@ -73,27 +73,36 @@ const Profile = () => {
     }
   }, [db]);
 
-  const fetchMessages = useCallback(async (userId) => {
-    try {
+  const fetchMessages = useCallback(
+    (userId) => {
       const messagesRef = collection(db, "messages");
       const q = query(messagesRef, where("recipientId", "==", userId));
-      const querySnapshot = await getDocs(q);
-
-      const fetchedMessages = querySnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data()
-      }));
-
-      setMessages(fetchedMessages);
-      
-      // Count unread messages
-      const unreadMessages = fetchedMessages.filter(message => !message.isRead);
-      setUnreadCount(unreadMessages.length);
-    } catch (error) {
-      console.error("Error fetching messages: ", error);
-    }
-  }, [db]);
-
+  
+      // Set up a real-time listener
+      const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        const fetchedMessages = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+  
+        setMessages(fetchedMessages);
+  
+        // Count unread messages
+        const unreadMessages = fetchedMessages.filter(
+          (message) => !message.isRead
+        );
+        setUnreadCount(unreadMessages.length);
+  
+        // Check if there's a new unread message and notify the user
+        if (unreadMessages.length > 0) {
+          alert("You have a new message!");
+        }
+      });
+  
+      return unsubscribe; // Return the unsubscribe function
+    },
+    [db]
+  );
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -106,18 +115,22 @@ const Profile = () => {
           setUsername(userData.username || "");
           setProfilePicture(userData.profilePictureUrl || "");
           setCustomLink(userData.customLink || "");
-
+  
           // Generate a unique link if not already set
           if (!userData.customLink) {
             await generateUniqueLink(user.uid);
           }
-
-          // Fetch messages for the user
-          await fetchMessages(user.uid);
+  
+          // Fetch messages for the user with real-time updates
+          const messagesUnsubscribe = fetchMessages(user.uid);
+  
+          // Clean up the message listener on unmount
+          return () => messagesUnsubscribe();
         }
       }
     });
-
+  
+    // Clean up onAuthStateChanged listener on unmount
     return () => unsubscribe();
   }, [auth, db, generateUniqueLink, fetchMessages]);
 
