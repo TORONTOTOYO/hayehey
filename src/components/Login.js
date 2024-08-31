@@ -285,7 +285,7 @@ const StyledWrapper = styled.div`
   }
 
   .bottom_text .switch {
-    color: #4CAF50;
+    color: #ff66b2;
     font-weight: 700;
     cursor: pointer;
     transition: color 0.3s ease;

@@ -83,7 +83,7 @@ const MessageForm = () => {
             d="M15.078,19.043c1.957-0.326,5.122-0.529,4.435,1.304c-0.489,1.304-7.185,2.185-7.185,0.652 C12.328,19.467,15.078,19.043,15.078,19.043z"
           />
         </svg>
-        <span className="now">now!</span>
+        <span className="now">sent</span>
         <span className="play">send</span>
       </button>
         </form>
@@ -97,7 +97,7 @@ const StyledWrapper = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(to bottom, #f0f0f0, #d9d9d9);
+  background: linear-gradient(to bottom, #000000, #1a1a1a); /* Dark gradient background */
   padding: 20px;
   box-sizing: border-box;
 
@@ -106,21 +106,21 @@ const StyledWrapper = styled.div`
     max-width: 600px;
     border-radius: 12px;
     overflow: hidden;
-    background: #ffffff;
-    color: #333333;
+    background: #2e2e2e; /* Dark gray for emo feel */
+    color: #e0e0e0; /* Light gray text */
     padding: 20px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(8px);
-    border: 1px solid #e0e0e0;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Deeper shadow for more depth */
+    backdrop-filter: blur(10px); /* Increased blur for a more dramatic effect */
+    border: 1px solid #444; /* Darker border to complement the emo theme */
   }
 
   h2 {
     margin-bottom: 20px;
     font-size: 2em;
-    font-family: 'Roboto', sans-serif;
-    color: #333333;
+    font-family: 'Courier New', monospace; /* Monospace font for a retro emo touch */
+    color: #f5a9a9; /* Soft pink for a contrasting but emo touch */
     font-weight: 500;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Stronger shadow for dramatic effect */
   }
 
   .form-group {
@@ -131,26 +131,26 @@ const StyledWrapper = styled.div`
     display: block;
     margin-bottom: 8px;
     font-size: 1.1em;
-    color: #666666;
+    color: #cfcfcf; /* Light gray for labels */
   }
 
   textarea {
     width: 100%;
     padding: 12px;
-    border: 1px solid #cccccc;
+    border: 1px solid #666; /* Darker border for textarea */
     border-radius: 8px;
-    background: #f9f9f9;
-    color: #333333;
+    background: #333; /* Dark background for textarea */
+    color: #e0e0e0; /* Light text color */
     font-size: 1em;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Courier New', monospace;
     resize: vertical;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5); /* Dark inset shadow */
     transition: background 0.3s, border-color 0.3s;
   }
 
   textarea:focus {
-    background: #ffffff;
-    border-color: #999999;
+    background: #444; /* Slightly lighter dark gray on focus */
+    border-color: #999;
     outline: none;
   }
 
@@ -214,19 +214,12 @@ const StyledWrapper = styled.div`
 
   @media (max-width: 600px) {
     .container {
-      padding: 10px;
+      padding: 15px;
     }
 
     button {
       width: 40%; /* Full width on mobile */
       border-radius: 40px; /* Adjust radius for mobile */
-    }
-  }
-;
-
-  @media (max-width: 600px) {
-    .container {
-      padding: 15px;
     }
   }
 `;
