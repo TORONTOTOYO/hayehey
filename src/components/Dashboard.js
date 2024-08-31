@@ -298,12 +298,11 @@ const StyledFooter = styled.footer`
   margin-top: auto; /* Push footer to the bottom */
   font-family: 'VT323', monospace;
   font-size: 1em;
-
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px;
-  position: absolute;
+  position: fixed;
   bottom: 0;
 `;
 
@@ -609,9 +608,11 @@ const StyledWrapper = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  min-width: 100vw;
   background: #000b1e; /* Dark space background */
   padding: 20px;
   box-sizing: border-box;
+  position: fixed;
 
   .container {
     width: 100%;

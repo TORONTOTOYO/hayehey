@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { getFirestore, collection, addDoc, doc, getDoc } from "firebase/firestore";
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -7,6 +7,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const MessageForm = () => {
   const { userId } = useParams(); // Get userId from URL
+  const navigate = useNavigate();
   const [message, setMessage] = useState("");
   const [username, setUsername] = useState("");
   const [isRecording, setIsRecording] = useState(false);
@@ -156,6 +157,7 @@ const MessageForm = () => {
             )}
           </div>
         </form>
+        <h1 onClick={() => navigate('/')}>Want to receive anonymous messages?</h1> {/* Added heading with redirection */}
       </div>
       <Footer>
         <p>EchoInBox || CJ</p> {/* Replace [Your Name] with your actual name */}
@@ -170,9 +172,11 @@ const StyledWrapper = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  min-width: 100vw;
   background: linear-gradient(to bottom, #000b1e, #1c2b4f); /* Dark space gradient */
   padding: 20px;
   box-sizing: border-box;
+  position: fixed;
 
 .container {
   width: 100%;
@@ -185,9 +189,27 @@ const StyledWrapper = styled.div`
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6); /* Enhanced shadow for depth */
   backdrop-filter: blur(12px); /* Increased blur effect */
   border: 3px solid #00ffff; /* Thicker cyan border */
+  
 }
 
     
+  h1 {
+    margin-top: 2rem;
+    cursor: pointer;
+    color: #e74c3c;
+    font-size: 0.7rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  h1:hover {
+  cursor: pointer;
+  color: hsl(49deg 98% 60%);
+  font-size: 0.7rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
   h2 {
     margin-bottom: 20px;
     font-size: 2em;
@@ -399,11 +421,11 @@ const Footer = styled.footer`
   margin-top: auto; /* Push footer to the bottom */
   font-family: 'VT323', monospace;
   font-size: 1em;
-    display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px;
-  position: absolute;
+  position: fixed;
   bottom: 0;
 `;
 
