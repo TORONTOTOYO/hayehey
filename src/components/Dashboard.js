@@ -5,6 +5,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getFirestore, doc,getDoc, setDoc, collection, query, where, getDocs, updateDoc} from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
 
+
 const Modal = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
 
@@ -240,7 +241,7 @@ const StyledModal = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.85); /* Almost black overlay for a dark, moody feel */
+    background-color: rgba(0, 11, 30, 0.85); /* Dark space background with transparency */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -248,75 +249,77 @@ const StyledModal = styled.div`
   }
 
   .modal-content {
-    background: #1a1a1a; /* Very dark gray for a deep emo vibe */
-    color: #f2f2f2; /* Light gray for high contrast */
-    border-radius: 16px;
-    padding: 30px;
+    background: #132040; /* Dark blue background from Among Us */
+    color: #ffffff; /* White text for contrast */
+    border-radius: 12px;
+    padding: 20px;
     width: 100%;
-    max-width: 350px;
+    max-width: 400px;
     max-height: 80vh;
     overflow-y: auto;
     text-align: center;
-    background: linear-gradient(145deg, #1c1c1c, #2e2e2e); /* Subtle gradient for texture */
+    border: 2px solid #00ffff; /* Cyan border like task outlines */
+    box-shadow: 0 8px 16px rgba(0, 255, 255, 0.3); /* Cyan glow for depth */
   }
 
   .message-content {
-    font-family: 'Courier New', Courier, monospace; /* Monospace font for a more retro, emo touch */
-    text-align: left; /* Left-aligned text */
+    font-family: 'VT323', monospace; /* Among Us style font */
+    text-align: left;
   }
 
   .message-content h4 {
     margin: 0;
-    font-size: 1.5em;
-    font-weight: 700;
-    color: #ff66b2; /* Deep red for headers */
-    text-shadow: 1px 1px 3px #000; /* Bold shadow for dramatic effect */
+    font-size: 1.6em;
+    font-weight: bold;
+    color: #00ffff; /* Cyan color for headers */
+    text-shadow: 1px 1px 4px #000; /* Shadow for a popping effect */
   }
 
   .message-content p {
-    margin: 20px 0;
-    font-size: 0.95em;
+    margin: 15px 0;
+    font-size: 1em;
     line-height: 1.6;
-    color: #e0e0e0; /* Light gray for readability */
+    color: #ffffff;
   }
 
   .message-content small {
-    color: #a0a0a0; /* Subtle gray for less emphasis */
-    font-size: 0.85em;
+    color: #00ffff; /* Cyan color for timestamps */
+    font-size: 0.9em;
   }
 
   .butt {
     height: 50px;
     width: 50px;
     border-radius: 50%;
-    border: 2px solid #ff66b2; /* Deep red accent */
-    background: #4a4a4a; /* Dark gray button */
+    border: 2px solid #00ffff; /* Cyan accent */
+    background: #ff1616; /* Among Us red for button */
     color: #ffffff;
-    font-size: 1.3em;
+    font-size: 1.4em;
+    font-family: 'VT323', monospace; /* Among Us style font */
     margin-top: 20px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Dark shadow for depth */
+    box-shadow: 0 4px 8px rgba(0, 255, 255, 0.3); /* Cyan glow */
   }
 
   .butt:hover {
-    background-color: #333; /* Even darker on hover */
+    background-color: #cc0000; /* Darker red on hover */
     transform: scale(1.1);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Enhanced shadow for hover effect */
+    box-shadow: 0 6px 12px rgba(0, 255, 255, 0.4); /* Enhanced cyan glow */
   }
 
   @media (max-width: 480px) {
     .modal-content {
       width: 90%;
-      padding: 20px;
+      padding: 15px;
     }
 
     .message-content h4 {
-      font-size: 1.3em;
+      font-size: 1.4em;
     }
 
     .message-content p {
-      font-size: 0.9em;
+      font-size: 0.95em;
     }
 
     .butt {
@@ -326,10 +329,9 @@ const StyledModal = styled.div`
   }
 `;
 
-
 const StyledEnvelope = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Dynamic columns for responsive layout */
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
   gap: 1rem;
   justify-content: center;
   padding: 1rem;
@@ -338,13 +340,13 @@ const StyledEnvelope = styled.div`
     height: 80px;
     width: 120px;
     border-radius: 12px;
-    background: ${({ isNew }) => (isNew ? '#ff4d4d' : '#2e2e2e')}; /* Red for new messages, dark gray for old */
-    border: 2px solid #444; /* Dark border for added depth */
+    background: ${({ isNew }) => (isNew ? '#ff1616' : '#132040')}; /* Red for new messages, dark blue for old */
+    border: 2px solid #00ffff; /* Cyan border like task outlines */
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Strong shadow for depth */
+    box-shadow: 0 8px 16px rgba(0, 255, 255, 0.2); /* Cyan glow for depth */
     position: relative;
     transition: all 0.3s ease;
     margin: 0 auto;
@@ -352,7 +354,7 @@ const StyledEnvelope = styled.div`
 
     &:hover {
       transform: translateY(-6px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6); /* Enhanced shadow on hover */
+      box-shadow: 0 12px 24px rgba(0, 255, 255, 0.3); /* Enhanced cyan glow on hover */
     }
 
     &::before {
@@ -362,8 +364,8 @@ const StyledEnvelope = styled.div`
       left: 0;
       right: 0;
       height: 30%;
-      background: #333; /* Dark gray top accent */
-      border-bottom: 2px solid #444;
+      background: #00ffff; /* Cyan top accent */
+      border-bottom: 2px solid #ffffff;
       clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
       transition: all 0.3s ease;
       z-index: -1;
@@ -374,11 +376,12 @@ const StyledEnvelope = styled.div`
     }
 
     .text {
-      color: #f2f2f2; /* Off-white text for high contrast */
+      color: #ffffff; /* White text for high contrast */
       font-weight: 700;
       font-size: 30px;
       transition: all 0.3s ease;
-      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7); /* Strong shadow for text */
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+      font-family: 'VT323', monospace; /* Among Us style font */
     }
 
     &:hover .text {
@@ -392,11 +395,11 @@ const StyledEnvelope = styled.div`
     left: 50%;
     transform: translateX(-50%);
     opacity: 0;
-    background: #2b2b2b; /* Dark retro tooltip background */
+    background: #132040; /* Dark blue background */
     padding: 10px 15px;
-    border: 1px solid #666; /* Subtle dark border */
+    border: 1px solid #00ffff; /* Cyan border */
     border-radius: 8px;
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 6px 10px rgba(0, 255, 255, 0.2);
     transition: all 0.3s ease;
     pointer-events: none;
     width: max-content;
@@ -404,9 +407,10 @@ const StyledEnvelope = styled.div`
     text-align: center;
     font-size: 14px;
     font-weight: 500;
-    color: #ff9999; /* Soft pink text for readability */
+    color: #00ffff; /* Cyan text for readability */
     letter-spacing: 0.5px;
     z-index: 2;
+    font-family: 'VT323', monospace; /* Among Us style font */
   }
 
   .tooltip-container:hover .tooltip {
@@ -419,12 +423,13 @@ const StyledEnvelope = styled.div`
   }
 
   @media (max-width: 768px) {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Ensure grid responsiveness */
+    gap: 0.8rem;
 
     .tooltip-container {
       height: 70px;
       width: 100px;
-      margin-left: 2rem;
+      margin: 0 auto;
     }
 
     .text {
@@ -442,12 +447,12 @@ const StyledEnvelope = styled.div`
   }
 
   @media (max-width: 480px) {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr)); /* Ensure grid responsiveness */
+    gap: 0.6rem;
 
     .tooltip-container {
       height: 60px;
       width: 85px;
-      margin-left: 1.5rem;
     }
 
     .text {
@@ -466,13 +471,12 @@ const StyledEnvelope = styled.div`
   }
 
   @media (max-width: 300px) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); /* Ensure grid responsiveness */
+    gap: 0.4rem;
 
     .tooltip-container {
       height: 50px;
       width: 70px;
-      margin-left: 0.5rem;
     }
 
     .text {
@@ -494,33 +498,33 @@ const StyledEnvelope = styled.div`
     position: absolute;
     top: -10px;
     right: -10px;
-    background-color: #ff4d4d; /* Red for new message indicator */
+    background-color: #ff1616; /* Red for new message indicator */
     color: #fff;
     border-radius: 50%;
     padding: 2px 6px;
     font-size: 12px;
     font-weight: bold;
+    font-family: 'VT323', monospace; /* Among Us style font */
   }
 
   ${props => props.isNew && `
     .tooltip-container .tooltip {
-      background-color: #ff4d4d; /* Red background for new messages */
+      background-color: #ff1616; /* Red background for new messages */
       font-weight: bold;
     }
     
     .text {
-      color: #ff4d4d; /* Red text for new messages */
+      color: #ff1616; /* Red text for new messages */
     }
   `}
 `;
-
 
 const StyledWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: #1b1b1b; /* Deep charcoal background for an emo feel */
+  background: #000b1e; /* Dark space background */
   padding: 20px;
   box-sizing: border-box;
 
@@ -529,11 +533,11 @@ const StyledWrapper = styled.div`
     max-width: 900px;
     border-radius: 16px;
     overflow: hidden;
-    background: #2e2e2e; /* Dark gray background for a moody effect */
-    color: #e0e0e0; /* Light gray text for contrast */
+    background: #132040; /* Dark blue background reminiscent of the Skeld map */
+    color: #ffffff;
     padding: 20px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Strong shadow for depth */
-    border: 2px solid #444; /* Dark border to enhance the emo vibe */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    border: 2px solid #00ffff; /* Cyan border like task outlines */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -550,25 +554,25 @@ const StyledWrapper = styled.div`
   .profile_picture {
     width: 120px;
     height: 120px;
-    border-radius: 50%;
+    border-radius: 50% 50% 35% 35%; /* Crewmate shape */
     object-fit: cover;
     margin-right: 20px;
-    border: 5px solid #6d6d6d; /* Subtle border for contrast */
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5); /* Soft shadow for depth */
+    border: 5px solid #ff1616; /* Red border like a crewmate */
+    box-shadow: 0 0 8px rgba(255, 22, 22, 0.5);
   }
 
   .username {
     font-size: 1.8em;
     font-weight: 700;
-    color: #ff66b2; /* Soft pink for a striking emo touch */
+    color: #00ffff; /* Cyan color for username */
     position: relative;
     padding-right: 150px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4); /* Subtle text shadow for a grunge effect */
+    text-shadow: 1px 1px 3px rgba(0, 255, 255, 0.4);
   }
 
   .label {
     font-weight: 600;
-    color: #999; /* Soft gray for a somber tone */
+    color: #ff1616; /* Red color for labels */
   }
 
   .button {
@@ -580,19 +584,19 @@ const StyledWrapper = styled.div`
     padding: 0.6em 0.2em;
     font-size: 1em;
     color: #fff;
-    background: #ff66b2; /* Soft pink background */
+    background: #ff1616; /* Red background like emergency button */
     border-radius: 8px;
     border: none;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Darker shadow for depth */
+    box-shadow: 0 6px 12px rgba(255, 22, 22, 0.4);
     cursor: pointer;
     display: flex;
     align-items: center;
     transition: background 0.3s, transform 0.3s;
-    font-family: 'Press Start 2P', cursive; /* Retro font for added style */
+    font-family: 'VT323', monospace; /* Retro font similar to Among Us */
   }
 
   .button:hover {
-    background: #e63e7e; /* Darker pink on hover */
+    background: #cc0000; /* Darker red on hover */
     transform: scale(1.1);
   }
 
@@ -610,8 +614,8 @@ const StyledWrapper = styled.div`
   .messages_section h3 {
     margin-bottom: 15px;
     font-size: 1.6em;
-    color: #ff66b2; /* Soft pink for headings */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4); /* Dark text shadow */
+    color: #00ffff; /* Cyan for headings */
+    text-shadow: 1px 1px 3px rgba(0, 255, 255, 0.4);
   }
 
   .messages_grid {
@@ -621,11 +625,11 @@ const StyledWrapper = styled.div`
   }
 
   .message_item {
-    background: #2e2e2e; /* Dark gray background */
+    background: #1c2b4f; /* Slightly lighter blue background */
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Deep shadow */
-    border: 1px solid #444; /* Dark border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    border: 1px solid #00ffff; /* Cyan border */
     transition: transform 0.2s;
   }
 
@@ -636,14 +640,14 @@ const StyledWrapper = styled.div`
   .message_item p {
     margin: 0;
     font-size: 1em;
-    color: #e0e0e0; /* Light gray text */
+    color: #ffffff;
   }
 
   .message_item small {
     display: block;
     margin-top: 5px;
     font-size: 0.9em;
-    color: #777; /* Muted gray */
+    color: #ff1616; /* Red color for timestamps */
   }
 
   @media (max-width: 480px) {

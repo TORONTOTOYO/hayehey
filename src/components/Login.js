@@ -168,12 +168,14 @@ const Form = () => {
   );
 };
 
+
 const StyledWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #333;
+  background: url('/Icons/amongsus.png') no-repeat center center fixed;
+  background-size: cover;
   padding: 20px;
   box-sizing: border-box;
 
@@ -184,8 +186,8 @@ const StyledWrapper = styled.div`
     border-radius: 10px;
     overflow: hidden;
     color: white;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    background-color: #222;
+    background-color: rgba(20, 20, 20, 0.95); /* Slightly more opaque for a space vibe */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   }
 
   .container .slider {
@@ -218,6 +220,8 @@ const StyledWrapper = styled.div`
     font-weight: 700;
     font-size: 1.8em;
     margin-bottom: 10px;
+    color: #00ffff; /* Cyan color for a cosmic feel */
+    text-shadow: 1px 1px 3px rgba(0, 255, 255, 0.4);
   }
 
   form .form_control {
@@ -267,12 +271,13 @@ const StyledWrapper = styled.div`
     background-color: transparent;
     border: none;
     outline: none;
-    color: #fff;
+    color: #00FF7F; /* Spring green for the button text */
     padding: 0.5rem;
     font-size: 0.75rem;
     border-radius: 5px;
     transition: box-shadow ease 0.1s;
     box-shadow: 1.5px 1.5px 3px #0e0e0e, -1.5px -1.5px 3px rgb(95 94 94 / 25%), inset 0px 0px 0px #0e0e0e, inset 0px -0px 0px #5f5e5e;
+    font-family: 'VT323', monospace; /* Retro font similar to Among Us */
   }
 
   form button:active {
@@ -282,17 +287,18 @@ const StyledWrapper = styled.div`
   .bottom_text {
     font-size: 0.9em;
     text-align: center;
+    color: #00ffff; /* Cyan color for bottom text */
   }
 
   .bottom_text .switch {
-    color: #ff66b2;
+    color: #ff1616; /* Red color for the switch text */
     font-weight: 700;
     cursor: pointer;
     transition: color 0.3s ease;
   }
 
   .bottom_text .switch:hover {
-    color: #45a049;
+    color: #cc0000; /* Darker red on hover */
   }
 
   @media (max-width: 480px) {

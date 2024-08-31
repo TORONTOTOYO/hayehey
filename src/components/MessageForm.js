@@ -97,7 +97,7 @@ const StyledWrapper = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(to bottom, #000000, #1a1a1a); /* Dark gradient background */
+  background: linear-gradient(to bottom, #000b1e, #1c2b4f); /* Dark space gradient */
   padding: 20px;
   box-sizing: border-box;
 
@@ -106,22 +106,79 @@ const StyledWrapper = styled.div`
     max-width: 600px;
     border-radius: 12px;
     overflow: hidden;
-    background: #2e2e2e; /* Dark gray for emo feel */
-    color: #e0e0e0; /* Light gray text */
+    background: #132040; /* Dark blue for Among Us theme */
+    color: #ffffff; /* White text for high contrast */
     padding: 20px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Deeper shadow for more depth */
-    backdrop-filter: blur(10px); /* Increased blur for a more dramatic effect */
-    border: 1px solid #444; /* Darker border to complement the emo theme */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Deep shadow for added depth */
+    backdrop-filter: blur(10px); /* Blur effect for dramatic space feel */
+    border: 2px solid #00ffff; /* Cyan border for Among Us style */
   }
+    
+h2 {
+  margin-bottom: 20px;
+  font-size: 2em;
+  font-family: 'VT323', monospace; /* Retro font similar to Among Us */
+  color: #f5a9a9; /* Soft pink for a contrasting touch */
+  font-weight: 500;
+  text-shadow: 
+    0 2px 4px rgba(0, 255, 255, 0.5),
+    0 0 1px rgba(255, 255, 255, 0.5); /* Initial glow */
+  animation: flicker-move-electric-thunder 2s infinite; /* Apply the flicker, movement, electricity, and thunder animation */
+}
 
-  h2 {
-    margin-bottom: 20px;
-    font-size: 2em;
-    font-family: 'Courier New', monospace; /* Monospace font for a retro emo touch */
-    color: #f5a9a9; /* Soft pink for a contrasting but emo touch */
-    font-weight: 500;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Stronger shadow for dramatic effect */
+
+@keyframes flicker-move-electric-thunder {
+  0% {
+    opacity: 1;
+    text-shadow: 
+      0 2px 4px rgba(0, 255, 255, 0.5),
+      0 0 1px rgba(255, 255, 255, 0.5);
+    transform: translateX(0) translateY(0);
   }
+  10% {
+    opacity: 1;
+    text-shadow: 
+      0 2px 15px rgba(255, 255, 255, 1),
+      0 0 10px rgba(255, 255, 255, 0.9); /* Intense lightning flash */
+    transform: translateX(0) translateY(-10px); /* Strong upward shift */
+  }
+  20% {
+    opacity: 0.8;
+    text-shadow: 
+      0 2px 10px rgba(0, 255, 255, 0.8),
+      0 0 6px rgba(255, 255, 255, 0.7);
+    transform: translateX(2px) translateY(-4px);
+  }
+  40% {
+    opacity: 1;
+    text-shadow: 
+      0 2px 12px rgba(0, 255, 255, 0.9),
+      0 0 8px rgba(255, 255, 255, 0.8);
+    transform: translateX(-2px) translateY(2px);
+  }
+  60% {
+    opacity: 0.5;
+    text-shadow: 
+      0 2px 10px rgba(0, 255, 255, 1),
+      0 0 4px rgba(255, 255, 255, 0.6);
+    transform: translateX(2px) translateY(0);
+  }
+  80% {
+    opacity: 0.7;
+    text-shadow: 
+      0 2px 8px rgba(0, 255, 255, 0.8),
+      0 0 3px rgba(255, 255, 255, 0.5);
+    transform: translateX(-2px) translateY(-2px);
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 
+      0 2px 4px rgba(0, 255, 255, 0.5),
+      0 0 1px rgba(255, 255, 255, 0.5);
+    transform: translateX(0) translateY(0);
+  }
+}
+
 
   .form-group {
     margin-bottom: 20px;
@@ -131,26 +188,26 @@ const StyledWrapper = styled.div`
     display: block;
     margin-bottom: 8px;
     font-size: 1.1em;
-    color: #cfcfcf; /* Light gray for labels */
+    color: #ff1616; /* Red color for labels */
   }
 
   textarea {
     width: 100%;
     padding: 12px;
-    border: 1px solid #666; /* Darker border for textarea */
+    border: 1px solid #00ffff; /* Cyan border for textarea */
     border-radius: 8px;
-    background: #333; /* Dark background for textarea */
-    color: #e0e0e0; /* Light text color */
+    background: #1c2b4f; /* Dark background for textarea */
+    color: #ffffff; /* White text color */
     font-size: 1em;
-    font-family: 'Courier New', monospace;
+    font-family: 'VT323', monospace;
     resize: vertical;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5); /* Dark inset shadow */
+    box-shadow: inset 0 1px 2px rgba(0, 255, 255, 0.5); /* Inset cyan shadow */
     transition: background 0.3s, border-color 0.3s;
   }
 
   textarea:focus {
-    background: #444; /* Slightly lighter dark gray on focus */
-    border-color: #999;
+    background: #132040; /* Darker blue on focus */
+    border-color: #00ffff; /* Cyan border on focus */
     outline: none;
   }
 
@@ -211,6 +268,7 @@ const StyledWrapper = styled.div`
     transform: translateX(200%);
     transition-delay: 300ms;
   }
+
 
   @media (max-width: 600px) {
     .container {
