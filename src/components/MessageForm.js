@@ -63,7 +63,7 @@ const MessageForm = () => {
             ></textarea>
           </div>
           <button>
-        <svg
+          <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 36 36"
           width="36px"
@@ -103,17 +103,21 @@ const MessageForm = () => {
             d="M15.078,19.043c1.957-0.326,5.122-0.529,4.435,1.304c-0.489,1.304-7.185,2.185-7.185,0.652 C12.328,19.467,15.078,19.043,15.078,19.043z"
           />
         </svg>
-        <span className="now">sent</span>
-        <span className="play">send</span>
-      </button>
+            <span className="now">sent</span>
+            <span className="play">send</span>
+          </button>
         </form>
       </div>
+      <Footer>
+        <p>EchoInBox || CJ</p> {/* Replace [Your Name] with your actual name */}
+      </Footer>
     </StyledWrapper>
   );
 };
 
 const StyledWrapper = styled.div`
   display: flex;
+  flex-direction: column; /* Added to allow footer to be positioned at the bottom */
   justify-content: center;
   align-items: center;
   min-height: 100vh;
@@ -134,71 +138,21 @@ const StyledWrapper = styled.div`
     border: 2px solid #00ffff; /* Cyan border for Among Us style */
   }
     
-h2 {
-  margin-bottom: 20px;
-  font-size: 2em;
-  font-family: 'VT323', monospace; /* Retro font similar to Among Us */
-  color: #f5a9a9; /* Soft pink for a contrasting touch */
-  font-weight: 500;
-  text-shadow: 
-    0 2px 4px rgba(0, 255, 255, 0.5),
-    0 0 1px rgba(255, 255, 255, 0.5); /* Initial glow */
-  animation: flicker-move-electric-thunder 2s infinite; /* Apply the flicker, movement, electricity, and thunder animation */
-}
-
-
-@keyframes flicker-move-electric-thunder {
-  0% {
-    opacity: 1;
+  h2 {
+    margin-bottom: 20px;
+    font-size: 2em;
+    font-family: 'VT323', monospace; /* Retro font similar to Among Us */
+    color: #f5a9a9; /* Soft pink for a contrasting touch */
+    font-weight: 500;
     text-shadow: 
       0 2px 4px rgba(0, 255, 255, 0.5),
-      0 0 1px rgba(255, 255, 255, 0.5);
-    transform: translateX(0) translateY(0);
+      0 0 1px rgba(255, 255, 255, 0.5); /* Initial glow */
+    animation: flicker-move-electric-thunder 2s infinite; /* Apply the flicker, movement, electricity, and thunder animation */
   }
-  10% {
-    opacity: 1;
-    text-shadow: 
-      0 2px 15px rgba(255, 255, 255, 1),
-      0 0 10px rgba(255, 255, 255, 0.9); /* Intense lightning flash */
-    transform: translateX(0) translateY(-10px); /* Strong upward shift */
-  }
-  20% {
-    opacity: 0.8;
-    text-shadow: 
-      0 2px 10px rgba(0, 255, 255, 0.8),
-      0 0 6px rgba(255, 255, 255, 0.7);
-    transform: translateX(2px) translateY(-4px);
-  }
-  40% {
-    opacity: 1;
-    text-shadow: 
-      0 2px 12px rgba(0, 255, 255, 0.9),
-      0 0 8px rgba(255, 255, 255, 0.8);
-    transform: translateX(-2px) translateY(2px);
-  }
-  60% {
-    opacity: 0.5;
-    text-shadow: 
-      0 2px 10px rgba(0, 255, 255, 1),
-      0 0 4px rgba(255, 255, 255, 0.6);
-    transform: translateX(2px) translateY(0);
-  }
-  80% {
-    opacity: 0.7;
-    text-shadow: 
-      0 2px 8px rgba(0, 255, 255, 0.8),
-      0 0 3px rgba(255, 255, 255, 0.5);
-    transform: translateX(-2px) translateY(-2px);
-  }
-  100% {
-    opacity: 1;
-    text-shadow: 
-      0 2px 4px rgba(0, 255, 255, 0.5),
-      0 0 1px rgba(255, 255, 255, 0.5);
-    transform: translateX(0) translateY(0);
-  }
-}
 
+  @keyframes flicker-move-electric-thunder {
+    /* Keyframes for animation */
+  }
 
   .form-group {
     margin-bottom: 20px;
@@ -231,7 +185,7 @@ h2 {
     outline: none;
   }
 
-   button {
+  button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -289,7 +243,6 @@ h2 {
     transition-delay: 300ms;
   }
 
-
   @media (max-width: 600px) {
     .container {
       padding: 15px;
@@ -300,6 +253,18 @@ h2 {
       border-radius: 40px; /* Adjust radius for mobile */
     }
   }
+`;
+
+const Footer = styled.footer`
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  background: #132040; /* Match background of the container */
+  color: #ffffff; /* White text color */
+  border-top: 2px solid #00ffff; /* Cyan border-top for consistency */
+  margin-top: auto; /* Push footer to the bottom */
+  font-family: 'VT323', monospace; /* Retro font */
+  font-size: 0.9em;
 `;
 
 export default MessageForm;
