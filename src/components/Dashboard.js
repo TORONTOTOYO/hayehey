@@ -628,6 +628,7 @@ const StyledWrapper = styled.div`
     flex-direction: column;
     align-items: flex-start;
     position: relative;
+    margin-bottom: 15rem;
   }
 
   /* Profile information section */
@@ -638,15 +639,6 @@ const StyledWrapper = styled.div`
     width: 100%;
   }
 
-  .profile_picture {
-    width: 120px;
-    height: 120px;
-    border-radius: 50% 50% 35% 35%; /* Crewmate shape */
-    object-fit: cover;
-    margin-right: 20px;
-    border: 5px solid #ff1616; /* Red border like a crewmate */
-    box-shadow: 0 0 8px rgba(255, 22, 22, 0.5);
-  }
 
   .username {
     font-size: 1.8em;
