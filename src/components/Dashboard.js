@@ -57,21 +57,23 @@ const Profile = () => {
   const generateUniqueLink = useCallback(async (userId) => {
     const userDoc = doc(db, "users", userId);
     const docSnap = await getDoc(userDoc);
-
+  
     if (docSnap.exists()) {
       const userData = docSnap.data();
-      if (!userData.customLink) {
-        // Generate a unique link identifier
-        const uniqueLinkId = uuidv4();
-        // Use localhost for development
-        const uniqueLink = `https://echoinbox.vercel.app/message/${uniqueLinkId}/${userId}`;
-
+      const username = userData.username; // Fetch the username
+  
+      if (username && !userData.customLink) {
+        // Generate a unique link with the username
+        const uniqueLink = `http://localhost:3000/message/${username}`;
+  
         // Store the unique link in Firestore
         await setDoc(userDoc, { customLink: uniqueLink }, { merge: true });
-
+  
         setCustomLink(uniqueLink); // Update state with the new link
         console.log("Generated unique link:", uniqueLink);
       }
+    } else {
+      console.log("User document does not exist");
     }
   }, [db]);
 
