@@ -47,7 +47,7 @@ const MessageForm = () => {
         const reader = new FileReader();
         reader.onloadend = () => {
           setAudio(reader.result);
-          setMessage(prevMessage => prevMessage + "\n[Audio Message Recorded]");
+          setMessage(prevMessage => prevMessage + "\n[meow mail]");
         };
         reader.readAsDataURL(audioBlob);
       };
