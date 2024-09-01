@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { v4 as uuidv4 } from "uuid";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Card, Modal, Badge, Container, Row, Col } from 'react-bootstrap';
+import Switch from "./Switch";
 
 
 const Profile = () => {
@@ -329,8 +330,8 @@ const Profile = () => {
           )}
 
         <Modal show={isModalOpen} onHide={closeModal} dialogClassName="modal-dialog-centered">
-          <Modal.Header style={amongUsStyles.modal} closeButton>
-            <Modal.Title style={{color: '#00ffff'}}>Meow Message</Modal.Title>
+          <Modal.Header style={amongUsStyles.modal}>
+            <Modal.Title style={{color: '#00ffff'}}>Meowsage</Modal.Title>
           </Modal.Header>
           <Modal.Body style={amongUsStyles.modal}>
             {selectedMessage && (
@@ -354,6 +355,7 @@ const Profile = () => {
             )}
           </Modal.Body>
         </Modal>
+        <Switch/>
       </Container>
     </div>
   );

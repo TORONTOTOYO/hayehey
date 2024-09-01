@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { getFirestore, doc, setDoc } from "firebase/firestore";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, setPersistence, browserLocalPersistence } from "firebase/auth";import { getFirestore, doc, setDoc } from "firebase/firestore";
 import { toast, ToastContainer } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { CanvasTexture } from 'three';
@@ -10,6 +9,7 @@ import * as THREE from 'three';
 
 import 'react-toastify/dist/ReactToastify.css';
 
+// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDFpLa-6AHKHspMKaMtNC1yv9b4QRYrcIg",
   authDomain: "project-863fc.firebaseapp.com",
@@ -25,12 +25,29 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-
 const Form = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Set persistence to local so the user stays logged in
+    setPersistence(auth, browserLocalPersistence)
+      .catch(error => {
+        toast.error("Failed to set persistence.");
+      });
+
+    // Check if the user is already logged in
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        navigate('/dashboard'); // Automatically navigate to the dashboard if already logged in
+      }
+    });
+
+    // Cleanup the listener on component unmount
+    return () => unsubscribe();
+  }, [navigate]);
 
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -44,7 +61,7 @@ const Form = () => {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
-      
+
       // Store additional user data in Firestore
       await setDoc(doc(db, "users", user.uid), {
         username: username,
@@ -59,7 +76,7 @@ const Form = () => {
       setPassword("");
       setUsername("");
     } catch (error) {
-      toast.error(`Registration error`);  
+      toast.error(`Registration error`);
     }
   };
 
@@ -75,7 +92,7 @@ const Form = () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       toast.success("Successfully logged in!");
-      navigate('/dashboard')
+      navigate('/dashboard');
       // Clear form fields
       setEmail("");
       setPassword("");
