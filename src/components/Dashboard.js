@@ -279,7 +279,7 @@ const Profile = () => {
             }}
             onMouseEnter={() => setHoveredButton('share')}
             onMouseLeave={() => setHoveredButton('')}
-            onClick={() => console.log('Share button clicked')}
+            onClick={handleShareClick}
           >
             Share
           </button>
