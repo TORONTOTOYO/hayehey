@@ -308,7 +308,7 @@ const Profile = () => {
     border: '2px solid #00ffff', 
     padding: '1rem', 
     borderRadius: '8px', 
-    maxHeight: '400px', /* Adjust the height as needed */
+    maxHeight: '600px', /* Adjust the height as needed */
     overflowX: 'hidden', /* Hides horizontal scrollbar */
     overflowY: 'auto', /* Enables vertical scrolling */
     boxSizing: 'border-box' /* Ensures padding and border do not affect the width */
