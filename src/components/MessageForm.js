@@ -110,6 +110,7 @@ const MessageForm = () => {
             <textarea
               id="message"
               value={message}
+              required
               onChange={(e) => setMessage(e.target.value)}
               rows="4"
             ></textarea>
