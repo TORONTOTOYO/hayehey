@@ -238,14 +238,14 @@ const Form = () => {
         scene.children.forEach(child => {
           if (child instanceof THREE.Sprite) {
             // Smooth rotation
-            child.rotation.x += 0.02;
-            child.rotation.y += 0.02;
-            child.rotation.z += 0.02;
+            child.rotation.x += 0.005;
+            child.rotation.y += 0.005;
+            child.rotation.z += 0.005;
 
             // Smooth floating movement
-            child.position.x += Math.sin(child.rotation.y) * 0.3;
-            child.position.y += Math.cos(child.rotation.x) * 0.3;
-            child.position.z += Math.sin(child.rotation.z) * 0.3;
+            child.position.x += Math.sin(child.rotation.y) * 0.1;
+            child.position.y += Math.cos(child.rotation.x) * 0.1;
+            child.position.z += Math.sin(child.rotation.z) * 0.1;
 
             // Ensure sprites stay within bounds
             if (Math.abs(child.position.x) > 1000) child.position.x = Math.random() * 2000 - 1000;
@@ -261,6 +261,10 @@ const Form = () => {
 
     createSprites();
 
+
+    // Camera positioning and controls
+    camera.position.z = 500;
+    
     // Animate the stars
     const animate = () => {
       requestAnimationFrame(animate);
@@ -293,6 +297,11 @@ const Form = () => {
         if (selectedSprite) {
           selectedSprite.position.copy(intersects[0].point.sub(offset));
         }
+        if (intersects.length > 0) {
+          selectedSprite = intersects[0].object;
+          offset.copy(intersects[0].point).sub(selectedSprite.position);
+          canvasContainer.style.cursor = "grabbing";
+        }
       } else {
         document.body.style.cursor = 'auto';
       }
@@ -310,11 +319,25 @@ const Form = () => {
 
     const onMouseUp = () => {
       selectedSprite = null;
+      canvasContainer.style.cursor = "auto";
+    };
+
+    const onMouseMoveDrag = (event) => {
+      if (!selectedSprite) return;
+
+      // Update raycaster with current mouse position
+      raycaster.setFromCamera(mouse, camera);
+      const intersects = raycaster.intersectObject(selectedSprite);
+
+      if (intersects.length > 0) {
+        selectedSprite.position.copy(intersects[0].point.sub(offset));
+      }
     };
 
     window.addEventListener('mousemove', onMouseMove);
     window.addEventListener('mousedown', onMouseDown);
     window.addEventListener('mouseup', onMouseUp);
+    window.addEventListener('mousemove', onMouseMoveDrag);
     
     return () => {
       // Clean up on component unmount
@@ -322,6 +345,7 @@ const Form = () => {
       window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('mousedown', onMouseDown);
       window.removeEventListener('mouseup', onMouseUp);
+      window.addEventListener('mousemove', onMouseMoveDrag);
     
       const canvasContainer = document.querySelector('.canvas-container');
       if (canvasContainer && renderer.domElement) {
