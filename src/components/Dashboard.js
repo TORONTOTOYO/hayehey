@@ -242,7 +242,7 @@ const Profile = () => {
     color: '#fff',
     borderColor: '#ff1616'
   };
-
+  
   const CatFaceIcon = ({ status }) => {
     return (
       <svg width="60" height="60" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -266,7 +266,7 @@ const Profile = () => {
 
   return (
     <div style={amongUsStyles.container}>
-            <ToastContainer />
+    <ToastContainer />
       <Container>
         <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
           <h2 style={amongUsStyles.header}>Meowmate: {username}</h2>
@@ -334,6 +334,7 @@ const Profile = () => {
             <Modal.Title style={{color: '#00ffff'}}>Meowsage</Modal.Title>
           </Modal.Header>
           <Modal.Body style={amongUsStyles.modal}>
+            
             {selectedMessage && (
               <>
                 <p>{selectedMessage.content}</p>
@@ -354,8 +355,8 @@ const Profile = () => {
               </>
             )}
           </Modal.Body>
-        </Modal>
-        <Switch/>
+          </Modal>
+          <Switch/>
       </Container>
     </div>
   );

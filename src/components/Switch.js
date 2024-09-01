@@ -140,11 +140,13 @@ const StyledWrapper = styled.div`
   display: flex;
   justify-content: center; /* Centers horizontally */
   align-items: flex-end; /* Aligns items to the bottom */
-  height: 100vh; /* Full viewport height */
-  width: 100vw; /* Full viewport width */
-  position: fixed; /* Keeps it fixed on the screen */
-  bottom: 10px; /* Space from the bottom of the viewport */
+  height: 65vh; /* Height for larger screens */
+  width: 75vw; /* Width for larger screens */
+  position: relative; /* Keeps it within normal document flow */
+  margin: 0 auto; /* Center horizontally within the parent container */
+  bottom: 0; /* Default bottom position */
   left: 0;
+  right: 0; /* Ensure it stretches full width of the parent container */
 
   .btn-class-name {
     --primary: 255, 90, 120;
@@ -158,7 +160,10 @@ const StyledWrapper = styled.div`
     touch-action: manipulation;
     outline: 10px solid rgb(var(--primary), 0.5);
     border-radius: 100%;
-    position: relative;
+    position: absolute; /* Absolute positioning for the button */
+    bottom: 10px; /* Position the button 10px from the bottom of the wrapper */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust position to center */
     transition: 0.3s;
   }
 
@@ -204,9 +209,13 @@ const StyledWrapper = styled.div`
 
   /* Mobile View Adjustments */
   @media (max-width: 768px) {
+    height: 50vh; /* Adjust height for medium screens */
+    width: 85vw; /* Adjust width for medium screens */
+    
     .btn-class-name {
       width: 50px; /* Slightly smaller size for mobile */
       height: 45px;
+      bottom: 5px; /* Adjust position slightly for smaller screens */
     }
 
     .btn-class-name .front {
@@ -215,9 +224,13 @@ const StyledWrapper = styled.div`
   }
 
   @media (max-width: 480px) {
+    height: 50vh; /* Further adjust height for small screens */
+    width: 80vw; /* Further adjust width for small screens */
+    
     .btn-class-name {
       width: 45px; /* Further reduce size for small screens */
       height: 40px;
+      bottom: 2px; /* Adjust position further for very small screens */
     }
 
     .btn-class-name .front {
