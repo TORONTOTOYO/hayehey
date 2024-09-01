@@ -68,7 +68,6 @@ const Profile = () => {
           setUnreadCount(unreadMessages.length);
   
           if (unreadMessages.length > 0) {
-            toast.success("You have a new message!", { position: "top-right" });
           }
         },
         (error) => {

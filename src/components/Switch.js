@@ -209,7 +209,7 @@ const StyledWrapper = styled.div`
 
   /* Mobile View Adjustments */
   @media (max-width: 768px) {
-    height: 50vh; /* Adjust height for medium screens */
+    height: 15vh; /* Adjust height for medium screens */
     width: 85vw; /* Adjust width for medium screens */
     
     .btn-class-name {
