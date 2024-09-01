@@ -343,12 +343,12 @@ const Profile = () => {
                   </small>
                 </p>
                 {selectedMessage.audio && (
-                  <div>
-                    <audio controls>
-                      <source src={selectedMessage.audio} type="audio/wav" />
-                      Your browser does not support the audio element.
-                    </audio>
-                  </div>
+                <div style={{ textAlign: 'center' }}>
+                  <audio controls style={{ width: '70%', maxWidth: '100%' }}>
+                    <source src={selectedMessage.audio} type="audio/wav" />
+                    Your browser does not support the audio element.
+                  </audio>
+                </div>
                 )}
               </>
             )}
