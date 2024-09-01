@@ -103,7 +103,7 @@ const MessageForm = () => {
   return (
     <StyledWrapper>
       <div className="container">
-        <h2>Send a Message to {username}</h2>
+        <h2>Send a message to {username}</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="message">Message:</label>
@@ -117,11 +117,11 @@ const MessageForm = () => {
           </div>
           <div className="recording-controls">
             {isRecording ? (
-              <button type="button" onClick={stopRecording}>Stop Recording</button>
+              <button type="button" onClick={stopRecording}>stop meowing</button>
             ) : (
               <button type="button" onClick={startRecording}>
                 <i className="fas fa-microphone"></i>
-                Start meowing
+                start meowing
               </button>            )}
             <button type="submit">
             <svg
@@ -168,14 +168,19 @@ const MessageForm = () => {
             <span className="play">send</span>
             </button>
             {audio && (
-              <button type="button" onClick={handleAudioRemoval}>Remove Audio</button>
+              <button type="button" onClick={handleAudioRemoval}>remove meowail</button>
             )}
           </div>
         </form>
-        <h1><a onClick={() => navigate('/newpage')}>Do you want to receive anonymous messages?</a></h1>
+        <h1><a onClick={(e) => 
+        {
+          e.preventDefault(); 
+          window.open('/', '_blank');
+        }}>
+          Do you want to receive anonymous messages?</a></h1>
       </div>
       <Footer>
-        <p>EchoInBox || CJ</p>
+        <p className="left">EchoInBox</p>
       </Footer>
     </StyledWrapper>
   );
@@ -429,7 +434,7 @@ textarea {
 const Footer = styled.footer`
   width: 100%;
   text-align: center;
-  padding: 15px;
+  padding: 10px;
   background: #1b2a3e; /* Match container background */
   color: hsl(49, 98%, 60%);
   border-top: 3px solid #00ffff; /* Cyan border-top */
@@ -437,11 +442,17 @@ const Footer = styled.footer`
   font-family: 'VT323', monospace;
   font-size: 1em;
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 10px;
+  justify-content: space-between; /* Distribute content */
   position: fixed;
   bottom: 0;
-`;
 
+  .left {
+    margin-left: 10px; /* Add spacing as needed */
+  }
+
+  .right {
+    margin-right: 10px; /* Add spacing as needed */
+  }
+`;
 export default MessageForm;
