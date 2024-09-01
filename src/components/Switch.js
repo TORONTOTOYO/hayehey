@@ -137,13 +137,14 @@ const Button = () => {
 };
 
 const StyledWrapper = styled.div`
-  /* Flex container to center the button */
   display: flex;
-  justify-content: center;
-  align-items: flex-end; /* Aligns button to the bottom */
-  height: 60vh; /* Full viewport height */
-  width: 76vw; /* Full viewport width */
-  position: fixed; /* Fixed positioning to keep button at the bottom */
+  justify-content: center; /* Centers horizontally */
+  align-items: flex-end; /* Aligns items to the bottom */
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+  position: fixed; /* Keeps it fixed on the screen */
+  bottom: 10px; /* Space from the bottom of the viewport */
+  left: 0;
 
   .btn-class-name {
     --primary: 255, 90, 120;
@@ -200,12 +201,9 @@ const StyledWrapper = styled.div`
     transform: translateY(0%);
     box-shadow: 0 0;
   }
+
   /* Mobile View Adjustments */
   @media (max-width: 768px) {
-    height: 90vh; /* Adjust height for mobile */
-    width: 80vw; /* Use full viewport width on mobile */
-    align-items: center; /* Center vertically for a better fit */
-
     .btn-class-name {
       width: 50px; /* Slightly smaller size for mobile */
       height: 45px;
@@ -217,11 +215,6 @@ const StyledWrapper = styled.div`
   }
 
   @media (max-width: 480px) {
-
-    height: 90vh; /* Adjust height for mobile */
-    width: 85vw; /* Use full viewport width on mobile */
-    align-items: center; /* Center vertically for a better fit */
-
     .btn-class-name {
       width: 45px; /* Further reduce size for small screens */
       height: 40px;
@@ -231,24 +224,8 @@ const StyledWrapper = styled.div`
       font-size: 0.9rem; /* Adjust font size further */
     }
   }
-
-    @media (max-width: 380px) {
-
-    height: 90vh; /* Adjust height for mobile */
-    width: 82vw; /* Use full viewport width on mobile */
-    align-items: center; /* Center vertically for a better fit */
-
-    .btn-class-name {
-      width: 45px; /* Further reduce size for small screens */
-      height: 40px;
-    }
-
-    .btn-class-name .front {
-      font-size: 0.9rem; /* Adjust font size further */
-    }
-  }
-    
 `;
+
 
 const blink = keyframes`
   0% {
