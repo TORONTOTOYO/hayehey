@@ -57,7 +57,7 @@ const Form = () => {
       setPassword("");
       setUsername("");
     } catch (error) {
-      toast.error(`Registration error`);
+      toast.error(`Registration error`);  
     }
   };
 

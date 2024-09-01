@@ -17,6 +17,8 @@ const Profile = () => {
   const [selectedMessage, setSelectedMessage] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [unreadCount, setUnreadCount] = useState(0);
+  const [dots, setDots] = useState('');
+  const [hoveredButton, setHoveredButton] = useState('');
 
   const auth = getAuth();
   const db = getFirestore();
@@ -141,14 +143,31 @@ const Profile = () => {
   }, []);
 
   const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      navigate("/"); 
-    } catch (error) {
-      console.error("Error signing out: ", error);
-      toast.error("Failed to log out. Please try again.");
+    const confirmLogout = window.confirm("Are you sure you want to log out?");
+    if (confirmLogout) {
+      try {
+        await signOut(auth);
+        navigate("/"); 
+      } catch (error) {
+        console.error("Error signing out: ", error);
+        toast.error("Failed to log out. Please try again.");
+      }
+    } else {
+      console.log("Logout canceled");
     }
   };
+  
+
+  useEffect(() => {
+    const dotInterval = setInterval(() => {
+      setDots((prevDots) => {
+        if (prevDots === '...') return '';
+        return prevDots + '.';
+      });
+    }, 500); // Adjust the interval as needed
+
+    return () => clearInterval(dotInterval); // Cleanup interval on unmount
+  }, []);
 
   const amongUsStyles = {
     container: {
@@ -158,7 +177,6 @@ const Profile = () => {
       fontFamily: "'VT323', monospace",
       padding: '20px',
     },
-  
     buttonContainer: {
       display: 'flex',
       justifyContent: 'flex-end',
@@ -167,13 +185,6 @@ const Profile = () => {
     header: {
       color: 'hsl(49, 98%, 60%)',
       textAlign: 'center', // Center text horizontally
-    },
-    button: {
-      backgroundColor: '#1b2a3e',
-      border: '2px solid #00ffff',
-      color: '#00ffff',
-      fontWeight: 'bold',
-      transition: 'all 0.3s',
     },
     card: {
       backgroundColor: '#1b2a3e',
@@ -203,7 +214,32 @@ const Profile = () => {
       height: '60px', // Adjust this value to resize the icon
       margin: '0 auto',
     },
-    
+  };
+
+  const buttonStyle = {
+    backgroundColor: '#1b2a3e',
+    border: '2px solid #00ffff',
+    color: '#00ffff',
+    fontWeight: 'bold',
+    transition: 'all 0.3s',
+    borderRadius: '50px',
+    padding: '10px 20px',
+    fontSize: '16px',
+    cursor: 'pointer',
+    outline: 'none',
+    margin: '5px'
+  };
+
+  const hoverStylesShare = {
+    backgroundColor: '#00ffff',
+    color: '#1b2a3e',
+    borderColor: '#1b2a3e'
+  };
+  
+  const hoverStylesEject = {
+    backgroundColor: '#ff1616',
+    color: '#fff',
+    borderColor: '#ff1616'
   };
 
   const CatFaceIcon = ({ status }) => {
@@ -234,12 +270,32 @@ const Profile = () => {
         <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
           <h2 style={amongUsStyles.header}>Meowmate: {username}</h2>
           <div style={amongUsStyles.buttonContainer}>
-            <Button style={amongUsStyles.button} onClick={handleShareClick}>
-              Share
-            </Button>
-            <Button style={{...amongUsStyles.button, borderColor: '#ff1616', color: '#ff1616'}} onClick={handleLogout}>
-              Eject
-            </Button>
+          <button
+            style={{
+              ...buttonStyle,
+              borderColor: '#00ffff',
+              color: '#00ffff',
+              ...(hoveredButton === 'share' ? hoverStylesShare : {})
+            }}
+            onMouseEnter={() => setHoveredButton('share')}
+            onMouseLeave={() => setHoveredButton('')}
+            onClick={() => console.log('Share button clicked')}
+          >
+            Share
+          </button>
+          <button
+            style={{
+              ...buttonStyle,
+              borderColor: '#ff1616',
+              color: '#ff1616',
+              ...(hoveredButton === 'eject' ? hoverStylesEject : {})
+            }}
+            onMouseEnter={() => setHoveredButton('eject')}
+            onMouseLeave={() => setHoveredButton('')}
+                onClick={handleLogout}
+          >
+            Eject
+          </button>
           </div>
         </div>
 
@@ -267,7 +323,9 @@ const Profile = () => {
               ))}
             </Row>
           ) : (
-            <p style={{color: '#f5a9a9', fontSize: '1.2rem'}}>No meowssages yet. The cats are quiet...</p>
+            <p style={{ color: '#f5a9a9', fontSize: '1.2rem' }}>
+            No meowssages yet. The cats are quiet{dots}
+          </p>          
           )}
 
         <Modal show={isModalOpen} onHide={closeModal} dialogClassName="modal-dialog-centered">

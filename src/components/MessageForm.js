@@ -47,7 +47,7 @@ const MessageForm = () => {
         const reader = new FileReader();
         reader.onloadend = () => {
           setAudio(reader.result);
-          setMessage(prevMessage => prevMessage + "\n[meow mail]");
+          setMessage(prevMessage => prevMessage + "\n[Voice meowail]");
         };
         reader.readAsDataURL(audioBlob);
       };
@@ -65,7 +65,7 @@ const MessageForm = () => {
 
   const handleAudioRemoval = () => {
     setAudio(null);
-    setMessage(prevMessage => prevMessage.replace("\n[Audio Message Recorded]", ""));
+    setMessage(prevMessage => prevMessage.replace("\n[Voice meowail]", ""));
   };
 
   const handleSubmit = async (e) => {
@@ -120,7 +120,7 @@ const MessageForm = () => {
             ) : (
               <button type="button" onClick={startRecording}>
                 <i className="fas fa-microphone"></i>
-                Start Recording
+                Start meowing
               </button>            )}
             <button type="submit">
             <svg
@@ -171,10 +171,10 @@ const MessageForm = () => {
             )}
           </div>
         </form>
-        <h1 onClick={() => navigate('/')}>Want to receive anonymous messages?</h1> {/* Added heading with redirection */}
+        <h1><a onClick={() => navigate('/newpage')}>Do you want to receive anonymous messages?</a></h1>
       </div>
       <Footer>
-        <p>EchoInBox || CJ</p> {/* Replace [Your Name] with your actual name */}
+        <p>EchoInBox || CJ</p>
       </Footer>
     </StyledWrapper>
   );
@@ -211,7 +211,7 @@ const StyledWrapper = styled.div`
     margin-top: 2rem;
     cursor: pointer;
     color: #e74c3c;
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     margin-bottom: 1rem;
     text-align: center;
   }
@@ -219,7 +219,7 @@ const StyledWrapper = styled.div`
   h1:hover {
   cursor: pointer;
   color: hsl(49deg 98% 60%);
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   margin-bottom: 1rem;
   text-align: center;
 }
@@ -228,7 +228,7 @@ const StyledWrapper = styled.div`
     margin-bottom: 20px;
     font-size: 2em;
     font-family: 'VT323', monospace; /* Retro font similar to Among Us */
-    color: #f5a9a9; /* Soft pink for a contrasting touch */
+    color: hsl(49deg 98% 60%); 
     font-weight: 500;
     text-shadow: 
       0 2px 4px rgba(0, 255, 255, 0.5),
@@ -430,7 +430,7 @@ const Footer = styled.footer`
   text-align: center;
   padding: 15px;
   background: #1b2a3e; /* Match container background */
-  color: #e0e0e0; /* Light gray text */
+  color: hsl(49, 98%, 60%);
   border-top: 3px solid #00ffff; /* Cyan border-top */
   margin-top: auto; /* Push footer to the bottom */
   font-family: 'VT323', monospace;
