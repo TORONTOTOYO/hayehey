@@ -54,73 +54,99 @@ const Button = () => {
         }
     }, [showModal]);
 
-    const fetchRandomQuestion = async () => {
-        try {
-            const response = await fetch('https://opentdb.com/api.php?amount=1&type=multiple');
-            const data = await response.json();
-            const questionData = data.results[0];
-            const formattedQuestion = he.decode(questionData.question);
-            const allChoices = [...questionData.incorrect_answers, questionData.correct_answer];
-            const formattedChoices = allChoices.map(choice => he.decode(choice));
-            setCorrectAnswer(he.decode(questionData.correct_answer));
-            return { question: formattedQuestion, choices: formattedChoices };
-        } catch (error) {
-            console.error('Error fetching question:', error);
-            return { question: 'Failed to load question. Reload the page.', choices: [] };
+        const fetchQuestionsFromCategories = async (categories, limit = 5) => {
+          try {
+              const requests = categories.map(category =>
+                  fetch(`https://the-trivia-api.com/api/questions?limit=${limit}&categories=${category}`)
+              );
+      
+              const responses = await Promise.all(requests);
+              const dataArrays = await Promise.all(responses.map(res => res.json()));
+      
+              // Flatten the array of arrays into a single array of questions
+              const allQuestions = dataArrays.flat();
+      
+              // Shuffle the combined questions array
+              allQuestions.sort(() => Math.random() - 0.5);
+      
+              // Ensure the limit is respected
+              const limitedQuestions = allQuestions.slice(0, limit);
+      
+              return limitedQuestions.map(questionData => {
+                  const formattedQuestion = he.decode(questionData.question);
+                  const allChoices = [...questionData.incorrectAnswers, questionData.correctAnswer];
+                  const formattedChoices = allChoices.map(choice => he.decode(choice));
+                  const formattedCorrectAnswer = he.decode(questionData.correctAnswer);
+                  return { question: formattedQuestion, choices: formattedChoices, correctAnswer: formattedCorrectAnswer };
+              });
+              
+          } catch (error) {
+              console.error('Error fetching trivia questions:', error);
+              return [{ question: 'Failed to load questions. Reload the page.', choices: [], correctAnswer: '' }];
+          }
+      };
+  
+      const handleClick = async () => {
+          const categories = ['Science', 'Statistics', 'Technology', 'English', 'Logic', 'Programming']; 
+          const questions = await fetchQuestionsFromCategories(categories, 5); 
+          if (questions.length > 0) {
+              const question = questions[0];
+              setQuestion(question.question);
+              setChoices(question.choices);
+              setCorrectAnswer(question.correctAnswer);
+              setShowOverlay(true);
+              setShowModal(true);
+              setAnswerLocked(false);
+              setTimer(15);
+              if (sirenSound) sirenSound.play();
+          } else {
+              setQuestion('No questions found. Please try again.');
+              setChoices([]);
+              setCorrectAnswer('');
+          }
+      };
+      
+
+        const handleChoiceClick = (choice) => {
+          if (answerLocked) return;
+          setSelectedAnswer(choice);
+          setAnswerLocked(true);
+
+          if (choice === correctAnswer) {
+              setFeedback("Correct! Well done.");
+              stopSiren();
+          } else {
+              setFeedback(`Wrong! The correct answer was: ${correctAnswer}`);
+              triggerVibration();
+          }
+
+          setTimeout(() => {
+              handleCloseModal();
+          }, 5000);
+      };
+
+
+      const triggerVibration = () => {
+        if (navigator.vibrate) {
+            navigator.vibrate([200]); // Pattern: vibrate for 200ms, pause for 100ms, vibrate for 200ms
         }
-    };
+      };
 
-    const handleClick = async () => {
-        const { question, choices } = await fetchRandomQuestion();
-        setQuestion(question);
-        setChoices(choices);
-        setShowOverlay(true);
-        setShowModal(true);
-        setAnswerLocked(false);
-        setTimer(15);
-        if (sirenSound) sirenSound.play();
-    };
+      const handleCloseModal = () => {
+          setShowOverlay(false);
+          setShowModal(false);
+          setFeedback("");
+          setSelectedAnswer("");
+          setTimer(15);
+          stopSiren();
+      };
 
-    const handleChoiceClick = (choice) => {
-        if (answerLocked) return;
-        setSelectedAnswer(choice);
-        setAnswerLocked(true);
-
-        if (choice === correctAnswer) {
-            setFeedback("Correct! Well done.");
-            stopSiren();
-        } else {
-            setFeedback(`Wrong! The correct answer was: ${correctAnswer}`);
-            triggerVibration();
-        }
-
-        setTimeout(() => {
-            handleCloseModal();
-        }, 5000);
-    };
-
-    const triggerVibration = () => {
-      // Check if the Vibration API is supported by the browser
-      if (navigator.vibrate) {
-          navigator.vibrate([200]); // Pattern: vibrate for 200ms, pause for 100ms, vibrate for 200ms
-      }
-    };
-
-    const handleCloseModal = () => {
-        setShowOverlay(false);
-        setShowModal(false);
-        setFeedback("");
-        setSelectedAnswer("");
-        setTimer(15);
-        stopSiren();
-    };
-
-    const stopSiren = () => {
-        if (sirenSound) {
-            sirenSound.pause();
-            sirenSound.currentTime = 0;
-        }
-    };
+      const stopSiren = () => {
+          if (sirenSound) {
+              sirenSound.pause();
+              sirenSound.currentTime = 0;
+          }
+      };
 
     return (
         <StyledWrapper>

@@ -7,7 +7,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card, Badge, Container, Row, Col } from 'react-bootstrap';
 import Switch from "./Switch";
-import html2canvas from 'html2canvas';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLink, faSignOutAlt, faEdit } from '@fortawesome/free-solid-svg-icons';
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css'; // Import SweetAlert2 styles
 
 
 const Profile = () => {
@@ -20,6 +23,8 @@ const Profile = () => {
   const [unreadCount, setUnreadCount] = useState(0);
   const [dots, setDots] = useState('');
   const [hoveredButton, setHoveredButton] = useState('');
+  const [newUsername, setNewUsername] = useState(""); // State for username input
+  const [isEditingUsername, setIsEditingUsername] = useState(false);
 
   const auth = getAuth();
   const db = getFirestore();
@@ -156,6 +161,114 @@ const Profile = () => {
       console.log("Logout canceled");
     }
   };
+
+  const handleUsernameChange = async () => {
+    if (newUsername.trim() === "" || !user) {
+      return; // Exit early if the new username is empty or user is not logged in
+    }
+  
+    // Save the original username
+    const originalUsername = username;
+  
+    // Show a confirmation dialog
+    const customSwal = Swal.mixin({
+      customClass: {
+        container: 'custom-swal-container',
+        popup: 'custom-swal-popup',
+        title: 'custom-swal-title',
+        content: 'custom-swal-content',
+        confirmButton: 'custom-swal-confirm',
+        cancelButton: 'custom-swal-cancel',
+      },
+      didOpen: () => {
+        // Apply custom styles directly using JavaScript
+        const container = document.querySelector('.custom-swal-container');
+        if (container) {
+          container.style.background = 'linear-gradient(to bottom, #000b1e, #1c2b4f)';
+        }
+        const popup = document.querySelector('.custom-swal-popup');
+        if (popup) {
+          popup.style.backgroundColor = '#2a2a2a';
+          popup.style.border = '2px solid #00ffff';
+          popup.style.borderRadius = '12px';
+        }
+        const title = document.querySelector('.custom-swal-title');
+        if (title) {
+          title.style.color = '#00ffff';
+          title.style.fontFamily = "'Press Start 2P', cursive";
+        }
+        const content = document.querySelector('.custom-swal-content');
+        if (content) {
+          content.style.color = '#ffffff';
+          content.style.fontFamily = "'Press Start 2P', cursive";
+        }
+        const confirmButton = document.querySelector('.custom-swal-confirm');
+        if (confirmButton) {
+          confirmButton.style.backgroundColor = '#00ffff';
+          confirmButton.style.color = '#000000';
+          confirmButton.style.border = 'none';
+          confirmButton.style.borderRadius = '8px';
+        }
+        const cancelButton = document.querySelector('.custom-swal-cancel');
+        if (cancelButton) {
+          cancelButton.style.backgroundColor = '#ff1616';
+          cancelButton.style.color = '#000000';
+          cancelButton.style.border = 'none';
+          cancelButton.style.borderRadius = '8px';
+        }
+      }
+    });
+    
+    const result = await customSwal.fire({
+      title: 'Are you sure?',
+      text: 'Do you want to change your username?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, update it!',
+      cancelButtonText: 'Cancel'
+    });
+  
+    if (result.isConfirmed) {
+      try {
+        const userDoc = doc(db, "users", user.uid);
+        await updateDoc(userDoc, { username: newUsername });
+        setUsername(newUsername);
+        setIsEditingUsername(false);
+        setNewUsername(""); // Clear input after saving
+        toast.success("Username successfully updated!", { position: "top-right" });
+      } catch (error) {
+        console.error("Failed to update username:", error);
+        toast.error("Failed to update username. Please try again.");
+      }
+    } else {
+      // Revert to the original username if cancelled
+      setNewUsername(""); // Clear the input
+      setUsername(originalUsername);
+      setIsEditingUsername(false);
+    }
+  };
+
+  const handleUsernameClick = () => {
+    setNewUsername(username);
+    setIsEditingUsername(true);
+  };
+
+  const handleUsernameBlur = () => {
+    handleUsernameChange();
+  };
+
+  const handleUsernameKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleUsernameChange();
+    }
+  };
+
+  const handleOverlayClick = (e) => {
+    // Close the modal only when clicking on the overlay itself
+    if (e.target === e.currentTarget) {
+      closeModal();
+    }
+  };
   
 
   useEffect(() => {
@@ -249,6 +362,41 @@ const Profile = () => {
       fontSize: '0.9rem',
       fontStyle: 'italic',
     },
+    amongUsSwalContainer: {
+      // Define a class name, not an inline style
+      backgroundColor: '#202020', // Fallback color if gradient doesn't apply
+    },
+    amongUsSwalPopup: {
+      backgroundColor: '#2a2a2a',
+      border: '2px solid #00ffff',
+      borderRadius: '12px',
+    },
+    amongUsSwalTitle: {
+      color: '#00ffff',
+      fontFamily: "'Press Start 2P', cursive",
+    },
+    amongUsSwalContent: {
+      color: '#ffffff',
+      fontFamily: "'Press Start 2P', cursive",
+    },
+    amongUsSwalConfirm: {
+      backgroundColor: '#00ffff',
+      color: '#000000',
+      border: 'none',
+      borderRadius: '8px',
+    },
+    amongUsSwalConfirmHover: {
+      backgroundColor: '#00cccc',
+    },
+    amongUsSwalCancel: {
+      backgroundColor: '#ff1616',
+      color: '#000000',
+      border: 'none',
+      borderRadius: '8px',
+    },
+    amongUsSwalCancelHover: {
+      backgroundColor: '#cc0000',
+    },
   };
   
   const buttonStyle = {
@@ -267,7 +415,7 @@ const Profile = () => {
   
   const hoverStylesShare = {
     backgroundColor: '#00ffff',
-    color: '#1b2a3e',
+    color: '#fff',
     borderColor: '#1b2a3e',
   };
   
@@ -296,21 +444,49 @@ const Profile = () => {
       </svg>
     );
   };
-  
-  const handleOverlayClick = (e) => {
-    // Close the modal only when clicking on the overlay itself
-    if (e.target === e.currentTarget) {
-      closeModal();
-    }
-  };
 
   return (
     <div style={amongUsStyles.container}>
       <ToastContainer />
           <Container style={amongUsStyles.container}>
             <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
-              <h2 style={amongUsStyles.header}>Meowmate: {username}</h2>
-              <div style={amongUsStyles.buttonContainer}>
+            <h2 style={amongUsStyles.header}>
+      Meowmate: {isEditingUsername ? (
+        <input
+          type="text"
+          value={newUsername}
+          onChange={(e) => setNewUsername(e.target.value)}
+          onBlur={handleUsernameBlur}
+          onKeyPress={handleUsernameKeyPress}
+          style={{
+            fontSize: '1.5rem',
+            color: '#ffffff',
+            background: 'transparent',
+            border: 'none',
+            outline: 'none',
+            width: '100%', // Responsive width
+            maxWidth: '200px', // Max width to prevent overflow
+            boxSizing: 'border-box', // Include padding and border in width
+            padding: '0.2rem', // Adjust padding for better appearance
+          }}
+        />
+      ) : (
+        <>
+          {username}
+          <FontAwesomeIcon
+            icon={faEdit}
+            style={{
+              fontSize: '0.75rem',
+              marginLeft: '10px',
+              cursor: 'pointer',
+              verticalAlign: 'middle', // Align icon vertically with text
+            }}
+            onClick={() => setIsEditingUsername(true)}
+          />
+        </>
+      )}
+    </h2>           
+          <div style={amongUsStyles.buttonContainer}>
                 <button
                   style={{
                     ...buttonStyle,
@@ -323,6 +499,7 @@ const Profile = () => {
                   onClick={handleShareClick}
                 >
                   Share
+                  <FontAwesomeIcon icon={faLink} size="lg" />
                 </button>
                 <button
                   style={{
@@ -335,7 +512,8 @@ const Profile = () => {
                   onMouseLeave={() => setHoveredButton('')}
                   onClick={handleLogout}
                 >
-                  Eject
+                  Out
+                  <FontAwesomeIcon icon={faSignOutAlt} size="lg" />
                 </button>
               </div>
             </div>
@@ -363,7 +541,7 @@ const Profile = () => {
                           <Card.Title>{message.sender}</Card.Title>
                           <Card.Text>{message.text}</Card.Text>
                           {message.isRead ? (
-                            <Badge style={amongUsStyles.badge}>meowssage</Badge>
+                            <Badge style={amongUsStyles.badge}>meowsage</Badge>
                           ) : (
                             <Badge style={amongUsStyles.badge}>mystery meowssage</Badge>
                           )}
