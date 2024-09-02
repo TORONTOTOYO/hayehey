@@ -66,7 +66,7 @@ const Button = () => {
             return { question: formattedQuestion, choices: formattedChoices };
         } catch (error) {
             console.error('Error fetching question:', error);
-            return { question: 'Failed to load question.', choices: [] };
+            return { question: 'Failed to load question. Reload the page.', choices: [] };
         }
     };
 
@@ -95,7 +95,7 @@ const Button = () => {
 
         setTimeout(() => {
             handleCloseModal();
-        }, 2000);
+        }, 5000);
     };
 
     const handleCloseModal = () => {
@@ -264,7 +264,7 @@ const Overlay = styled.div`
   animation-duration: 1s;
 `;
 
-const AmongUsModal = ({ question, choices, selectedAnswer, onChoiceClick, feedback, onCloseModal, timer }) => (
+const AmongUsModal = ({ question, choices, selectedAnswer, onChoiceClick, feedback, timer }) => (
     <ModalContainer>
         <ModalContent>
         <CrewmateIcon />
@@ -308,15 +308,17 @@ const ModalContainer = styled.div`
     font-size: 2.5rem;
     margin-bottom: 10px;
     color: #00ff00;
+    text-align: center;
 
     @media (max-width: 600px) {
-      max-width: 400px;
-      max-height: 200px;
-      height: 50%;
-      width: 90%;
-      font-size: 2rem;
-    }
+    max-width: 400px;
+    max-height: 200px;
+    height: 50%;
+    width: 90%;
+    font-size: 2rem;
+    margin: 0 auto; /* Center the h2 element */
   }
+}
 
   @media (max-width: 600px) {
     width: 90vw;

@@ -208,6 +208,7 @@ const Profile = () => {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
+      width: '10px'
     },
     catIcon: {
       width: '60px', // Adjust this value to resize the icon
