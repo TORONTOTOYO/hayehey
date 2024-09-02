@@ -4,7 +4,6 @@ import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, setPersistence, browserLocalPersistence } from "firebase/auth";import { getFirestore, doc, setDoc } from "firebase/firestore";
 import { toast, ToastContainer } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-import { CanvasTexture } from 'three';
 import * as THREE from 'three';
 
 import 'react-toastify/dist/ReactToastify.css';
@@ -139,7 +138,7 @@ const Form = () => {
 
     // SVG strings
     const svgStrings = [
-      // Add your SVG strings here
+        /* red*/
       `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
           <path d="M75 200 Q75 250 150 250 Q225 250 225 200 L225 120 Q225 70 150 70 Q75 70 75 120 Z" fill="#C51111" stroke="#000000" stroke-width="10"/>
           <path d="M100 120 Q100 80 150 80 Q200 80 200 120 Q200 160 150 160 Q100 160 100 120 Z" fill="#7DD3FC" stroke="#000000" stroke-width="10"/>
@@ -150,6 +149,7 @@ const Form = () => {
           <ellipse cx="150" cy="295" rx="100" ry="20" fill="#000000" opacity="0.3"/>
           <path d="M100 70 Q150 30 200 70 L200 90 Q150 50 100 90 Z" fill="#FFD700" stroke="#000000" stroke-width="5"/>
       </svg>`,
+        /* blue*/
         `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
           <path d="M75 200 Q75 250 150 250 Q225 250 225 200 L225 120 Q225 70 150 70 Q75 70 75 120 Z" fill="#132ED1" stroke="#000000" stroke-width="10"/>
           <path d="M100 120 Q100 80 150 80 Q200 80 200 120 Q200 160 150 160 Q100 160 100 120 Z" fill="#7DD3FC" stroke="#000000" stroke-width="10"/>
@@ -160,16 +160,7 @@ const Form = () => {
           <ellipse cx="150" cy="295" rx="100" ry="20" fill="#000000" opacity="0.3"/>
           <path d="M100 70 Q150 30 200 70 L200 90 Q150 50 100 90 Z" fill="#FFD700" stroke="#000000" stroke-width="5"/>
       </svg>`,
-      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
-          <path d="M75 200 Q75 250 150 250 Q225 250 225 200 L225 120 Q225 70 150 70 Q75 70 75 120 Z" fill="#117F2D" stroke="#000000" stroke-width="10"/>
-          <path d="M100 120 Q100 80 150 80 Q200 80 200 120 Q200 160 150 160 Q100 160 100 120 Z" fill="#7DD3FC" stroke="#000000" stroke-width="10"/>
-          <path d="M110 100 Q110 90 130 90 Q150 90 150 100 Q150 110 130 110 Q110 110 110 100 Z" fill="#FFFFFF" opacity="0.6"/>
-          <rect x="200" y="150" width="40" height="60" rx="10" ry="10" fill="#7F1D1D" stroke="#000000" stroke-width="10"/>
-          <rect x="100" y="250" width="40" height="40" rx="10" ry="10" fill="#117F2D" stroke="#000000" stroke-width="10"/>
-          <rect x="160" y="250" width="40" height="40" rx="10" ry="10" fill="#117F2D" stroke="#000000" stroke-width="10"/>
-          <ellipse cx="150" cy="295" rx="100" ry="20" fill="#000000" opacity="0.3"/>
-          <path d="M100 70 Q150 30 200 70 L200 90 Q150 50 100 90 Z" fill="#FFD700" stroke="#000000" stroke-width="5"/>
-      </svg>`,
+        /* pink*/
       `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
       <path d="M75 200 Q75 250 150 250 Q225 250 225 200 L225 120 Q225 70 150 70 Q75 70 75 120 Z" fill="#ED54BA" stroke="#000000" stroke-width="10"/>
       <path d="M100 120 Q100 80 150 80 Q200 80 200 120 Q200 160 150 160 Q100 160 100 120 Z" fill="#7DD3FC" stroke="#000000" stroke-width="10"/>
@@ -180,6 +171,7 @@ const Form = () => {
       <ellipse cx="150" cy="295" rx="100" ry="20" fill="#000000" opacity="0.3"/>
       <path d="M100 70 Q150 30 200 70 L200 90 Q150 50 100 90 Z" fill="#FFD700" stroke="#000000" stroke-width="5"/>
     </svg>`,
+        /* white*/
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
       <path d="M75 200 Q75 250 150 250 Q225 250 225 200 L225 120 Q225 70 150 70 Q75 70 75 120 Z" fill="#D6E0F0" stroke="#000000" stroke-width="10"/>
       <path d="M100 120 Q100 80 150 80 Q200 80 200 120 Q200 160 150 160 Q100 160 100 120 Z" fill="#7DD3FC" stroke="#000000" stroke-width="10"/>
@@ -190,6 +182,7 @@ const Form = () => {
       <ellipse cx="150" cy="295" rx="100" ry="20" fill="#000000" opacity="0.3"/>
       <path d="M100 70 Q150 30 200 70 L200 90 Q150 50 100 90 Z" fill="#FFD700" stroke="#000000" stroke-width="5"/>
     </svg>`,
+        /* orange*/
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
       <path d="M75 200 Q75 250 150 250 Q225 250 225 200 L225 120 Q225 70 150 70 Q75 70 75 120 Z" fill="#F07D0D" stroke="#000000" stroke-width="10"/>
       <path d="M100 120 Q100 80 150 80 Q200 80 200 120 Q200 160 150 160 Q100 160 100 120 Z" fill="#7DD3FC" stroke="#000000" stroke-width="10"/>
@@ -200,6 +193,7 @@ const Form = () => {
       <ellipse cx="150" cy="295" rx="100" ry="20" fill="#000000" opacity="0.3"/>
       <path d="M100 70 Q150 30 200 70 L200 90 Q150 50 100 90 Z" fill="#FFD700" stroke="#000000" stroke-width="5"/>
     </svg>`,
+        /* gray*/
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
       <path d="M75 200 Q75 250 150 250 Q225 250 225 200 L225 120 Q225 70 150 70 Q75 70 75 120 Z" fill="#3F474E" stroke="#000000" stroke-width="10"/>
       <path d="M100 120 Q100 80 150 80 Q200 80 200 120 Q200 160 150 160 Q100 160 100 120 Z" fill="#7DD3FC" stroke="#000000" stroke-width="10"/>
@@ -258,14 +252,14 @@ const Form = () => {
         scene.children.forEach(child => {
           if (child instanceof THREE.Sprite) {
             // Smooth rotation
-            child.rotation.x += 0.005;
-            child.rotation.y += 0.005;
-            child.rotation.z += 0.005;
+            child.rotation.x += 0.2;
+            child.rotation.y += 0.2;
+            child.rotation.z += 0.2;
 
             // Smooth floating movement
-            child.position.x += Math.sin(child.rotation.y) * 0.2;
-            child.position.y += Math.cos(child.rotation.x) * 0.2;
-            child.position.z += Math.sin(child.rotation.z) * 0.2;
+            child.position.x += Math.sin(child.rotation.y) * 0.5;
+            child.position.y += Math.cos(child.rotation.x) * 0.5;
+            child.position.z += Math.sin(child.rotation.z) * 0.5;
 
             // Ensure sprites stay within bounds
             if (Math.abs(child.position.x) > 1000) child.position.x = Math.random() * 2000 - 1000;
