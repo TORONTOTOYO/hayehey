@@ -105,249 +105,196 @@ const Form = () => {
     }
 };
 
-  useEffect(() => {
+useEffect(() => {
+  // Create scene
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000);
+  camera.position.z = 500; // Adjust camera distance
+  const renderer = new THREE.WebGLRenderer();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.querySelector('.canvas-container').appendChild(renderer.domElement);
 
-    let selectedSprite = null; // Track the selected sprite
-    let offset = new THREE.Vector3(); // Offset for dragging
-    let mouse = new THREE.Vector2(); // Track mouse position
-    let raycaster = new THREE.Raycaster(); // Raycaster for detecting sprites
-    // Create scene
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.querySelector('.canvas-container').appendChild(renderer.domElement);
+  // Create stars
+  const starGeometry = new THREE.BufferGeometry();
+  const starVertices = [];
+  for (let i = 0; i < 10000; i++) {
+    starVertices.push(Math.random() * 10000 - 5000); // Adjust range
+    starVertices.push(Math.random() * 10000 - 5000); // Adjust range
+    starVertices.push(Math.random() * 10000 - 5000); // Adjust range
+  }
+  starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3));
+  const starMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 1 });
+  const stars = new THREE.Points(starGeometry, starMaterial);
+  scene.add(stars);
 
-
-    const canvasContainer = document.querySelector('.canvas-container');
-    if (canvasContainer) {
-      canvasContainer.appendChild(renderer.domElement);
-    }
-    // Create stars
-    const starGeometry = new THREE.BufferGeometry();
-    const starVertices = [];
-    for (let i = 0; i < 10000; i++) {
-      starVertices.push(Math.random() * 2000 - 1000); // x
-      starVertices.push(Math.random() * 2000 - 1000); // y
-      starVertices.push(Math.random() * 2000 - 1000); // z
-    }
-    starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3));
-    const starMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 1 });
-    const stars = new THREE.Points(starGeometry, starMaterial);
-    scene.add(stars);
-
-    // SVG strings
-    const svgStrings = [
-        /* red*/
-      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
-          <path d="M75 200 Q75 250 150 250 Q225 250 225 200 L225 120 Q225 70 150 70 Q75 70 75 120 Z" fill="#C51111" stroke="#000000" stroke-width="10"/>
-          <path d="M100 120 Q100 80 150 80 Q200 80 200 120 Q200 160 150 160 Q100 160 100 120 Z" fill="#7DD3FC" stroke="#000000" stroke-width="10"/>
-          <path d="M110 100 Q110 90 130 90 Q150 90 150 100 Q150 110 130 110 Q110 110 110 100 Z" fill="#FFFFFF" opacity="0.6"/>
-          <rect x="200" y="150" width="40" height="60" rx="10" ry="10" fill="#7F1D1D" stroke="#000000" stroke-width="10"/>
-          <rect x="100" y="250" width="40" height="40" rx="10" ry="10" fill="#C51111" stroke="#000000" stroke-width="10"/>
-          <rect x="160" y="250" width="40" height="40" rx="10" ry="10" fill="#C51111" stroke="#000000" stroke-width="10"/>
-          <ellipse cx="150" cy="295" rx="100" ry="20" fill="#000000" opacity="0.3"/>
-          <path d="M100 70 Q150 30 200 70 L200 90 Q150 50 100 90 Z" fill="#FFD700" stroke="#000000" stroke-width="5"/>
-      </svg>`,
-        /* blue*/
-        `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
-          <path d="M75 200 Q75 250 150 250 Q225 250 225 200 L225 120 Q225 70 150 70 Q75 70 75 120 Z" fill="#132ED1" stroke="#000000" stroke-width="10"/>
-          <path d="M100 120 Q100 80 150 80 Q200 80 200 120 Q200 160 150 160 Q100 160 100 120 Z" fill="#7DD3FC" stroke="#000000" stroke-width="10"/>
-          <path d="M110 100 Q110 90 130 90 Q150 90 150 100 Q150 110 130 110 Q110 110 110 100 Z" fill="#FFFFFF" opacity="0.6"/>
-          <rect x="200" y="150" width="40" height="60" rx="10" ry="10" fill="#7F1D1D" stroke="#000000" stroke-width="10"/>
-          <rect x="100" y="250" width="40" height="40" rx="10" ry="10" fill="#132ED1" stroke="#000000" stroke-width="10"/>
-          <rect x="160" y="250" width="40" height="40" rx="10" ry="10" fill="#132ED1" stroke="#000000" stroke-width="10"/>
-          <ellipse cx="150" cy="295" rx="100" ry="20" fill="#000000" opacity="0.3"/>
-          <path d="M100 70 Q150 30 200 70 L200 90 Q150 50 100 90 Z" fill="#FFD700" stroke="#000000" stroke-width="5"/>
-      </svg>`,
-        /* pink*/
-      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
-      <path d="M75 200 Q75 250 150 250 Q225 250 225 200 L225 120 Q225 70 150 70 Q75 70 75 120 Z" fill="#ED54BA" stroke="#000000" stroke-width="10"/>
+  // SVG strings
+  const svgStrings = [
+    /* red */
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+      <path d="M75 200 Q75 250 150 250 Q225 250 225 200 L225 120 Q225 70 150 70 Q75 70 75 120 Z" fill="#C51111" stroke="#000000" stroke-width="10"/>
       <path d="M100 120 Q100 80 150 80 Q200 80 200 120 Q200 160 150 160 Q100 160 100 120 Z" fill="#7DD3FC" stroke="#000000" stroke-width="10"/>
       <path d="M110 100 Q110 90 130 90 Q150 90 150 100 Q150 110 130 110 Q110 110 110 100 Z" fill="#FFFFFF" opacity="0.6"/>
       <rect x="200" y="150" width="40" height="60" rx="10" ry="10" fill="#7F1D1D" stroke="#000000" stroke-width="10"/>
-      <rect x="100" y="250" width="40" height="40" rx="10" ry="10" fill="#ED54BA" stroke="#000000" stroke-width="10"/>
-      <rect x="160" y="250" width="40" height="40" rx="10" ry="10" fill="#ED54BA" stroke="#000000" stroke-width="10"/>
+      <rect x="100" y="250" width="40" height="40" rx="10" ry="10" fill="#C51111" stroke="#000000" stroke-width="10"/>
+      <rect x="160" y="250" width="40" height="40" rx="10" ry="10" fill="#C51111" stroke="#000000" stroke-width="10"/>
       <ellipse cx="150" cy="295" rx="100" ry="20" fill="#000000" opacity="0.3"/>
       <path d="M100 70 Q150 30 200 70 L200 90 Q150 50 100 90 Z" fill="#FFD700" stroke="#000000" stroke-width="5"/>
     </svg>`,
-        /* white*/
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
-      <path d="M75 200 Q75 250 150 250 Q225 250 225 200 L225 120 Q225 70 150 70 Q75 70 75 120 Z" fill="#D6E0F0" stroke="#000000" stroke-width="10"/>
-      <path d="M100 120 Q100 80 150 80 Q200 80 200 120 Q200 160 150 160 Q100 160 100 120 Z" fill="#7DD3FC" stroke="#000000" stroke-width="10"/>
-      <path d="M110 100 Q110 90 130 90 Q150 90 150 100 Q150 110 130 110 Q110 110 110 100 Z" fill="#FFFFFF" opacity="0.6"/>
-      <rect x="200" y="150" width="40" height="60" rx="10" ry="10" fill="#7F1D1D" stroke="#000000" stroke-width="10"/>
-      <rect x="100" y="250" width="40" height="40" rx="10" ry="10" fill="#D6E0F0" stroke="#000000" stroke-width="10"/>
-      <rect x="160" y="250" width="40" height="40" rx="10" ry="10" fill="#D6E0F0" stroke="#000000" stroke-width="10"/>
-      <ellipse cx="150" cy="295" rx="100" ry="20" fill="#000000" opacity="0.3"/>
-      <path d="M100 70 Q150 30 200 70 L200 90 Q150 50 100 90 Z" fill="#FFD700" stroke="#000000" stroke-width="5"/>
+    <path d="M75 200 Q75 250 150 250 Q225 250 225 200 L225 120 Q225 70 150 70 Q75 70 75 120 Z" fill="#132ED1" stroke="#000000" stroke-width="10"/>
+    <path d="M100 120 Q100 80 150 80 Q200 80 200 120 Q200 160 150 160 Q100 160 100 120 Z" fill="#7DD3FC" stroke="#000000" stroke-width="10"/>
+    <path d="M110 100 Q110 90 130 90 Q150 90 150 100 Q150 110 130 110 Q110 110 110 100 Z" fill="#FFFFFF" opacity="0.6"/>
+    <rect x="200" y="150" width="40" height="60" rx="10" ry="10" fill="#7F1D1D" stroke="#000000" stroke-width="10"/>
+    <rect x="100" y="250" width="40" height="40" rx="10" ry="10" fill="#132ED1" stroke="#000000" stroke-width="10"/>
+    <rect x="160" y="250" width="40" height="40" rx="10" ry="10" fill="#132ED1" stroke="#000000" stroke-width="10"/>
+    <ellipse cx="150" cy="295" rx="100" ry="20" fill="#000000" opacity="0.3"/>
+    <path d="M100 70 Q150 30 200 70 L200 90 Q150 50 100 90 Z" fill="#FFD700" stroke="#000000" stroke-width="5"/>
     </svg>`,
-        /* orange*/
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
-      <path d="M75 200 Q75 250 150 250 Q225 250 225 200 L225 120 Q225 70 150 70 Q75 70 75 120 Z" fill="#F07D0D" stroke="#000000" stroke-width="10"/>
-      <path d="M100 120 Q100 80 150 80 Q200 80 200 120 Q200 160 150 160 Q100 160 100 120 Z" fill="#7DD3FC" stroke="#000000" stroke-width="10"/>
-      <path d="M110 100 Q110 90 130 90 Q150 90 150 100 Q150 110 130 110 Q110 110 110 100 Z" fill="#FFFFFF" opacity="0.6"/>
-      <rect x="200" y="150" width="40" height="60" rx="10" ry="10" fill="#7F1D1D" stroke="#000000" stroke-width="10"/>
-      <rect x="100" y="250" width="40" height="40" rx="10" ry="10" fill="#F07D0D" stroke="#000000" stroke-width="10"/>
-      <rect x="160" y="250" width="40" height="40" rx="10" ry="10" fill="#F07D0D" stroke="#000000" stroke-width="10"/>
-      <ellipse cx="150" cy="295" rx="100" ry="20" fill="#000000" opacity="0.3"/>
-      <path d="M100 70 Q150 30 200 70 L200 90 Q150 50 100 90 Z" fill="#FFD700" stroke="#000000" stroke-width="5"/>
+        <path d="M75 200 Q75 250 150 250 Q225 250 225 200 L225 120 Q225 70 150 70 Q75 70 75 120 Z" fill="#117F2D" stroke="#000000" stroke-width="10"/>
+        <path d="M100 120 Q100 80 150 80 Q200 80 200 120 Q200 160 150 160 Q100 160 100 120 Z" fill="#7DD3FC" stroke="#000000" stroke-width="10"/>
+        <path d="M110 100 Q110 90 130 90 Q150 90 150 100 Q150 110 130 110 Q110 110 110 100 Z" fill="#FFFFFF" opacity="0.6"/>
+        <rect x="200" y="150" width="40" height="60" rx="10" ry="10" fill="#7F1D1D" stroke="#000000" stroke-width="10"/>
+        <rect x="100" y="250" width="40" height="40" rx="10" ry="10" fill="#117F2D" stroke="#000000" stroke-width="10"/>
+        <rect x="160" y="250" width="40" height="40" rx="10" ry="10" fill="#117F2D" stroke="#000000" stroke-width="10"/>
+        <ellipse cx="150" cy="295" rx="100" ry="20" fill="#000000" opacity="0.3"/>
+        <path d="M100 70 Q150 30 200 70 L200 90 Q150 50 100 90 Z" fill="#FFD700" stroke="#000000" stroke-width="5"/>
     </svg>`,
-        /* gray*/
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
-      <path d="M75 200 Q75 250 150 250 Q225 250 225 200 L225 120 Q225 70 150 70 Q75 70 75 120 Z" fill="#3F474E" stroke="#000000" stroke-width="10"/>
-      <path d="M100 120 Q100 80 150 80 Q200 80 200 120 Q200 160 150 160 Q100 160 100 120 Z" fill="#7DD3FC" stroke="#000000" stroke-width="10"/>
-      <path d="M110 100 Q110 90 130 90 Q150 90 150 100 Q150 110 130 110 Q110 110 110 100 Z" fill="#FFFFFF" opacity="0.6"/>
-      <rect x="200" y="150" width="40" height="60" rx="10" ry="10" fill="#7F1D1D" stroke="#000000" stroke-width="10"/>
-      <rect x="100" y="250" width="40" height="40" rx="10" ry="10" fill="#3F474E" stroke="#000000" stroke-width="10"/>
-      <rect x="160" y="250" width="40" height="40" rx="10" ry="10" fill="#3F474E" stroke="#000000" stroke-width="10"/>
-      <ellipse cx="150" cy="295" rx="100" ry="20" fill="#000000" opacity="0.3"/>
-      <path d="M100 70 Q150 30 200 70 L200 90 Q150 50 100 90 Z" fill="#FFD700" stroke="#000000" stroke-width="5"/>
+    <path d="M75 200 Q75 250 150 250 Q225 250 225 200 L225 120 Q225 70 150 70 Q75 70 75 120 Z" fill="#ED54BA" stroke="#000000" stroke-width="10"/>
+    <path d="M100 120 Q100 80 150 80 Q200 80 200 120 Q200 160 150 160 Q100 160 100 120 Z" fill="#7DD3FC" stroke="#000000" stroke-width="10"/>
+    <path d="M110 100 Q110 90 130 90 Q150 90 150 100 Q150 110 130 110 Q110 110 110 100 Z" fill="#FFFFFF" opacity="0.6"/>
+    <rect x="200" y="150" width="40" height="60" rx="10" ry="10" fill="#7F1D1D" stroke="#000000" stroke-width="10"/>
+    <rect x="100" y="250" width="40" height="40" rx="10" ry="10" fill="#ED54BA" stroke="#000000" stroke-width="10"/>
+    <rect x="160" y="250" width="40" height="40" rx="10" ry="10" fill="#ED54BA" stroke="#000000" stroke-width="10"/>
+    <ellipse cx="150" cy="295" rx="100" ry="20" fill="#000000" opacity="0.3"/>
+    <path d="M100 70 Q150 30 200 70 L200 90 Q150 50 100 90 Z" fill="#FFD700" stroke="#000000" stroke-width="5"/>
+    </svg>`,
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+    <path d="M75 200 Q75 250 150 250 Q225 250 225 200 L225 120 Q225 70 150 70 Q75 70 75 120 Z" fill="#D6E0F0" stroke="#000000" stroke-width="10"/>
+    <path d="M100 120 Q100 80 150 80 Q200 80 200 120 Q200 160 150 160 Q100 160 100 120 Z" fill="#7DD3FC" stroke="#000000" stroke-width="10"/>
+    <path d="M110 100 Q110 90 130 90 Q150 90 150 100 Q150 110 130 110 Q110 110 110 100 Z" fill="#FFFFFF" opacity="0.6"/>
+    <rect x="200" y="150" width="40" height="60" rx="10" ry="10" fill="#7F1D1D" stroke="#000000" stroke-width="10"/>
+    <rect x="100" y="250" width="40" height="40" rx="10" ry="10" fill="#D6E0F0" stroke="#000000" stroke-width="10"/>
+    <rect x="160" y="250" width="40" height="40" rx="10" ry="10" fill="#D6E0F0" stroke="#000000" stroke-width="10"/>
+    <ellipse cx="150" cy="295" rx="100" ry="20" fill="#000000" opacity="0.3"/>
+    <path d="M100 70 Q150 30 200 70 L200 90 Q150 50 100 90 Z" fill="#FFD700" stroke="#000000" stroke-width="5"/>
+    </svg>`,
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+    <path d="M75 200 Q75 250 150 250 Q225 250 225 200 L225 120 Q225 70 150 70 Q75 70 75 120 Z" fill="#F07D0D" stroke="#000000" stroke-width="10"/>
+    <path d="M100 120 Q100 80 150 80 Q200 80 200 120 Q200 160 150 160 Q100 160 100 120 Z" fill="#7DD3FC" stroke="#000000" stroke-width="10"/>
+    <path d="M110 100 Q110 90 130 90 Q150 90 150 100 Q150 110 130 110 Q110 110 110 100 Z" fill="#FFFFFF" opacity="0.6"/>
+    <rect x="200" y="150" width="40" height="60" rx="10" ry="10" fill="#7F1D1D" stroke="#000000" stroke-width="10"/>
+    <rect x="100" y="250" width="40" height="40" rx="10" ry="10" fill="#F07D0D" stroke="#000000" stroke-width="10"/>
+    <rect x="160" y="250" width="40" height="40" rx="10" ry="10" fill="#F07D0D" stroke="#000000" stroke-width="10"/>
+    <ellipse cx="150" cy="295" rx="100" ry="20" fill="#000000" opacity="0.3"/>
+    <path d="M100 70 Q150 30 200 70 L200 90 Q150 50 100 90 Z" fill="#FFD700" stroke="#000000" stroke-width="5"/>
+    </svg>`,
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+    <path d="M75 200 Q75 250 150 250 Q225 250 225 200 L225 120 Q225 70 150 70 Q75 70 75 120 Z" fill="#3F474E" stroke="#000000" stroke-width="10"/>
+    <path d="M100 120 Q100 80 150 80 Q200 80 200 120 Q200 160 150 160 Q100 160 100 120 Z" fill="#7DD3FC" stroke="#000000" stroke-width="10"/>
+    <path d="M110 100 Q110 90 130 90 Q150 90 150 100 Q150 110 130 110 Q110 110 110 100 Z" fill="#FFFFFF" opacity="0.6"/>
+    <rect x="200" y="150" width="40" height="60" rx="10" ry="10" fill="#7F1D1D" stroke="#000000" stroke-width="10"/>
+    <rect x="100" y="250" width="40" height="40" rx="10" ry="10" fill="#3F474E" stroke="#000000" stroke-width="10"/>
+    <rect x="160" y="250" width="40" height="40" rx="10" ry="10" fill="#3F474E" stroke="#000000" stroke-width="10"/>
+    <ellipse cx="150" cy="295" rx="100" ry="20" fill="#000000" opacity="0.3"/>
+    <path d="M100 70 Q150 30 200 70 L200 90 Q150 50 100 90 Z" fill="#FFD700" stroke="#000000" stroke-width="5"/>
     </svg>`,
   ];
 
-    const createSvgTexture = async (svg) => {
-      return new Promise((resolve) => {
-        const canvas = document.createElement('canvas');
-        const context = canvas.getContext('2d');
-        const img = new Image();
-        img.onload = () => {
-          canvas.width = img.width;
-          canvas.height = img.height;
-          context.drawImage(img, 0, 0);
-          const texture = new THREE.Texture(canvas);
-          texture.needsUpdate = true;
-          resolve(texture);
-        };
-        img.src = `data:image/svg+xml;base64,${btoa(svg)}`;
-      });
-    };
+  const createSvgTexture = async (svg) => {
+    return new Promise((resolve) => {
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+      const img = new Image();
+      img.onload = () => {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        context.drawImage(img, 0, 0);
+        const texture = new THREE.Texture(canvas);
+        texture.needsUpdate = true;
+        resolve(texture);
+      };
+      img.src = `data:image/svg+xml;base64,${btoa(svg)}`;
+    });
+  };
 
-    const createSprites = async () => {
-      const textures = await Promise.all(svgStrings.map(createSvgTexture));
-      const numSprites = 100; // Number of sprites for each texture
+  const createSprites = async () => {
+    const textures = await Promise.all(svgStrings.map(createSvgTexture));
+    const numSprites = 100; // Number of sprites for each texture
 
-      textures.forEach((texture) => {
-        const spriteMaterial = new THREE.SpriteMaterial({ map: texture });
-        for (let i = 0; i < numSprites; i++) {
-          const sprite = new THREE.Sprite(spriteMaterial);
-          sprite.scale.set(50, 50, 1); // Adjust size
-          sprite.position.set(
-            Math.random() * 2000 - 1000, // Random x position
-            Math.random() * 2000 - 1000, // Random y position
-            Math.random() * 2000 - 1000  // Random z position
-          );
-          sprite.rotation.set(
-            Math.random() * Math.PI * 2, // Random rotation
-            Math.random() * Math.PI * 2, // Random rotation
-            Math.random() * Math.PI * 2  // Random rotation
-          );
-          scene.add(sprite);
+    textures.forEach((texture) => {
+      const spriteMaterial = new THREE.SpriteMaterial({ map: texture });
+      for (let i = 0; i < numSprites; i++) {
+        const sprite = new THREE.Sprite(spriteMaterial);
+        sprite.scale.set(50, 50, 1); // Adjust size
+        sprite.position.set(
+          Math.random() * 10000 - 5000, // Adjust range
+          Math.random() * 10000 - 5000, // Adjust range
+          Math.random() * 10000 - 5000  // Adjust range
+        );
+        sprite.rotation.set(
+          Math.random() * Math.PI * 2, // Random rotation
+          Math.random() * Math.PI * 2, // Random rotation
+          Math.random() * Math.PI * 2  // Random rotation
+        );
+        scene.add(sprite);
+      }
+    });
+
+    // Animate the sprites with rotation and floating effect
+    const animateSprites = () => {
+      requestAnimationFrame(animateSprites);
+      scene.children.forEach(child => {
+        if (child instanceof THREE.Sprite) {
+          // Smooth rotation
+          child.rotation.x += 0.01;
+          child.rotation.y += 0.01;
+          child.rotation.z += 0.01;
+
+          // Smooth floating movement
+          child.position.x += Math.sin(child.rotation.y) * 0.1;
+          child.position.y += Math.cos(child.rotation.x) * 0.1;
+          child.position.z += Math.sin(child.rotation.z) * 0.1;
+
+          // Ensure sprites stay within bounds
+          if (Math.abs(child.position.x) > 5000) child.position.x = Math.random() * 10000 - 5000;
+          if (Math.abs(child.position.y) > 5000) child.position.y = Math.random() * 10000 - 5000;
+          if (Math.abs(child.position.z) > 5000) child.position.z = Math.random() * 10000 - 5000;
         }
       });
-
-      // Animate the sprites with rotation and floating effect
-      const animateSprites = () => {
-        requestAnimationFrame(animateSprites);
-        scene.children.forEach(child => {
-          if (child instanceof THREE.Sprite) {
-            // Smooth rotation
-            child.rotation.x += 0.2;
-            child.rotation.y += 0.2;
-            child.rotation.z += 0.2;
-
-            // Smooth floating movement
-            child.position.x += Math.sin(child.rotation.y) * 0.5;
-            child.position.y += Math.cos(child.rotation.x) * 0.5;
-            child.position.z += Math.sin(child.rotation.z) * 0.5;
-
-            // Ensure sprites stay within bounds
-            if (Math.abs(child.position.x) > 1000) child.position.x = Math.random() * 2000 - 1000;
-            if (Math.abs(child.position.y) > 1000) child.position.y = Math.random() * 2000 - 1000;
-            if (Math.abs(child.position.z) > 1000) child.position.z = Math.random() * 2000 - 1000;
-          }
-        });
-        renderer.render(scene, camera);
-      };
-
-      animateSprites();
-    };
-
-    createSprites();
-
-    // Animate the stars
-    const animate = () => {
-      requestAnimationFrame(animate);
-      stars.rotation.y += 0.001;
       renderer.render(scene, camera);
     };
-    animate();
 
-    // Handle resizing
-    const handleResize = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    };
-    window.addEventListener('resize', handleResize);
+    animateSprites();
+  };
 
-      // Handle mouse down
-  const onMouseDown = (event) => {
-    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-    raycaster.setFromCamera(mouse, camera);
+  createSprites();
 
-    const intersects = raycaster.intersectObjects(scene.children);
-    if (intersects.length > 0) {
-      selectedSprite = intersects[0].object;
-      const intersectPoint = intersects[0].point;
-      offset.copy(intersectPoint).sub(selectedSprite.position);
-      document.addEventListener('mousemove', onMouseMove);
-      document.addEventListener('mouseup', onMouseUp);
+  // Animate the stars
+  const animate = () => {
+    requestAnimationFrame(animate);
+    stars.rotation.y += 0.001;
+    renderer.render(scene, camera);
+  };
+  animate();
+
+  // Handle resizing
+  const handleResize = () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  };
+  window.addEventListener('resize', handleResize);
+
+
+  return () => {
+    const canvasContainer = document.querySelector('.canvas-container');
+    if (canvasContainer && renderer.domElement) {
+      canvasContainer.removeChild(renderer.domElement);
     }
   };
-
-    // Handle mouse movement and dragging of sprites
-    const onMouseMove = (event) => {
-      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-
-      raycaster.setFromCamera(mouse, camera);
-      const intersects = raycaster.intersectObjects(scene.children);
-
-      if (intersects.length > 0) {
-        const intersectedSprite = intersects[0].object;
-        if (!selectedSprite) {
-          document.body.style.cursor = 'pointer'; // Change cursor on hover
-        }
-        if (selectedSprite) {
-          selectedSprite.position.copy(intersects[0].point.sub(offset));
-        }
-      } else {
-        document.body.style.cursor = 'auto';
-      }
-    };
-  // Handle mouse up
-  const onMouseUp = () => {
-    selectedSprite = null;
-    canvasContainer.style.cursor = "auto";
-  };
-
-  window.addEventListener('mousedown', onMouseDown);
-    
-    return () => {
-      // Clean up on component unmount
-      window.removeEventListener('resize', handleResize);
-      window.removeEventListener('mousemove', onMouseMove);
-      window.removeEventListener('mousedown', onMouseDown);
-      window.removeEventListener('mouseup', onMouseUp);
-    
-      const canvasContainer = document.querySelector('.canvas-container');
-      if (canvasContainer && renderer.domElement) {
-        canvasContainer.removeChild(renderer.domElement);
-      }
-    };
-  }, []);
+}, []);
 
   return (
     <StyledWrapper>
