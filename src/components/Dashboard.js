@@ -169,53 +169,78 @@ const Profile = () => {
     return () => clearInterval(dotInterval); // Cleanup interval on unmount
   }, []);
 
-  const amongUsStyles = {
-    container: {
-      background: 'linear-gradient(to bottom, #000b1e, #1c2b4f)',
-      minHeight: '100vh',
-      color: '#e0e0e0',
-      fontFamily: "'VT323', monospace",
-      padding: '20px',
-    },
-    buttonContainer: {
-      display: 'flex',
-      justifyContent: 'flex-end',
-      gap: '10px',
-    },
-    header: {
-      color: 'hsl(49, 98%, 60%)',
-      textAlign: 'center', // Center text horizontally
-    },
-    card: {
-      backgroundColor: '#1b2a3e',
-      border: '2px solid #00ffff',
-      borderRadius: '10px',
-      color: '#e0e0e0',
-      transition: 'all 0.3s',
-      margin: '0 auto', // Center the card horizontally
-      pointer: 'cursor',
-    },
-    badge: {
-      backgroundColor: '#ff1616',
-      color: '#e0e0e0',
-    },
-    modal: {
-      backgroundColor: '#1b2a3e',
-      border: '2px solid #00ffff',
-      color: '#e0e0e0',
-    },
-    modalDialog: {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      width: '10px'
-    },
-    catIcon: {
-      width: '60px', // Adjust this value to resize the icon
-      height: '60px', // Adjust this value to resize the icon
-      margin: '0 auto',
-    },
-  };
+const amongUsStyles = {
+  container: {
+    background: 'linear-gradient(to bottom, #000b1e, #1c2b4f)',
+    minHeight: '100vh',
+    color: '#e0e0e0',
+    fontFamily: "'VT323', monospace",
+    padding: '20px',
+  },
+  buttonContainer: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    gap: '10px',
+  },
+  header: {
+    color: 'hsl(49, 98%, 60%)',
+    textAlign: 'center', // Center text horizontally
+  },
+  card: {
+    backgroundColor: '#1b2a3e',
+    border: '2px solid #00ffff',
+    borderRadius: '10px',
+    color: '#e0e0e0',
+    transition: 'all 0.3s',
+    margin: '0 auto', // Center the card horizontally
+    cursor: 'pointer',
+  },
+  badge: {
+    backgroundColor: '#ff1616',
+    color: '#e0e0e0',
+  },
+  modal: {
+    backgroundColor: '#0a1a2f',
+    border: '2px solid #00ffff',
+    color: '#e0e0e0',
+    boxShadow: '0 0 15px #0a1a2f',
+    borderRadius: '8px',
+    padding: '20px',
+    maxHeight: '80vh', // Max height to limit modal size
+    overflowY: 'auto', // Allows vertical scrolling for long content
+  },
+
+  // Update the modal dialog to ensure it's centered and responsive
+  modalDialog: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    maxWidth: '600px', // Adjust maximum width for better responsiveness
+    margin: 'auto',
+  },
+  catIcon: {
+    width: '60px', // Adjust this value to resize the icon
+    height: '60px', // Adjust this value to resize the icon
+    margin: '0 auto',
+  },
+};
+
+const modalDialog = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: '90%',
+  maxWidth: '600px',
+  margin: 'auto',
+};
+
+const modalBodyStyle = {
+  maxHeight: 'calc(80vh - 40px)', // Adjust based on padding and header height
+  overflowY: 'auto', // Allows scrolling within the modal body
+  padding: '10px',
+};
+
 
   const buttonStyle = {
     backgroundColor: '#1b2a3e',
@@ -242,6 +267,19 @@ const Profile = () => {
     color: '#fff',
     borderColor: '#ff1616'
   };
+
+  const modalTextStyle = {
+    textAlign: 'justify', // Ensures text is justified
+    marginBottom: '10px',
+    color: '#e0e0e0',
+    wordBreak: 'break-word', // Ensures long words or URLs break properly
+  };
+  
+  const dateStyle = {
+    color: '#f5a9a9',
+    fontSize: '0.9rem',
+    fontStyle: 'italic',
+  };
   
   const CatFaceIcon = ({ status }) => {
     return (
@@ -266,110 +304,105 @@ const Profile = () => {
 
   return (
     <div style={amongUsStyles.container}>
-<ToastContainer />
-<Container>
-  <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
-    <h2 style={amongUsStyles.header}>Meowmate: {username}</h2>
-    <div style={amongUsStyles.buttonContainer}>
-      <button
-        style={{
-          ...buttonStyle,
-          borderColor: '#00ffff',
-          color: '#00ffff',
-          ...(hoveredButton === 'share' ? hoverStylesShare : {})
-        }}
-        onMouseEnter={() => setHoveredButton('share')}
-        onMouseLeave={() => setHoveredButton('')}
-        onClick={handleShareClick}
-      >
-        Share
-      </button>
-      <button
-        style={{
-          ...buttonStyle,
-          borderColor: '#ff1616',
-          color: '#ff1616',
-          ...(hoveredButton === 'eject' ? hoverStylesEject : {})
-        }}
-        onMouseEnter={() => setHoveredButton('eject')}
-        onMouseLeave={() => setHoveredButton('')}
-        onClick={handleLogout}
-      >
-        Eject
-      </button>
-    </div>
-  </div>
-
-  <h3 style={{...amongUsStyles.header, fontSize: '1.5rem'}}>
-    {unreadCount > 0 && <Badge style={amongUsStyles.badge}></Badge>}
-  </h3>
-
-  {/* New Container for Messages and Modal with Scrollbar */}
-  <Container style={{
-    border: '2px solid #00ffff', 
-    padding: '1rem', 
-    borderRadius: '8px', 
-    maxHeight: '600px', /* Adjust the height as needed */
-    overflowX: 'hidden', /* Hides horizontal scrollbar */
-    overflowY: 'auto', /* Enables vertical scrolling */
-    boxSizing: 'border-box' /* Ensures padding and border do not affect the width */
-  }}>
-    {messages.length > 0 ? (
-      <Row>
-        {messages.map((message) => (
-          <Col xs={6} sm={4} md={4} lg={2} key={message.id}>
-            <Card style={amongUsStyles.card} className="mb-3" onClick={() => handleMessageClick(message)}>
-              <Card.Body className="text-center">
-                <CatFaceIcon status={message.isRead ? "read" : "unread"} />
-                <Card.Title>{message.sender}</Card.Title>
-                <Card.Text>{message.text}</Card.Text>
-                {message.isRead ? (
-                  <Badge style={amongUsStyles.badge}>meowssage</Badge>
-                ) : (
-                  <Badge style={amongUsStyles.badge}>mystery meowssage</Badge>
-                )}
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-      </Row>
-    ) : (
-      <p style={{ color: '#f5a9a9', fontSize: '1.2rem' }}>
-        No meowssages yet. The cats are quiet{dots}
-      </p>          
-    )}
-
-    {/* Modal */}
-    <Modal show={isModalOpen} onHide={closeModal} dialogClassName="modal-dialog-centered">
-      <Modal.Header style={amongUsStyles.modal}>
-        <Modal.Title style={{color: '#00ffff'}}>Meowsage</Modal.Title>
-      </Modal.Header>
-      <Modal.Body style={amongUsStyles.modal}>
-        {selectedMessage && (
-          <>
-            <p>{selectedMessage.content}</p>
-            <p>
-              <small style={{color: '#f5a9a9'}}>
-                Meowed on:{" "}
-                {new Date(selectedMessage.createdAt.seconds * 1000).toLocaleDateString()}
-              </small>
-            </p>
-            {selectedMessage.audio && (
-              <div style={{ textAlign: 'center' }}>
-                <audio controls style={{ width: '70%', maxWidth: '100%' }}>
-                  <source src={selectedMessage.audio} type="audio/wav" />
-                  Your browser does not support the audio element.
-                </audio>
+        <ToastContainer />
+            <Container>
+              <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
+                <h2 style={amongUsStyles.header}>Meowmate: {username}</h2>
+                <div style={amongUsStyles.buttonContainer}>
+                  <button
+                    style={{
+                      ...buttonStyle,
+                      borderColor: '#00ffff',
+                      color: '#00ffff',
+                      ...(hoveredButton === 'share' ? hoverStylesShare : {})
+                    }}
+                    onMouseEnter={() => setHoveredButton('share')}
+                    onMouseLeave={() => setHoveredButton('')}
+                    onClick={handleShareClick}
+                  >
+                    Share
+                  </button>
+                  <button
+                    style={{
+                      ...buttonStyle,
+                      borderColor: '#ff1616',
+                      color: '#ff1616',
+                      ...(hoveredButton === 'eject' ? hoverStylesEject : {})
+                    }}
+                    onMouseEnter={() => setHoveredButton('eject')}
+                    onMouseLeave={() => setHoveredButton('')}
+                    onClick={handleLogout}
+                  >
+                    Eject
+                  </button>
+                </div>
               </div>
-            )}
-          </>
-        )}
-      </Modal.Body>
-    </Modal>
-  </Container>
-  <Switch/>
-</Container>
 
+              <h3 style={{...amongUsStyles.header, fontSize: '1.5rem'}}>
+                {unreadCount > 0 && <Badge style={amongUsStyles.badge}></Badge>}
+              </h3>
+
+            <Container style={{
+              border: '2px solid #00ffff', 
+              padding: '1rem', 
+              borderRadius: '8px', 
+              maxHeight: '600px', /* Adjust the height as needed */
+              overflowX: 'hidden', /* Hides horizontal scrollbar */
+              overflowY: 'auto', /* Enables vertical scrolling */
+              boxSizing: 'border-box' /* Ensures padding and border do not affect the width */
+            }}>
+              {messages.length > 0 ? (
+                <Row>
+                  {messages.map((message) => (
+                    <Col xs={6} sm={4} md={4} lg={2} key={message.id}>
+                      <Card style={amongUsStyles.card} className="mb-3" onClick={() => handleMessageClick(message)}>
+                        <Card.Body className="text-center">
+                          <CatFaceIcon status={message.isRead ? "read" : "unread"} />
+                          <Card.Title>{message.sender}</Card.Title>
+                          <Card.Text>{message.text}</Card.Text>
+                          {message.isRead ? (
+                            <Badge style={amongUsStyles.badge}>meowssage</Badge>
+                          ) : (
+                            <Badge style={amongUsStyles.badge}>mystery meowssage</Badge>
+                          )}
+                        </Card.Body>
+                      </Card>
+                    </Col>
+                  ))}
+                </Row>
+              ) : (
+                <p style={{ color: '#f5a9a9', fontSize: '1.2rem' }}>
+                  No meowssages yet. The cats are quiet{dots}
+                </p>          
+              )}
+
+              <Modal show={isModalOpen} onHide={closeModal} dialogClassName="modal-dialog-centered">
+                  <Modal.Header style={amongUsStyles.modal}>
+                    <Modal.Title style={{ color: '#00ffff' }}>Meowsage</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body style={amongUsStyles.modal}>
+                  {selectedMessage && (
+                    <>
+                      <p style={modalTextStyle}>{selectedMessage.content}</p>
+                      <p style={dateStyle}>
+                        Meowed on:{' '}
+                        {new Date(selectedMessage.createdAt.seconds * 1000).toLocaleDateString()}
+                      </p>
+                      {selectedMessage.audio && (
+                        <div style={{ textAlign: 'center' }}>
+                          <audio controls style={{ width: '70%', maxWidth: '100%' }}>
+                            <source src={selectedMessage.audio} type="audio/wav" />
+                            Your browser does not support the audio element.
+                          </audio>
+                        </div>
+                      )}
+                    </>
+                  )}
+                </Modal.Body>
+              </Modal>
+          </Container>
+        <Switch/>
+      </Container>
     </div>
   );
 };
