@@ -1,13 +1,13 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-import { getFirestore, doc, getDoc, setDoc, collection, query, where, getDocs, updateDoc, onSnapshot } from "firebase/firestore";
+import { getFirestore, doc, getDoc, setDoc, collection, query, where, updateDoc, onSnapshot } from "firebase/firestore";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { v4 as uuidv4 } from "uuid";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Card, Modal, Badge, Container, Row, Col } from 'react-bootstrap';
+import { Card, Badge, Container, Row, Col } from 'react-bootstrap';
 import Switch from "./Switch";
+import html2canvas from 'html2canvas';
 
 
 const Profile = () => {
@@ -169,79 +169,88 @@ const Profile = () => {
     return () => clearInterval(dotInterval); // Cleanup interval on unmount
   }, []);
 
-const amongUsStyles = {
-  container: {
-    background: 'linear-gradient(to bottom, #000b1e, #1c2b4f)',
-    minHeight: '100vh',
-    color: '#e0e0e0',
-    fontFamily: "'VT323', monospace",
-    padding: '20px',
-  },
-  buttonContainer: {
-    display: 'flex',
-    justifyContent: 'flex-end',
-    gap: '10px',
-  },
-  header: {
-    color: 'hsl(49, 98%, 60%)',
-    textAlign: 'center', // Center text horizontally
-  },
-  card: {
-    backgroundColor: '#1b2a3e',
-    border: '2px solid #00ffff',
-    borderRadius: '10px',
-    color: '#e0e0e0',
-    transition: 'all 0.3s',
-    margin: '0 auto', // Center the card horizontally
-    cursor: 'pointer',
-  },
-  badge: {
-    backgroundColor: '#ff1616',
-    color: '#e0e0e0',
-  },
-  modal: {
-    backgroundColor: '#0a1a2f',
-    border: '2px solid #00ffff',
-    color: '#e0e0e0',
-    boxShadow: '0 0 15px #0a1a2f',
-    borderRadius: '8px',
-    padding: '20px',
-    maxHeight: '80vh', // Max height to limit modal size
-    overflowY: 'auto', // Allows vertical scrolling for long content
-  },
-
-  // Update the modal dialog to ensure it's centered and responsive
-  modalDialog: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    maxWidth: '600px', // Adjust maximum width for better responsiveness
-    margin: 'auto',
-  },
-  catIcon: {
-    width: '60px', // Adjust this value to resize the icon
-    height: '60px', // Adjust this value to resize the icon
-    margin: '0 auto',
-  },
-};
-
-const modalDialog = {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  width: '90%',
-  maxWidth: '600px',
-  margin: 'auto',
-};
-
-const modalBodyStyle = {
-  maxHeight: 'calc(80vh - 40px)', // Adjust based on padding and header height
-  overflowY: 'auto', // Allows scrolling within the modal body
-  padding: '10px',
-};
-
-
+  const amongUsStyles = {
+    container: {
+      background: 'linear-gradient(to bottom, #000b1e, #1c2b4f)',
+      minHeight: '100vh',
+      color: '#e0e0e0',
+      fontFamily: "'VT323', monospace",
+      padding: '20px',
+    },
+    buttonContainer: {
+      display: 'flex',
+      justifyContent: 'flex-end',
+      gap: '10px',
+    },
+    header: {
+      color: 'hsl(49, 98%, 60%)',
+      textAlign: 'center', // Center text horizontally
+    },
+    card: {
+      backgroundColor: '#1b2a3e',
+      border: '2px solid #00ffff',
+      borderRadius: '10px',
+      color: '#e0e0e0',
+      transition: 'all 0.3s',
+      margin: '0 auto', // Center the card horizontally
+      cursor: 'pointer',
+    },
+    badge: {
+      backgroundColor: '#ff1616',
+      color: '#e0e0e0',
+    },
+    modalOverlay: {
+      position: 'fixed',
+      top: '0',
+      left: '0',
+      right: '0',
+      bottom: '0',
+      backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    modalContent: {
+      backgroundColor: '#0a1a2f',
+      border: '2px solid #00ffff',
+      color: '#e0e0e0',
+      boxShadow: '0 0 15px #0a1a2f',
+      borderRadius: '8px',
+      padding: '20px',
+      maxHeight: '80vh', // Max height to limit modal size
+      overflowY: 'auto', // Allows vertical scrolling for long content
+      width: '80%', // Width adjustment
+      maxWidth: '400px', // Max width of the modal
+    },
+    modalCloseButton: {
+      position: 'absolute',
+      top: '10px',
+      right: '10px',
+      background: 'none',
+      border: 'none',
+      color: '#00ffff',
+      fontSize: '1.5rem',
+      cursor: 'pointer',
+    },
+    modalHeader: {
+      borderBottom: '2px solid #00ffff',
+      paddingBottom: '10px',
+      marginBottom: '10px',
+      color: '#00ffff',
+      fontSize: '1.5rem',
+    },
+    modalTextStyle: {
+      marginBottom: '1rem',
+      color: '#e0e0e0',
+      wordBreak: 'break-word', // Ensures long words or URLs break properly
+    },
+    dateStyle: {
+      color: '#f5a9a9',
+      fontSize: '0.9rem',
+      fontStyle: 'italic',
+    },
+  };
+  
   const buttonStyle = {
     backgroundColor: '#1b2a3e',
     border: '2px solid #00ffff',
@@ -253,34 +262,21 @@ const modalBodyStyle = {
     fontSize: '16px',
     cursor: 'pointer',
     outline: 'none',
-    margin: '5px'
+    margin: '5px',
   };
-
+  
   const hoverStylesShare = {
     backgroundColor: '#00ffff',
     color: '#1b2a3e',
-    borderColor: '#1b2a3e'
+    borderColor: '#1b2a3e',
   };
   
   const hoverStylesEject = {
     backgroundColor: '#ff1616',
     color: '#fff',
-    borderColor: '#ff1616'
+    borderColor: '#ff1616',
   };
-
-  const modalTextStyle = {
-    textAlign: 'justify', // Ensures text is justified
-    marginBottom: '10px',
-    color: '#e0e0e0',
-    wordBreak: 'break-word', // Ensures long words or URLs break properly
-  };
-  
-  const dateStyle = {
-    color: '#f5a9a9',
-    fontSize: '0.9rem',
-    fontStyle: 'italic',
-  };
-  
+    
   const CatFaceIcon = ({ status }) => {
     return (
       <svg width="60" height="60" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -301,55 +297,61 @@ const modalBodyStyle = {
     );
   };
   
+  const handleOverlayClick = (e) => {
+    // Close the modal only when clicking on the overlay itself
+    if (e.target === e.currentTarget) {
+      closeModal();
+    }
+  };
 
   return (
     <div style={amongUsStyles.container}>
-        <ToastContainer />
-            <Container>
-              <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
-                <h2 style={amongUsStyles.header}>Meowmate: {username}</h2>
-                <div style={amongUsStyles.buttonContainer}>
-                  <button
-                    style={{
-                      ...buttonStyle,
-                      borderColor: '#00ffff',
-                      color: '#00ffff',
-                      ...(hoveredButton === 'share' ? hoverStylesShare : {})
-                    }}
-                    onMouseEnter={() => setHoveredButton('share')}
-                    onMouseLeave={() => setHoveredButton('')}
-                    onClick={handleShareClick}
-                  >
-                    Share
-                  </button>
-                  <button
-                    style={{
-                      ...buttonStyle,
-                      borderColor: '#ff1616',
-                      color: '#ff1616',
-                      ...(hoveredButton === 'eject' ? hoverStylesEject : {})
-                    }}
-                    onMouseEnter={() => setHoveredButton('eject')}
-                    onMouseLeave={() => setHoveredButton('')}
-                    onClick={handleLogout}
-                  >
-                    Eject
-                  </button>
-                </div>
+      <ToastContainer />
+          <Container style={amongUsStyles.container}>
+            <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
+              <h2 style={amongUsStyles.header}>Meowmate: {username}</h2>
+              <div style={amongUsStyles.buttonContainer}>
+                <button
+                  style={{
+                    ...buttonStyle,
+                    borderColor: '#00ffff',
+                    color: '#00ffff',
+                    ...(hoveredButton === 'share' ? hoverStylesShare : {}),
+                  }}
+                  onMouseEnter={() => setHoveredButton('share')}
+                  onMouseLeave={() => setHoveredButton('')}
+                  onClick={handleShareClick}
+                >
+                  Share
+                </button>
+                <button
+                  style={{
+                    ...buttonStyle,
+                    borderColor: '#ff1616',
+                    color: '#ff1616',
+                    ...(hoveredButton === 'eject' ? hoverStylesEject : {}),
+                  }}
+                  onMouseEnter={() => setHoveredButton('eject')}
+                  onMouseLeave={() => setHoveredButton('')}
+                  onClick={handleLogout}
+                >
+                  Eject
+                </button>
               </div>
+            </div>
 
-              <h3 style={{...amongUsStyles.header, fontSize: '1.5rem'}}>
-                {unreadCount > 0 && <Badge style={amongUsStyles.badge}></Badge>}
-              </h3>
+            <h3 style={{ ...amongUsStyles.header, fontSize: '1.5rem' }}>
+              {unreadCount > 0 && <Badge style={amongUsStyles.badge}></Badge>}
+            </h3>
 
             <Container style={{
-              border: '2px solid #00ffff', 
-              padding: '1rem', 
-              borderRadius: '8px', 
-              maxHeight: '600px', /* Adjust the height as needed */
-              overflowX: 'hidden', /* Hides horizontal scrollbar */
-              overflowY: 'auto', /* Enables vertical scrolling */
-              boxSizing: 'border-box' /* Ensures padding and border do not affect the width */
+              border: '2px solid #00ffff',
+              padding: '1rem',
+              borderRadius: '8px',
+              maxHeight: '600px',
+              overflowX: 'hidden',
+              overflowY: 'auto', 
+              boxSizing: 'border-box',
             }}>
               {messages.length > 0 ? (
                 <Row>
@@ -373,35 +375,39 @@ const modalBodyStyle = {
               ) : (
                 <p style={{ color: '#f5a9a9', fontSize: '1.2rem' }}>
                   No meowssages yet. The cats are quiet{dots}
-                </p>          
+                </p>
               )}
 
-              <Modal show={isModalOpen} onHide={closeModal} dialogClassName="modal-dialog-centered">
-                  <Modal.Header style={amongUsStyles.modal}>
-                    <Modal.Title style={{ color: '#00ffff' }}>Meowsage</Modal.Title>
-                  </Modal.Header>
-                  <Modal.Body style={amongUsStyles.modal}>
-                  {selectedMessage && (
-                    <>
-                      <p style={modalTextStyle}>{selectedMessage.content}</p>
-                      <p style={dateStyle}>
-                        Meowed on:{' '}
-                        {new Date(selectedMessage.createdAt.seconds * 1000).toLocaleDateString()}
-                      </p>
-                      {selectedMessage.audio && (
-                        <div style={{ textAlign: 'center' }}>
-                          <audio controls style={{ width: '70%', maxWidth: '100%' }}>
-                            <source src={selectedMessage.audio} type="audio/wav" />
-                            Your browser does not support the audio element.
-                          </audio>
-                        </div>
+          {isModalOpen && (
+                <div style={amongUsStyles.modalOverlay} onClick={handleOverlayClick}>
+                  <div style={amongUsStyles.modalContent} onClick={(e) => e.stopPropagation()}>
+                    <div style={amongUsStyles.modalHeader}>
+                      <h5 style={{ color: '#00ffff' }}>Meowsage</h5>
+                    </div>
+                    <div style={amongUsStyles.modalBody}>
+                      {selectedMessage && (
+                        <>
+                          <p style={amongUsStyles.modalTextStyle}>{selectedMessage.content}</p>
+                          <p style={amongUsStyles.dateStyle}>
+                            Meowed on:{' '}
+                            {new Date(selectedMessage.createdAt.seconds * 1000).toLocaleDateString()}
+                          </p>
+                          {selectedMessage.audio && (
+                            <div style={{ textAlign: 'center' }}>
+                              <audio controls style={{ width: '70%', maxWidth: '100%' }}>
+                                <source src={selectedMessage.audio} type="audio/wav" />
+                                Your browser does not support the audio element.
+                              </audio>
+                            </div>
+                          )}
+                        </>
                       )}
-                    </>
-                  )}
-                </Modal.Body>
-              </Modal>
-          </Container>
-        <Switch/>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </Container>
+          <Switch />
       </Container>
     </div>
   );

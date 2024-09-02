@@ -91,11 +91,19 @@ const Button = () => {
             stopSiren();
         } else {
             setFeedback(`Wrong! The correct answer was: ${correctAnswer}`);
+            triggerVibration();
         }
 
         setTimeout(() => {
             handleCloseModal();
         }, 5000);
+    };
+
+    const triggerVibration = () => {
+      // Check if the Vibration API is supported by the browser
+      if (navigator.vibrate) {
+          navigator.vibrate([200]); // Pattern: vibrate for 200ms, pause for 100ms, vibrate for 200ms
+      }
     };
 
     const handleCloseModal = () => {
@@ -283,8 +291,13 @@ const AmongUsModal = ({ question, choices, selectedAnswer, onChoiceClick, feedba
                         </Choice>
                     ))}
                 </ChoicesContainer>
-                {feedback && <Feedback correct={selectedAnswer === feedback}>{feedback}</Feedback>}
-                <Timer>{timer} seconds remaining</Timer>
+                {feedback && (
+                    <Feedback
+                        {...(selectedAnswer === feedback ? { correct: "true" } : {})}
+                    >
+                        {feedback}
+                    </Feedback>
+                )}                <Timer>{timer} seconds remaining</Timer>
             </Content>
         </ModalContent>
     </ModalContainer>
@@ -401,10 +414,9 @@ const Choice = styled.div`
 `;
 
 const Feedback = styled.p`
-  margin-top: 20px;
-  font-size: 1rem;
+  color: ${({ $correct }) => ($correct === "true" ? "green" : "red")};
   font-weight: bold;
-  color: ${({ correct }) => (correct ? 'green' : 'red')};
+  margin-top: 10px;
 
   @media (max-width: 600px) {
     font-size: 0.9rem; /* Slightly smaller font size on mobile */

@@ -83,25 +83,28 @@ const Form = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    // Validate inputs
     if (!email || !password) {
-      toast.error("Please fill in all fields.");
-      return;
+        toast.error("Please fill in all fields.");
+        return;
     }
+    if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
+      toast.error("Please enter a valid email address.");
+      return;
+  }
 
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      toast.success("Successfully logged in!");
-      navigate('/dashboard');
-      // Clear form fields
-      setEmail("");
-      setPassword("");
+        await signInWithEmailAndPassword(auth, email, password);
+        toast.success("Successfully logged in!");
+        navigate('/dashboard');
+        setEmail("");
+        setPassword("");
     } catch (error) {
-      toast.error(`Login error`);
-      setEmail("");
-      setPassword("");
+        console.error('Login error:', error.message); // Log the specific error message
+        toast.error(`Login error: ${error.message}`);
+        setEmail("");
+        setPassword("");
     }
-  };
+};
 
   useEffect(() => {
 
