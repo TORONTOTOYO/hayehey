@@ -90,7 +90,7 @@ const Form = () => {
     if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
       toast.error("Please enter a valid email address.");
       return;
-  }
+    }
 
     try {
         await signInWithEmailAndPassword(auth, email, password);

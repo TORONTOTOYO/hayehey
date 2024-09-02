@@ -148,7 +148,7 @@ const StyledWrapper = styled.div`
   display: flex;
   justify-content: center; /* Centers horizontally */
   align-items: flex-end; /* Aligns items to the bottom */
-  height: 40vh; /* Height for larger screens */
+  height: 60vh; /* Height for larger screens */
   width: 75vw; /* Width for larger screens */
   position: relative; /* Keeps it within normal document flow */
   margin: 0 auto; /* Center horizontally within the parent container */
@@ -232,7 +232,7 @@ const StyledWrapper = styled.div`
   }
 
   @media (max-width: 480px) {
-    height: 15vh; /* Further adjust height for small screens */
+    height: 25vh; /* Further adjust height for small screens */
     width: 80vw; /* Further adjust width for small screens */
     
     .btn-class-name {
