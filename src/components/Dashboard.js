@@ -11,8 +11,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLink, faSignOutAlt, faEdit } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
 
-
-
 const Profile = () => {
   const [user, setUser] = useState(null);
   const [username, setUsername] = useState("");
@@ -26,6 +24,7 @@ const Profile = () => {
   const [newUsername, setNewUsername] = useState(""); // State for username input
   const [isEditingUsername, setIsEditingUsername] = useState(false);
   const inputRef = useRef(null);
+  const [score, setScore] = useState(0);
 
   const auth = getAuth();
   const db = getFirestore();
@@ -87,29 +86,42 @@ const Profile = () => {
     [db]
   );
 
+
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+    const unsubscribeAuth = onAuthStateChanged(auth, async (user) => {
       if (user) {
         setUser(user);
         const userDoc = doc(db, "users", user.uid);
-        const docSnap = await getDoc(userDoc);
-
-        if (docSnap.exists()) {
-          const userData = docSnap.data();
-          setUsername(userData.username || "");
-          setCustomLink(userData.customLink || "");
-
-          if (!userData.customLink) {
-            await generateUniqueLink(user.uid);
+        
+        // Set up real-time listener for the user's document
+        const unsubscribeUserDoc = onSnapshot(userDoc, (docSnap) => {
+          if (docSnap.exists()) {
+            const userData = docSnap.data();
+            setUsername(userData.username || "");
+            setCustomLink(userData.customLink || "");
+            setScore(userData.score || 0); // Use userData here
+  
+            if (!userData.customLink) {
+              generateUniqueLink(user.uid);
+            }
+          } else {
+            console.log("User document does not exist");
           }
+        }, (error) => {
+          console.error("Failed to fetch user data:", error);
+          toast.error("Failed to fetch user data. Please try again later.");
+        });
+        
+        const messagesUnsubscribe = fetchMessages(user.uid);
 
-          const messagesUnsubscribe = fetchMessages(user.uid);
-          return () => messagesUnsubscribe();
-        }
+        return () => {
+          unsubscribeUserDoc(); // Clean up the real-time listener
+          messagesUnsubscribe(); // Clean up the messages listener
+        };
       }
     });
 
-    return () => unsubscribe();
+    return () => unsubscribeAuth(); // Clean up the auth listener
   }, [auth, db, generateUniqueLink, fetchMessages]);
 
   const handleShareClick = () => {
@@ -142,6 +154,11 @@ const Profile = () => {
       setUnreadCount(prevCount => prevCount - 1);
     }
   }, [db]);
+
+  // Utility function to get the correct label for the score
+  const getScoreLabel = (score) => {
+    return score === 1 ? 'Point' : 'Points';
+  };
 
   const closeModal = useCallback(() => {
     setIsModalOpen(false);
@@ -355,7 +372,6 @@ const Profile = () => {
     }
   };
   
-
   useEffect(() => {
     const dotInterval = setInterval(() => {
       setDots((prevDots) => {
@@ -534,6 +550,9 @@ const Profile = () => {
   return (
     <div style={amongUsStyles.container}>
       <ToastContainer />
+      <strong style={{
+        fontSize: '0.5rem', // Default size for larger screens
+      }}>Emergency question {getScoreLabel(score)}: {score}</strong>
           <Container style={amongUsStyles.container}>
             <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
             <h2 style={amongUsStyles.header}>
@@ -605,11 +624,6 @@ const Profile = () => {
                 </button>
               </div>
             </div>
-
-            <h3 style={{ ...amongUsStyles.header, fontSize: '1.5rem' }}>
-              {unreadCount > 0 && <Badge style={amongUsStyles.badge}></Badge>}
-            </h3>
-
             <Container style={{
               border: '2px solid #00ffff',
               padding: '1rem',

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import he from 'he';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth'; // Import getAuth for authentication
+import { db } from './firebase'; // Adjust the path as needed
 
 const Button = () => {
     const [showOverlay, setShowOverlay] = useState(false);
@@ -13,6 +16,11 @@ const Button = () => {
     const [answerLocked, setAnswerLocked] = useState(false);
     const [timer, setTimer] = useState(15);
     const [sirenSound, setSirenSound] = useState(null);
+    const [points, setPoints] = useState(0); 
+
+    const auth = getAuth();
+    const user = auth.currentUser; // Get current authenticated user
+    const userId = user ? user.uid : "";
 
     useEffect(() => {
         // Initialize siren sound once
@@ -54,6 +62,25 @@ const Button = () => {
         }
     }, [showModal]);
 
+    useEffect(() => {
+      // Fetch the initial score when the component mounts
+      const fetchScore = async () => {
+          try {
+              if (userId) {
+                  const userDoc = doc(db, 'users', userId);
+                  const docSnap = await getDoc(userDoc);
+                  if (docSnap.exists()) {
+                      setPoints(docSnap.data().score || 0);
+                  }
+              }
+          } catch (error) {
+              console.error('Error fetching score:', error);
+          }
+      };
+      fetchScore();
+  }, [userId]);
+
+
         const fetchQuestionsFromCategories = async (categories, limit = 5) => {
           try {
               const requests = categories.map(category =>
@@ -87,7 +114,7 @@ const Button = () => {
       };
   
       const handleClick = async () => {
-          const categories = ['Science', 'Statistics', 'Technology', 'English', 'Logic', 'Programming']; 
+          const categories = ['Science','Technology','Engineering', "Mathematics", "Law"]; 
           const questions = await fetchQuestionsFromCategories(categories, 5); 
           if (questions.length > 0) {
               const question = questions[0];
@@ -107,23 +134,39 @@ const Button = () => {
       };
       
 
-        const handleChoiceClick = (choice) => {
-          if (answerLocked) return;
-          setSelectedAnswer(choice);
-          setAnswerLocked(true);
+      const handleChoiceClick = async (choice) => {
+        if (answerLocked) return;
+        setSelectedAnswer(choice);
+        setAnswerLocked(true);
 
-          if (choice === correctAnswer) {
-              setFeedback("Correct! Well done.");
-              stopSiren();
-          } else {
-              setFeedback(`Wrong! The correct answer was: ${correctAnswer}`);
-              triggerVibration();
-          }
+        if (choice === correctAnswer) {
+            setFeedback("Correct! Well done.");
+            setPoints(prevPoints => {
+                const newPoints = prevPoints + 1;
+                updateScore(newPoints);
+                return newPoints;
+            });
+            stopSiren();
+        } else {
+            setFeedback(`Wrong! The correct answer was: ${correctAnswer}`);
+            triggerVibration();
+        }
 
-          setTimeout(() => {
-              handleCloseModal();
-          }, 5000);
-      };
+        setTimeout(() => {
+            handleCloseModal();
+        }, 5000);
+    };
+
+    const updateScore = async (newScore) => {
+        try {
+            if (userId) {
+                const userDoc = doc(db, 'users', userId);
+                await updateDoc(userDoc, { score: newScore });
+            }
+        } catch (error) {
+            console.error('Error updating score:', error);
+        }
+    };
 
 
       const triggerVibration = () => {
