@@ -407,6 +407,7 @@ const Profile = () => {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
+      zIndex: 9999,
     },
     modalContent: {
       backgroundColor: '#0a1a2f',
@@ -659,7 +660,7 @@ const Profile = () => {
                           </p>
                           {selectedMessage.audio && (
                             <div style={{ textAlign: 'center' }}>
-                              <audio controls style={{ width: '70%', maxWidth: '100%' }}>
+                              <audio controls style={{ width: '70%', maxWidth: '100%'}}>
                                 <source src={selectedMessage.audio} type="audio/wav" />
                                 Your browser does not support the audio element.
                               </audio>
@@ -673,9 +674,9 @@ const Profile = () => {
               )}
             </Container>
           <Switch />
-      </Container>
-    </div>
-  );
-};
+        </Container>
+      </div>
+    );
+  };
 
 export default Profile;
