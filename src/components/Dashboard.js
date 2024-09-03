@@ -175,7 +175,7 @@ const Profile = () => {
         const title = document.querySelector('.custom-swal-title');
         if (title) {
           title.style.color = '#00ffff';
-          title.style.fontFamily = "'Press Start 2P', cursive";
+          title.style.fontFamily = "'Press Start 2P'";
           title.style.fontSize = '1rem';
         }
         const confirmButton = document.querySelector('.custom-swal-confirm');
@@ -281,12 +281,12 @@ const Profile = () => {
         const title = document.querySelector('.custom-swal-title');
         if (title) {
           title.style.color = '#00ffff';
-          title.style.fontFamily = "'Press Start 2P', cursive";
+          title.style.fontFamily = "'Press Start 2P'";
         }
         const content = document.querySelector('.custom-swal-content');
         if (content) {
           content.style.color = '#ffffff';
-          content.style.fontFamily = "'Press Start 2P', cursive";
+          content.style.fontFamily = "'Press Start 2P'";
         }
         const confirmButton = document.querySelector('.custom-swal-confirm');
         if (confirmButton) {
