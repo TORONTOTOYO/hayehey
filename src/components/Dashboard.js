@@ -586,7 +586,7 @@ const Profile = () => {
                   onMouseLeave={() => setHoveredButton('')}
                   onClick={handleShareClick}
                 >
-                  Share
+                  Link
                   <FontAwesomeIcon icon={faLink} size="lg" />
                 </button>
                 <button
