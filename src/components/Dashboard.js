@@ -157,7 +157,7 @@ const Profile = () => {
 
   // Utility function to get the correct label for the score
   const getScoreLabel = (score) => {
-    return score === 1 ? 'Point' : 'Points';
+    return score === 1 ? 'point' : 'points';
   };
 
   const closeModal = useCallback(() => {
