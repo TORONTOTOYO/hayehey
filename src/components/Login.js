@@ -44,18 +44,24 @@ const Form = () => {
       }
     });
 
-    // Cleanup the listener on component unmount
     return () => unsubscribe();
   }, [navigate]);
 
   const handleSignUp = async (e) => {
     e.preventDefault();
 
-    // Validate inputs
-    if (!email || !password || !username) {
-      toast.error("Please fill in all fields.");
-      return;
-    }
+      if (!email || !password || !username) {
+        toast.error("Please fill in all fields.");
+        return;
+      }
+      if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
+        toast.error("Please enter a valid email address.");
+        return;
+      }
+      if (password.length < 6) {
+        toast.error("Password must be at least 6 characters long.");
+        return;
+      }
 
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
@@ -139,66 +145,6 @@ useEffect(() => {
       <rect x="160" y="250" width="40" height="40" rx="10" ry="10" fill="#C51111" stroke="#000000" stroke-width="10"/>
       <ellipse cx="150" cy="295" rx="100" ry="20" fill="#000000" opacity="0.3"/>
       <path d="M100 70 Q150 30 200 70 L200 90 Q150 50 100 90 Z" fill="#FFD700" stroke="#000000" stroke-width="5"/>
-    </svg>`,
-    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
-    <path d="M75 200 Q75 250 150 250 Q225 250 225 200 L225 120 Q225 70 150 70 Q75 70 75 120 Z" fill="#132ED1" stroke="#000000" stroke-width="10"/>
-    <path d="M100 120 Q100 80 150 80 Q200 80 200 120 Q200 160 150 160 Q100 160 100 120 Z" fill="#7DD3FC" stroke="#000000" stroke-width="10"/>
-    <path d="M110 100 Q110 90 130 90 Q150 90 150 100 Q150 110 130 110 Q110 110 110 100 Z" fill="#FFFFFF" opacity="0.6"/>
-    <rect x="200" y="150" width="40" height="60" rx="10" ry="10" fill="#7F1D1D" stroke="#000000" stroke-width="10"/>
-    <rect x="100" y="250" width="40" height="40" rx="10" ry="10" fill="#132ED1" stroke="#000000" stroke-width="10"/>
-    <rect x="160" y="250" width="40" height="40" rx="10" ry="10" fill="#132ED1" stroke="#000000" stroke-width="10"/>
-    <ellipse cx="150" cy="295" rx="100" ry="20" fill="#000000" opacity="0.3"/>
-    <path d="M100 70 Q150 30 200 70 L200 90 Q150 50 100 90 Z" fill="#FFD700" stroke="#000000" stroke-width="5"/>
-    </svg>`,
-    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
-        <path d="M75 200 Q75 250 150 250 Q225 250 225 200 L225 120 Q225 70 150 70 Q75 70 75 120 Z" fill="#117F2D" stroke="#000000" stroke-width="10"/>
-        <path d="M100 120 Q100 80 150 80 Q200 80 200 120 Q200 160 150 160 Q100 160 100 120 Z" fill="#7DD3FC" stroke="#000000" stroke-width="10"/>
-        <path d="M110 100 Q110 90 130 90 Q150 90 150 100 Q150 110 130 110 Q110 110 110 100 Z" fill="#FFFFFF" opacity="0.6"/>
-        <rect x="200" y="150" width="40" height="60" rx="10" ry="10" fill="#7F1D1D" stroke="#000000" stroke-width="10"/>
-        <rect x="100" y="250" width="40" height="40" rx="10" ry="10" fill="#117F2D" stroke="#000000" stroke-width="10"/>
-        <rect x="160" y="250" width="40" height="40" rx="10" ry="10" fill="#117F2D" stroke="#000000" stroke-width="10"/>
-        <ellipse cx="150" cy="295" rx="100" ry="20" fill="#000000" opacity="0.3"/>
-        <path d="M100 70 Q150 30 200 70 L200 90 Q150 50 100 90 Z" fill="#FFD700" stroke="#000000" stroke-width="5"/>
-    </svg>`,
-    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
-    <path d="M75 200 Q75 250 150 250 Q225 250 225 200 L225 120 Q225 70 150 70 Q75 70 75 120 Z" fill="#ED54BA" stroke="#000000" stroke-width="10"/>
-    <path d="M100 120 Q100 80 150 80 Q200 80 200 120 Q200 160 150 160 Q100 160 100 120 Z" fill="#7DD3FC" stroke="#000000" stroke-width="10"/>
-    <path d="M110 100 Q110 90 130 90 Q150 90 150 100 Q150 110 130 110 Q110 110 110 100 Z" fill="#FFFFFF" opacity="0.6"/>
-    <rect x="200" y="150" width="40" height="60" rx="10" ry="10" fill="#7F1D1D" stroke="#000000" stroke-width="10"/>
-    <rect x="100" y="250" width="40" height="40" rx="10" ry="10" fill="#ED54BA" stroke="#000000" stroke-width="10"/>
-    <rect x="160" y="250" width="40" height="40" rx="10" ry="10" fill="#ED54BA" stroke="#000000" stroke-width="10"/>
-    <ellipse cx="150" cy="295" rx="100" ry="20" fill="#000000" opacity="0.3"/>
-    <path d="M100 70 Q150 30 200 70 L200 90 Q150 50 100 90 Z" fill="#FFD700" stroke="#000000" stroke-width="5"/>
-    </svg>`,
-    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
-    <path d="M75 200 Q75 250 150 250 Q225 250 225 200 L225 120 Q225 70 150 70 Q75 70 75 120 Z" fill="#D6E0F0" stroke="#000000" stroke-width="10"/>
-    <path d="M100 120 Q100 80 150 80 Q200 80 200 120 Q200 160 150 160 Q100 160 100 120 Z" fill="#7DD3FC" stroke="#000000" stroke-width="10"/>
-    <path d="M110 100 Q110 90 130 90 Q150 90 150 100 Q150 110 130 110 Q110 110 110 100 Z" fill="#FFFFFF" opacity="0.6"/>
-    <rect x="200" y="150" width="40" height="60" rx="10" ry="10" fill="#7F1D1D" stroke="#000000" stroke-width="10"/>
-    <rect x="100" y="250" width="40" height="40" rx="10" ry="10" fill="#D6E0F0" stroke="#000000" stroke-width="10"/>
-    <rect x="160" y="250" width="40" height="40" rx="10" ry="10" fill="#D6E0F0" stroke="#000000" stroke-width="10"/>
-    <ellipse cx="150" cy="295" rx="100" ry="20" fill="#000000" opacity="0.3"/>
-    <path d="M100 70 Q150 30 200 70 L200 90 Q150 50 100 90 Z" fill="#FFD700" stroke="#000000" stroke-width="5"/>
-    </svg>`,
-    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
-    <path d="M75 200 Q75 250 150 250 Q225 250 225 200 L225 120 Q225 70 150 70 Q75 70 75 120 Z" fill="#F07D0D" stroke="#000000" stroke-width="10"/>
-    <path d="M100 120 Q100 80 150 80 Q200 80 200 120 Q200 160 150 160 Q100 160 100 120 Z" fill="#7DD3FC" stroke="#000000" stroke-width="10"/>
-    <path d="M110 100 Q110 90 130 90 Q150 90 150 100 Q150 110 130 110 Q110 110 110 100 Z" fill="#FFFFFF" opacity="0.6"/>
-    <rect x="200" y="150" width="40" height="60" rx="10" ry="10" fill="#7F1D1D" stroke="#000000" stroke-width="10"/>
-    <rect x="100" y="250" width="40" height="40" rx="10" ry="10" fill="#F07D0D" stroke="#000000" stroke-width="10"/>
-    <rect x="160" y="250" width="40" height="40" rx="10" ry="10" fill="#F07D0D" stroke="#000000" stroke-width="10"/>
-    <ellipse cx="150" cy="295" rx="100" ry="20" fill="#000000" opacity="0.3"/>
-    <path d="M100 70 Q150 30 200 70 L200 90 Q150 50 100 90 Z" fill="#FFD700" stroke="#000000" stroke-width="5"/>
-    </svg>`,
-    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
-    <path d="M75 200 Q75 250 150 250 Q225 250 225 200 L225 120 Q225 70 150 70 Q75 70 75 120 Z" fill="#3F474E" stroke="#000000" stroke-width="10"/>
-    <path d="M100 120 Q100 80 150 80 Q200 80 200 120 Q200 160 150 160 Q100 160 100 120 Z" fill="#7DD3FC" stroke="#000000" stroke-width="10"/>
-    <path d="M110 100 Q110 90 130 90 Q150 90 150 100 Q150 110 130 110 Q110 110 110 100 Z" fill="#FFFFFF" opacity="0.6"/>
-    <rect x="200" y="150" width="40" height="60" rx="10" ry="10" fill="#7F1D1D" stroke="#000000" stroke-width="10"/>
-    <rect x="100" y="250" width="40" height="40" rx="10" ry="10" fill="#3F474E" stroke="#000000" stroke-width="10"/>
-    <rect x="160" y="250" width="40" height="40" rx="10" ry="10" fill="#3F474E" stroke="#000000" stroke-width="10"/>
-    <ellipse cx="150" cy="295" rx="100" ry="20" fill="#000000" opacity="0.3"/>
-    <path d="M100 70 Q150 30 200 70 L200 90 Q150 50 100 90 Z" fill="#FFD700" stroke="#000000" stroke-width="5"/>
     </svg>`,
   ];
 

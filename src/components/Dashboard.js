@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc, collection, query, where, updateDoc, onSnapshot } from "firebase/firestore";
@@ -10,7 +10,7 @@ import Switch from "./Switch";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLink, faSignOutAlt, faEdit } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
-import 'sweetalert2/dist/sweetalert2.min.css'; // Import SweetAlert2 styles
+
 
 
 const Profile = () => {
@@ -25,6 +25,7 @@ const Profile = () => {
   const [hoveredButton, setHoveredButton] = useState('');
   const [newUsername, setNewUsername] = useState(""); // State for username input
   const [isEditingUsername, setIsEditingUsername] = useState(false);
+  const inputRef = useRef(null);
 
   const auth = getAuth();
   const db = getFirestore();
@@ -148,29 +149,111 @@ const Profile = () => {
   }, []);
 
   const handleLogout = async () => {
-    const confirmLogout = window.confirm("Are you sure you want to log out?");
-    if (confirmLogout) {
+    const customSwal = Swal.mixin({
+      customClass: {
+        container: 'custom-swal-container',
+        popup: 'custom-swal-popup',
+        title: 'custom-swal-title',
+        content: 'custom-swal-content',
+        confirmButton: 'custom-swal-confirm',
+        cancelButton: 'custom-swal-cancel',
+      },
+      didOpen: () => {
+        const container = document.querySelector('.custom-swal-container');
+        if (container) {
+          container.style.background = 'linear-gradient(to bottom, #000b1e, #1c2b4f)';
+        }
+        const popup = document.querySelector('.custom-swal-popup');
+        if (popup) {
+          popup.style.backgroundColor = '#2a2a2a';
+          popup.style.border = '2px solid #00ffff';
+          popup.style.borderRadius = '12px';
+          popup.style.padding = '10px';
+          popup.style.maxWidth = '350px';
+          popup.style.width = '90%'; // Ensure it fits on smaller screens
+        }
+        const title = document.querySelector('.custom-swal-title');
+        if (title) {
+          title.style.color = '#00ffff';
+          title.style.fontFamily = "'Press Start 2P', cursive";
+          title.style.fontSize = '1rem';
+        }
+        const confirmButton = document.querySelector('.custom-swal-confirm');
+        if (confirmButton) {
+          confirmButton.style.backgroundColor = '#00ffff';
+          confirmButton.style.color = '#000000';
+          confirmButton.style.border = 'none';
+          confirmButton.style.borderRadius = '8px';
+          confirmButton.style.padding = '5px 10px';
+        }
+        const cancelButton = document.querySelector('.custom-swal-cancel');
+        if (cancelButton) {
+          cancelButton.style.backgroundColor = '#ff1616';
+          cancelButton.style.color = '#000000';
+          cancelButton.style.border = 'none';
+          cancelButton.style.borderRadius = '8px';
+          cancelButton.style.padding = '5px 10px';
+        }
+  
+        // Responsive adjustments for smaller screens
+        if (window.innerWidth <= 480) {
+          popup.style.maxWidth = '300px'; // Smaller max-width
+          title.style.fontSize = '0.875rem'; // Smaller title font size
+          confirmButton.style.padding = '4px 8px'; // Smaller button padding
+          cancelButton.style.padding = '4px 8px'; // Smaller button padding
+        }
+      },
+    });
+  
+    const result = await customSwal.fire({
+      title: 'Are you sure you want to log out?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, log out!',
+      cancelButtonText: 'Cancel',
+    });
+  
+    if (result.isConfirmed) {
       try {
         await signOut(auth);
-        navigate("/"); 
+        navigate('/');
       } catch (error) {
-        console.error("Error signing out: ", error);
-        toast.error("Failed to log out. Please try again.");
+        console.error('Error signing out: ', error);
+        toast.error('Failed to log out. Please try again.');
       }
     } else {
-      console.log("Logout canceled");
+      console.log('Logout canceled');
     }
   };
+  
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (inputRef.current && !inputRef.current.contains(event.target)) {
+        setIsEditingUsername(false);
+        setNewUsername(username); // Revert to original username on outside click
+      }
+    };
+
+    if (isEditingUsername) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isEditingUsername, username]);
+
+  // Handle username change with confirmation
   const handleUsernameChange = async () => {
-    if (newUsername.trim() === "" || !user) {
+    if (newUsername.trim() === '' || !user) {
       return; // Exit early if the new username is empty or user is not logged in
     }
-  
-    // Save the original username
+
     const originalUsername = username;
-  
-    // Show a confirmation dialog
+
     const customSwal = Swal.mixin({
       customClass: {
         container: 'custom-swal-container',
@@ -191,6 +274,9 @@ const Profile = () => {
           popup.style.backgroundColor = '#2a2a2a';
           popup.style.border = '2px solid #00ffff';
           popup.style.borderRadius = '12px';
+          popup.style.padding = '10px';
+          popup.style.maxWidth = '350px';
+          popup.style.width = '90%'; // Ensures popup fits well on smaller screens
         }
         const title = document.querySelector('.custom-swal-title');
         if (title) {
@@ -216,33 +302,32 @@ const Profile = () => {
           cancelButton.style.border = 'none';
           cancelButton.style.borderRadius = '8px';
         }
-      }
+      },
     });
-    
+
     const result = await customSwal.fire({
-      title: 'Are you sure?',
-      text: 'Do you want to change your username?',
+      title: 'Do you want to change your username?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Yes, update it!',
-      cancelButtonText: 'Cancel'
+      cancelButtonText: 'Cancel',
     });
-  
+
     if (result.isConfirmed) {
       try {
-        const userDoc = doc(db, "users", user.uid);
+        const userDoc = doc(db, 'users', user.uid);
         await updateDoc(userDoc, { username: newUsername });
         setUsername(newUsername);
         setIsEditingUsername(false);
-        setNewUsername(""); // Clear input after saving
-        toast.success("Username successfully updated!", { position: "top-right" });
+        setNewUsername(''); // Clear input after saving
+        toast.success('Username successfully updated!', { position: 'top-right' });
       } catch (error) {
-        console.error("Failed to update username:", error);
-        toast.error("Failed to update username. Please try again.");
+        console.error('Failed to update username:', error);
+        toast.error('Failed to update username. Please try again.');
       }
     } else {
       // Revert to the original username if cancelled
-      setNewUsername(""); // Clear the input
+      setNewUsername(''); // Clear the input
       setUsername(originalUsername);
       setIsEditingUsername(false);
     }
@@ -451,8 +536,10 @@ const Profile = () => {
           <Container style={amongUsStyles.container}>
             <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
             <h2 style={amongUsStyles.header}>
-      Meowmate: {isEditingUsername ? (
+      Meowmate:{' '}
+      {isEditingUsername ? (
         <input
+          ref={inputRef}
           type="text"
           value={newUsername}
           onChange={(e) => setNewUsername(e.target.value)}
@@ -481,11 +568,11 @@ const Profile = () => {
               cursor: 'pointer',
               verticalAlign: 'middle', // Align icon vertically with text
             }}
-            onClick={() => setIsEditingUsername(true)}
+            onClick={handleUsernameClick}
           />
         </>
       )}
-    </h2>           
+    </h2>
           <div style={amongUsStyles.buttonContainer}>
                 <button
                   style={{
