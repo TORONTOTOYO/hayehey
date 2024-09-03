@@ -660,10 +660,17 @@ const Profile = () => {
                           </p>
                           {selectedMessage.audio && (
                             <div style={{ textAlign: 'center' }}>
-                              <audio controls style={{ width: '70%', maxWidth: '100%'}}>
-                                <source src={selectedMessage.audio} type="audio/wav" />
-                                Your browser does not support the audio element.
-                              </audio>
+                          <audio controls style={{
+                            width: '70%',
+                            maxWidth: '100%',
+                            backgroundColor: '#f3f3f3',
+                            borderRadius: '10px',
+                            boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
+                            padding: '5px',
+                          }}>
+                            <source src={selectedMessage.audio} type="audio/wav" />
+                            Your browser does not support the audio element.
+                          </audio>
                             </div>
                           )}
                         </>
