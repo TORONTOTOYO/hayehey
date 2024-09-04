@@ -6,9 +6,10 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card, Badge, Container, Row, Col } from 'react-bootstrap';
+import themes from './them';
 import Switch from "./Switch";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLink, faSignOutAlt, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faLink, faSignOutAlt, faEdit, faPalette } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
   
 const Profile = () => {
@@ -25,6 +26,8 @@ const Profile = () => {
   const [isEditingUsername, setIsEditingUsername] = useState(false);
   const inputRef = useRef(null);
   const [score, setScore] = useState(0);
+  const savedTheme = localStorage.getItem('theme') || 'default';
+  const [currentTheme, setCurrentTheme] = useState(savedTheme);
 
   const auth = getAuth();
   const db = getFirestore();
@@ -496,7 +499,7 @@ const Profile = () => {
     );
   };
 
-  const amongUsStyles = {
+  const defaultStyles = {
     container: {
       background: 'linear-gradient(to bottom, #000b1e, #1c2b4f)',
       minHeight: '100vh',
@@ -572,6 +575,9 @@ const Profile = () => {
       color: '#e0e0e0',
       wordBreak: 'break-word', // Ensures long words or URLs break properly
     },
+    modalFont: {
+      color: '#00ffff' 
+    },
     dateStyle: {
       color: '#f5a9a9',
       fontSize: '0.9rem',
@@ -624,9 +630,7 @@ const Profile = () => {
       display: 'flex',
       alignItems: 'center',
     },
-  };
-  
-  const buttonStyle = {
+      buttonStyle: {
     backgroundColor: '#1b2a3e',
     border: '2px solid #00ffff',
     color: '#00ffff',
@@ -638,169 +642,209 @@ const Profile = () => {
     cursor: 'pointer',
     outline: 'none',
     margin: '5px',
-  };
-  
-  const hoverStylesShare = {
+  },
+  MagicIcon: {
+    fontSize: '1rem', /* Adjust size as needed */
+    color: '#ffcc00', /* Gold color for a magical look */
+    textShadow: '0 0 5px rgba(255, 204, 0, 0.8), 0 0 10px rgba(255, 204, 0, 0.6)',
+    cursor: 'pointer'
+  },
+  StylesShare: {
+    borderColor: '#00ffff',
+    color: '#00ffff',
+  },
+  StylesEject: {
+    borderColor: '#ff1616',
+    color: '#ff1616',
+  },
+
+  hoverStylesShare: {
     backgroundColor: '#00ffff',
     color: '#fff',
     borderColor: '#1b2a3e',
-  };
-  
-  const hoverStylesEject = {
+  },
+  hoverStylesEject: {
     backgroundColor: '#ff1616',
     color: '#fff',
     borderColor: '#ff1616',
+  },
+  };
+  
+  const themeStyles = {
+    ...defaultStyles,
+    ...themes[currentTheme], // Apply current theme styles
+  };
+
+  useEffect(() => {
+    // Save the selected theme to local storage
+    localStorage.setItem('theme', currentTheme);
+  }, [currentTheme]);
+
+  const handleMagicIconClick = () => {
+    // Randomly select a new theme
+    const themeKeys = Object.keys(themes);
+    const randomTheme = themeKeys[Math.floor(Math.random() * themeKeys.length)];
+    setCurrentTheme(randomTheme);
   };
 
   return (
-    <div style={amongUsStyles.container}>
+    <div style={themeStyles.container}>
       <ToastContainer />
-      <strong style={{
-        fontSize: '0.5rem', 
-          }}>Emergency question {getScoreLabel(score)}: {score}</strong>
-          <Container style={amongUsStyles.container}>
-            <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
-            <h2 style={amongUsStyles.header}>
-              Meowsername:{' '}
-              {isEditingUsername ? (
-                <input
-                  ref={inputRef}
-                  type="text"
-                  value={newUsername}
-                  onChange={(e) => setNewUsername(e.target.value)}
-                  onBlur={handleUsernameBlur}
-                  onKeyPress={handleUsernameKeyPress}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <strong style={{ fontSize: '0.5rem' }}>
+          Emergency question {getScoreLabel(score)}: {score}
+        </strong>
+        <FontAwesomeIcon
+          icon={faPalette}
+          style={{ ...themeStyles.MagicIcon }}
+          onClick={handleMagicIconClick}
+        />
+      </div>
+      <Container style={themeStyles.container}>
+        <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
+          <h2 style={themeStyles.header}>
+            Meowsername:{' '}
+            {isEditingUsername ? (
+              <input
+                ref={inputRef}
+                type="text"
+                value={newUsername}
+                onChange={(e) => setNewUsername(e.target.value)}
+                onBlur={handleUsernameBlur}
+                onKeyPress={handleUsernameKeyPress}
+                style={{
+                  fontSize: '1.5rem',
+                  color: '#ffffff',
+                  background: 'transparent',
+                  border: 'none',
+                  outline: 'none',
+                  width: '100%',
+                  maxWidth: '200px',
+                  boxSizing: 'border-box',
+                  padding: '0.2rem',
+                }}
+              />
+            ) : (
+              <>
+                {username}
+                <FontAwesomeIcon
+                  icon={faEdit}
                   style={{
-                    fontSize: '1.5rem',
-                    color: '#ffffff',
-                    background: 'transparent',
-                    border: 'none',
-                    outline: 'none',
-                    width: '100%', // Responsive width
-                    maxWidth: '200px', // Max width to prevent overflow
-                    boxSizing: 'border-box', // Include padding and border in width
-                    padding: '0.2rem', // Adjust padding for better appearance
+                    fontSize: '0.75rem',
+                    marginLeft: '10px',
+                    cursor: 'pointer',
+                    verticalAlign: 'middle',
                   }}
+                  onClick={handleUsernameClick}
                 />
-              ) : (
-                <>
-                  {username}
-                  <FontAwesomeIcon
-                    icon={faEdit}
-                    style={{
-                      fontSize: '0.75rem',
-                      marginLeft: '10px',
-                      cursor: 'pointer',
-                      verticalAlign: 'middle', // Align icon vertically with text
-                    }}
-                    onClick={handleUsernameClick}
-                  />
-                </>
-              )}
-            </h2>
-            <div style={amongUsStyles.buttonContainer}>
-                <button
-                  style={{
-                    ...buttonStyle,
-                    borderColor: '#00ffff',
-                    color: '#00ffff',
-                    ...(hoveredButton === 'share' ? hoverStylesShare : {}),
-                  }}
-                  onMouseEnter={() => setHoveredButton('share')}
-                  onMouseLeave={() => setHoveredButton('')}
-                  onClick={handleShareClick}
-                >
-                  Link
-                  <FontAwesomeIcon icon={faLink} size="lg" />
-                </button>
-                <button
-                  style={{
-                    ...buttonStyle,
-                    borderColor: '#ff1616',
-                    color: '#ff1616',
-                    ...(hoveredButton === 'eject' ? hoverStylesEject : {}),
-                  }}
-                  onMouseEnter={() => setHoveredButton('eject')}
-                  onMouseLeave={() => setHoveredButton('')}
-                  onClick={handleLogout}
-                >
-                  Eject
-                  <FontAwesomeIcon icon={faSignOutAlt} size="lg" />
-                </button>
-              </div>
-            </div>
-            <Container style={{
-              padding: '1rem',
-              borderRadius: '8px',
-              maxHeight: '600px',
-              overflowX: 'hidden',
-              overflowY: 'auto', 
-              boxSizing: 'border-box',
-            }}>
-              {messages.length > 0 ? (
-                <Row>
-                  {messages.map((message) => (
-                    <Col xs={6} sm={4} md={4} lg={2} key={message.id}>
-                      <Card style={amongUsStyles.card} className="mb-3" onClick={() => handleMessageClick(message)}>
-                        <Card.Body className="text-center">
-                          <CatFaceIcon status={message.isRead ? "read" : "unread"} />
-                          <Card.Title>{message.sender}</Card.Title>
-                          <Card.Text>{message.text}</Card.Text>
-                          {message.isRead ? (
-                            <Badge style={amongUsStyles.badge}>meowsage</Badge>
-                          ) : (
-                            <Badge style={amongUsStyles.badge}>mystery meowssage</Badge>
-                          )}
-                        </Card.Body>
-                      </Card>
-                    </Col>
-                  ))}
-                </Row>
-              ) : (
-                <p style={{ color: '#f5a9a9', fontSize: '1.2rem' }}>
-                  No meowssages yet. The cats are quiet{dots}
-                </p>
-              )}
+              </>
+            )}
+          </h2>
+          <div style={themeStyles.buttonContainer}>
+            <button
+              style={{
+                ...themeStyles.buttonStyle,
+                ...themeStyles.StylesShare,
+                ...(hoveredButton === 'share' ? themeStyles.hoverStylesShare : {}),
+              }}
+              onMouseEnter={() => setHoveredButton('share')}
+              onMouseLeave={() => setHoveredButton('')}
+              onClick={handleShareClick}
+            >
+              Link
+              <FontAwesomeIcon icon={faLink} size="lg" />
+            </button>
+            <button
+              style={{
+                ...themeStyles.buttonStyle,
+                ...themeStyles.StylesEject,
+                ...(hoveredButton === 'eject' ? themeStyles.hoverStylesEject : {}),
+              }}
+              onMouseEnter={() => setHoveredButton('eject')}
+              onMouseLeave={() => setHoveredButton('')}
+              onClick={handleLogout}
+            >
+              Eject
+              <FontAwesomeIcon icon={faSignOutAlt} size="lg" />
+            </button>
+          </div>
+        </div>
+        <Container style={{
+          padding: '1rem',
+          borderRadius: '8px',
+          maxHeight: '600px',
+          overflowX: 'hidden',
+          overflowY: 'auto',
+          boxSizing: 'border-box',
+        }}>
+          {messages.length > 0 ? (
+            <Row>
+              {messages.map((message) => (
+                <Col xs={6} sm={4} md={4} lg={2} key={message.id}>
+                  <Card
+                    style={themeStyles.card}
+                    className="mb-3"
+                    onClick={() => handleMessageClick(message)}
+                  >
+                    <Card.Body className="text-center">
+                      <CatFaceIcon status={message.isRead ? 'read' : 'unread'} />
+                      <Card.Title>{message.sender}</Card.Title>
+                      <Card.Text>{message.text}</Card.Text>
+                      {message.isRead ? (
+                        <Badge style={themeStyles.badge}>meowsage</Badge>
+                      ) : (
+                        <Badge style={themeStyles.badge}>mystery meowssage</Badge>
+                      )}
+                    </Card.Body>
+                  </Card>
+                </Col>
+              ))}
+            </Row>
+          ) : (
+            <p style={{ color: '#f5a9a9', fontSize: '1.2rem' }}>
+              No meowssages yet. The cats are quiet{dots}
+            </p>
+          )}
 
           {isModalOpen && (
-                <div style={amongUsStyles.modalOverlay} onClick={handleOverlayClick}>
-                  <div style={amongUsStyles.modalContent} onClick={(e) => e.stopPropagation()}>
-                    <div style={amongUsStyles.modalHeader}>
-                      <h5 style={{ color: '#00ffff' }}>Meowsage</h5>
-                    </div>
-                    <div style={amongUsStyles.modalBody}>
-                      {selectedMessage && (
-                        <>
-                            <p style={amongUsStyles.modalTextStyle}>{selectedMessage.content}</p>
-                            <p style={amongUsStyles.dateStyle}>
-                              Meowed on:{' '}
-                              {new Date(selectedMessage.createdAt.seconds * 1000).toLocaleDateString()}
-                            </p>
-                              {selectedMessage.audio && (
-                                <div style={{ textAlign: 'center' }}>
-                                  <audio controls style={{
-                                    width: '70%',
-                                    maxWidth: '100%',
-                                    backgroundColor: '#f3f3f3',
-                                    borderRadius: '10px',
-                                    boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
-                                    padding: '5px',
-                                  }}>
-                                <source src={selectedMessage.audio} type="audio/wav" />
-                                Your browser does not support the audio element.
-                              </audio>
-                            </div>
-                          )}
-                        </>
-                      )}
-                    </div>
-                  </div>
+            <div style={themeStyles.modalOverlay} onClick={handleOverlayClick}>
+              <div style={themeStyles.modalContent} onClick={(e) => e.stopPropagation()}>
+                <div style={themeStyles.modalHeader}>
+                  <h5>Meowsage</h5>
                 </div>
-              )}
-            </Container>
-          <Switch />
+                <div style={themeStyles.modalBody}>
+                  {selectedMessage && (
+                    <>
+                      <p style={themeStyles.modalTextStyle}>{selectedMessage.content}</p>
+                      <p style={themeStyles.dateStyle}>
+                        Meowed on:{' '}
+                        {new Date(selectedMessage.createdAt.seconds * 1000).toLocaleDateString()}
+                      </p>
+                      {selectedMessage.audio && (
+                        <div style={{ textAlign: 'center' }}>
+                          <audio controls style={{
+                            width: '70%',
+                            maxWidth: '100%',
+                            backgroundColor: '#f3f3f3',
+                            borderRadius: '10px',
+                            boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
+                            padding: '5px',
+                          }}>
+                            <source src={selectedMessage.audio} type="audio/wav" />
+                            Your browser does not support the audio element.
+                          </audio>
+                        </div>
+                      )}
+                    </>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
         </Container>
-      </div>
+        <Switch />
+      </Container>
+    </div>
     );
   };
 
