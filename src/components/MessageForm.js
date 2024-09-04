@@ -232,7 +232,7 @@ const StyledWrapper = styled.div`
 
   h2 {
     margin-bottom: 20px;
-    font-size: 2em;
+    font-size: clamp(1rem, 2vw, 2rem);    
     font-family: 'VT323', monospace; /* Retro font similar to Among Us */
     color: hsl(49deg 98% 60%); 
     font-weight: 500;
@@ -373,7 +373,7 @@ textarea {
     border: solid 2px black;
     letter-spacing: 1px;
     font-weight: 600;
-    font-size: 17px;
+    font-size: clamp(12px, 2vw, 17px);    
     background-color: hsl(49deg 98% 60%);
     border-radius: 50px;
     position: relative;
