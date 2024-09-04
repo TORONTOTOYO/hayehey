@@ -591,7 +591,7 @@ const Profile = () => {
           <Container style={amongUsStyles.container}>
             <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
             <h2 style={amongUsStyles.header}>
-              Meowmate:{' '}
+              Meowsername:{' '}
               {isEditingUsername ? (
                 <input
                   ref={inputRef}
