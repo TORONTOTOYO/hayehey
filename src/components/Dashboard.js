@@ -293,13 +293,13 @@ const Profile = () => {
   };
 
   const handleUsernameClick = () => {
-    if (score >= 2) {
+    if (score >= 5) {
       setIsEditingUsername(true);
       if (inputRef.current) {
         inputRef.current.focus();
       }
     } else {
-      toast.error("You need at least 2 points to change your username.");
+      toast.error("You need at least 5 points to change your username.");
     }
   };
 
@@ -307,24 +307,94 @@ const Profile = () => {
     if (newUsername.trim() && newUsername !== username) {
       try {
         const userDoc = doc(db, "users", user.uid);
-        await updateDoc(userDoc, { username: newUsername });
-
-        // Deduct 2 points
-        const newScore = score - 2;
-        await updateDoc(userDoc, { score: newScore });
-
-        setScore(newScore);
-        setUsername(newUsername);
-        setNewUsername("");
-        setIsEditingUsername(false);
+        
+        // Confirm the username change again
+        const customSwal = Swal.mixin({
+          customClass: {
+            container: 'custom-swal-container',
+            popup: 'custom-swal-popup',
+            title: 'custom-swal-title',
+            content: 'custom-swal-content',
+            confirmButton: 'custom-swal-confirm',
+            cancelButton: 'custom-swal-cancel',
+          },
+          didOpen: () => {
+            const container = document.querySelector('.custom-swal-container');
+            if (container) {
+              container.style.background = 'linear-gradient(to bottom, #000b1e, #1c2b4f)';
+            }
+            const popup = document.querySelector('.custom-swal-popup');
+            if (popup) {
+              popup.style.backgroundColor = '#2a2a2a';
+              popup.style.border = '2px solid #00ffff';
+              popup.style.borderRadius = '12px';
+              popup.style.padding = '10px';
+              popup.style.maxWidth = '350px';
+              popup.style.width = '90%';
+            }
+            const title = document.querySelector('.custom-swal-title');
+            if (title) {
+              title.style.color = '#00ffff';
+              title.style.fontFamily = "'Press Start 2P'";
+            }
+            const content = document.querySelector('.custom-swal-content');
+            if (content) {
+              content.style.color = '#ffffff';
+              content.style.fontFamily = "'Press Start 2P'";
+            }
+            const confirmButton = document.querySelector('.custom-swal-confirm');
+            if (confirmButton) {
+              confirmButton.style.backgroundColor = '#00ffff';
+              confirmButton.style.color = '#000000';
+              confirmButton.style.border = 'none';
+              confirmButton.style.borderRadius = '8px';
+            }
+            const cancelButton = document.querySelector('.custom-swal-cancel');
+            if (cancelButton) {
+              cancelButton.style.backgroundColor = '#ff1616';
+              cancelButton.style.color = '#000000';
+              cancelButton.style.border = 'none';
+              cancelButton.style.borderRadius = '8px';
+            }
+          },
+        });
+  
+        const result = await customSwal.fire({
+          title: `Change your username to "${newUsername}"?`,
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonText: 'Yes, change it!',
+          cancelButtonText: 'Cancel',
+        });
+  
+        if (result.isConfirmed) {
+          // Update the username
+          await updateDoc(userDoc, { username: newUsername });
+  
+          // Deduct 2 points
+          const newScore = score - 5;
+          await updateDoc(userDoc, { score: newScore });
+  
+          setScore(newScore);
+          setUsername(newUsername);
+          setNewUsername("");
+          setIsEditingUsername(false);
+  
+          toast.success('Username successfully updated', { position: 'top-right' });
+        } else {
+          // User canceled the operation
+          setNewUsername("");
+          setIsEditingUsername(false);
+        }
       } catch (error) {
-        console.error("Error updating username: ", error);
         toast.error("Failed to update username. Please try again.");
+        setIsEditingUsername(false);
       }
     } else {
       setIsEditingUsername(false);
     }
   };
+  
 
   const handleUsernameKeyPress = (event) => {
     if (event.key === "Enter") {
