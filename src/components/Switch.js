@@ -366,7 +366,8 @@ const AmongUsModal = ({ question, choices, selectedAnswer, onChoiceClick, feedba
                     >
                         {feedback}
                     </Feedback>
-                )}                <Timer>{timer} seconds remaining</Timer>
+                )}                
+                <Timer>{timer} seconds remaining</Timer>
             </Content>
         </ModalContent>
     </ModalContainer>

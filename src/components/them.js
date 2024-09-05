@@ -94,7 +94,7 @@ export const themes = {
           },
           amongUsSwalTitle: {
             color: '#00ffff',
-            fontFamily: "'Press Start 2P', cursive",
+            fontFamily: "'Press Start 2P'",
           },
           amongUsSwalContent: {
             color: '#ffffff',
@@ -180,7 +180,7 @@ export const themes = {
       header: {
         color: '#FFD700', // Gold color
         textAlign: 'center',
-        fontFamily: "'Pirata One', cursive",
+        fontFamily: "'Pirata One'",
       },
       card: {
         backgroundColor: '#FF6347', // Tomato red
@@ -438,7 +438,7 @@ export const themes = {
       },
       amongUsSwalContent: {
         color: '#333333',
-        fontFamily: "'Comic Sans MS', cursive",
+        fontFamily: "'Comic Sans MS'",
       },
       amongUsSwalConfirm: {
         backgroundColor: '#FF6F61', // Coral
@@ -610,7 +610,7 @@ export const themes = {
       },
       amongUsSwalTitle: {
         color: '#ff6f61',
-        fontFamily: "'Press Start 2P', cursive",
+        fontFamily: "'Press Start 2P'",
       },
       amongUsSwalContent: {
         color: '#333',
@@ -885,7 +885,7 @@ export const themes = {
       header: {
         color: '#7c5c40', // Rich brown
         textAlign: 'center',
-        fontFamily: "'Great Vibes', cursive",
+        fontFamily: "'Great Vibes'",
         letterSpacing: '1px',
       },
       card: {
@@ -894,8 +894,7 @@ export const themes = {
         borderRadius: '10px',
         color: '#5b4636', // Warm brown text
         transition: 'all 0.3s',
-        margin: '20px auto',
-        padding: '15px',
+        margin: '0 auto',
         boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
         cursor: 'pointer',
       },
@@ -1026,7 +1025,7 @@ export const themes = {
       buttonContainer: {
         display: 'flex',
         justifyContent: 'center',
-        gap: '15px',
+        gap: '10px',
       },
       header: {
         color: '#128061', // Medium Teal
@@ -1040,8 +1039,7 @@ export const themes = {
         borderRadius: '8px',
         color: '#266352', // Dark Teal text
         transition: 'all 0.3s',
-        margin: '20px auto',
-        padding: '15px',
+        margin: '0 auto',
         boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
         cursor: 'pointer',
       },
@@ -1150,7 +1148,7 @@ export const themes = {
         borderColor: '#FFFFFF', // White
       },
       MagicIcon: {
-        fontSize: '1.2rem',
+        fontSize: '1rem',
         color: '#53C0A2', // Light Teal
         textShadow: '0 0 5px rgba(83, 192, 162, 0.7)',
         cursor: 'pointer',
@@ -1172,7 +1170,7 @@ export const themes = {
       buttonContainer: {
         display: 'flex',
         justifyContent: 'center',
-        gap: '15px',
+        gap: '10px',
       },
       header: {
         color: '#006989', // Deep Teal
@@ -1186,8 +1184,7 @@ export const themes = {
         borderRadius: '8px',
         color: '#005C78', // Dark Teal text
         transition: 'all 0.3s',
-        margin: '20px auto',
-        padding: '15px',
+        margin: '0 auto',
         boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
         cursor: 'pointer',
       },
@@ -1296,7 +1293,7 @@ export const themes = {
         borderColor: '#FFFFFF', // White
       },
       MagicIcon: {
-        fontSize: '1.2rem',
+        fontSize: '1rem',
         color: '#006989', // Deep Teal
         textShadow: '0 0 5px rgba(0, 105, 137, 0.7)',
         cursor: 'pointer',
@@ -1332,8 +1329,7 @@ export const themes = {
         borderRadius: '8px',
         color: '#F2613F', // Vibrant Coral text
         transition: 'all 0.3s',
-        margin: '20px auto',
-        padding: '15px',
+        margin: '0 auto',
         boxShadow: '0 4px 10px rgba(0, 0, 0, 0.5)',
         cursor: 'pointer',
       },
@@ -1442,7 +1438,7 @@ export const themes = {
         borderColor: '#FFFFFF', // White
       },
       MagicIcon: {
-        fontSize: '1.2rem',
+        fontSize: '1rem',
         color: '#F2613F', // Vibrant Coral
         textShadow: '0 0 5px rgba(242, 97, 63, 0.7)',
         cursor: 'pointer',
@@ -1469,7 +1465,7 @@ export const themes = {
       header: {
         color: '#F7418F', // Deep Pink
         textAlign: 'center',
-        fontFamily: "'Comic Sans MS', cursive",
+        fontFamily: "'Comic Sans MS'",
         letterSpacing: '2px',
       },
       card: {
@@ -1478,8 +1474,7 @@ export const themes = {
         borderRadius: '10px',
         color: '#F7418F', // Deep Pink text
         transition: 'all 0.3s',
-        margin: '20px auto',
-        padding: '15px',
+        margin: '0 auto',
         boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
         cursor: 'pointer',
       },
@@ -1588,7 +1583,7 @@ export const themes = {
         borderColor: '#FFF3C7', // Light Cream
       },
       MagicIcon: {
-        fontSize: '1.2rem',
+        fontSize: '1rem',
         color: '#F7418F', // Deep Pink
         textShadow: '0 0 5px rgba(247, 65, 143, 0.7)',
         cursor: 'pointer',
@@ -1610,7 +1605,7 @@ export const themes = {
       buttonContainer: {
         display: 'flex',
         justifyContent: 'center',
-        gap: '12px',
+        gap: '10px',
       },
       header: {
         color: '#3F2305', // Deep Brown
@@ -1625,8 +1620,7 @@ export const themes = {
         borderRadius: '12px',
         color: '#3F2305', // Deep Brown text
         transition: 'all 0.3s',
-        margin: '20px auto',
-        padding: '15px',
+        margin: '0 auto',
         boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)',
         cursor: 'pointer',
       },
@@ -1735,7 +1729,7 @@ export const themes = {
         borderColor: '#F5F5F5', // Light Gray
       },
       MagicIcon: {
-        fontSize: '1.2rem',
+        fontSize: '1rem',
         color: '#DFD7BF', // Soft Taupe
         textShadow: '0 0 5px rgba(223, 215, 191, 0.8)',
         cursor: 'pointer',
@@ -1757,7 +1751,7 @@ export const themes = {
       buttonContainer: {
         display: 'flex',
         justifyContent: 'center',
-        gap: '15px',
+        gap: '10px',
       },
       header: {
         color: '#008170', // Teal
@@ -1771,8 +1765,7 @@ export const themes = {
         borderRadius: '8px',
         color: '#E0E0E0', // Light Gray text
         transition: 'all 0.3s',
-        margin: '20px auto',
-        padding: '15px',
+        margin: '0 auto',
         boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
         cursor: 'pointer',
       },
@@ -1881,7 +1874,7 @@ export const themes = {
         borderColor: '#232D3F', // Dark Slate Blue
       },
       MagicIcon: {
-        fontSize: '1.2rem',
+        fontSize: '1rem',
         color: '#005B41', // Deep Green
         textShadow: '0 0 5px rgba(0, 91, 65, 0.8)',
         cursor: 'pointer',
@@ -1903,7 +1896,7 @@ export const themes = {
       buttonContainer: {
         display: 'flex',
         justifyContent: 'center',
-        gap: '15px',
+        gap: '10px',
       },
       header: {
         color: '#CD5C08', // Dark Orange
@@ -1917,8 +1910,7 @@ export const themes = {
         borderRadius: '10px',
         color: '#6A9C89', // Sage Green text
         transition: 'all 0.3s',
-        margin: '20px auto',
-        padding: '15px',
+        margin: '0 auto',
         boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
         cursor: 'pointer',
       },
@@ -3488,7 +3480,440 @@ export const themes = {
       color: '#735F32', // Warm brown on hover
       textShadow: '0 0 5px rgba(115, 95, 50, 0.8), 0 0 10px rgba(115, 95, 50, 0.6)',
     }
-  }
+  }, 
+  OceanPurple:{
+    container: {
+      background: 'linear-gradient(to bottom, #A5F2E7, #FFFCEA)', // Gradient from aqua to light cream
+      minHeight: '100vh',
+      color: '#3A0077', // Deep purple for text
+      fontFamily: "'Roboto', sans-serif",
+      padding: '20px',
+    },
+    buttonContainer: {
+      display: 'flex',
+      justifyContent: 'center',
+      gap: '10px',
+    },
+    header: {
+      color: '#3A0077', // Deep purple for the header
+      textAlign: 'center',
+      fontFamily: "'Poppins', sans-serif",
+      fontSize: '2rem',
+    },
+    card: {
+      backgroundColor: '#A5F2E7', // Aqua for the card background
+      border: '2px solid #8983F3', // Soft purple border
+      borderRadius: '10px',
+      color: '#3A0077', // Deep purple text
+      transition: 'all 0.3s ease-in-out',
+      margin: '0 auto',
+      cursor: 'pointer',
+      boxShadow: '0 0 10px rgba(58, 0, 119, 0.2)',
+    },
+    badge: {
+      backgroundColor: '#8983F3', // Soft purple
+      color: '#FFFCEA', // Cream text
+    },
+    modalOverlay: {
+      position: 'fixed',
+      top: '0',
+      left: '0',
+      right: '0',
+      bottom: '0',
+      backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent black
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      zIndex: 9999,
+    },
+    modalContent: {
+      backgroundColor: '#FFFCEA', // Light cream background
+      border: '2px solid #3A0077', // Deep purple border
+      color: '#3A0077', // Deep purple text
+      boxShadow: '0 0 15px #8983F3',
+      borderRadius: '8px',
+      padding: '20px',
+      maxHeight: '80vh',
+      overflowY: 'auto',
+      width: '80%',
+      maxWidth: '400px',
+    },
+    modalCloseButton: {
+      position: 'absolute',
+      top: '10px',
+      right: '10px',
+      background: 'none',
+      border: 'none',
+      color: '#3A0077', // Deep purple
+      fontSize: '1.5rem',
+      cursor: 'pointer',
+    },
+    modalHeader: {
+      borderBottom: '2px solid #8983F3', // Soft purple border
+      paddingBottom: '10px',
+      marginBottom: '10px',
+      color: '#3A0077', // Deep purple
+      fontSize: '1.5rem',
+    },
+    modalTextStyle: {
+      marginBottom: '1rem',
+      color: '#3A0077', // Deep purple
+      wordBreak: 'break-word',
+    },
+    modalFont: {
+      color: '#3A0077', // Deep purple
+    },
+    dateStyle: {
+      color: '#8983F3', // Soft purple
+      fontSize: '0.9rem',
+      fontStyle: 'italic',
+    },
+    profilePicture: {
+      width: '50px',
+      height: '50px',
+      backgroundColor: '#8983F3', // Soft purple
+      borderRadius: '50%',
+      marginRight: '10px',
+    },
+    usernameContainer: {
+      flex: 1,
+      display: 'flex',
+      alignItems: 'center',
+    },
+    buttonStyle: {
+      backgroundColor: '#8983F3', // Soft purple
+      border: '2px solid #3A0077', // Deep purple border
+      color: '#FFFCEA', // Cream text
+      fontWeight: 'bold',
+      transition: 'all 0.3s',
+      borderRadius: '50px',
+      padding: '10px 20px',
+      fontSize: '16px',
+      cursor: 'pointer',
+      outline: 'none',
+      margin: '5px',
+    },
+    hoverButtonStyle: {
+      backgroundColor: '#3A0077', // Deep purple on hover
+      color: '#FFFCEA', // Cream text
+    },
+    StylesShare: {
+      borderColor: '#8983F3', // Soft purple
+      color: '#3A0077', // Deep purple text
+    },
+    StylesEject: {
+      borderColor: '#3A0077', // Deep purple
+      color: '#FFFCEA', // Cream text
+    },
+    hoverStylesShare: {
+      backgroundColor: '#3A0077', // Deep purple on hover
+      color: '#FFFCEA', // Cream text
+    },
+    hoverStylesEject: {
+      backgroundColor: '#8983F3', // Soft purple on hover
+      color: '#3A0077', // Deep purple text
+    },
+    MagicIcon: {
+      fontSize: '1rem',
+      color: '#8983F3', // Soft purple
+      textShadow: '0 0 5px rgba(137, 131, 243, 0.8)',
+      cursor: 'pointer',
+      transition: 'all 0.3s',
+    },
+    MagicIconHover: {
+      color: '#3A0077', // Deep purple on hover
+      textShadow: '0 0 5px rgba(58, 0, 119, 0.8)',
+    }
+  }, 
+  DeepBlack:{
+    container: {
+      backgroundColor: '#000000', // Deep black background
+      minHeight: '100vh',
+      color: '#FFFFFF', // White text
+      fontFamily: "'Roboto', sans-serif",
+      padding: '20px',
+    },
+    buttonContainer: {
+      display: 'flex',
+      justifyContent: 'center',
+      gap: '10px',
+    },
+    header: {
+      color: '#FFFFFF', // White text for the header
+      textAlign: 'center',
+      fontFamily: "'Poppins', sans-serif",
+      fontSize: '2rem',
+    },
+    card: {
+      backgroundColor: '#000000', // Deep black background for the card
+      border: '2px solid #FFFFFF', // White border
+      borderRadius: '10px',
+      color: '#FFFFFF', // White text
+      transition: 'all 0.3s ease-in-out',
+      margin: '20px auto',
+      padding: '20px',
+      cursor: 'pointer',
+      boxShadow: '0 0 10px rgba(255, 255, 255, 0.2)',
+    },
+    badge: {
+      backgroundColor: '#FFFFFF', // White badge
+      color: '#000000', // Deep black text
+    },
+    modalOverlay: {
+      position: 'fixed',
+      top: '0',
+      left: '0',
+      right: '0',
+      bottom: '0',
+      backgroundColor: 'rgba(0, 0, 0, 0.8)', // Slightly transparent black
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      zIndex: 9999,
+    },
+    modalContent: {
+      backgroundColor: '#000000', // Deep black background for modal
+      border: '2px solid #FFFFFF', // White border
+      color: '#FFFFFF', // White text
+      boxShadow: '0 0 15px #FFFFFF',
+      borderRadius: '8px',
+      padding: '20px',
+      maxHeight: '80vh',
+      overflowY: 'auto',
+      width: '80%',
+      maxWidth: '400px',
+    },
+    modalCloseButton: {
+      position: 'absolute',
+      top: '10px',
+      right: '10px',
+      background: 'none',
+      border: 'none',
+      color: '#FFFFFF', // White close button
+      fontSize: '1.5rem',
+      cursor: 'pointer',
+    },
+    modalHeader: {
+      borderBottom: '2px solid #FFFFFF', // White border
+      paddingBottom: '10px',
+      marginBottom: '10px',
+      color: '#FFFFFF', // White header text
+      fontSize: '1.5rem',
+    },
+    modalTextStyle: {
+      marginBottom: '1rem',
+      color: '#FFFFFF', // White text
+      wordBreak: 'break-word',
+    },
+    modalFont: {
+      color: '#FFFFFF', // White text
+    },
+    dateStyle: {
+      color: '#FFFFFF', // White text
+      fontSize: '0.9rem',
+      fontStyle: 'italic',
+    },
+    profilePicture: {
+      width: '50px',
+      height: '50px',
+      backgroundColor: '#FFFFFF', // White background for profile picture
+      borderRadius: '50%',
+      marginRight: '10px',
+    },
+    usernameContainer: {
+      flex: 1,
+      display: 'flex',
+      alignItems: 'center',
+    },
+    buttonStyle: {
+      backgroundColor: '#000000', // Deep black background for button
+      border: '2px solid #FFFFFF', // White border
+      color: '#FFFFFF', // White text
+      fontWeight: 'bold',
+      transition: 'all 0.3s',
+      borderRadius: '50px',
+      padding: '10px 20px',
+      fontSize: '16px',
+      cursor: 'pointer',
+      outline: 'none',
+      margin: '5px',
+    },
+    hoverButtonStyle: {
+      backgroundColor: '#FFFFFF', // White background on hover
+      color: '#000000', // Deep black text on hover
+    },
+    StylesShare: {
+      borderColor: '#FFFFFF', // White border
+      color: '#FFFFFF', // White text
+    },
+    StylesEject: {
+      borderColor: '#FFFFFF', // White border
+      color: '#FFFFFF', // White text
+    },
+    hoverStylesShare: {
+      backgroundColor: '#FFFFFF', // White background on hover
+      color: '#000000', // Deep black text on hover
+    },
+    hoverStylesEject: {
+      backgroundColor: '#FFFFFF', // White background on hover
+      color: '#000000', // Deep black text on hover
+    },
+    MagicIcon: {
+      fontSize: '1rem',
+      color: '#FFFFFF', // White icon
+      textShadow: '0 0 5px rgba(255, 255, 255, 0.8)',
+      cursor: 'pointer',
+      transition: 'all 0.3s',
+    },
+    MagicIconHover: {
+      color: '#000000', // Deep black on hover
+      textShadow: '0 0 5px rgba(0, 0, 0, 0.8)',
+    }
+  }, 
+  SoftBold:{
+    container: {
+      backgroundColor: '#FFF5E1', // Soft warm background
+      minHeight: '100vh',
+      color: '#0C1844', // Dark blue for text
+      fontFamily: "'Roboto', sans-serif",
+      padding: '20px',
+    },
+    buttonContainer: {
+      display: 'flex',
+      justifyContent: 'center',
+      gap: '10px',
+    },
+    header: {
+      color: '#C80036', // Bold red for the header
+      textAlign: 'center',
+      fontFamily: "'Poppins', sans-serif",
+      fontSize: '2rem',
+    },
+    card: {
+      backgroundColor: '#FFF5E1', // Soft warm background for the card
+      border: '2px solid #FF6969', // Soft red border
+      borderRadius: '10px',
+      color: '#0C1844', // Dark blue text
+      transition: 'all 0.3s ease-in-out',
+      margin: '20px auto',
+      padding: '20px',
+      cursor: 'pointer',
+      boxShadow: '0 0 10px rgba(0, 24, 68, 0.2)', // Light shadow with dark blue tint
+    },
+    badge: {
+      backgroundColor: '#FF6969', // Soft red badge
+      color: '#FFF5E1', // Light warm text
+    },
+    modalOverlay: {
+      position: 'fixed',
+      top: '0',
+      left: '0',
+      right: '0',
+      bottom: '0',
+      backgroundColor: 'rgba(0, 24, 68, 0.8)', // Slightly transparent dark blue overlay
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      zIndex: 9999,
+    },
+    modalContent: {
+      backgroundColor: '#FFF5E1', // Soft warm background for modal
+      border: '2px solid #C80036', // Bold red border
+      color: '#0C1844', // Dark blue text
+      boxShadow: '0 0 15px #FF6969', // Soft red shadow
+      borderRadius: '8px',
+      padding: '20px',
+      maxHeight: '80vh',
+      overflowY: 'auto',
+      width: '80%',
+      maxWidth: '400px',
+    },
+    modalCloseButton: {
+      position: 'absolute',
+      top: '10px',
+      right: '10px',
+      background: 'none',
+      border: 'none',
+      color: '#C80036', // Bold red close button
+      fontSize: '1.5rem',
+      cursor: 'pointer',
+    },
+    modalHeader: {
+      borderBottom: '2px solid #FF6969', // Soft red border
+      paddingBottom: '10px',
+      marginBottom: '10px',
+      color: '#C80036', // Bold red header text
+      fontSize: '1.5rem',
+    },
+    modalTextStyle: {
+      marginBottom: '1rem',
+      color: '#0C1844', // Dark blue text
+      wordBreak: 'break-word',
+    },
+    modalFont: {
+      color: '#0C1844', // Dark blue text
+    },
+    dateStyle: {
+      color: '#C80036', // Bold red text for dates
+      fontSize: '0.9rem',
+      fontStyle: 'italic',
+    },
+    profilePicture: {
+      width: '50px',
+      height: '50px',
+      backgroundColor: '#FF6969', // Soft red background for profile picture
+      borderRadius: '50%',
+      marginRight: '10px',
+    },
+    usernameContainer: {
+      flex: 1,
+      display: 'flex',
+      alignItems: 'center',
+    },
+    buttonStyle: {
+      backgroundColor: '#C80036', // Bold red background for button
+      border: '2px solid #FF6969', // Soft red border
+      color: '#FFF5E1', // Soft warm text
+      fontWeight: 'bold',
+      transition: 'all 0.3s',
+      borderRadius: '50px',
+      padding: '10px 20px',
+      fontSize: '16px',
+      cursor: 'pointer',
+      outline: 'none',
+    },
+    hoverButtonStyle: {
+      backgroundColor: '#FF6969', // Soft red background on hover
+      color: '#C80036', // Bold red text on hover
+    },
+    StylesShare: {
+      borderColor: '#FF6969', // Soft red border
+      color: '#FFF5E1', // Soft warm text on hover
+    },
+    StylesEject: {
+      borderColor: '#FF6969', // Soft red border
+      color: '#FFF5E1', // Soft warm text on hover
+    },
+    hoverStylesShare: {
+      backgroundColor: '#0C1844', // Soft red background on hover
+      color: '#FFF5E1', // Soft warm text on hover
+    },
+    hoverStylesEject: {
+      backgroundColor: '#FF6969', // Soft red background on hover
+      color: '#0C1844', // Soft warm text on hover
+    },
+    MagicIcon: {
+      fontSize: '1rem',
+      color: '#C80036', // Bold red icon
+      textShadow: '0 0 5px rgba(200, 0, 54, 0.8)',
+      cursor: 'pointer',
+      transition: 'all 0.3s',
+    },
+    MagicIconHover: {
+      color: '#0C1844', // Dark blue on hover
+      textShadow: '0 0 5px rgba(12, 24, 68, 0.8)',
+    }
+  },
 
     // Add more themes here
   };
