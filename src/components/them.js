@@ -249,38 +249,38 @@ export const themes = {
         fontSize: '0.9rem',
         fontStyle: 'italic',
       },
-      onePieceSwalContainer: {
+      amongUsSwalContainer: {
         backgroundColor: '#000080', // Navy blue
       },
-      onePieceSwalPopup: {
+      amongUsSwalPopup: {
         backgroundColor: '#4682B4', // Steel blue
         border: '2px solid #FFD700',
         borderRadius: '12px',
       },
-      onePieceSwalTitle: {
+      amongUsSwalTitle: {
         color: '#FFD700',
         fontFamily: "'Pirata One'",
       },
-      onePieceSwalContent: {
+      amongUsSwalContent: {
         color: '#FFFFFF',
         fontFamily: "'Pirata One'",
       },
-      onePieceSwalConfirm: {
+      amongUsSwalConfirm: {
         backgroundColor: '#FFD700',
         color: '#000000',
         border: 'none',
         borderRadius: '8px',
       },
-      onePieceSwalConfirmHover: {
+      amongUsSwalConfirmHover: {
         backgroundColor: '#FFC107',
       },
-      onePieceSwalCancel: {
+      amongUsSwalCancel: {
         backgroundColor: '#FF4500',
         color: '#000000',
         border: 'none',
         borderRadius: '8px',
       },
-      onePieceSwalCancelHover: {
+      amongUsSwalCancelHover: {
         backgroundColor: '#FF6347',
       },
       profilePicture: {
@@ -424,38 +424,38 @@ export const themes = {
         fontSize: '0.9rem',
         fontStyle: 'italic',
       },
-      adorableHomeSwalContainer: {
+      amongUsSwalContainer: {
         backgroundColor: '#FFFFFF', // White
       },
-      adorableHomeSwalPopup: {
+      amongUsSwalPopup: {
         backgroundColor: '#FFFFFF', // White
         border: '2px solid #FF6F61', // Coral border
         borderRadius: '12px',
       },
-      adorableHomeSwalTitle: {
+      amongUsSwalTitle: {
         color: '#FF6F61',
         fontFamily: "'Poppins', sans-serif",
       },
-      adorableHomeSwalContent: {
+      amongUsSwalContent: {
         color: '#333333',
         fontFamily: "'Comic Sans MS', cursive",
       },
-      adorableHomeSwalConfirm: {
+      amongUsSwalConfirm: {
         backgroundColor: '#FF6F61', // Coral
         color: '#FFFFFF',
         border: 'none',
         borderRadius: '8px',
       },
-      adorableHomeSwalConfirmHover: {
+      amongUsSwalConfirmHover: {
         backgroundColor: '#FF4F47', // Darker coral
       },
-      adorableHomeSwalCancel: {
+      amongUsSwalCancel: {
         backgroundColor: '#FF9AA2', // Light pink
         color: '#FFFFFF',
         border: 'none',
         borderRadius: '8px',
       },
-      adorableHomeSwalCancelHover: {
+      amongUsSwalCancelHover: {
         backgroundColor: '#FF7F9A', // Darker light pink
       },
       profilePicture: {
@@ -513,181 +513,6 @@ export const themes = {
         textShadow: '0 0 5px rgba(230, 57, 70, 0.8), 0 0 10px rgba(230, 57, 70, 0.6)',
       }
     },
-    programmerDream: {
-      container: {
-        background: 'linear-gradient(to bottom, #282c34, #2c3e50)', // Dark gray to dark blue gradient
-        minHeight: '100vh',
-        color: '#abb2bf', // Light gray text
-        fontFamily: "'Fira Code', monospace",
-        padding: '20px',
-      },
-      buttonContainer: {
-        display: 'flex',
-        justifyContent: 'flex-end',
-        gap: '10px',
-      },
-      header: {
-        color: '#61dafb', // Light blue
-        textAlign: 'center',
-        fontFamily: "'Fira Code', monospace",
-        fontSize: '2rem',
-      },
-      card: {
-        backgroundColor: '#1e1e1e', // Dark gray
-        border: '2px solid #61dafb', // Light blue border
-        borderRadius: '10px',
-        color: '#abb2bf',
-        transition: 'all 0.3s',
-        margin: '0 auto',
-        cursor: 'pointer',
-      },
-      badge: {
-        backgroundColor: '#98c379', // Green
-        color: '#ffffff',
-      },
-      modalOverlay: {
-        position: 'fixed',
-        top: '0',
-        left: '0',
-        right: '0',
-        bottom: '0',
-        backgroundColor: 'rgba(0, 0, 0, 0.8)', // Dark semi-transparent background
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        zIndex: 9999,
-      },
-      modalContent: {
-        backgroundColor: '#2c3e50', // Dark blue-gray
-        border: '2px solid #61dafb', // Light blue border
-        color: '#abb2bf',
-        boxShadow: '0 0 15px rgba(97, 218, 251, 0.5)',
-        borderRadius: '8px',
-        padding: '20px',
-        maxHeight: '80vh',
-        overflowY: 'auto',
-        width: '80%',
-        maxWidth: '400px',
-      },
-      modalCloseButton: {
-        position: 'absolute',
-        top: '10px',
-        right: '10px',
-        background: 'none',
-        border: 'none',
-        color: '#61dafb',
-        fontSize: '1.5rem',
-        cursor: 'pointer',
-      },
-      modalHeader: {
-        borderBottom: '2px solid #61dafb',
-        paddingBottom: '10px',
-        marginBottom: '10px',
-        color: '#61dafb',
-        fontSize: '1.5rem',
-      },
-      modalTextStyle: {
-        marginBottom: '1rem',
-        color: '#abb2bf',
-        wordBreak: 'break-word',
-      },
-      modalFont: {
-        color: '#61dafb',
-      },
-      dateStyle: {
-        color: '#e06c75', // Red
-        fontSize: '0.9rem',
-        fontStyle: 'italic',
-      },
-      programmerDreamSwalContainer: {
-        backgroundColor: '#2c3e50', // Dark blue-gray
-      },
-      programmerDreamSwalPopup: {
-        backgroundColor: '#1e1e1e', // Dark gray
-        border: '2px solid #61dafb', // Light blue border
-        borderRadius: '12px',
-      },
-      programmerDreamSwalTitle: {
-        color: '#61dafb',
-        fontFamily: "'Fira Code', monospace",
-      },
-      programmerDreamSwalContent: {
-        color: '#abb2bf',
-        fontFamily: "'Fira Code', monospace",
-      },
-      programmerDreamSwalConfirm: {
-        backgroundColor: '#61dafb', // Light blue
-        color: '#000000',
-        border: 'none',
-        borderRadius: '8px',
-      },
-      programmerDreamSwalConfirmHover: {
-        backgroundColor: '#4da3c0', // Darker light blue
-      },
-      programmerDreamSwalCancel: {
-        backgroundColor: '#e06c75', // Red
-        color: '#ffffff',
-        border: 'none',
-        borderRadius: '8px',
-      },
-      programmerDreamSwalCancelHover: {
-        backgroundColor: '#c75c6b', // Darker red
-      },
-      profilePicture: {
-        width: '50px',
-        height: '50px',
-        backgroundColor: '#282c34', // Dark gray
-        borderRadius: '50%',
-        marginRight: '10px',
-      },
-      usernameContainer: {
-        flex: 1,
-        display: 'flex',
-        alignItems: 'center',
-      },
-      buttonStyle: {
-        backgroundColor: '#282c34', // Dark gray
-        border: '2px solid #61dafb', // Light blue border
-        color: '#61dafb',
-        fontWeight: 'bold',
-        transition: 'all 0.3s',
-        borderRadius: '50px',
-        padding: '10px 20px',
-        fontSize: '16px',
-        cursor: 'pointer',
-        outline: 'none',
-        margin: '5px',
-      },
-      StylesShare: {
-        borderColor: '#61dafb',
-        color: '#61dafb',
-      },
-      StylesEject: {
-        borderColor: '#e06c75',
-        color: '#e06c75',
-      },
-      hoverStylesShare: {
-        backgroundColor: '#61dafb',
-        color: '#000000',
-        borderColor: '#61dafb',
-      },
-      hoverStylesEject: {
-        backgroundColor: '#e06c75',
-        color: '#ffffff',
-        borderColor: '#e06c75',
-      },
-      MagicIcon: {
-        fontSize: '1rem',
-        color: '#00c853',
-        textShadow: '0 0 5px rgba(0, 200, 83, 0.8), 0 0 10px rgba(0, 200, 83, 0.6)',
-        cursor: 'pointer',
-        transition: 'all 0.3s',
-      },
-      MagicIconHover: {
-        color: '#00e676',
-        textShadow: '0 0 5px rgba(0, 230, 118, 0.8), 0 0 10px rgba(0, 230, 118, 0.6)',
-      }
-    },
     retroAesthetic: {
       container: {
         background: 'linear-gradient(to bottom, #f0e8d0, #f7a8a6)', // Soft cream to pink gradient
@@ -704,7 +529,6 @@ export const themes = {
       header: {
         color: '#ff6f61', // Retro coral color
         textAlign: 'center',
-        fontSize: '2.5rem',
       },
       card: {
         backgroundColor: '#fff', // Classic white
@@ -776,38 +600,38 @@ export const themes = {
         fontSize: '0.9rem',
         fontStyle: 'italic',
       },
-      retroSwalContainer: {
+      amongUsSwalContainer: {
         backgroundColor: '#fff',
       },
-      retroSwalPopup: {
+      amongUsSwalPopup: {
         backgroundColor: '#fff',
         border: '2px solid #ff6f61',
         borderRadius: '12px',
       },
-      retroSwalTitle: {
+      amongUsSwalTitle: {
         color: '#ff6f61',
         fontFamily: "'Press Start 2P', cursive",
       },
-      retroSwalContent: {
+      amongUsSwalContent: {
         color: '#333',
         fontFamily: "'Press Start 2P'",
       },
-      retroSwalConfirm: {
+      amongUsSwalConfirm: {
         backgroundColor: '#ff6f61',
         color: '#fff',
         border: 'none',
         borderRadius: '8px',
       },
-      retroSwalConfirmHover: {
+      amongUsSwalConfirmHover: {
         backgroundColor: '#e85a5a',
       },
-      retroSwalCancel: {
+      amongUsSwalCancel: {
         backgroundColor: '#f8b400',
         color: '#fff',
         border: 'none',
         borderRadius: '8px',
       },
-      retroSwalCancelHover: {
+      amongUsSwalCancelHover: {
         backgroundColor: '#e2a92d',
       },
       profilePicture: {
@@ -881,7 +705,6 @@ export const themes = {
       header: {
         color: '#fff',
         textAlign: 'center',
-        fontSize: '2.5rem',
         fontWeight: 'bold',
         textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
       },
@@ -956,39 +779,39 @@ export const themes = {
         fontSize: '0.9rem',
         fontStyle: 'italic',
       },
-      taylorSwiftSwalContainer: {
+      amongUsSwalContainer: {
         backgroundColor: '#fff',
       },
-      taylorSwiftSwalPopup: {
+      amongUsSwalPopup: {
         backgroundColor: '#fff',
         border: '2px solid #e80039',
         borderRadius: '12px',
       },
-      taylorSwiftSwalTitle: {
+      amongUsSwalTitle: {
         color: '#e80039',
         fontFamily: "'Arial', sans-serif",
         fontWeight: 'bold',
       },
-      taylorSwiftSwalContent: {
+      amongUsSwalContent: {
         color: '#333',
         fontFamily: "'Arial', sans-serif",
       },
-      taylorSwiftSwalConfirm: {
+      amongUsSwalConfirm: {
         backgroundColor: '#e80039',
         color: '#fff',
         border: 'none',
         borderRadius: '8px',
       },
-      taylorSwiftSwalConfirmHover: {
+      amongUsSwalConfirmHover: {
         backgroundColor: '#c70039',
       },
-      taylorSwiftSwalCancel: {
+      amongUsSwalCancel: {
         backgroundColor: '#f4c2c2',
         color: '#333',
         border: 'none',
         borderRadius: '8px',
       },
-      taylorSwiftSwalCancelHover: {
+      amongUsSwalCancelHover: {
         backgroundColor: '#f2a5a5',
       },
       profilePicture: {
@@ -1063,7 +886,6 @@ export const themes = {
         color: '#7c5c40', // Rich brown
         textAlign: 'center',
         fontFamily: "'Great Vibes', cursive",
-        fontSize: '2.5rem',
         letterSpacing: '1px',
       },
       card: {
@@ -1210,7 +1032,6 @@ export const themes = {
         color: '#128061', // Medium Teal
         textAlign: 'center',
         fontFamily: "'Roboto', sans-serif",
-        fontSize: '2.5rem',
         letterSpacing: '1.5px',
       },
       card: {
@@ -1357,7 +1178,6 @@ export const themes = {
         color: '#006989', // Deep Teal
         textAlign: 'center',
         fontFamily: "'Roboto', sans-serif",
-        fontSize: '2.5rem',
         letterSpacing: '1.5px',
       },
       card: {
@@ -1504,7 +1324,6 @@ export const themes = {
         color: '#F2613F', // Vibrant Coral
         textAlign: 'center',
         fontFamily: "'Helvetica', sans-serif",
-        fontSize: '2.5rem',
         letterSpacing: '2px',
       },
       card: {
@@ -1651,7 +1470,6 @@ export const themes = {
         color: '#F7418F', // Deep Pink
         textAlign: 'center',
         fontFamily: "'Comic Sans MS', cursive",
-        fontSize: '2.5rem',
         letterSpacing: '2px',
       },
       card: {
@@ -1781,448 +1599,6 @@ export const themes = {
         textShadow: '0 0 5px rgba(247, 65, 143, 0.7)',
       }
     },
-    PastelSerenity: {
-      container: {
-        background: 'linear-gradient(to bottom, #E6FFFD, #AEE2FF)', // Pale Teal to Light Blue gradient
-        minHeight: '100vh',
-        color: '#B799FF', // Light Purple text
-        fontFamily: "'Arial', sans-serif",
-        padding: '20px',
-      },
-      buttonContainer: {
-        display: 'flex',
-        justifyContent: 'center',
-        gap: '10px',
-      },
-      header: {
-        color: '#B799FF', // Light Purple
-        textAlign: 'center',
-        fontFamily: "'Roboto', sans-serif",
-        fontSize: '2.5rem',
-        letterSpacing: '1px',
-      },
-      card: {
-        backgroundColor: '#ACBCFF', // Soft Blue
-        border: '2px solid #AEE2FF', // Light Blue border
-        borderRadius: '10px',
-        color: '#B799FF', // Light Purple text
-        transition: 'all 0.3s',
-        margin: '20px auto',
-        padding: '15px',
-        boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
-        cursor: 'pointer',
-      },
-      badge: {
-        backgroundColor: '#AEE2FF', // Light Blue
-        color: '#B799FF', // Light Purple text
-        borderRadius: '10px',
-        padding: '5px 12px',
-      },
-      modalOverlay: {
-        position: 'fixed',
-        top: '0',
-        left: '0',
-        right: '0',
-        bottom: '0',
-        backgroundColor: 'rgba(230, 255, 253, 0.8)', // Semi-transparent Pale Teal
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        zIndex: 9999,
-      },
-      modalContent: {
-        backgroundColor: '#E6FFFD', // Pale Teal
-        border: '2px solid #AEE2FF', // Light Blue border
-        color: '#B799FF', // Light Purple text
-        borderRadius: '12px',
-        padding: '20px',
-        maxHeight: '80vh',
-        overflowY: 'auto',
-        width: '80%',
-        maxWidth: '500px',
-        boxShadow: '0 5px 15px rgba(0, 0, 0, 0.2)',
-      },
-      modalCloseButton: {
-        position: 'absolute',
-        top: '10px',
-        right: '10px',
-        background: 'none',
-        border: 'none',
-        color: '#B799FF', // Light Purple
-        fontSize: '1.5rem',
-        cursor: 'pointer',
-      },
-      modalHeader: {
-        borderBottom: '2px solid #AEE2FF', // Light Blue border
-        paddingBottom: '10px',
-        marginBottom: '10px',
-        color: '#B799FF', // Light Purple
-        fontSize: '1.8rem',
-      },
-      modalTextStyle: {
-        marginBottom: '1rem',
-        color: '#B799FF', // Light Purple
-        lineHeight: '1.6',
-        wordBreak: 'break-word',
-      },
-      modalFont: {
-        color: '#B799FF', // Light Purple
-      },
-      dateStyle: {
-        color: '#AEE2FF', // Light Blue
-        fontSize: '0.9rem',
-        fontStyle: 'italic',
-      },
-      profilePicture: {
-        width: '50px',
-        height: '50px',
-        backgroundColor: '#ACBCFF', // Soft Blue
-        borderRadius: '50%',
-        marginRight: '10px',
-      },
-      usernameContainer: {
-        flex: 1,
-        display: 'flex',
-        alignItems: 'center',
-      },
-      buttonStyle: {
-        backgroundColor: '#E6FFFD', // Pale Teal
-        border: '2px solid #AEE2FF', // Light Blue border
-        color: '#B799FF', // Light Purple text
-        fontWeight: 'bold',
-        transition: 'all 0.3s',
-        borderRadius: '50px',
-        padding: '10px 20px',
-        fontSize: '16px',
-        cursor: 'pointer',
-        outline: 'none',
-        margin: '5px',
-      },
-      StylesShare: {
-        borderColor: '#AEE2FF', // Light Blue
-        color: '#AEE2FF', // Light Blue
-      },
-      StylesEject: {
-        borderColor: '#B799FF', // Light Purple
-        color: '#B799FF', // Light Purple
-      },
-      hoverStylesShare: {
-        backgroundColor: '#AEE2FF', // Light Blue
-        color: '#E6FFFD', // Pale Teal
-        borderColor: '#E6FFFD', // Pale Teal
-      },
-      hoverStylesEject: {
-        backgroundColor: '#B799FF', // Light Purple
-        color: '#E6FFFD', // Pale Teal
-        borderColor: '#E6FFFD', // Pale Teal
-      },
-      MagicIcon: {
-        fontSize: '1.2rem',
-        color: '#B799FF', // Light Purple
-        textShadow: '0 0 5px rgba(183, 153, 255, 0.7)',
-        cursor: 'pointer',
-        transition: 'all 0.3s',
-      },
-      MagicIconHover: {
-        color: '#ACBCFF', // Soft Blue
-        textShadow: '0 0 5px rgba(183, 153, 255, 0.7)',
-      }
-    },
-    VibrantContrast: {
-      container: {
-        background: 'linear-gradient(to bottom, #000000, #FF4191)', // Black to Bright Pink gradient
-        minHeight: '100vh',
-        color: '#FFF078', // Light Yellow text
-        fontFamily: "'Arial', sans-serif",
-        padding: '20px',
-      },
-      buttonContainer: {
-        display: 'flex',
-        justifyContent: 'center',
-        gap: '10px',
-      },
-      header: {
-        color: '#FFF078', // Light Yellow
-        textAlign: 'center',
-        fontFamily: "'Arial', sans-serif",
-        fontSize: '2.5rem',
-        letterSpacing: '1px',
-      },
-      card: {
-        backgroundColor: '#E90074', // Vivid Magenta
-        border: '2px solid #FF4191', // Bright Pink border
-        borderRadius: '10px',
-        color: '#FFF078', // Light Yellow text
-        transition: 'all 0.3s',
-        margin: '20px auto',
-        padding: '15px',
-        boxShadow: '0 4px 10px rgba(0, 0, 0, 0.3)',
-        cursor: 'pointer',
-      },
-      badge: {
-        backgroundColor: '#FF4191', // Bright Pink
-        color: '#000000', // Black text
-        borderRadius: '10px',
-        padding: '5px 12px',
-      },
-      modalOverlay: {
-        position: 'fixed',
-        top: '0',
-        left: '0',
-        right: '0',
-        bottom: '0',
-        backgroundColor: 'rgba(0, 0, 0, 0.7)', // Semi-transparent Black
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        zIndex: 9999,
-      },
-      modalContent: {
-        backgroundColor: '#E90074', // Vivid Magenta
-        border: '2px solid #FF4191', // Bright Pink border
-        color: '#FFF078', // Light Yellow text
-        borderRadius: '12px',
-        padding: '20px',
-        maxHeight: '80vh',
-        overflowY: 'auto',
-        width: '80%',
-        maxWidth: '500px',
-        boxShadow: '0 5px 15px rgba(0, 0, 0, 0.4)',
-      },
-      modalCloseButton: {
-        position: 'absolute',
-        top: '10px',
-        right: '10px',
-        background: 'none',
-        border: 'none',
-        color: '#FFF078', // Light Yellow
-        fontSize: '1.5rem',
-        cursor: 'pointer',
-      },
-      modalHeader: {
-        borderBottom: '2px solid #FF4191', // Bright Pink border
-        paddingBottom: '10px',
-        marginBottom: '10px',
-        color: '#FFF078', // Light Yellow
-        fontSize: '1.8rem',
-      },
-      modalTextStyle: {
-        marginBottom: '1rem',
-        color: '#FFF078', // Light Yellow
-        lineHeight: '1.6',
-        wordBreak: 'break-word',
-      },
-      modalFont: {
-        color: '#FFF078', // Light Yellow
-      },
-      dateStyle: {
-        color: '#FF4191', // Bright Pink
-        fontSize: '0.9rem',
-        fontStyle: 'italic',
-      },
-      profilePicture: {
-        width: '50px',
-        height: '50px',
-        backgroundColor: '#E90074', // Vivid Magenta
-        borderRadius: '50%',
-        marginRight: '10px',
-      },
-      usernameContainer: {
-        flex: 1,
-        display: 'flex',
-        alignItems: 'center',
-      },
-      buttonStyle: {
-        backgroundColor: '#FFF078', // Light Yellow
-        border: '2px solid #FF4191', // Bright Pink border
-        color: '#000000', // Black text
-        fontWeight: 'bold',
-        transition: 'all 0.3s',
-        borderRadius: '50px',
-        padding: '10px 20px',
-        fontSize: '16px',
-        cursor: 'pointer',
-        outline: 'none',
-        margin: '5px',
-      },
-      StylesShare: {
-        borderColor: '#FF4191', // Bright Pink
-        color: '#FF4191', // Bright Pink
-      },
-      StylesEject: {
-        borderColor: '#E90074', // Vivid Magenta
-        color: '#E90074', // Vivid Magenta
-      },
-      hoverStylesShare: {
-        backgroundColor: '#FF4191', // Bright Pink
-        color: '#FFF078', // Light Yellow
-        borderColor: '#FFF078', // Light Yellow
-      },
-      hoverStylesEject: {
-        backgroundColor: '#E90074', // Vivid Magenta
-        color: '#FFF078', // Light Yellow
-        borderColor: '#FFF078', // Light Yellow
-      },
-      MagicIcon: {
-        fontSize: '1.2rem',
-        color: '#E90074', // Vivid Magenta
-        textShadow: '0 0 5px rgba(233, 0, 116, 0.8)',
-        cursor: 'pointer',
-        transition: 'all 0.3s',
-      },
-      MagicIconHover: {
-        color: '#FF4191', // Bright Pink
-        textShadow: '0 0 5px rgba(233, 0, 116, 0.8)',
-      }
-    },
-    VintageElegance: {
-      container: {
-        background: 'linear-gradient(to bottom, #EEE4B1, #8C6A5D)', // Light Cream to Earthy Brown gradient
-        minHeight: '100vh',
-        color: '#5F374B', // Dark Burgundy text
-        fontFamily: "'Georgia', serif",
-        padding: '20px',
-      },
-      buttonContainer: {
-        display: 'flex',
-        justifyContent: 'center',
-        gap: '12px',
-      },
-      header: {
-        color: '#430A5D', // Deep Purple
-        textAlign: 'center',
-        fontFamily: "'Times New Roman', serif",
-        fontSize: '2.5rem',
-        letterSpacing: '1px',
-        textShadow: '2px 2px #8C6A5D', // Earthy Brown shadow
-      },
-      card: {
-        backgroundColor: '#EEE4B1', // Light Cream
-        border: '2px solid #5F374B', // Dark Burgundy border
-        borderRadius: '12px',
-        color: '#5F374B', // Dark Burgundy text
-        transition: 'all 0.3s',
-        margin: '20px auto',
-        padding: '15px',
-        boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
-        cursor: 'pointer',
-      },
-      badge: {
-        backgroundColor: '#8C6A5D', // Earthy Brown
-        color: '#EEE4B1', // Light Cream
-        borderRadius: '10px',
-        padding: '6px 12px',
-      },
-      modalOverlay: {
-        position: 'fixed',
-        top: '0',
-        left: '0',
-        right: '0',
-        bottom: '0',
-        backgroundColor: 'rgba(0, 0, 0, 0.6)', // Dark semi-transparent overlay
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        zIndex: 9999,
-      },
-      modalContent: {
-        backgroundColor: '#5F374B', // Dark Burgundy
-        border: '2px solid #8C6A5D', // Earthy Brown border
-        color: '#EEE4B1', // Light Cream text
-        borderRadius: '12px',
-        padding: '20px',
-        maxHeight: '80vh',
-        overflowY: 'auto',
-        width: '80%',
-        maxWidth: '500px',
-        boxShadow: '0 5px 20px rgba(0, 0, 0, 0.3)',
-      },
-      modalCloseButton: {
-        position: 'absolute',
-        top: '10px',
-        right: '10px',
-        background: 'none',
-        border: 'none',
-        color: '#EEE4B1', // Light Cream
-        fontSize: '1.5rem',
-        cursor: 'pointer',
-      },
-      modalHeader: {
-        borderBottom: '2px solid #8C6A5D', // Earthy Brown border
-        paddingBottom: '10px',
-        marginBottom: '10px',
-        color: '#EEE4B1', // Light Cream
-        fontSize: '1.8rem',
-      },
-      modalTextStyle: {
-        marginBottom: '1rem',
-        color: '#EEE4B1', // Light Cream
-        lineHeight: '1.6',
-        wordBreak: 'break-word',
-      },
-      modalFont: {
-        color: '#EEE4B1', // Light Cream
-      },
-      dateStyle: {
-        color: '#8C6A5D', // Earthy Brown
-        fontSize: '0.9rem',
-        fontStyle: 'italic',
-      },
-      profilePicture: {
-        width: '50px',
-        height: '50px',
-        backgroundColor: '#5F374B', // Dark Burgundy
-        borderRadius: '50%',
-        marginRight: '10px',
-      },
-      usernameContainer: {
-        flex: 1,
-        display: 'flex',
-        alignItems: 'center',
-      },
-      buttonStyle: {
-        backgroundColor: '#EEE4B1', // Light Cream
-        border: '2px solid #5F374B', // Dark Burgundy border
-        color: '#5F374B', // Dark Burgundy text
-        fontWeight: 'bold',
-        transition: 'all 0.3s',
-        borderRadius: '50px',
-        padding: '10px 20px',
-        fontSize: '16px',
-        cursor: 'pointer',
-        outline: 'none',
-        margin: '5px',
-      },
-      StylesShare: {
-        borderColor: '#8C6A5D', // Earthy Brown
-        color: '#8C6A5D', // Earthy Brown
-      },
-      StylesEject: {
-        borderColor: '#5F374B', // Dark Burgundy
-        color: '#5F374B', // Dark Burgundy
-      },
-      hoverStylesShare: {
-        backgroundColor: '#8C6A5D', // Earthy Brown
-        color: '#EEE4B1', // Light Cream
-        borderColor: '#EEE4B1', // Light Cream
-      },
-      hoverStylesEject: {
-        backgroundColor: '#5F374B', // Dark Burgundy
-        color: '#EEE4B1', // Light Cream
-        borderColor: '#EEE4B1', // Light Cream
-      },
-      MagicIcon: {
-        fontSize: '1.2rem',
-        color: '#8C6A5D', // Earthy Brown
-        textShadow: '0 0 5px rgba(140, 106, 93, 0.8)',
-        cursor: 'pointer',
-        transition: 'all 0.3s',
-      },
-      MagicIconHover: {
-        color: '#430A5D', // Deep Purple
-        textShadow: '0 0 5px rgba(140, 106, 93, 0.8)',
-      }
-    },
     ClassicElegance: {
       container: {
         background: 'linear-gradient(to bottom, #F5F5F5, #F2EAD3)', // Light Gray to Light Beige gradient
@@ -2240,7 +1616,6 @@ export const themes = {
         color: '#3F2305', // Deep Brown
         textAlign: 'center',
         fontFamily: "'Times New Roman', serif",
-        fontSize: '2.5rem',
         letterSpacing: '1px',
         textShadow: '2px 2px #DFD7BF', // Soft Taupe shadow
       },
@@ -2388,7 +1763,6 @@ export const themes = {
         color: '#008170', // Teal
         textAlign: 'center',
         fontFamily: "'Arial Black', sans-serif",
-        fontSize: '2.5rem',
         letterSpacing: '1px',
       },
       card: {
@@ -2535,7 +1909,6 @@ export const themes = {
         color: '#CD5C08', // Dark Orange
         textAlign: 'center',
         fontFamily: "'Merriweather', serif",
-        fontSize: '2.5rem',
         letterSpacing: '1px',
       },
       card: {
@@ -2641,7 +2014,8 @@ export const themes = {
       },
       StylesEject: {
         borderColor: '#6A9C89', // Sage Green
-        color: '#6A9C89', // Sage Green
+        color: '#FFF5E4', // Creamy Beige
+
       },
       hoverStylesShare: {
         backgroundColor: '#CD5C08', // Dark Orange
@@ -2650,7 +2024,7 @@ export const themes = {
       },
       hoverStylesEject: {
         backgroundColor: '#6A9C89', // Sage Green
-        color: '#FFF5E4', // Creamy Beige
+        color: '#CD5C08', // Dark Orange
         borderColor: '#FFF5E4', // Creamy Beige
       },
       MagicIcon: {
@@ -2665,6 +2039,1457 @@ export const themes = {
         textShadow: '0 0 5px rgba(106, 156, 137, 0.8)',
       }
     },
+  SerenityTheme:{
+    container: {
+      background: 'linear-gradient(to bottom, #EAE4DD, #E1D7C6)', // Light beige gradient
+      minHeight: '100vh',
+      color: '#295F98', // Dark blue for text
+      fontFamily: "'Arial', sans-serif",
+      padding: '20px',
+    },
+    buttonContainer: {
+      display: 'flex',
+      justifyContent: 'flex-end',
+      gap: '10px',
+    },
+    header: {
+      color: '#295F98', // Dark blue
+      textAlign: 'center',
+      fontFamily: "'Playfair Display', serif",
+    },
+    card: {
+      backgroundColor: '#CDC2A5', // Soft tan
+      border: '2px solid #295F98', // Dark blue border
+      borderRadius: '10px',
+      color: '#295F98',
+      transition: 'all 0.3s',
+      margin: '0 auto',
+      cursor: 'pointer',
+    },
+    badge: {
+      backgroundColor: '#295F98', // Dark blue
+      color: '#FFFFFF',
+    },
+    modalOverlay: {
+      position: 'fixed',
+      top: '0',
+      left: '0',
+      right: '0',
+      bottom: '0',
+      backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent black
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      zIndex: 9999,
+    },
+    modalContent: {
+      backgroundColor: '#EAE4DD', // Light beige
+      border: '2px solid #295F98', // Dark blue border
+      color: '#295F98',
+      boxShadow: '0 0 15px #295F98',
+      borderRadius: '8px',
+      padding: '20px',
+      maxHeight: '80vh',
+      overflowY: 'auto',
+      width: '80%',
+      maxWidth: '400px',
+    },
+    modalCloseButton: {
+      position: 'absolute',
+      top: '10px',
+      right: '10px',
+      background: 'none',
+      border: 'none',
+      color: '#295F98',
+      fontSize: '1.5rem',
+      cursor: 'pointer',
+    },
+    modalHeader: {
+      borderBottom: '2px solid #295F98',
+      paddingBottom: '10px',
+      marginBottom: '10px',
+      color: '#295F98',
+      fontSize: '1.5rem',
+    },
+    modalTextStyle: {
+      marginBottom: '1rem',
+      color: '#295F98',
+      wordBreak: 'break-word',
+    },
+    modalFont: {
+      color: '#295F98',
+    },
+    dateStyle: {
+      color: '#CDC2A5', // Soft tan
+      fontSize: '0.9rem',
+      fontStyle: 'italic',
+    },
+    profilePicture: {
+      width: '50px',
+      height: '50px',
+      backgroundColor: '#295F98', // Dark blue
+      borderRadius: '50%',
+      marginRight: '10px',
+    },
+    usernameContainer: {
+      flex: 1,
+      display: 'flex',
+      alignItems: 'center',
+    },
+    buttonStyle: {
+      backgroundColor: '#CDC2A5', // Soft tan
+      border: '2px solid #295F98',
+      color: '#295F98',
+      fontWeight: 'bold',
+      transition: 'all 0.3s',
+      borderRadius: '50px',
+      padding: '10px 20px',
+      fontSize: '16px',
+      cursor: 'pointer',
+      outline: 'none',
+      margin: '5px',
+    },
+    hoverButtonStyle: {
+      backgroundColor: '#295F98', // Dark blue on hover
+      color: '#FFFFFF',
+    },
+    StylesShare: {
+      borderColor: '#295F98', // Dark blue
+      color: '#295F98',
+    },
+    StylesEject: {
+      borderColor: '#CDC2A5', // Soft tan
+      color: '#FFFFFF',
+    },
+    
+    hoverStylesShare: {
+      backgroundColor: '#295F98', // Dark blue on hover
+      color: '#FFFFFF',
+      borderColor: '#E1D7C6', // Light beige border
+    },
+    hoverStylesEject: {
+      backgroundColor: '#CDC2A5', // Soft tan on hover
+      color: '#295F98',
+      borderColor: '#E1D7C6',
+    },
+    MagicIcon: {
+      fontSize: '1rem',
+      color: '#295F98',
+      textShadow: '0 0 5px rgba(41, 95, 152, 0.8), 0 0 10px rgba(41, 95, 152, 0.6)',
+      cursor: 'pointer',
+      transition: 'all 0.3s',
+    },
+    MagicIconHover: {
+      color: '#E1D7C6', // Lighter beige on hover
+      textShadow: '0 0 5px rgba(225, 215, 198, 0.8), 0 0 10px rgba(225, 215, 198, 0.6)',
+    }
+  },
+  Earthy:{
+    container: {
+      background: 'linear-gradient(to bottom, #FEFAE0, #A6B37D)', // Cream to muted green gradient
+      minHeight: '100vh',
+      color: '#B99470', // Earthy brown for text
+      fontFamily: "'Arial', sans-serif",
+      padding: '20px',
+    },
+    buttonContainer: {
+      display: 'flex',
+      justifyContent: 'flex-end',
+      gap: '10px',
+    },
+    header: {
+      color: '#B99470', // Earthy brown
+      textAlign: 'center',
+      fontFamily: "'Playfair Display', serif",
+    },
+    card: {
+      backgroundColor: '#A6B37D', // Muted green
+      border: '2px solid #B99470', // Earthy brown border
+      borderRadius: '10px',
+      color: '#B99470',
+      transition: 'all 0.3s',
+      margin: '0 auto',
+      cursor: 'pointer',
+    },
+    badge: {
+      backgroundColor: '#B99470', // Earthy brown
+      color: '#FFFFFF',
+    },
+    modalOverlay: {
+      position: 'fixed',
+      top: '0',
+      left: '0',
+      right: '0',
+      bottom: '0',
+      backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent black
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      zIndex: 9999,
+    },
+    modalContent: {
+      backgroundColor: '#FEFAE0', // Cream
+      border: '2px solid #B99470', // Earthy brown border
+      color: '#B99470',
+      boxShadow: '0 0 15px #B99470',
+      borderRadius: '8px',
+      padding: '20px',
+      maxHeight: '80vh',
+      overflowY: 'auto',
+      width: '80%',
+      maxWidth: '400px',
+    },
+    modalCloseButton: {
+      position: 'absolute',
+      top: '10px',
+      right: '10px',
+      background: 'none',
+      border: 'none',
+      color: '#B99470',
+      fontSize: '1.5rem',
+      cursor: 'pointer',
+    },
+    modalHeader: {
+      borderBottom: '2px solid #B99470',
+      paddingBottom: '10px',
+      marginBottom: '10px',
+      color: '#B99470',
+      fontSize: '1.5rem',
+    },
+    modalTextStyle: {
+      marginBottom: '1rem',
+      color: '#B99470',
+      wordBreak: 'break-word',
+    },
+    modalFont: {
+      color: '#B99470',
+    },
+    dateStyle: {
+      color: '#A6B37D', // Muted green
+      fontSize: '0.9rem',
+      fontStyle: 'italic',
+    },
+    profilePicture: {
+      width: '50px',
+      height: '50px',
+      backgroundColor: '#B99470', // Earthy brown
+      borderRadius: '50%',
+      marginRight: '10px',
+    },
+    usernameContainer: {
+      flex: 1,
+      display: 'flex',
+      alignItems: 'center',
+    },
+    buttonStyle: {
+      backgroundColor: '#A6B37D', // Muted green
+      border: '2px solid #B99470',
+      color: '#B99470',
+      fontWeight: 'bold',
+      transition: 'all 0.3s',
+      borderRadius: '50px',
+      padding: '10px 20px',
+      fontSize: '16px',
+      cursor: 'pointer',
+      outline: 'none',
+      margin: '5px',
+    },
+    hoverButtonStyle: {
+      backgroundColor: '#B99470', // Earthy brown on hover
+      color: '#FFFFFF',
+    },
+    StylesShare: {
+      borderColor: '#B99470', // Earthy brown
+      color: '#B99470',
+    },
+    StylesEject: {
+      borderColor: '#A6B37D', // Muted green
+      color: '#FFFFFF',
+    },
+    
+    hoverStylesShare: {
+      backgroundColor: '#B99470', // Earthy brown on hover
+      color: '#FFFFFF',
+      borderColor: '#FEFAE0', // Cream border
+    },
+    hoverStylesEject: {
+      backgroundColor: '#A6B37D', // Muted green on hover
+      color: '#B99470',
+      borderColor: '#FEFAE0',
+    },
+    MagicIcon: {
+      fontSize: '1rem',
+      color: '#B99470',
+      textShadow: '0 0 5px rgba(185, 148, 112, 0.8), 0 0 10px rgba(185, 148, 112, 0.6)',
+      cursor: 'pointer',
+      transition: 'all 0.3s',
+    },
+    MagicIconHover: {
+      color: '#FEFAE0', // Cream on hover
+      textShadow: '0 0 5px rgba(254, 250, 224, 0.8), 0 0 10px rgba(254, 250, 224, 0.6)',
+    }
+  },
+  Verdant:{
+    container: {
+      background: 'linear-gradient(to bottom, #F5F7F8, #E8B86D)', // Light gray to soft orange gradient
+      minHeight: '100vh',
+      color: '#185519', // Deep green for text
+      fontFamily: "'Arial', sans-serif",
+      padding: '20px',
+    },
+    buttonContainer: {
+      display: 'flex',
+      justifyContent: 'flex-end',
+      gap: '10px',
+    },
+    header: {
+      color: '#185519', // Deep green
+      textAlign: 'center',
+      fontFamily: "'Playfair Display', serif",
+    },
+    card: {
+      backgroundColor: '#FCDE70', // Soft yellow
+      border: '2px solid #185519', // Deep green border
+      borderRadius: '10px',
+      color: '#185519',
+      transition: 'all 0.3s',
+      margin: '0 auto',
+      cursor: 'pointer',
+    },
+    badge: {
+      backgroundColor: '#185519', // Deep green
+      color: '#FFFFFF',
+    },
+    modalOverlay: {
+      position: 'fixed',
+      top: '0',
+      left: '0',
+      right: '0',
+      bottom: '0',
+      backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent black
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      zIndex: 9999,
+    },
+    modalContent: {
+      backgroundColor: '#F5F7F8', // Light gray
+      border: '2px solid #185519', // Deep green border
+      color: '#185519',
+      boxShadow: '0 0 15px #185519',
+      borderRadius: '8px',
+      padding: '20px',
+      maxHeight: '80vh',
+      overflowY: 'auto',
+      width: '80%',
+      maxWidth: '400px',
+    },
+    modalCloseButton: {
+      position: 'absolute',
+      top: '10px',
+      right: '10px',
+      background: 'none',
+      border: 'none',
+      color: '#185519',
+      fontSize: '1.5rem',
+      cursor: 'pointer',
+    },
+    modalHeader: {
+      borderBottom: '2px solid #185519',
+      paddingBottom: '10px',
+      marginBottom: '10px',
+      color: '#185519',
+      fontSize: '1.5rem',
+    },
+    modalTextStyle: {
+      marginBottom: '1rem',
+      color: '#185519',
+      wordBreak: 'break-word',
+    },
+    modalFont: {
+      color: '#185519',
+    },
+    dateStyle: {
+      color: '#E8B86D', // Soft orange
+      fontSize: '0.9rem',
+      fontStyle: 'italic',
+    },
+    profilePicture: {
+      width: '50px',
+      height: '50px',
+      backgroundColor: '#185519', // Deep green
+      borderRadius: '50%',
+      marginRight: '10px',
+    },
+    usernameContainer: {
+      flex: 1,
+      display: 'flex',
+      alignItems: 'center',
+    },
+    buttonStyle: {
+      backgroundColor: '#FCDE70', // Soft yellow
+      border: '2px solid #185519',
+      color: '#185519',
+      fontWeight: 'bold',
+      transition: 'all 0.3s',
+      borderRadius: '50px',
+      padding: '10px 20px',
+      fontSize: '16px',
+      cursor: 'pointer',
+      outline: 'none',
+      margin: '5px',
+    },
+    hoverButtonStyle: {
+      backgroundColor: '#185519', // Deep green on hover
+      color: '#FFFFFF',
+    },
+    StylesShare: {
+      borderColor: '#185519', // Deep green
+      color: '#185519',
+    },
+    StylesEject: {
+      borderColor: '#E8B86D', // Soft orange
+      color: '#185519',
+    },
+    
+    hoverStylesShare: {
+      backgroundColor: '#185519', // Deep green on hover
+      color: '#FFFFFF',
+      borderColor: '#FCDE70', // Soft yellow border
+    },
+    hoverStylesEject: {
+      backgroundColor: '#E8B86D', // Soft orange on hover
+      color: '#185519',
+      borderColor: '#FCDE70',
+    },
+    MagicIcon: {
+      fontSize: '1rem',
+      color: '#E8B86D', // Soft orange
+      textShadow: '0 0 5px rgba(232, 184, 109, 0.8), 0 0 10px rgba(232, 184, 109, 0.6)',
+      cursor: 'pointer',
+      transition: 'all 0.3s',
+    },
+    MagicIconHover: {
+      color: '#FCDE70', // Soft yellow on hover
+      textShadow: '0 0 5px rgba(252, 222, 112, 0.8), 0 0 10px rgba(252, 222, 112, 0.6)',
+    }
+  },
+  Rustic:{
+    container: {
+      background: 'linear-gradient(to bottom, #F2E8C6, #DAD4B5)', // Light beige to soft tan gradient
+      minHeight: '100vh',
+      color: '#800000', // Dark red for text
+      fontFamily: "'Arial', sans-serif",
+      padding: '20px',
+    },
+    buttonContainer: {
+      display: 'flex',
+      justifyContent: 'flex-end',
+      gap: '10px',
+    },
+    header: {
+      color: '#800000', // Dark red
+      textAlign: 'center',
+      fontFamily: "'Playfair Display', serif",
+    },
+    card: {
+      backgroundColor: '#DAD4B5', // Soft tan
+      border: '2px solid #800000', // Dark red border
+      borderRadius: '10px',
+      color: '#800000',
+      transition: 'all 0.3s',
+      margin: '0 auto',
+      cursor: 'pointer',
+    },
+    badge: {
+      backgroundColor: '#800000', // Dark red
+      color: '#FFFFFF',
+    },
+    modalOverlay: {
+      position: 'fixed',
+      top: '0',
+      left: '0',
+      right: '0',
+      bottom: '0',
+      backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent black
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      zIndex: 9999,
+    },
+    modalContent: {
+      backgroundColor: '#F2E8C6', // Light beige
+      border: '2px solid #800000', // Dark red border
+      color: '#800000',
+      boxShadow: '0 0 15px #800000',
+      borderRadius: '8px',
+      padding: '20px',
+      maxHeight: '80vh',
+      overflowY: 'auto',
+      width: '80%',
+      maxWidth: '400px',
+    },
+    modalCloseButton: {
+      position: 'absolute',
+      top: '10px',
+      right: '10px',
+      background: 'none',
+      border: 'none',
+      color: '#800000',
+      fontSize: '1.5rem',
+      cursor: 'pointer',
+    },
+    modalHeader: {
+      borderBottom: '2px solid #800000',
+      paddingBottom: '10px',
+      marginBottom: '10px',
+      color: '#800000',
+      fontSize: '1.5rem',
+    },
+    modalTextStyle: {
+      marginBottom: '1rem',
+      color: '#800000',
+      wordBreak: 'break-word',
+    },
+    modalFont: {
+      color: '#800000',
+    },
+    dateStyle: {
+      color: '#DAD4B5', // Soft tan
+      fontSize: '0.9rem',
+      fontStyle: 'italic',
+    },
+    profilePicture: {
+      width: '50px',
+      height: '50px',
+      backgroundColor: '#800000', // Dark red
+      borderRadius: '50%',
+      marginRight: '10px',
+    },
+    usernameContainer: {
+      flex: 1,
+      display: 'flex',
+      alignItems: 'center',
+    },
+    buttonStyle: {
+      backgroundColor: '#DAD4B5', // Soft tan
+      border: '2px solid #800000',
+      color: '#800000',
+      fontWeight: 'bold',
+      transition: 'all 0.3s',
+      borderRadius: '50px',
+      padding: '10px 20px',
+      fontSize: '16px',
+      cursor: 'pointer',
+      outline: 'none',
+      margin: '5px',
+    },
+    hoverButtonStyle: {
+      backgroundColor: '#800000', // Dark red on hover
+      color: '#FFFFFF',
+    },
+    StylesShare: {
+      borderColor: '#800000', // Dark red
+      color: '#800000',
+    },
+    StylesEject: {
+      borderColor: '#DAD4B5', // Soft tan
+      color: '#800000',
+    },
+    
+    hoverStylesShare: {
+      backgroundColor: '#800000', // Dark red on hover
+      color: '#FFFFFF',
+      borderColor: '#F2E8C6', // Light beige border
+    },
+    hoverStylesEject: {
+      backgroundColor: '#DAD4B5', // Soft tan on hover
+      color: '#800000',
+      borderColor: '#F2E8C6',
+    },
+    MagicIcon: {
+      fontSize: '1rem',
+      color: '#E8B86D', // Soft orange
+      textShadow: '0 0 5px rgba(232, 184, 109, 0.8), 0 0 10px rgba(232, 184, 109, 0.6)',
+      cursor: 'pointer',
+      transition: 'all 0.3s',
+    },
+    MagicIconHover: {
+      color: '#FCDE70', // Soft yellow on hover
+      textShadow: '0 0 5px rgba(252, 222, 112, 0.8), 0 0 10px rgba(252, 222, 112, 0.6)',
+    }
+  },
+  Warm:{
+    container: {
+      background: 'linear-gradient(to bottom, #F6FDC3, #CDFADB)', // Soft gradient from light yellow to light teal
+      minHeight: '100vh',
+      color: '#FF8080', // Warm blush for text
+      fontFamily: "'Arial', sans-serif",
+      padding: '20px',
+    },
+    buttonContainer: {
+      display: 'flex',
+      justifyContent: 'flex-end',
+      gap: '10px',
+    },
+    header: {
+      color: '#FF8080', // Warm blush
+      textAlign: 'center',
+      fontFamily: "'Playfair Display', serif",
+    },
+    card: {
+      backgroundColor: '#FFCF96', // Soft peach
+      border: '2px solid #FF8080', // Warm blush border
+      borderRadius: '10px',
+      color: '#FF8080',
+      transition: 'all 0.3s',
+      margin: '0 auto',
+      cursor: 'pointer',
+    },
+    badge: {
+      backgroundColor: '#FF8080', // Warm blush
+      color: '#FFFFFF',
+    },
+    modalOverlay: {
+      position: 'fixed',
+      top: '0',
+      left: '0',
+      right: '0',
+      bottom: '0',
+      backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent black
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      zIndex: 9999,
+    },
+    modalContent: {
+      backgroundColor: '#F6FDC3', // Light yellow
+      border: '2px solid #FF8080', // Warm blush border
+      color: '#FF8080',
+      boxShadow: '0 0 15px #FF8080',
+      borderRadius: '8px',
+      padding: '20px',
+      maxHeight: '80vh',
+      overflowY: 'auto',
+      width: '80%',
+      maxWidth: '400px',
+    },
+    modalCloseButton: {
+      position: 'absolute',
+      top: '10px',
+      right: '10px',
+      background: 'none',
+      border: 'none',
+      color: '#FF8080',
+      fontSize: '1.5rem',
+      cursor: 'pointer',
+    },
+    modalHeader: {
+      borderBottom: '2px solid #FF8080',
+      paddingBottom: '10px',
+      marginBottom: '10px',
+      color: '#FF8080',
+      fontSize: '1.5rem',
+    },
+    modalTextStyle: {
+      marginBottom: '1rem',
+      color: '#FF8080',
+      wordBreak: 'break-word',
+    },
+    modalFont: {
+      color: '#FF8080',
+    },
+    dateStyle: {
+      color: '#FFCF96', // Soft peach
+      fontSize: '0.9rem',
+      fontStyle: 'italic',
+    },
+    profilePicture: {
+      width: '50px',
+      height: '50px',
+      backgroundColor: '#FF8080', // Warm blush
+      borderRadius: '50%',
+      marginRight: '10px',
+    },
+    usernameContainer: {
+      flex: 1,
+      display: 'flex',
+      alignItems: 'center',
+    },
+    buttonStyle: {
+      backgroundColor: '#FFCF96', // Soft peach
+      border: '2px solid #FF8080',
+      color: '#FF8080',
+      fontWeight: 'bold',
+      transition: 'all 0.3s',
+      borderRadius: '50px',
+      padding: '10px 20px',
+      fontSize: '16px',
+      cursor: 'pointer',
+      outline: 'none',
+      margin: '5px',
+    },
+    hoverButtonStyle: {
+      backgroundColor: '#FF8080', // Warm blush on hover
+      color: '#FFFFFF',
+    },
+    StylesShare: {
+      borderColor: '#FF8080', // Warm blush
+      color: '#FF8080',
+    },
+    StylesEject: {
+      borderColor: '#FFCF96', // Soft peach
+      color: '#FF8080',
+    },
+    
+    hoverStylesShare: {
+      backgroundColor: '#FF8080', // Warm blush on hover
+      color: '#FFFFFF',
+      borderColor: '#F6FDC3', // Light yellow border
+    },
+    hoverStylesEject: {
+      backgroundColor: '#FFCF96', // Soft peach on hover
+      color: '#FF8080',
+      borderColor: '#F6FDC3',
+    },
+    MagicIcon: {
+      fontSize: '1rem',
+      color: '#FFCF96', // Soft peach
+      textShadow: '0 0 5px rgba(255, 207, 150, 0.8), 0 0 10px rgba(255, 207, 150, 0.6)',
+      cursor: 'pointer',
+      transition: 'all 0.3s',
+    },
+    MagicIconHover: {
+      color: '#F6FDC3', // Light yellow on hover
+      textShadow: '0 0 5px rgba(246, 253, 195, 0.8), 0 0 10px rgba(246, 253, 195, 0.6)',
+    }
+  },
+  Autumn:{
+    container: {
+      background: 'linear-gradient(to bottom, #E2DFD0, #524C42)', // Soft gradient from light beige to dark brown
+      minHeight: '100vh',
+      color: '#F97300', // Warm orange for text
+      fontFamily: "'Arial', sans-serif",
+      padding: '20px',
+    },
+    buttonContainer: {
+      display: 'flex',
+      justifyContent: 'flex-end',
+      gap: '10px',
+    },
+    header: {
+      color: '#F97300', // Warm orange
+      textAlign: 'center',
+      fontFamily: "'Playfair Display', serif",
+    },
+    card: {
+      backgroundColor: '#E2DFD0', // Light beige
+      border: '2px solid #F97300', // Warm orange border
+      borderRadius: '10px',
+      color: '#524C42', // Dark brown
+      transition: 'all 0.3s',
+      margin: '0 auto',
+      cursor: 'pointer',
+    },
+    badge: {
+      backgroundColor: '#F97300', // Warm orange
+      color: '#FFFFFF',
+    },
+    modalOverlay: {
+      position: 'fixed',
+      top: '0',
+      left: '0',
+      right: '0',
+      bottom: '0',
+      backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent black
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      zIndex: 9999,
+    },
+    modalContent: {
+      backgroundColor: '#E2DFD0', // Light beige
+      border: '2px solid #F97300', // Warm orange border
+      color: '#524C42', // Dark brown
+      boxShadow: '0 0 15px #F97300',
+      borderRadius: '8px',
+      padding: '20px',
+      maxHeight: '80vh',
+      overflowY: 'auto',
+      width: '80%',
+      maxWidth: '400px',
+    },
+    modalCloseButton: {
+      position: 'absolute',
+      top: '10px',
+      right: '10px',
+      background: 'none',
+      border: 'none',
+      color: '#F97300',
+      fontSize: '1.5rem',
+      cursor: 'pointer',
+    },
+    modalHeader: {
+      borderBottom: '2px solid #F97300',
+      paddingBottom: '10px',
+      marginBottom: '10px',
+      color: '#F97300',
+      fontSize: '1.5rem',
+    },
+    modalTextStyle: {
+      marginBottom: '1rem',
+      color: '#524C42', // Dark brown
+      wordBreak: 'break-word',
+    },
+    modalFont: {
+      color: '#524C42', // Dark brown
+    },
+    dateStyle: {
+      color: '#E2DFD0', // Light beige
+      fontSize: '0.9rem',
+      fontStyle: 'italic',
+    },
+    profilePicture: {
+      width: '50px',
+      height: '50px',
+      backgroundColor: '#F97300', // Warm orange
+      borderRadius: '50%',
+      marginRight: '10px',
+    },
+    usernameContainer: {
+      flex: 1,
+      display: 'flex',
+      alignItems: 'center',
+    },
+    buttonStyle: {
+      backgroundColor: '#E2DFD0', // Light beige
+      border: '2px solid #F97300', // Warm orange
+      color: '#524C42', // Dark brown
+      fontWeight: 'bold',
+      transition: 'all 0.3s',
+      borderRadius: '50px',
+      padding: '10px 20px',
+      fontSize: '16px',
+      cursor: 'pointer',
+      outline: 'none',
+      margin: '5px',
+    },
+    hoverButtonStyle: {
+      backgroundColor: '#F97300', // Warm orange on hover
+      color: '#FFFFFF',
+    },
+    StylesShare: {
+      borderColor: '#F97300', // Warm orange
+      color: '#F97300',
+    },
+    StylesEject: {
+      borderColor: '#E2DFD0', // Light beige
+      color: '#524C42', // Dark brown
+    },
+    
+    hoverStylesShare: {
+      backgroundColor: '#F97300', // Warm orange on hover
+      color: '#FFFFFF',
+      borderColor: '#F97300',
+    },
+    hoverStylesEject: {
+      backgroundColor: '#E2DFD0', // Light beige on hover
+      color: '#524C42',
+      borderColor: '#F97300',
+    },
+    MagicIcon: {
+      fontSize: '1rem',
+      color: '#F97300', // Warm orange
+      textShadow: '0 0 5px rgba(249, 115, 0, 0.8), 0 0 10px rgba(249, 115, 0, 0.6)',
+      cursor: 'pointer',
+      transition: 'all 0.3s',
+    },
+    MagicIconHover: {
+      color: '#E2DFD0', // Light beige on hover
+      textShadow: '0 0 5px rgba(226, 223, 208, 0.8), 0 0 10px rgba(226, 223, 208, 0.6)',
+    }
+  },
+  FreshGreen:{
+    container: {
+      background: 'linear-gradient(to bottom, #F3FF90, #9BEC00)', // Soft gradient from light yellow-green to bright green
+      minHeight: '100vh',
+      color: '#059212', // Deep green for text
+      fontFamily: "'Arial', sans-serif",
+      padding: '20px',
+    },
+    buttonContainer: {
+      display: 'flex',
+      justifyContent: 'flex-end',
+      gap: '10px',
+    },
+    header: {
+      color: '#059212', // Deep green
+      textAlign: 'center',
+      fontFamily: "'Playfair Display', serif",
+    },
+    card: {
+      backgroundColor: '#9BEC00', // Bright green
+      border: '2px solid #059212', // Deep green border
+      borderRadius: '10px',
+      color: '#F3FF90', // Light yellow-green
+      transition: 'all 0.3s',
+      margin: '0 auto',
+      cursor: 'pointer',
+    },
+    badge: {
+      backgroundColor: '#059212', // Deep green
+      color: '#FFFFFF',
+    },
+    modalOverlay: {
+      position: 'fixed',
+      top: '0',
+      left: '0',
+      right: '0',
+      bottom: '0',
+      backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent black
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      zIndex: 9999,
+    },
+    modalContent: {
+      backgroundColor: '#F3FF90', // Light yellow-green
+      border: '2px solid #059212', // Deep green border
+      color: '#059212', // Deep green
+      boxShadow: '0 0 15px #059212',
+      borderRadius: '8px',
+      padding: '20px',
+      maxHeight: '80vh',
+      overflowY: 'auto',
+      width: '80%',
+      maxWidth: '400px',
+    },
+    modalCloseButton: {
+      position: 'absolute',
+      top: '10px',
+      right: '10px',
+      background: 'none',
+      border: 'none',
+      color: '#059212',
+      fontSize: '1.5rem',
+      cursor: 'pointer',
+    },
+    modalHeader: {
+      borderBottom: '2px solid #059212',
+      paddingBottom: '10px',
+      marginBottom: '10px',
+      color: '#059212',
+      fontSize: '1.5rem',
+    },
+    modalTextStyle: {
+      marginBottom: '1rem',
+      color: '#059212', // Deep green
+      wordBreak: 'break-word',
+    },
+    modalFont: {
+      color: '#059212', // Deep green
+    },
+    dateStyle: {
+      color: '#9BEC00', // Bright green
+      fontSize: '0.9rem',
+      fontStyle: 'italic',
+    },
+    profilePicture: {
+      width: '50px',
+      height: '50px',
+      backgroundColor: '#059212', // Deep green
+      borderRadius: '50%',
+      marginRight: '10px',
+    },
+    usernameContainer: {
+      flex: 1,
+      display: 'flex',
+      alignItems: 'center',
+    },
+    buttonStyle: {
+      backgroundColor: '#9BEC00', // Bright green
+      border: '2px solid #059212', // Deep green
+      color: '#F3FF90', // Light yellow-green
+      fontWeight: 'bold',
+      transition: 'all 0.3s',
+      borderRadius: '50px',
+      padding: '10px 20px',
+      fontSize: '16px',
+      cursor: 'pointer',
+      outline: 'none',
+      margin: '5px',
+    },
+    hoverButtonStyle: {
+      backgroundColor: '#059212', // Deep green on hover
+      color: '#FFFFFF',
+    },
+    StylesShare: {
+      borderColor: '#059212', // Deep green
+      color: '#059212',
+    },
+    StylesEject: {
+      borderColor: '#9BEC00', // Bright green
+      color: '#F3FF90', // Light yellow-green
+    },
+    
+    hoverStylesShare: {
+      backgroundColor: '#059212', // Deep green on hover
+      color: '#FFFFFF',
+      borderColor: '#F3FF90', // Light yellow-green border
+    },
+    hoverStylesEject: {
+      backgroundColor: '#9BEC00', // Bright green on hover
+      color: '#059212',
+      borderColor: '#F3FF90',
+    },
+    MagicIcon: {
+      fontSize: '1rem',
+      color: '#059212', // Deep green
+      textShadow: '0 0 5px rgba(5, 146, 18, 0.8), 0 0 10px rgba(5, 146, 18, 0.6)',
+      cursor: 'pointer',
+      transition: 'all 0.3s',
+    },
+    MagicIconHover: {
+      color: '#F3FF90', // Light yellow-green on hover
+      textShadow: '0 0 5px rgba(243, 255, 144, 0.8), 0 0 10px rgba(243, 255, 144, 0.6)',
+    }
+  },
+  RetroAutumn:{
+    container: {
+      background: 'linear-gradient(to bottom, #C5FF95, #5DEBD7)', // Gradient from light green to aqua blue
+      minHeight: '100vh',
+      color: '#074173', // Dark blue for text
+      fontFamily: "'Arial', sans-serif",
+      padding: '20px',
+    },
+    buttonContainer: {
+      display: 'flex',
+      justifyContent: 'flex-end',
+      gap: '10px',
+    },
+    header: {
+      color: '#074173', // Dark blue
+      textAlign: 'center',
+      fontFamily: "'Playfair Display', serif",
+    },
+    card: {
+      backgroundColor: '#1679AB', // Medium blue
+      border: '2px solid #074173', // Dark blue border
+      borderRadius: '10px',
+      color: '#FFFFFF', // White text
+      transition: 'all 0.3s',
+      margin: '0 auto',
+      cursor: 'pointer',
+    },
+    badge: {
+      backgroundColor: '#074173', // Dark blue
+      color: '#FFFFFF', // White text
+    },
+    modalOverlay: {
+      position: 'fixed',
+      top: '0',
+      left: '0',
+      right: '0',
+      bottom: '0',
+      backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent black
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      zIndex: 9999,
+    },
+    modalContent: {
+      backgroundColor: '#5DEBD7', // Aqua blue
+      border: '2px solid #074173', // Dark blue border
+      color: '#074173', // Dark blue text
+      boxShadow: '0 0 15px #074173',
+      borderRadius: '8px',
+      padding: '20px',
+      maxHeight: '80vh',
+      overflowY: 'auto',
+      width: '80%',
+      maxWidth: '400px',
+    },
+    modalCloseButton: {
+      position: 'absolute',
+      top: '10px',
+      right: '10px',
+      background: 'none',
+      border: 'none',
+      color: '#074173', // Dark blue
+      fontSize: '1.5rem',
+      cursor: 'pointer',
+    },
+    modalHeader: {
+      borderBottom: '2px solid #074173',
+      paddingBottom: '10px',
+      marginBottom: '10px',
+      color: '#074173', // Dark blue
+      fontSize: '1.5rem',
+    },
+    modalTextStyle: {
+      marginBottom: '1rem',
+      color: '#074173', // Dark blue text
+      wordBreak: 'break-word',
+    },
+    modalFont: {
+      color: '#074173', // Dark blue
+    },
+    dateStyle: {
+      color: '#C5FF95', // Light green
+      fontSize: '0.9rem',
+      fontStyle: 'italic',
+    },
+    profilePicture: {
+      width: '50px',
+      height: '50px',
+      backgroundColor: '#1679AB', // Medium blue
+      borderRadius: '50%',
+      marginRight: '10px',
+    },
+    usernameContainer: {
+      flex: 1,
+      display: 'flex',
+      alignItems: 'center',
+    },
+    buttonStyle: {
+      backgroundColor: '#1679AB', // Medium blue
+      border: '2px solid #074173', // Dark blue border
+      color: '#FFFFFF', // White text
+      fontWeight: 'bold',
+      transition: 'all 0.3s',
+      borderRadius: '50px',
+      padding: '10px 20px',
+      fontSize: '16px',
+      cursor: 'pointer',
+      outline: 'none',
+      margin: '5px',
+    },
+    hoverButtonStyle: {
+      backgroundColor: '#074173', // Dark blue on hover
+      color: '#C5FF95', // Light green text
+    },
+    StylesShare: {
+      borderColor: '#074173', // Dark blue
+      color: '#074173',
+    },
+    StylesEject: {
+      borderColor: '#1679AB', // Medium blue
+      color: '#FFFFFF', // White text
+    },
+    
+    hoverStylesShare: {
+      backgroundColor: '#074173', // Dark blue on hover
+      color: '#C5FF95', // Light green text
+      borderColor: '#5DEBD7', // Aqua blue border
+    },
+    hoverStylesEject: {
+      backgroundColor: '#1679AB', // Medium blue on hover
+      color: '#074173', // Dark blue text
+      borderColor: '#5DEBD7', // Aqua blue border
+    },
+    MagicIcon: {
+      fontSize: '1rem',
+      color: '#074173', // Dark blue
+      textShadow: '0 0 5px rgba(7, 65, 115, 0.8), 0 0 10px rgba(7, 65, 115, 0.6)',
+      cursor: 'pointer',
+      transition: 'all 0.3s',
+    },
+    MagicIconHover: {
+      color: '#C5FF95', // Light green on hover
+      textShadow: '0 0 5px rgba(197, 255, 149, 0.8), 0 0 10px rgba(197, 255, 149, 0.6)',
+    }
+  },
+  Greeny:{
+    container: {
+      background: 'linear-gradient(to bottom, #FFFFDD, #A2C579)', // Gradient from light cream to soft green
+      minHeight: '100vh',
+      color: '#61A3BA', // Soft blue for text
+      fontFamily: "'Arial', sans-serif",
+      padding: '20px',
+    },
+    buttonContainer: {
+      display: 'flex',
+      justifyContent: 'flex-end',
+      gap: '10px',
+    },
+    header: {
+      color: '#61A3BA', // Soft blue
+      textAlign: 'center',
+      fontFamily: "'Playfair Display', serif",
+    },
+    card: {
+      backgroundColor: '#D2DE32', // Bright green
+      border: '2px solid #61A3BA', // Soft blue border
+      borderRadius: '10px',
+      color: '#FFFFFF', // White text
+      transition: 'all 0.3s',
+      margin: '0 auto',
+      cursor: 'pointer',
+    },
+    badge: {
+      backgroundColor: '#61A3BA', // Soft blue
+      color: '#FFFFFF', // White text
+    },
+    modalOverlay: {
+      position: 'fixed',
+      top: '0',
+      left: '0',
+      right: '0',
+      bottom: '0',
+      backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent black
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      zIndex: 9999,
+    },
+    modalContent: {
+      backgroundColor: '#FFFFDD', // Light cream
+      border: '2px solid #61A3BA', // Soft blue border
+      color: '#61A3BA', // Soft blue text
+      boxShadow: '0 0 15px #61A3BA',
+      borderRadius: '8px',
+      padding: '20px',
+      maxHeight: '80vh',
+      overflowY: 'auto',
+      width: '80%',
+      maxWidth: '400px',
+    },
+    modalCloseButton: {
+      position: 'absolute',
+      top: '10px',
+      right: '10px',
+      background: 'none',
+      border: 'none',
+      color: '#61A3BA', // Soft blue
+      fontSize: '1.5rem',
+      cursor: 'pointer',
+    },
+    modalHeader: {
+      borderBottom: '2px solid #61A3BA',
+      paddingBottom: '10px',
+      marginBottom: '10px',
+      color: '#61A3BA', // Soft blue
+      fontSize: '1.5rem',
+    },
+    modalTextStyle: {
+      marginBottom: '1rem',
+      color: '#61A3BA', // Soft blue text
+      wordBreak: 'break-word',
+    },
+    modalFont: {
+      color: '#61A3BA', // Soft blue
+    },
+    dateStyle: {
+      color: '#A2C579', // Soft green
+      fontSize: '0.9rem',
+      fontStyle: 'italic',
+    },
+    profilePicture: {
+      width: '50px',
+      height: '50px',
+      backgroundColor: '#D2DE32', // Bright green
+      borderRadius: '50%',
+      marginRight: '10px',
+    },
+    usernameContainer: {
+      flex: 1,
+      display: 'flex',
+      alignItems: 'center',
+    },
+    buttonStyle: {
+      backgroundColor: '#A2C579', // Soft green
+      border: '2px solid #61A3BA', // Soft blue border
+      color: '#FFFFFF', // White text
+      fontWeight: 'bold',
+      transition: 'all 0.3s',
+      borderRadius: '50px',
+      padding: '10px 20px',
+      fontSize: '16px',
+      cursor: 'pointer',
+      outline: 'none',
+      margin: '5px',
+    },
+    hoverButtonStyle: {
+      backgroundColor: '#61A3BA', // Soft blue on hover
+      color: '#FFFFDD', // Light cream text
+    },
+    StylesShare: {
+      borderColor: '#61A3BA', // Soft blue
+      color: '#61A3BA',
+    },
+    StylesEject: {
+      borderColor: '#A2C579', // Soft green
+      color: '#FFFFFF', // White text
+    },
+    
+    hoverStylesShare: {
+      backgroundColor: '#61A3BA', // Soft blue on hover
+      color: '#FFFFDD', // Light cream text
+      borderColor: '#A2C579', // Soft green border
+    },
+    hoverStylesEject: {
+      backgroundColor: '#A2C579', // Soft green on hover
+      color: '#61A3BA', // Soft blue text
+      borderColor: '#FFFFDD', // Light cream border
+    },
+    MagicIcon: {
+      fontSize: '1rem',
+      color: '#61A3BA', // Soft blue
+      textShadow: '0 0 5px rgba(97, 163, 186, 0.8), 0 0 10px rgba(97, 163, 186, 0.6)',
+      cursor: 'pointer',
+      transition: 'all 0.3s',
+    },
+    MagicIconHover: {
+      color: '#A2C579', // Soft green on hover
+      textShadow: '0 0 5px rgba(162, 197, 139, 0.8), 0 0 10px rgba(162, 197, 139, 0.6)',
+    }
+  }, 
+  Noir:{
+    container: {
+      background: 'linear-gradient(to bottom, #282A3A, #000000)', // Gradient from dark gray to black
+      minHeight: '100vh',
+      color: '#C69749', // Gold for text
+      fontFamily: "'Arial', sans-serif",
+      padding: '20px',
+    },
+    buttonContainer: {
+      display: 'flex',
+      justifyContent: 'flex-end',
+      gap: '10px',
+    },
+    header: {
+      color: '#C69749', // Gold
+      textAlign: 'center',
+      fontFamily: "'Playfair Display', serif",
+    },
+    card: {
+      backgroundColor: '#735F32', // Warm brown
+      border: '2px solid #C69749', // Gold border
+      borderRadius: '10px',
+      color: '#C69749', // Gold text
+      transition: 'all 0.3s',
+      margin: '0 auto',
+      cursor: 'pointer',
+    },
+    badge: {
+      backgroundColor: '#C69749', // Gold
+      color: '#000000', // Black text
+    },
+    modalOverlay: {
+      position: 'fixed',
+      top: '0',
+      left: '0',
+      right: '0',
+      bottom: '0',
+      backgroundColor: 'rgba(0, 0, 0, 0.7)', // Semi-transparent black
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      zIndex: 9999,
+    },
+    modalContent: {
+      backgroundColor: '#282A3A', // Dark gray
+      border: '2px solid #C69749', // Gold border
+      color: '#C69749', // Gold text
+      boxShadow: '0 0 15px #C69749',
+      borderRadius: '8px',
+      padding: '20px',
+      maxHeight: '80vh',
+      overflowY: 'auto',
+      width: '80%',
+      maxWidth: '400px',
+    },
+    modalCloseButton: {
+      position: 'absolute',
+      top: '10px',
+      right: '10px',
+      background: 'none',
+      border: 'none',
+      color: '#C69749', // Gold
+      fontSize: '1.5rem',
+      cursor: 'pointer',
+    },
+    modalHeader: {
+      borderBottom: '2px solid #C69749', // Gold
+      paddingBottom: '10px',
+      marginBottom: '10px',
+      color: '#C69749', // Gold
+      fontSize: '1.5rem',
+    },
+    modalTextStyle: {
+      marginBottom: '1rem',
+      color: '#C69749', // Gold
+      wordBreak: 'break-word',
+    },
+    modalFont: {
+      color: '#C69749', // Gold
+    },
+    dateStyle: {
+      color: '#735F32', // Warm brown
+      fontSize: '0.9rem',
+      fontStyle: 'italic',
+    },
+    profilePicture: {
+      width: '50px',
+      height: '50px',
+      backgroundColor: '#C69749', // Gold
+      borderRadius: '50%',
+      marginRight: '10px',
+    },
+    usernameContainer: {
+      flex: 1,
+      display: 'flex',
+      alignItems: 'center',
+    },
+    buttonStyle: {
+      backgroundColor: '#735F32', // Warm brown
+      border: '2px solid #C69749', // Gold border
+      color: '#C69749', // Gold text
+      fontWeight: 'bold',
+      transition: 'all 0.3s',
+      borderRadius: '50px',
+      padding: '10px 20px',
+      fontSize: '16px',
+      cursor: 'pointer',
+      outline: 'none',
+      margin: '5px',
+    },
+    hoverButtonStyle: {
+      backgroundColor: '#C69749', // Gold on hover
+      color: '#000000', // Black text
+    },
+    StylesShare: {
+      borderColor: '#C69749', // Gold
+      color: '#C69749',
+    },
+    StylesEject: {
+      borderColor: '#735F32', // Warm brown
+      color: '#C69749', // Gold text
+    },
+    
+    hoverStylesShare: {
+      backgroundColor: '#C69749', // Gold on hover
+      color: '#000000', // Black text
+      borderColor: '#282A3A', // Dark gray border
+    },
+    hoverStylesEject: {
+      backgroundColor: '#735F32', // Warm brown on hover
+      color: '#C69749', // Gold text
+      borderColor: '#282A3A', // Dark gray border
+    },
+    MagicIcon: {
+      fontSize: '1rem',
+      color: '#C69749', // Gold
+      textShadow: '0 0 5px rgba(199, 151, 73, 0.8), 0 0 10px rgba(199, 151, 73, 0.6)',
+      cursor: 'pointer',
+      transition: 'all 0.3s',
+    },
+    MagicIconHover: {
+      color: '#735F32', // Warm brown on hover
+      textShadow: '0 0 5px rgba(115, 95, 50, 0.8), 0 0 10px rgba(115, 95, 50, 0.6)',
+    }
+  }
+
     // Add more themes here
   };
   

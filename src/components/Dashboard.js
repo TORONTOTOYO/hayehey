@@ -209,92 +209,6 @@ const Profile = () => {
     }
   };
 
-    const handleUsernameChange = async () => {
-      if (newUsername.trim() === '' || !user) {
-        return; // Exit early if the new username is empty or user is not logged in
-      }
-
-    const originalUsername = username;
-
-    const customSwal = Swal.mixin({
-      customClass: {
-        container: 'custom-swal-container',
-        popup: 'custom-swal-popup',
-        title: 'custom-swal-title',
-        content: 'custom-swal-content',
-        confirmButton: 'custom-swal-confirm',
-        cancelButton: 'custom-swal-cancel',
-      },
-      didOpen: () => {
-
-    const container = document.querySelector('.custom-swal-container');
-    if (container) {
-      container.style.background = 'linear-gradient(to bottom, #000b1e, #1c2b4f)';
-    }
-    const popup = document.querySelector('.custom-swal-popup');
-    if (popup) {
-      popup.style.backgroundColor = '#2a2a2a';
-      popup.style.border = '2px solid #00ffff';
-      popup.style.borderRadius = '12px';
-      popup.style.padding = '10px';
-      popup.style.maxWidth = '350px';
-      popup.style.width = '90%'; // Ensures popup fits well on smaller screens
-    }
-    const title = document.querySelector('.custom-swal-title');
-    if (title) {
-      title.style.color = '#00ffff';
-      title.style.fontFamily = "'Press Start 2P'";
-    }
-    const content = document.querySelector('.custom-swal-content');
-    if (content) {
-      content.style.color = '#ffffff';
-      content.style.fontFamily = "'Press Start 2P'";
-    }
-    const confirmButton = document.querySelector('.custom-swal-confirm');
-    if (confirmButton) {
-      confirmButton.style.backgroundColor = '#00ffff';
-      confirmButton.style.color = '#000000';
-      confirmButton.style.border = 'none';
-      confirmButton.style.borderRadius = '8px';
-    }
-    const cancelButton = document.querySelector('.custom-swal-cancel');
-    if (cancelButton) {
-      cancelButton.style.backgroundColor = '#ff1616';
-      cancelButton.style.color = '#000000';
-      cancelButton.style.border = 'none';
-      cancelButton.style.borderRadius = '8px';
-    }
-  },
-});
-
-    const result = await customSwal.fire({
-      title: 'Do you want to change your username?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Yes, update it!',
-      cancelButtonText: 'Cancel',
-    });
-
-    if (result.isConfirmed) {
-      try {
-        const userDoc = doc(db, 'users', user.uid);
-        await updateDoc(userDoc, { username: newUsername });
-        setUsername(newUsername);
-        setIsEditingUsername(false);
-        setNewUsername(''); // Clear input after saving
-        toast.success('Username successfully updated!', { position: 'top-right' });
-      } catch (error) {
-        console.error('Failed to update username:', error);
-        toast.error('Failed to update username. Please try again.');
-      }
-    } else {
-      // Revert to the original username if cancelled
-      setNewUsername(''); // Clear the input
-      setUsername(originalUsername);
-      setIsEditingUsername(false);
-    }
-  };
-
   const handleUsernameClick = () => {
     if (score >= 5) {
       setIsEditingUsername(true);
@@ -398,10 +312,9 @@ const Profile = () => {
     }
   };
   
-
   const handleUsernameKeyPress = (event) => {
     if (event.key === "Enter") {
-      handleUsernameChange();
+      handleUsernameBlur();
     }
   };
 
