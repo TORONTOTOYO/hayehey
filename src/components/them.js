@@ -98,7 +98,7 @@ export const themes = {
           },
           amongUsSwalContent: {
             color: '#ffffff',
-            fontFamily: "'Press Start 2P', cursive",
+            fontFamily: "'Press Start 2P'",
           },
           amongUsSwalConfirm: {
             backgroundColor: '#00ffff',
@@ -169,7 +169,7 @@ export const themes = {
         background: 'linear-gradient(to bottom, #87CEFA, #4682B4)', // Sky blue gradient
         minHeight: '100vh',
         color: '#FFFFFF',
-        fontFamily: "'Comic Sans MS', cursive, sans-serif",
+        fontFamily: "'Comic Sans MS', sans-serif",
         padding: '20px',
       },
       buttonContainer: {
@@ -259,11 +259,11 @@ export const themes = {
       },
       onePieceSwalTitle: {
         color: '#FFD700',
-        fontFamily: "'Pirata One', cursive",
+        fontFamily: "'Pirata One'",
       },
       onePieceSwalContent: {
         color: '#FFFFFF',
-        fontFamily: "'Pirata One', cursive",
+        fontFamily: "'Pirata One'",
       },
       onePieceSwalConfirm: {
         backgroundColor: '#FFD700',
@@ -338,361 +338,12 @@ export const themes = {
         textShadow: '0 0 5px rgba(255, 153, 0, 0.8), 0 0 10px rgba(255, 153, 0, 0.6)',
       }
     },
-    jujutsuKaisen: {
-      container: {
-        background: 'linear-gradient(to bottom, #1a1a1a, #333333)', // Dark gradient background
-        minHeight: '100vh',
-        color: '#e0e0e0',
-        fontFamily: "'Roboto', sans-serif",
-        padding: '20px',
-      },
-      buttonContainer: {
-        display: 'flex',
-        justifyContent: 'flex-end',
-        gap: '10px',
-      },
-      header: {
-        color: '#e53935', // Crimson red
-        textAlign: 'center',
-        fontFamily: "'Bebas Neue', cursive",
-      },
-      card: {
-        backgroundColor: '#212121', // Very dark gray
-        border: '2px solid #e53935', // Crimson red border
-        borderRadius: '10px',
-        color: '#e0e0e0',
-        transition: 'all 0.3s',
-        margin: '0 auto',
-        cursor: 'pointer',
-      },
-      badge: {
-        backgroundColor: '#e53935', // Crimson red
-        color: '#e0e0e0',
-      },
-      modalOverlay: {
-        position: 'fixed',
-        top: '0',
-        left: '0',
-        right: '0',
-        bottom: '0',
-        backgroundColor: 'rgba(0, 0, 0, 0.7)', // Semi-transparent dark background
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        zIndex: 9999,
-      },
-      modalContent: {
-        backgroundColor: '#333333', // Dark gray
-        border: '2px solid #e53935', // Crimson red border
-        color: '#e0e0e0',
-        boxShadow: '0 0 15px #333333',
-        borderRadius: '8px',
-        padding: '20px',
-        maxHeight: '80vh',
-        overflowY: 'auto',
-        width: '80%',
-        maxWidth: '400px',
-      },
-      modalCloseButton: {
-        position: 'absolute',
-        top: '10px',
-        right: '10px',
-        background: 'none',
-        border: 'none',
-        color: '#e53935',
-        fontSize: '1.5rem',
-        cursor: 'pointer',
-      },
-      modalHeader: {
-        borderBottom: '2px solid #e53935',
-        paddingBottom: '10px',
-        marginBottom: '10px',
-        color: '#e53935',
-        fontSize: '1.5rem',
-      },
-      modalTextStyle: {
-        marginBottom: '1rem',
-        color: '#e0e0e0',
-        wordBreak: 'break-word',
-      },
-      modalFont: {
-        color: '#e53935'
-      },
-      dateStyle: {
-        color: '#b3b3b3', // Light gray
-        fontSize: '0.9rem',
-        fontStyle: 'italic',
-      },
-      jujutsuKaisenSwalContainer: {
-        backgroundColor: '#212121', // Dark gray
-      },
-      jujutsuKaisenSwalPopup: {
-        backgroundColor: '#333333', // Dark gray
-        border: '2px solid #e53935', // Crimson red border
-        borderRadius: '12px',
-      },
-      jujutsuKaisenSwalTitle: {
-        color: '#e53935',
-        fontFamily: "'Bebas Neue', cursive",
-      },
-      jujutsuKaisenSwalContent: {
-        color: '#e0e0e0',
-        fontFamily: "'Roboto', sans-serif",
-      },
-      jujutsuKaisenSwalConfirm: {
-        backgroundColor: '#e53935',
-        color: '#ffffff',
-        border: 'none',
-        borderRadius: '8px',
-      },
-      jujutsuKaisenSwalConfirmHover: {
-        backgroundColor: '#d32f2f',
-      },
-      jujutsuKaisenSwalCancel: {
-        backgroundColor: '#424242', // Dark gray
-        color: '#ffffff',
-        border: 'none',
-        borderRadius: '8px',
-      },
-      jujutsuKaisenSwalCancelHover: {
-        backgroundColor: '#616161', // Slightly lighter gray
-      },
-      profilePicture: {
-        width: '50px',
-        height: '50px',
-        backgroundColor: '#e53935', // Crimson red
-        borderRadius: '50%',
-        marginRight: '10px',
-      },
-      usernameContainer: {
-        flex: 1,
-        display: 'flex',
-        alignItems: 'center',
-      },
-      buttonStyle: {
-        backgroundColor: '#212121', // Dark gray
-        border: '2px solid #e53935', // Crimson red border
-        color: '#e53935',
-        fontWeight: 'bold',
-        transition: 'all 0.3s',
-        borderRadius: '50px',
-        padding: '10px 20px',
-        fontSize: '16px',
-        cursor: 'pointer',
-        outline: 'none',
-        margin: '5px',
-      },
-      StylesShare: {
-        borderColor: '#e53935',
-        color: '#e53935',
-      },
-      StylesEject: {
-        borderColor: '#424242',
-        color: '#424242',
-      },
-      hoverStylesShare: {
-        backgroundColor: '#e53935',
-        color: '#ffffff',
-        borderColor: '#212121',
-      },
-      hoverStylesEject: {
-        backgroundColor: '#424242',
-        color: '#ffffff',
-        borderColor: '#424242',
-      },
-      MagicIcon: {
-        fontSize: '1rem',
-        color: '#e91e63',
-        textShadow: '0 0 5px rgba(233, 30, 99, 0.8), 0 0 10px rgba(233, 30, 99, 0.6)',
-        cursor: 'pointer',
-        transition: 'all 0.3s',
-      },
-      MagicIconHover: {
-        color: '#d81b60',
-        textShadow: '0 0 5px rgba(216, 27, 96, 0.8), 0 0 10px rgba(216, 27, 96, 0.6)',
-      }
-    },
-    philippines: {
-      container: {
-        background: 'linear-gradient(to bottom, #0033A0, #FFD700)', // Blue to yellow gradient
-        minHeight: '100vh',
-        color: '#000000',
-        fontFamily: "'Arial', sans-serif",
-        padding: '20px',
-      },
-      buttonContainer: {
-        display: 'flex',
-        justifyContent: 'flex-end',
-        gap: '10px',
-      },
-      header: {
-        color: '#FF0000', // Red color
-        textAlign: 'center',
-        fontFamily: "'Poppins', sans-serif",
-        fontSize: '2rem',
-      },
-      card: {
-        backgroundColor: '#FFFFFF', // White
-        border: '2px solid #0033A0', // Blue border
-        borderRadius: '10px',
-        color: '#000000',
-        transition: 'all 0.3s',
-        margin: '0 auto',
-        cursor: 'pointer',
-      },
-      badge: {
-        backgroundColor: '#0033A0', // Blue
-        color: '#FFFFFF',
-      },
-      modalOverlay: {
-        position: 'fixed',
-        top: '0',
-        left: '0',
-        right: '0',
-        bottom: '0',
-        backgroundColor: 'rgba(0, 0, 0, 0.6)', // Semi-transparent dark background
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        zIndex: 9999,
-      },
-      modalContent: {
-        backgroundColor: '#FFFFFF', // White
-        border: '2px solid #0033A0', // Blue border
-        color: '#000000',
-        boxShadow: '0 0 15px #0033A0',
-        borderRadius: '8px',
-        padding: '20px',
-        maxHeight: '80vh',
-        overflowY: 'auto',
-        width: '80%',
-        maxWidth: '400px',
-      },
-      modalCloseButton: {
-        position: 'absolute',
-        top: '10px',
-        right: '10px',
-        background: 'none',
-        border: 'none',
-        color: '#0033A0',
-        fontSize: '1.5rem',
-        cursor: 'pointer',
-      },
-      modalHeader: {
-        borderBottom: '2px solid #0033A0',
-        paddingBottom: '10px',
-        marginBottom: '10px',
-        color: '#0033A0',
-        fontSize: '1.5rem',
-      },
-      modalTextStyle: {
-        marginBottom: '1rem',
-        color: '#000000',
-        wordBreak: 'break-word',
-      },
-      modalFont: {
-        color: '#0033A0',
-      },
-      dateStyle: {
-        color: '#FF0000', // Red
-        fontSize: '0.9rem',
-        fontStyle: 'italic',
-      },
-      philippinesSwalContainer: {
-        backgroundColor: '#FFFFFF', // White
-      },
-      philippinesSwalPopup: {
-        backgroundColor: '#FFFFFF', // White
-        border: '2px solid #0033A0', // Blue border
-        borderRadius: '12px',
-      },
-      philippinesSwalTitle: {
-        color: '#0033A0',
-        fontFamily: "'Poppins', sans-serif",
-      },
-      philippinesSwalContent: {
-        color: '#000000',
-        fontFamily: "'Arial', sans-serif",
-      },
-      philippinesSwalConfirm: {
-        backgroundColor: '#0033A0', // Blue
-        color: '#FFFFFF',
-        border: 'none',
-        borderRadius: '8px',
-      },
-      philippinesSwalConfirmHover: {
-        backgroundColor: '#002080', // Darker blue
-      },
-      philippinesSwalCancel: {
-        backgroundColor: '#FF0000', // Red
-        color: '#FFFFFF',
-        border: 'none',
-        borderRadius: '8px',
-      },
-      philippinesSwalCancelHover: {
-        backgroundColor: '#CC0000', // Darker red
-      },
-      profilePicture: {
-        width: '50px',
-        height: '50px',
-        backgroundColor: '#0033A0', // Blue
-        borderRadius: '50%',
-        marginRight: '10px',
-      },
-      usernameContainer: {
-        flex: 1,
-        display: 'flex',
-        alignItems: 'center',
-      },
-      buttonStyle: {
-        backgroundColor: '#FFD700', // Yellow
-        border: '2px solid #0033A0', // Blue border
-        color: '#0033A0',
-        fontWeight: 'bold',
-        transition: 'all 0.3s',
-        borderRadius: '50px',
-        padding: '10px 20px',
-        fontSize: '16px',
-        cursor: 'pointer',
-        outline: 'none',
-        margin: '5px',
-      },
-      StylesShare: {
-        borderColor: '#0033A0',
-        color: '#0033A0',
-      },
-      StylesEject: {
-        borderColor: '#FF0000',
-        color: '#FF0000',
-      },
-      hoverStylesShare: {
-        backgroundColor: '#0033A0',
-        color: '#FFFFFF',
-        borderColor: '#0033A0',
-      },
-      hoverStylesEject: {
-        backgroundColor: '#FF0000',
-        color: '#FFFFFF',
-        borderColor: '#FF0000',
-      },
-      MagicIcon: {
-        fontSize: '1rem',
-        color: '#0033a0',
-        textShadow: '0 0 5px rgba(0, 51, 160, 0.8), 0 0 10px rgba(0, 51, 160, 0.6)',
-        cursor: 'pointer',
-        transition: 'all 0.3s',
-      },
-      MagicIconHover: {
-        color: '#002f6c',
-        textShadow: '0 0 5px rgba(0, 47, 108, 0.8), 0 0 10px rgba(0, 47, 108, 0.6)',
-      }
-    },
     adorableHome: {
       container: {
         background: 'linear-gradient(to bottom, #FDE2E4, #FAD0C4)', // Soft pink to peach gradient
         minHeight: '100vh',
         color: '#333333',
-        fontFamily: "'Comic Sans MS', cursive",
+        fontFamily: "'Comic Sans MS'",
         padding: '20px',
       },
       buttonContainer: {
@@ -860,181 +511,6 @@ export const themes = {
       MagicIconHover: {
         color: '#e63946',
         textShadow: '0 0 5px rgba(230, 57, 70, 0.8), 0 0 10px rgba(230, 57, 70, 0.6)',
-      }
-    },
-    supermanVsBatman: {
-      container: {
-        background: 'linear-gradient(to bottom, #1c1c1c, #0033ff)', // Dark gray to blue gradient
-        minHeight: '100vh',
-        color: '#ffffff',
-        fontFamily: "'Arial', sans-serif",
-        padding: '20px',
-      },
-      buttonContainer: {
-        display: 'flex',
-        justifyContent: 'flex-end',
-        gap: '10px',
-      },
-      header: {
-        color: '#ffcc00', // Superman yellow
-        textAlign: 'center',
-        fontFamily: "'Verdana', sans-serif",
-        fontSize: '2rem',
-      },
-      card: {
-        backgroundColor: '#333333', // Dark gray
-        border: '2px solid #ffcc00', // Superman yellow border
-        borderRadius: '12px',
-        color: '#ffffff',
-        transition: 'all 0.3s',
-        margin: '0 auto',
-        cursor: 'pointer',
-      },
-      badge: {
-        backgroundColor: '#ffcc00', // Superman yellow
-        color: '#000000',
-      },
-      modalOverlay: {
-        position: 'fixed',
-        top: '0',
-        left: '0',
-        right: '0',
-        bottom: '0',
-        backgroundColor: 'rgba(0, 0, 0, 0.7)', // Dark semi-transparent background
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        zIndex: 9999,
-      },
-      modalContent: {
-        backgroundColor: '#1a1a1a', // Very dark gray
-        border: '2px solid #ffcc00', // Superman yellow border
-        color: '#ffffff',
-        boxShadow: '0 0 15px rgba(255, 204, 0, 0.5)',
-        borderRadius: '12px',
-        padding: '20px',
-        maxHeight: '80vh',
-        overflowY: 'auto',
-        width: '80%',
-        maxWidth: '400px',
-      },
-      modalCloseButton: {
-        position: 'absolute',
-        top: '10px',
-        right: '10px',
-        background: 'none',
-        border: 'none',
-        color: '#ffcc00',
-        fontSize: '1.5rem',
-        cursor: 'pointer',
-      },
-      modalHeader: {
-        borderBottom: '2px solid #ffcc00',
-        paddingBottom: '10px',
-        marginBottom: '10px',
-        color: '#ffcc00',
-        fontSize: '1.5rem',
-      },
-      modalTextStyle: {
-        marginBottom: '1rem',
-        color: '#ffffff',
-        wordBreak: 'break-word',
-      },
-      modalFont: {
-        color: '#ffcc00',
-      },
-      dateStyle: {
-        color: '#9e9e9e', // Light gray
-        fontSize: '0.9rem',
-        fontStyle: 'italic',
-      },
-      supermanVsBatmanSwalContainer: {
-        backgroundColor: '#1a1a1a', // Very dark gray
-      },
-      supermanVsBatmanSwalPopup: {
-        backgroundColor: '#333333', // Dark gray
-        border: '2px solid #ffcc00', // Superman yellow border
-        borderRadius: '12px',
-      },
-      supermanVsBatmanSwalTitle: {
-        color: '#ffcc00', // Superman yellow
-        fontFamily: "'Verdana', sans-serif",
-      },
-      supermanVsBatmanSwalContent: {
-        color: '#ffffff',
-        fontFamily: "'Arial', sans-serif",
-      },
-      supermanVsBatmanSwalConfirm: {
-        backgroundColor: '#ffcc00', // Superman yellow
-        color: '#000000',
-        border: 'none',
-        borderRadius: '8px',
-      },
-      supermanVsBatmanSwalConfirmHover: {
-        backgroundColor: '#f5c300', // Darker yellow
-      },
-      supermanVsBatmanSwalCancel: {
-        backgroundColor: '#333333', // Dark gray
-        color: '#ffffff',
-        border: 'none',
-        borderRadius: '8px',
-      },
-      supermanVsBatmanSwalCancelHover: {
-        backgroundColor: '#4d4d4d', // Slightly lighter gray
-      },
-      profilePicture: {
-        width: '50px',
-        height: '50px',
-        backgroundColor: '#0033ff', // Superman blue
-        borderRadius: '50%',
-        marginRight: '10px',
-      },
-      usernameContainer: {
-        flex: 1,
-        display: 'flex',
-        alignItems: 'center',
-      },
-      buttonStyle: {
-        backgroundColor: '#0033ff', // Superman blue
-        border: '2px solid #ffcc00', // Superman yellow border
-        color: '#ffffff',
-        fontWeight: 'bold',
-        transition: 'all 0.3s',
-        borderRadius: '50px',
-        padding: '10px 20px',
-        fontSize: '16px',
-        cursor: 'pointer',
-        outline: 'none',
-        margin: '5px',
-      },
-      StylesShare: {
-        borderColor: '#ffcc00',
-        color: '#ffcc00',
-      },
-      StylesEject: {
-        borderColor: '#ffcc00',
-        color: '#ffcc00',
-      },
-      hoverStylesShare: {
-        backgroundColor: '#ffcc00',
-        color: '#000000',
-        borderColor: '#ffcc00',
-      },
-      hoverStylesEject: {
-        backgroundColor: '#ffcc00',
-        color: '#000000',
-        borderColor: '#ffcc00',
-      },
-      MagicIcon: {
-        fontSize: '1rem',
-        color: '#ff0000',
-        textShadow: '0 0 5px rgba(255, 0, 0, 0.8), 0 0 10px rgba(255, 0, 0, 0.6)',
-        cursor: 'pointer',
-        transition: 'all 0.3s',
-      },
-      MagicIconHover: {
-        color: '#e60000',
-        textShadow: '0 0 5px rgba(230, 0, 0, 0.8), 0 0 10px rgba(230, 0, 0, 0.6)',
       }
     },
     programmerDream: {
@@ -1217,7 +693,7 @@ export const themes = {
         background: 'linear-gradient(to bottom, #f0e8d0, #f7a8a6)', // Soft cream to pink gradient
         minHeight: '100vh',
         color: '#333',
-        fontFamily: "'Press Start 2P', cursive",
+        fontFamily: "'Press Start 2P'",
         padding: '20px',
       },
       buttonContainer: {
@@ -1314,7 +790,7 @@ export const themes = {
       },
       retroSwalContent: {
         color: '#333',
-        fontFamily: "'Press Start 2P', cursive",
+        fontFamily: "'Press Start 2P'",
       },
       retroSwalConfirm: {
         backgroundColor: '#ff6f61',
@@ -1570,12 +1046,12 @@ export const themes = {
         textShadow: '0 0 5px rgba(214, 40, 40, 0.8), 0 0 10px rgba(214, 40, 40, 0.6)',
       }
     },
-    superDark: {
+    Bohemian: {
       container: {
-        background: '#121212', // Very dark background
+        background: 'linear-gradient(to bottom, #f4e9d8, #e3d1ba)', // Soft beige to light brown gradient
         minHeight: '100vh',
-        color: '#e0e0e0', // Light gray text for contrast
-        fontFamily: "'Arial', sans-serif",
+        color: '#5b4636', // Warm brown text
+        fontFamily: "'Cormorant Garamond', serif",
         padding: '20px',
       },
       buttonContainer: {
@@ -1584,26 +1060,28 @@ export const themes = {
         gap: '10px',
       },
       header: {
-        color: '#bb86fc', // Light purple color for header text
+        color: '#7c5c40', // Rich brown
         textAlign: 'center',
+        fontFamily: "'Great Vibes', cursive",
         fontSize: '2.5rem',
-        fontWeight: 'bold',
+        letterSpacing: '1px',
       },
       card: {
-        backgroundColor: '#1e1e1e', // Slightly lighter dark background for cards
-        border: '1px solid #333', // Dark gray border
+        backgroundColor: '#fff7f0', // Very light cream
+        border: '2px solid #c1a383', // Soft brown border
         borderRadius: '10px',
-        color: '#e0e0e0',
-        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.5)',
+        color: '#5b4636', // Warm brown text
         transition: 'all 0.3s',
-        margin: '0 auto',
+        margin: '20px auto',
+        padding: '15px',
+        boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
         cursor: 'pointer',
       },
       badge: {
-        backgroundColor: '#bb86fc', // Accent color for badges
-        color: '#121212',
-        borderRadius: '8px',
-        padding: '2px 6px',
+        backgroundColor: '#a67b5b', // Earthy tan
+        color: '#fff',
+        borderRadius: '12px',
+        padding: '5px 10px',
       },
       modalOverlay: {
         position: 'fixed',
@@ -1611,23 +1089,23 @@ export const themes = {
         left: '0',
         right: '0',
         bottom: '0',
-        backgroundColor: 'rgba(0, 0, 0, 0.8)', // Darker overlay
+        backgroundColor: 'rgba(255, 243, 224, 0.9)', // Soft semi-transparent beige
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         zIndex: 9999,
       },
       modalContent: {
-        backgroundColor: '#1e1e1e',
-        border: '1px solid #333',
-        color: '#e0e0e0',
-        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.5)',
+        backgroundColor: '#f5ebe2', // Pale cream
+        border: '2px solid #c1a383', // Soft brown border
+        color: '#5b4636', // Warm brown text
         borderRadius: '12px',
         padding: '20px',
         maxHeight: '80vh',
         overflowY: 'auto',
         width: '80%',
-        maxWidth: '400px',
+        maxWidth: '500px',
+        boxShadow: '0 5px 15px rgba(0, 0, 0, 0.2)',
       },
       modalCloseButton: {
         position: 'absolute',
@@ -1635,70 +1113,35 @@ export const themes = {
         right: '10px',
         background: 'none',
         border: 'none',
-        color: '#bb86fc',
+        color: '#c1a383',
         fontSize: '1.5rem',
         cursor: 'pointer',
       },
       modalHeader: {
-        borderBottom: '1px solid #333',
+        borderBottom: '2px solid #c1a383',
         paddingBottom: '10px',
         marginBottom: '10px',
-        color: '#bb86fc',
-        fontSize: '1.5rem',
-        fontWeight: 'bold',
+        color: '#7c5c40',
+        fontSize: '1.8rem',
       },
       modalTextStyle: {
         marginBottom: '1rem',
-        color: '#e0e0e0',
+        color: '#5b4636',
+        lineHeight: '1.6',
         wordBreak: 'break-word',
       },
       modalFont: {
-        color: '#bb86fc',
+        color: '#7c5c40',
       },
       dateStyle: {
-        color: '#bb86fc',
+        color: '#a67b5b', // Earthy tan
         fontSize: '0.9rem',
         fontStyle: 'italic',
-      },
-      superDarkSwalContainer: {
-        backgroundColor: '#1e1e1e',
-      },
-      superDarkSwalPopup: {
-        backgroundColor: '#1e1e1e',
-        border: '1px solid #333',
-        borderRadius: '12px',
-      },
-      superDarkSwalTitle: {
-        color: '#bb86fc',
-        fontFamily: "'Arial', sans-serif",
-        fontWeight: 'bold',
-      },
-      superDarkSwalContent: {
-        color: '#e0e0e0',
-        fontFamily: "'Arial', sans-serif",
-      },
-      superDarkSwalConfirm: {
-        backgroundColor: '#bb86fc',
-        color: '#121212',
-        border: 'none',
-        borderRadius: '8px',
-      },
-      superDarkSwalConfirmHover: {
-        backgroundColor: '#8c4fff',
-      },
-      superDarkSwalCancel: {
-        backgroundColor: '#333',
-        color: '#e0e0e0',
-        border: 'none',
-        borderRadius: '8px',
-      },
-      superDarkSwalCancelHover: {
-        backgroundColor: '#444',
       },
       profilePicture: {
         width: '50px',
         height: '50px',
-        backgroundColor: '#333',
+        backgroundColor: '#c1a383', // Soft brown
         borderRadius: '50%',
         marginRight: '10px',
       },
@@ -1708,9 +1151,9 @@ export const themes = {
         alignItems: 'center',
       },
       buttonStyle: {
-        backgroundColor: '#1e1e1e',
-        border: '1px solid #333',
-        color: '#bb86fc',
+        backgroundColor: '#f5ebe2', // Pale cream
+        border: '2px solid #c1a383',
+        color: '#5b4636',
         fontWeight: 'bold',
         transition: 'all 0.3s',
         borderRadius: '50px',
@@ -1721,37 +1164,1507 @@ export const themes = {
         margin: '5px',
       },
       StylesShare: {
-        borderColor: '#bb86fc',
-        color: '#bb86fc',
+        borderColor: '#a67b5b',
+        color: '#a67b5b',
       },
       StylesEject: {
-        borderColor: '#333',
-        color: '#333',
+        borderColor: '#c1a383',
+        color: '#c1a383',
       },
       hoverStylesShare: {
-        backgroundColor: '#bb86fc',
-        color: '#121212',
-        borderColor: '#bb86fc',
+        backgroundColor: '#a67b5b',
+        color: '#ffffff',
+        borderColor: '#f5ebe2',
       },
       hoverStylesEject: {
-        backgroundColor: '#444',
-        color: '#e0e0e0',
-        borderColor: '#444',
+        backgroundColor: '#c1a383',
+        color: '#ffffff',
+        borderColor: '#f5ebe2',
       },
       MagicIcon: {
         fontSize: '1rem',
-        color: '#bb86fc',
-        textShadow: '0 0 5px rgba(187, 134, 252, 0.8), 0 0 10px rgba(187, 134, 252, 0.6)',
+        color: '#a67b5b',
+        textShadow: '0 0 5px rgba(165, 123, 91, 0.8)',
         cursor: 'pointer',
         transition: 'all 0.3s',
       },
       MagicIconHover: {
-        color: '#8c2f8c',
-        textShadow: '0 0 5px rgba(140, 47, 140, 0.8), 0 0 10px rgba(140, 47, 140, 0.6)',
+        color: '#7c5c40',
+        textShadow: '0 0 5px rgba(165, 123, 91, 0.8)',
       }
-    }, 
-
-    
+    },
+    ModernTeal: {
+      container: {
+        background: 'linear-gradient(to bottom, #B5F7E6, #53C0A2)', // Very Light Teal to Light Teal gradient
+        minHeight: '100vh',
+        color: '#266352', // Dark Teal text
+        fontFamily: "'Arial', sans-serif",
+        padding: '20px',
+      },
+      buttonContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        gap: '15px',
+      },
+      header: {
+        color: '#128061', // Medium Teal
+        textAlign: 'center',
+        fontFamily: "'Roboto', sans-serif",
+        fontSize: '2.5rem',
+        letterSpacing: '1.5px',
+      },
+      card: {
+        backgroundColor: '#FFFFFF', // White card background
+        border: '2px solid #53C0A2', // Light Teal border
+        borderRadius: '8px',
+        color: '#266352', // Dark Teal text
+        transition: 'all 0.3s',
+        margin: '20px auto',
+        padding: '15px',
+        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+        cursor: 'pointer',
+      },
+      badge: {
+        backgroundColor: '#128061', // Medium Teal
+        color: '#FFFFFF',
+        borderRadius: '10px',
+        padding: '5px 12px',
+      },
+      modalOverlay: {
+        position: 'fixed',
+        top: '0',
+        left: '0',
+        right: '0',
+        bottom: '0',
+        backgroundColor: 'rgba(181, 247, 230, 0.8)', // Semi-transparent Very Light Teal
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 9999,
+      },
+      modalContent: {
+        backgroundColor: '#FFFFFF', // White
+        border: '2px solid #53C0A2', // Light Teal border
+        color: '#266352', // Dark Teal text
+        borderRadius: '10px',
+        padding: '20px',
+        maxHeight: '80vh',
+        overflowY: 'auto',
+        width: '80%',
+        maxWidth: '500px',
+        boxShadow: '0 5px 15px rgba(0, 0, 0, 0.2)',
+      },
+      modalCloseButton: {
+        position: 'absolute',
+        top: '12px',
+        right: '12px',
+        background: 'none',
+        border: 'none',
+        color: '#128061', // Medium Teal
+        fontSize: '1.5rem',
+        cursor: 'pointer',
+      },
+      modalHeader: {
+        borderBottom: '2px solid #53C0A2', // Light Teal border
+        paddingBottom: '10px',
+        marginBottom: '10px',
+        color: '#128061', // Medium Teal
+        fontSize: '1.8rem',
+      },
+      modalTextStyle: {
+        marginBottom: '1rem',
+        color: '#266352', // Dark Teal
+        lineHeight: '1.6',
+        wordBreak: 'break-word',
+      },
+      modalFont: {
+        color: '#266352', // Dark Teal
+      },
+      dateStyle: {
+        color: '#53C0A2', // Light Teal
+        fontSize: '0.9rem',
+        fontStyle: 'italic',
+      },
+      profilePicture: {
+        width: '50px',
+        height: '50px',
+        backgroundColor: '#128061', // Medium Teal
+        borderRadius: '50%',
+        marginRight: '10px',
+      },
+      usernameContainer: {
+        flex: 1,
+        display: 'flex',
+        alignItems: 'center',
+      },
+      buttonStyle: {
+        backgroundColor: '#FFFFFF', // White
+        border: '2px solid #266352', // Dark Teal border
+        color: '#266352', // Dark Teal text
+        fontWeight: 'bold',
+        transition: 'all 0.3s',
+        borderRadius: '30px',
+        padding: '10px 20px',
+        fontSize: '16px',
+        cursor: 'pointer',
+        outline: 'none',
+        margin: '5px',
+      },
+      StylesShare: {
+        borderColor: '#128061', // Medium Teal
+        color: '#128061', // Medium Teal
+      },
+      StylesEject: {
+        borderColor: '#53C0A2', // Light Teal
+        color: '#53C0A2', // Light Teal
+      },
+      hoverStylesShare: {
+        backgroundColor: '#128061', // Medium Teal
+        color: '#FFFFFF',
+        borderColor: '#FFFFFF', // White
+      },
+      hoverStylesEject: {
+        backgroundColor: '#53C0A2', // Light Teal
+        color: '#FFFFFF',
+        borderColor: '#FFFFFF', // White
+      },
+      MagicIcon: {
+        fontSize: '1.2rem',
+        color: '#53C0A2', // Light Teal
+        textShadow: '0 0 5px rgba(83, 192, 162, 0.7)',
+        cursor: 'pointer',
+        transition: 'all 0.3s',
+      },
+      MagicIconHover: {
+        color: '#128061', // Medium Teal
+        textShadow: '0 0 5px rgba(19, 128, 97, 0.7)',
+      }
+    },
+    CoralTeal: {
+      container: {
+        background: 'linear-gradient(to bottom, #F3F7EC, #E88D67)', // Soft Cream to Warm Coral gradient
+        minHeight: '100vh',
+        color: '#005C78', // Dark Teal text
+        fontFamily: "'Arial', sans-serif",
+        padding: '20px',
+      },
+      buttonContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        gap: '15px',
+      },
+      header: {
+        color: '#006989', // Deep Teal
+        textAlign: 'center',
+        fontFamily: "'Roboto', sans-serif",
+        fontSize: '2.5rem',
+        letterSpacing: '1.5px',
+      },
+      card: {
+        backgroundColor: '#FFFFFF', // White card background
+        border: '2px solid #E88D67', // Warm Coral border
+        borderRadius: '8px',
+        color: '#005C78', // Dark Teal text
+        transition: 'all 0.3s',
+        margin: '20px auto',
+        padding: '15px',
+        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+        cursor: 'pointer',
+      },
+      badge: {
+        backgroundColor: '#006989', // Deep Teal
+        color: '#F3F7EC', // Soft Cream
+        borderRadius: '10px',
+        padding: '5px 12px',
+      },
+      modalOverlay: {
+        position: 'fixed',
+        top: '0',
+        left: '0',
+        right: '0',
+        bottom: '0',
+        backgroundColor: 'rgba(243, 247, 236, 0.9)', // Semi-transparent Soft Cream
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 9999,
+      },
+      modalContent: {
+        backgroundColor: '#FFFFFF', // White
+        border: '2px solid #006989', // Deep Teal border
+        color: '#005C78', // Dark Teal text
+        borderRadius: '10px',
+        padding: '20px',
+        maxHeight: '80vh',
+        overflowY: 'auto',
+        width: '80%',
+        maxWidth: '500px',
+        boxShadow: '0 5px 15px rgba(0, 0, 0, 0.2)',
+      },
+      modalCloseButton: {
+        position: 'absolute',
+        top: '12px',
+        right: '12px',
+        background: 'none',
+        border: 'none',
+        color: '#E88D67', // Warm Coral
+        fontSize: '1.5rem',
+        cursor: 'pointer',
+      },
+      modalHeader: {
+        borderBottom: '2px solid #E88D67', // Warm Coral border
+        paddingBottom: '10px',
+        marginBottom: '10px',
+        color: '#006989', // Deep Teal
+        fontSize: '1.8rem',
+      },
+      modalTextStyle: {
+        marginBottom: '1rem',
+        color: '#005C78', // Dark Teal
+        lineHeight: '1.6',
+        wordBreak: 'break-word',
+      },
+      modalFont: {
+        color: '#005C78', // Dark Teal
+      },
+      dateStyle: {
+        color: '#006989', // Deep Teal
+        fontSize: '0.9rem',
+        fontStyle: 'italic',
+      },
+      profilePicture: {
+        width: '50px',
+        height: '50px',
+        backgroundColor: '#005C78', // Dark Teal
+        borderRadius: '50%',
+        marginRight: '10px',
+      },
+      usernameContainer: {
+        flex: 1,
+        display: 'flex',
+        alignItems: 'center',
+      },
+      buttonStyle: {
+        backgroundColor: '#FFFFFF', // White
+        border: '2px solid #006989', // Deep Teal border
+        color: '#005C78', // Dark Teal text
+        fontWeight: 'bold',
+        transition: 'all 0.3s',
+        borderRadius: '30px',
+        padding: '10px 20px',
+        fontSize: '16px',
+        cursor: 'pointer',
+        outline: 'none',
+        margin: '5px',
+      },
+      StylesShare: {
+        borderColor: '#006989', // Deep Teal
+        color: '#006989', // Deep Teal
+      },
+      StylesEject: {
+        borderColor: '#E88D67', // Warm Coral
+        color: '#E88D67', // Warm Coral
+      },
+      hoverStylesShare: {
+        backgroundColor: '#006989', // Deep Teal
+        color: '#FFFFFF',
+        borderColor: '#FFFFFF', // White
+      },
+      hoverStylesEject: {
+        backgroundColor: '#E88D67', // Warm Coral
+        color: '#FFFFFF',
+        borderColor: '#FFFFFF', // White
+      },
+      MagicIcon: {
+        fontSize: '1.2rem',
+        color: '#006989', // Deep Teal
+        textShadow: '0 0 5px rgba(0, 105, 137, 0.7)',
+        cursor: 'pointer',
+        transition: 'all 0.3s',
+      },
+      MagicIconHover: {
+        color: '#005C78', // Dark Teal
+        textShadow: '0 0 5px rgba(0, 105, 137, 0.7)',
+      }
+    },
+    CharcoalCoral: {
+      container: {
+        background: 'linear-gradient(to bottom, #0C0C0C, #481E14)', // Deep Charcoal to Dark Brown gradient
+        minHeight: '100vh',
+        color: '#F2613F', // Vibrant Coral text
+        fontFamily: "'Arial', sans-serif",
+        padding: '20px',
+      },
+      buttonContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        gap: '10px',
+      },
+      header: {
+        color: '#F2613F', // Vibrant Coral
+        textAlign: 'center',
+        fontFamily: "'Helvetica', sans-serif",
+        fontSize: '2.5rem',
+        letterSpacing: '2px',
+      },
+      card: {
+        backgroundColor: '#481E14', // Dark Brown
+        border: '2px solid #9B3922', // Burnt Red border
+        borderRadius: '8px',
+        color: '#F2613F', // Vibrant Coral text
+        transition: 'all 0.3s',
+        margin: '20px auto',
+        padding: '15px',
+        boxShadow: '0 4px 10px rgba(0, 0, 0, 0.5)',
+        cursor: 'pointer',
+      },
+      badge: {
+        backgroundColor: '#9B3922', // Burnt Red
+        color: '#F3F3F3', // Light text
+        borderRadius: '10px',
+        padding: '5px 12px',
+      },
+      modalOverlay: {
+        position: 'fixed',
+        top: '0',
+        left: '0',
+        right: '0',
+        bottom: '0',
+        backgroundColor: 'rgba(12, 12, 12, 0.8)', // Semi-transparent Deep Charcoal
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 9999,
+      },
+      modalContent: {
+        backgroundColor: '#481E14', // Dark Brown
+        border: '2px solid #F2613F', // Vibrant Coral border
+        color: '#F2613F', // Vibrant Coral text
+        borderRadius: '10px',
+        padding: '20px',
+        maxHeight: '80vh',
+        overflowY: 'auto',
+        width: '80%',
+        maxWidth: '500px',
+        boxShadow: '0 5px 15px rgba(0, 0, 0, 0.6)',
+      },
+      modalCloseButton: {
+        position: 'absolute',
+        top: '10px',
+        right: '10px',
+        background: 'none',
+        border: 'none',
+        color: '#F2613F', // Vibrant Coral
+        fontSize: '1.5rem',
+        cursor: 'pointer',
+      },
+      modalHeader: {
+        borderBottom: '2px solid #F2613F', // Vibrant Coral border
+        paddingBottom: '10px',
+        marginBottom: '10px',
+        color: '#F2613F', // Vibrant Coral
+        fontSize: '1.8rem',
+      },
+      modalTextStyle: {
+        marginBottom: '1rem',
+        color: '#F2613F', // Vibrant Coral
+        lineHeight: '1.6',
+        wordBreak: 'break-word',
+      },
+      modalFont: {
+        color: '#F2613F', // Vibrant Coral
+      },
+      dateStyle: {
+        color: '#9B3922', // Burnt Red
+        fontSize: '0.9rem',
+        fontStyle: 'italic',
+      },
+      profilePicture: {
+        width: '50px',
+        height: '50px',
+        backgroundColor: '#0C0C0C', // Deep Charcoal
+        borderRadius: '50%',
+        marginRight: '10px',
+      },
+      usernameContainer: {
+        flex: 1,
+        display: 'flex',
+        alignItems: 'center',
+      },
+      buttonStyle: {
+        backgroundColor: '#481E14', // Dark Brown
+        border: '2px solid #F2613F', // Vibrant Coral border
+        color: '#F2613F', // Vibrant Coral text
+        fontWeight: 'bold',
+        transition: 'all 0.3s',
+        borderRadius: '30px',
+        padding: '10px 20px',
+        fontSize: '16px',
+        cursor: 'pointer',
+        outline: 'none',
+        margin: '5px',
+      },
+      StylesShare: {
+        borderColor: '#9B3922', // Burnt Red
+        color: '#9B3922', // Burnt Red
+      },
+      StylesEject: {
+        borderColor: '#F2613F', // Vibrant Coral
+        color: '#F2613F', // Vibrant Coral
+      },
+      hoverStylesShare: {
+        backgroundColor: '#9B3922', // Burnt Red
+        color: '#FFFFFF', // White
+        borderColor: '#FFFFFF', // White
+      },
+      hoverStylesEject: {
+        backgroundColor: '#F2613F', // Vibrant Coral
+        color: '#FFFFFF', // White
+        borderColor: '#FFFFFF', // White
+      },
+      MagicIcon: {
+        fontSize: '1.2rem',
+        color: '#F2613F', // Vibrant Coral
+        textShadow: '0 0 5px rgba(242, 97, 63, 0.7)',
+        cursor: 'pointer',
+        transition: 'all 0.3s',
+      },
+      MagicIconHover: {
+        color: '#9B3922', // Burnt Red
+        textShadow: '0 0 5px rgba(242, 97, 63, 0.7)',
+      }
+    },
+    PeachyPinkDelight: {
+      container: {
+        background: 'linear-gradient(to bottom, #FFF3C7, #FEC7B4)', // Light Cream to Soft Peach gradient
+        minHeight: '100vh',
+        color: '#F7418F', // Deep Pink text
+        fontFamily: "'Arial', sans-serif",
+        padding: '20px',
+      },
+      buttonContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        gap: '10px',
+      },
+      header: {
+        color: '#F7418F', // Deep Pink
+        textAlign: 'center',
+        fontFamily: "'Comic Sans MS', cursive",
+        fontSize: '2.5rem',
+        letterSpacing: '2px',
+      },
+      card: {
+        backgroundColor: '#FEC7B4', // Soft Peach
+        border: '2px solid #FC819E', // Bright Pink border
+        borderRadius: '10px',
+        color: '#F7418F', // Deep Pink text
+        transition: 'all 0.3s',
+        margin: '20px auto',
+        padding: '15px',
+        boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
+        cursor: 'pointer',
+      },
+      badge: {
+        backgroundColor: '#FC819E', // Bright Pink
+        color: '#FFF3C7', // Light Cream text
+        borderRadius: '10px',
+        padding: '5px 12px',
+      },
+      modalOverlay: {
+        position: 'fixed',
+        top: '0',
+        left: '0',
+        right: '0',
+        bottom: '0',
+        backgroundColor: 'rgba(255, 243, 199, 0.8)', // Semi-transparent Light Cream
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 9999,
+      },
+      modalContent: {
+        backgroundColor: '#FEC7B4', // Soft Peach
+        border: '2px solid #FC819E', // Bright Pink border
+        color: '#F7418F', // Deep Pink text
+        borderRadius: '12px',
+        padding: '20px',
+        maxHeight: '80vh',
+        overflowY: 'auto',
+        width: '80%',
+        maxWidth: '500px',
+        boxShadow: '0 5px 15px rgba(0, 0, 0, 0.2)',
+      },
+      modalCloseButton: {
+        position: 'absolute',
+        top: '10px',
+        right: '10px',
+        background: 'none',
+        border: 'none',
+        color: '#F7418F', // Deep Pink
+        fontSize: '1.5rem',
+        cursor: 'pointer',
+      },
+      modalHeader: {
+        borderBottom: '2px solid #FC819E', // Bright Pink border
+        paddingBottom: '10px',
+        marginBottom: '10px',
+        color: '#F7418F', // Deep Pink
+        fontSize: '1.8rem',
+      },
+      modalTextStyle: {
+        marginBottom: '1rem',
+        color: '#F7418F', // Deep Pink
+        lineHeight: '1.6',
+        wordBreak: 'break-word',
+      },
+      modalFont: {
+        color: '#F7418F', // Deep Pink
+      },
+      dateStyle: {
+        color: '#FC819E', // Bright Pink
+        fontSize: '0.9rem',
+        fontStyle: 'italic',
+      },
+      profilePicture: {
+        width: '50px',
+        height: '50px',
+        backgroundColor: '#FEC7B4', // Soft Peach
+        borderRadius: '50%',
+        marginRight: '10px',
+      },
+      usernameContainer: {
+        flex: 1,
+        display: 'flex',
+        alignItems: 'center',
+      },
+      buttonStyle: {
+        backgroundColor: '#FFF3C7', // Light Cream
+        border: '2px solid #FC819E', // Bright Pink border
+        color: '#F7418F', // Deep Pink text
+        fontWeight: 'bold',
+        transition: 'all 0.3s',
+        borderRadius: '50px',
+        padding: '10px 20px',
+        fontSize: '16px',
+        cursor: 'pointer',
+        outline: 'none',
+        margin: '5px',
+      },
+      StylesShare: {
+        borderColor: '#FC819E', // Bright Pink
+        color: '#FC819E', // Bright Pink
+      },
+      StylesEject: {
+        borderColor: '#F7418F', // Deep Pink
+        color: '#F7418F', // Deep Pink
+      },
+      hoverStylesShare: {
+        backgroundColor: '#FC819E', // Bright Pink
+        color: '#FFF3C7', // Light Cream
+        borderColor: '#FFF3C7', // Light Cream
+      },
+      hoverStylesEject: {
+        backgroundColor: '#F7418F', // Deep Pink
+        color: '#FFF3C7', // Light Cream
+        borderColor: '#FFF3C7', // Light Cream
+      },
+      MagicIcon: {
+        fontSize: '1.2rem',
+        color: '#F7418F', // Deep Pink
+        textShadow: '0 0 5px rgba(247, 65, 143, 0.7)',
+        cursor: 'pointer',
+        transition: 'all 0.3s',
+      },
+      MagicIconHover: {
+        color: '#FC819E', // Bright Pink
+        textShadow: '0 0 5px rgba(247, 65, 143, 0.7)',
+      }
+    },
+    PastelSerenity: {
+      container: {
+        background: 'linear-gradient(to bottom, #E6FFFD, #AEE2FF)', // Pale Teal to Light Blue gradient
+        minHeight: '100vh',
+        color: '#B799FF', // Light Purple text
+        fontFamily: "'Arial', sans-serif",
+        padding: '20px',
+      },
+      buttonContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        gap: '10px',
+      },
+      header: {
+        color: '#B799FF', // Light Purple
+        textAlign: 'center',
+        fontFamily: "'Roboto', sans-serif",
+        fontSize: '2.5rem',
+        letterSpacing: '1px',
+      },
+      card: {
+        backgroundColor: '#ACBCFF', // Soft Blue
+        border: '2px solid #AEE2FF', // Light Blue border
+        borderRadius: '10px',
+        color: '#B799FF', // Light Purple text
+        transition: 'all 0.3s',
+        margin: '20px auto',
+        padding: '15px',
+        boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
+        cursor: 'pointer',
+      },
+      badge: {
+        backgroundColor: '#AEE2FF', // Light Blue
+        color: '#B799FF', // Light Purple text
+        borderRadius: '10px',
+        padding: '5px 12px',
+      },
+      modalOverlay: {
+        position: 'fixed',
+        top: '0',
+        left: '0',
+        right: '0',
+        bottom: '0',
+        backgroundColor: 'rgba(230, 255, 253, 0.8)', // Semi-transparent Pale Teal
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 9999,
+      },
+      modalContent: {
+        backgroundColor: '#E6FFFD', // Pale Teal
+        border: '2px solid #AEE2FF', // Light Blue border
+        color: '#B799FF', // Light Purple text
+        borderRadius: '12px',
+        padding: '20px',
+        maxHeight: '80vh',
+        overflowY: 'auto',
+        width: '80%',
+        maxWidth: '500px',
+        boxShadow: '0 5px 15px rgba(0, 0, 0, 0.2)',
+      },
+      modalCloseButton: {
+        position: 'absolute',
+        top: '10px',
+        right: '10px',
+        background: 'none',
+        border: 'none',
+        color: '#B799FF', // Light Purple
+        fontSize: '1.5rem',
+        cursor: 'pointer',
+      },
+      modalHeader: {
+        borderBottom: '2px solid #AEE2FF', // Light Blue border
+        paddingBottom: '10px',
+        marginBottom: '10px',
+        color: '#B799FF', // Light Purple
+        fontSize: '1.8rem',
+      },
+      modalTextStyle: {
+        marginBottom: '1rem',
+        color: '#B799FF', // Light Purple
+        lineHeight: '1.6',
+        wordBreak: 'break-word',
+      },
+      modalFont: {
+        color: '#B799FF', // Light Purple
+      },
+      dateStyle: {
+        color: '#AEE2FF', // Light Blue
+        fontSize: '0.9rem',
+        fontStyle: 'italic',
+      },
+      profilePicture: {
+        width: '50px',
+        height: '50px',
+        backgroundColor: '#ACBCFF', // Soft Blue
+        borderRadius: '50%',
+        marginRight: '10px',
+      },
+      usernameContainer: {
+        flex: 1,
+        display: 'flex',
+        alignItems: 'center',
+      },
+      buttonStyle: {
+        backgroundColor: '#E6FFFD', // Pale Teal
+        border: '2px solid #AEE2FF', // Light Blue border
+        color: '#B799FF', // Light Purple text
+        fontWeight: 'bold',
+        transition: 'all 0.3s',
+        borderRadius: '50px',
+        padding: '10px 20px',
+        fontSize: '16px',
+        cursor: 'pointer',
+        outline: 'none',
+        margin: '5px',
+      },
+      StylesShare: {
+        borderColor: '#AEE2FF', // Light Blue
+        color: '#AEE2FF', // Light Blue
+      },
+      StylesEject: {
+        borderColor: '#B799FF', // Light Purple
+        color: '#B799FF', // Light Purple
+      },
+      hoverStylesShare: {
+        backgroundColor: '#AEE2FF', // Light Blue
+        color: '#E6FFFD', // Pale Teal
+        borderColor: '#E6FFFD', // Pale Teal
+      },
+      hoverStylesEject: {
+        backgroundColor: '#B799FF', // Light Purple
+        color: '#E6FFFD', // Pale Teal
+        borderColor: '#E6FFFD', // Pale Teal
+      },
+      MagicIcon: {
+        fontSize: '1.2rem',
+        color: '#B799FF', // Light Purple
+        textShadow: '0 0 5px rgba(183, 153, 255, 0.7)',
+        cursor: 'pointer',
+        transition: 'all 0.3s',
+      },
+      MagicIconHover: {
+        color: '#ACBCFF', // Soft Blue
+        textShadow: '0 0 5px rgba(183, 153, 255, 0.7)',
+      }
+    },
+    VibrantContrast: {
+      container: {
+        background: 'linear-gradient(to bottom, #000000, #FF4191)', // Black to Bright Pink gradient
+        minHeight: '100vh',
+        color: '#FFF078', // Light Yellow text
+        fontFamily: "'Arial', sans-serif",
+        padding: '20px',
+      },
+      buttonContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        gap: '10px',
+      },
+      header: {
+        color: '#FFF078', // Light Yellow
+        textAlign: 'center',
+        fontFamily: "'Arial', sans-serif",
+        fontSize: '2.5rem',
+        letterSpacing: '1px',
+      },
+      card: {
+        backgroundColor: '#E90074', // Vivid Magenta
+        border: '2px solid #FF4191', // Bright Pink border
+        borderRadius: '10px',
+        color: '#FFF078', // Light Yellow text
+        transition: 'all 0.3s',
+        margin: '20px auto',
+        padding: '15px',
+        boxShadow: '0 4px 10px rgba(0, 0, 0, 0.3)',
+        cursor: 'pointer',
+      },
+      badge: {
+        backgroundColor: '#FF4191', // Bright Pink
+        color: '#000000', // Black text
+        borderRadius: '10px',
+        padding: '5px 12px',
+      },
+      modalOverlay: {
+        position: 'fixed',
+        top: '0',
+        left: '0',
+        right: '0',
+        bottom: '0',
+        backgroundColor: 'rgba(0, 0, 0, 0.7)', // Semi-transparent Black
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 9999,
+      },
+      modalContent: {
+        backgroundColor: '#E90074', // Vivid Magenta
+        border: '2px solid #FF4191', // Bright Pink border
+        color: '#FFF078', // Light Yellow text
+        borderRadius: '12px',
+        padding: '20px',
+        maxHeight: '80vh',
+        overflowY: 'auto',
+        width: '80%',
+        maxWidth: '500px',
+        boxShadow: '0 5px 15px rgba(0, 0, 0, 0.4)',
+      },
+      modalCloseButton: {
+        position: 'absolute',
+        top: '10px',
+        right: '10px',
+        background: 'none',
+        border: 'none',
+        color: '#FFF078', // Light Yellow
+        fontSize: '1.5rem',
+        cursor: 'pointer',
+      },
+      modalHeader: {
+        borderBottom: '2px solid #FF4191', // Bright Pink border
+        paddingBottom: '10px',
+        marginBottom: '10px',
+        color: '#FFF078', // Light Yellow
+        fontSize: '1.8rem',
+      },
+      modalTextStyle: {
+        marginBottom: '1rem',
+        color: '#FFF078', // Light Yellow
+        lineHeight: '1.6',
+        wordBreak: 'break-word',
+      },
+      modalFont: {
+        color: '#FFF078', // Light Yellow
+      },
+      dateStyle: {
+        color: '#FF4191', // Bright Pink
+        fontSize: '0.9rem',
+        fontStyle: 'italic',
+      },
+      profilePicture: {
+        width: '50px',
+        height: '50px',
+        backgroundColor: '#E90074', // Vivid Magenta
+        borderRadius: '50%',
+        marginRight: '10px',
+      },
+      usernameContainer: {
+        flex: 1,
+        display: 'flex',
+        alignItems: 'center',
+      },
+      buttonStyle: {
+        backgroundColor: '#FFF078', // Light Yellow
+        border: '2px solid #FF4191', // Bright Pink border
+        color: '#000000', // Black text
+        fontWeight: 'bold',
+        transition: 'all 0.3s',
+        borderRadius: '50px',
+        padding: '10px 20px',
+        fontSize: '16px',
+        cursor: 'pointer',
+        outline: 'none',
+        margin: '5px',
+      },
+      StylesShare: {
+        borderColor: '#FF4191', // Bright Pink
+        color: '#FF4191', // Bright Pink
+      },
+      StylesEject: {
+        borderColor: '#E90074', // Vivid Magenta
+        color: '#E90074', // Vivid Magenta
+      },
+      hoverStylesShare: {
+        backgroundColor: '#FF4191', // Bright Pink
+        color: '#FFF078', // Light Yellow
+        borderColor: '#FFF078', // Light Yellow
+      },
+      hoverStylesEject: {
+        backgroundColor: '#E90074', // Vivid Magenta
+        color: '#FFF078', // Light Yellow
+        borderColor: '#FFF078', // Light Yellow
+      },
+      MagicIcon: {
+        fontSize: '1.2rem',
+        color: '#E90074', // Vivid Magenta
+        textShadow: '0 0 5px rgba(233, 0, 116, 0.8)',
+        cursor: 'pointer',
+        transition: 'all 0.3s',
+      },
+      MagicIconHover: {
+        color: '#FF4191', // Bright Pink
+        textShadow: '0 0 5px rgba(233, 0, 116, 0.8)',
+      }
+    },
+    VintageElegance: {
+      container: {
+        background: 'linear-gradient(to bottom, #EEE4B1, #8C6A5D)', // Light Cream to Earthy Brown gradient
+        minHeight: '100vh',
+        color: '#5F374B', // Dark Burgundy text
+        fontFamily: "'Georgia', serif",
+        padding: '20px',
+      },
+      buttonContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        gap: '12px',
+      },
+      header: {
+        color: '#430A5D', // Deep Purple
+        textAlign: 'center',
+        fontFamily: "'Times New Roman', serif",
+        fontSize: '2.5rem',
+        letterSpacing: '1px',
+        textShadow: '2px 2px #8C6A5D', // Earthy Brown shadow
+      },
+      card: {
+        backgroundColor: '#EEE4B1', // Light Cream
+        border: '2px solid #5F374B', // Dark Burgundy border
+        borderRadius: '12px',
+        color: '#5F374B', // Dark Burgundy text
+        transition: 'all 0.3s',
+        margin: '20px auto',
+        padding: '15px',
+        boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
+        cursor: 'pointer',
+      },
+      badge: {
+        backgroundColor: '#8C6A5D', // Earthy Brown
+        color: '#EEE4B1', // Light Cream
+        borderRadius: '10px',
+        padding: '6px 12px',
+      },
+      modalOverlay: {
+        position: 'fixed',
+        top: '0',
+        left: '0',
+        right: '0',
+        bottom: '0',
+        backgroundColor: 'rgba(0, 0, 0, 0.6)', // Dark semi-transparent overlay
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 9999,
+      },
+      modalContent: {
+        backgroundColor: '#5F374B', // Dark Burgundy
+        border: '2px solid #8C6A5D', // Earthy Brown border
+        color: '#EEE4B1', // Light Cream text
+        borderRadius: '12px',
+        padding: '20px',
+        maxHeight: '80vh',
+        overflowY: 'auto',
+        width: '80%',
+        maxWidth: '500px',
+        boxShadow: '0 5px 20px rgba(0, 0, 0, 0.3)',
+      },
+      modalCloseButton: {
+        position: 'absolute',
+        top: '10px',
+        right: '10px',
+        background: 'none',
+        border: 'none',
+        color: '#EEE4B1', // Light Cream
+        fontSize: '1.5rem',
+        cursor: 'pointer',
+      },
+      modalHeader: {
+        borderBottom: '2px solid #8C6A5D', // Earthy Brown border
+        paddingBottom: '10px',
+        marginBottom: '10px',
+        color: '#EEE4B1', // Light Cream
+        fontSize: '1.8rem',
+      },
+      modalTextStyle: {
+        marginBottom: '1rem',
+        color: '#EEE4B1', // Light Cream
+        lineHeight: '1.6',
+        wordBreak: 'break-word',
+      },
+      modalFont: {
+        color: '#EEE4B1', // Light Cream
+      },
+      dateStyle: {
+        color: '#8C6A5D', // Earthy Brown
+        fontSize: '0.9rem',
+        fontStyle: 'italic',
+      },
+      profilePicture: {
+        width: '50px',
+        height: '50px',
+        backgroundColor: '#5F374B', // Dark Burgundy
+        borderRadius: '50%',
+        marginRight: '10px',
+      },
+      usernameContainer: {
+        flex: 1,
+        display: 'flex',
+        alignItems: 'center',
+      },
+      buttonStyle: {
+        backgroundColor: '#EEE4B1', // Light Cream
+        border: '2px solid #5F374B', // Dark Burgundy border
+        color: '#5F374B', // Dark Burgundy text
+        fontWeight: 'bold',
+        transition: 'all 0.3s',
+        borderRadius: '50px',
+        padding: '10px 20px',
+        fontSize: '16px',
+        cursor: 'pointer',
+        outline: 'none',
+        margin: '5px',
+      },
+      StylesShare: {
+        borderColor: '#8C6A5D', // Earthy Brown
+        color: '#8C6A5D', // Earthy Brown
+      },
+      StylesEject: {
+        borderColor: '#5F374B', // Dark Burgundy
+        color: '#5F374B', // Dark Burgundy
+      },
+      hoverStylesShare: {
+        backgroundColor: '#8C6A5D', // Earthy Brown
+        color: '#EEE4B1', // Light Cream
+        borderColor: '#EEE4B1', // Light Cream
+      },
+      hoverStylesEject: {
+        backgroundColor: '#5F374B', // Dark Burgundy
+        color: '#EEE4B1', // Light Cream
+        borderColor: '#EEE4B1', // Light Cream
+      },
+      MagicIcon: {
+        fontSize: '1.2rem',
+        color: '#8C6A5D', // Earthy Brown
+        textShadow: '0 0 5px rgba(140, 106, 93, 0.8)',
+        cursor: 'pointer',
+        transition: 'all 0.3s',
+      },
+      MagicIconHover: {
+        color: '#430A5D', // Deep Purple
+        textShadow: '0 0 5px rgba(140, 106, 93, 0.8)',
+      }
+    },
+    ClassicElegance: {
+      container: {
+        background: 'linear-gradient(to bottom, #F5F5F5, #F2EAD3)', // Light Gray to Light Beige gradient
+        minHeight: '100vh',
+        color: '#3F2305', // Deep Brown text
+        fontFamily: "'Georgia', serif",
+        padding: '20px',
+      },
+      buttonContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        gap: '12px',
+      },
+      header: {
+        color: '#3F2305', // Deep Brown
+        textAlign: 'center',
+        fontFamily: "'Times New Roman', serif",
+        fontSize: '2.5rem',
+        letterSpacing: '1px',
+        textShadow: '2px 2px #DFD7BF', // Soft Taupe shadow
+      },
+      card: {
+        backgroundColor: '#F2EAD3', // Light Beige
+        border: '2px solid #DFD7BF', // Soft Taupe border
+        borderRadius: '12px',
+        color: '#3F2305', // Deep Brown text
+        transition: 'all 0.3s',
+        margin: '20px auto',
+        padding: '15px',
+        boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)',
+        cursor: 'pointer',
+      },
+      badge: {
+        backgroundColor: '#DFD7BF', // Soft Taupe
+        color: '#3F2305', // Deep Brown
+        borderRadius: '10px',
+        padding: '6px 12px',
+      },
+      modalOverlay: {
+        position: 'fixed',
+        top: '0',
+        left: '0',
+        right: '0',
+        bottom: '0',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent dark overlay
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 9999,
+      },
+      modalContent: {
+        backgroundColor: '#F5F5F5', // Light Gray
+        border: '2px solid #DFD7BF', // Soft Taupe border
+        color: '#3F2305', // Deep Brown text
+        borderRadius: '12px',
+        padding: '20px',
+        maxHeight: '80vh',
+        overflowY: 'auto',
+        width: '80%',
+        maxWidth: '500px',
+        boxShadow: '0 5px 20px rgba(0, 0, 0, 0.2)',
+      },
+      modalCloseButton: {
+        position: 'absolute',
+        top: '10px',
+        right: '10px',
+        background: 'none',
+        border: 'none',
+        color: '#3F2305', // Deep Brown
+        fontSize: '1.5rem',
+        cursor: 'pointer',
+      },
+      modalHeader: {
+        borderBottom: '2px solid #DFD7BF', // Soft Taupe border
+        paddingBottom: '10px',
+        marginBottom: '10px',
+        color: '#3F2305', // Deep Brown
+        fontSize: '1.8rem',
+      },
+      modalTextStyle: {
+        marginBottom: '1rem',
+        color: '#3F2305', // Deep Brown
+        lineHeight: '1.6',
+        wordBreak: 'break-word',
+      },
+      modalFont: {
+        color: '#3F2305', // Deep Brown
+      },
+      dateStyle: {
+        color: '#DFD7BF', // Soft Taupe
+        fontSize: '0.9rem',
+        fontStyle: 'italic',
+      },
+      profilePicture: {
+        width: '50px',
+        height: '50px',
+        backgroundColor: '#DFD7BF', // Soft Taupe
+        borderRadius: '50%',
+        marginRight: '10px',
+      },
+      usernameContainer: {
+        flex: 1,
+        display: 'flex',
+        alignItems: 'center',
+      },
+      buttonStyle: {
+        backgroundColor: '#F2EAD3', // Light Beige
+        border: '2px solid #DFD7BF', // Soft Taupe border
+        color: '#3F2305', // Deep Brown text
+        fontWeight: 'bold',
+        transition: 'all 0.3s',
+        borderRadius: '50px',
+        padding: '10px 20px',
+        fontSize: '16px',
+        cursor: 'pointer',
+        outline: 'none',
+        margin: '5px',
+      },
+      StylesShare: {
+        borderColor: '#DFD7BF', // Soft Taupe
+        color: '#DFD7BF', // Soft Taupe
+      },
+      StylesEject: {
+        borderColor: '#3F2305', // Deep Brown
+        color: '#3F2305', // Deep Brown
+      },
+      hoverStylesShare: {
+        backgroundColor: '#DFD7BF', // Soft Taupe
+        color: '#3F2305', // Deep Brown
+        borderColor: '#F5F5F5', // Light Gray
+      },
+      hoverStylesEject: {
+        backgroundColor: '#3F2305', // Deep Brown
+        color: '#F5F5F5', // Light Gray
+        borderColor: '#F5F5F5', // Light Gray
+      },
+      MagicIcon: {
+        fontSize: '1.2rem',
+        color: '#DFD7BF', // Soft Taupe
+        textShadow: '0 0 5px rgba(223, 215, 191, 0.8)',
+        cursor: 'pointer',
+        transition: 'all 0.3s',
+      },
+      MagicIconHover: {
+        color: '#3F2305', // Deep Brown
+        textShadow: '0 0 5px rgba(223, 215, 191, 0.8)',
+      }
+    },
+    UrbanSleek: {
+      container: {
+        background: '#0F0F0F', // Jet Black
+        minHeight: '100vh',
+        color: '#E0E0E0', // Light Gray text for contrast
+        fontFamily: "'Helvetica Neue', sans-serif",
+        padding: '20px',
+      },
+      buttonContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        gap: '15px',
+      },
+      header: {
+        color: '#008170', // Teal
+        textAlign: 'center',
+        fontFamily: "'Arial Black', sans-serif",
+        fontSize: '2.5rem',
+        letterSpacing: '1px',
+      },
+      card: {
+        backgroundColor: '#232D3F', // Dark Slate Blue
+        border: '2px solid #005B41', // Deep Green border
+        borderRadius: '8px',
+        color: '#E0E0E0', // Light Gray text
+        transition: 'all 0.3s',
+        margin: '20px auto',
+        padding: '15px',
+        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+        cursor: 'pointer',
+      },
+      badge: {
+        backgroundColor: '#005B41', // Deep Green
+        color: '#E0E0E0', // Light Gray
+        borderRadius: '10px',
+        padding: '6px 12px',
+      },
+      modalOverlay: {
+        position: 'fixed',
+        top: '0',
+        left: '0',
+        right: '0',
+        bottom: '0',
+        backgroundColor: 'rgba(15, 15, 15, 0.8)', // Semi-transparent Jet Black
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 9999,
+      },
+      modalContent: {
+        backgroundColor: '#232D3F', // Dark Slate Blue
+        border: '2px solid #005B41', // Deep Green border
+        color: '#E0E0E0', // Light Gray text
+        borderRadius: '12px',
+        padding: '20px',
+        maxHeight: '80vh',
+        overflowY: 'auto',
+        width: '80%',
+        maxWidth: '500px',
+        boxShadow: '0 5px 20px rgba(0, 0, 0, 0.3)',
+      },
+      modalCloseButton: {
+        position: 'absolute',
+        top: '10px',
+        right: '10px',
+        background: 'none',
+        border: 'none',
+        color: '#E0E0E0', // Light Gray
+        fontSize: '1.5rem',
+        cursor: 'pointer',
+      },
+      modalHeader: {
+        borderBottom: '2px solid #005B41', // Deep Green border
+        paddingBottom: '10px',
+        marginBottom: '10px',
+        color: '#008170', // Teal
+        fontSize: '1.8rem',
+      },
+      modalTextStyle: {
+        marginBottom: '1rem',
+        color: '#E0E0E0', // Light Gray
+        lineHeight: '1.6',
+        wordBreak: 'break-word',
+      },
+      modalFont: {
+        color: '#E0E0E0', // Light Gray
+      },
+      dateStyle: {
+        color: '#008170', // Teal
+        fontSize: '0.9rem',
+        fontStyle: 'italic',
+      },
+      profilePicture: {
+        width: '50px',
+        height: '50px',
+        backgroundColor: '#232D3F', // Dark Slate Blue
+        borderRadius: '50%',
+        marginRight: '10px',
+      },
+      usernameContainer: {
+        flex: 1,
+        display: 'flex',
+        alignItems: 'center',
+      },
+      buttonStyle: {
+        backgroundColor: '#008170', // Teal
+        border: '2px solid #005B41', // Deep Green border
+        color: '#E0E0E0', // Light Gray text
+        fontWeight: 'bold',
+        transition: 'all 0.3s',
+        borderRadius: '50px',
+        padding: '10px 20px',
+        fontSize: '16px',
+        cursor: 'pointer',
+        outline: 'none',
+        margin: '5px',
+      },
+      StylesShare: {
+        borderColor: '#005B41', // Deep Green
+        color: '#005B41', // Deep Green
+      },
+      StylesEject: {
+        borderColor: '#008170', // Teal
+        color: '#005B41', // Deep Green
+      },
+      hoverStylesShare: {
+        backgroundColor: '#005B41', // Deep Green
+        color: '#E0E0E0', // Light Gray
+        borderColor: '#232D3F', // Dark Slate Blue
+      },
+      hoverStylesEject: {
+        backgroundColor: '#008170', // Teal
+        color: '#E0E0E0', // Light Gray
+        borderColor: '#232D3F', // Dark Slate Blue
+      },
+      MagicIcon: {
+        fontSize: '1.2rem',
+        color: '#005B41', // Deep Green
+        textShadow: '0 0 5px rgba(0, 91, 65, 0.8)',
+        cursor: 'pointer',
+        transition: 'all 0.3s',
+      },
+      MagicIconHover: {
+        color: '#008170', // Teal
+        textShadow: '0 0 5px rgba(0, 91, 65, 0.8)',
+      }
+    },
+    EarthyElegance: {
+      container: {
+        background: '#FFF5E4', // Creamy Beige
+        minHeight: '100vh',
+        color: '#6A9C89', // Sage Green text
+        fontFamily: "'Roboto', sans-serif",
+        padding: '20px',
+      },
+      buttonContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        gap: '15px',
+      },
+      header: {
+        color: '#CD5C08', // Dark Orange
+        textAlign: 'center',
+        fontFamily: "'Merriweather', serif",
+        fontSize: '2.5rem',
+        letterSpacing: '1px',
+      },
+      card: {
+        backgroundColor: '#C1D8C3', // Light Sage Green
+        border: '2px solid #6A9C89', // Sage Green border
+        borderRadius: '10px',
+        color: '#6A9C89', // Sage Green text
+        transition: 'all 0.3s',
+        margin: '20px auto',
+        padding: '15px',
+        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+        cursor: 'pointer',
+      },
+      badge: {
+        backgroundColor: '#CD5C08', // Dark Orange
+        color: '#FFF5E4', // Creamy Beige
+        borderRadius: '12px',
+        padding: '5px 10px',
+      },
+      modalOverlay: {
+        position: 'fixed',
+        top: '0',
+        left: '0',
+        right: '0',
+        bottom: '0',
+        backgroundColor: 'rgba(255, 245, 228, 0.9)', // Soft semi-transparent Creamy Beige
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 9999,
+      },
+      modalContent: {
+        backgroundColor: '#FFF5E4', // Creamy Beige
+        border: '2px solid #6A9C89', // Sage Green border
+        color: '#6A9C89', // Sage Green text
+        borderRadius: '12px',
+        padding: '20px',
+        maxHeight: '80vh',
+        overflowY: 'auto',
+        width: '80%',
+        maxWidth: '500px',
+        boxShadow: '0 5px 20px rgba(0, 0, 0, 0.3)',
+      },
+      modalCloseButton: {
+        position: 'absolute',
+        top: '10px',
+        right: '10px',
+        background: 'none',
+        border: 'none',
+        color: '#CD5C08', // Dark Orange
+        fontSize: '1.5rem',
+        cursor: 'pointer',
+      },
+      modalHeader: {
+        borderBottom: '2px solid #6A9C89', // Sage Green border
+        paddingBottom: '10px',
+        marginBottom: '10px',
+        color: '#CD5C08', // Dark Orange
+        fontSize: '1.8rem',
+      },
+      modalTextStyle: {
+        marginBottom: '1rem',
+        color: '#6A9C89', // Sage Green
+        lineHeight: '1.6',
+        wordBreak: 'break-word',
+      },
+      modalFont: {
+        color: '#6A9C89', // Sage Green
+      },
+      dateStyle: {
+        color: '#CD5C08', // Dark Orange
+        fontSize: '0.9rem',
+        fontStyle: 'italic',
+      },
+      profilePicture: {
+        width: '50px',
+        height: '50px',
+        backgroundColor: '#C1D8C3', // Light Sage Green
+        borderRadius: '50%',
+        marginRight: '10px',
+      },
+      usernameContainer: {
+        flex: 1,
+        display: 'flex',
+        alignItems: 'center',
+      },
+      buttonStyle: {
+        backgroundColor: '#6A9C89', // Sage Green
+        border: '2px solid #CD5C08', // Dark Orange border
+        color: '#FFF5E4', // Creamy Beige text
+        fontWeight: 'bold',
+        transition: 'all 0.3s',
+        borderRadius: '50px',
+        padding: '10px 20px',
+        fontSize: '16px',
+        cursor: 'pointer',
+        outline: 'none',
+        margin: '5px',
+      },
+      StylesShare: {
+        borderColor: '#CD5C08', // Dark Orange
+        color: '#CD5C08', // Dark Orange
+      },
+      StylesEject: {
+        borderColor: '#6A9C89', // Sage Green
+        color: '#6A9C89', // Sage Green
+      },
+      hoverStylesShare: {
+        backgroundColor: '#CD5C08', // Dark Orange
+        color: '#FFF5E4', // Creamy Beige
+        borderColor: '#FFF5E4', // Creamy Beige
+      },
+      hoverStylesEject: {
+        backgroundColor: '#6A9C89', // Sage Green
+        color: '#FFF5E4', // Creamy Beige
+        borderColor: '#FFF5E4', // Creamy Beige
+      },
+      MagicIcon: {
+        fontSize: '1rem',
+        color: '#6A9C89', // Sage Green
+        textShadow: '0 0 5px rgba(106, 156, 137, 0.8)',
+        cursor: 'pointer',
+        transition: 'all 0.3s',
+      },
+      MagicIconHover: {
+        color: '#CD5C08', // Dark Orange
+        textShadow: '0 0 5px rgba(106, 156, 137, 0.8)',
+      }
+    },
     // Add more themes here
   };
   
