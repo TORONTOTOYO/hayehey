@@ -534,7 +534,6 @@ const Footer = styled.footer`
   text-align: center;
   padding: 10px;
   background-color: linear-gradient(to bottom, #000b1e, #1c2b4f); /* Match container background */
-  margin-top: auto; /* Push footer to the bottom */
   font-family: 'VT323', monospace;
   font-size: 0.85em;
   display: flex;
