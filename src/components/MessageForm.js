@@ -534,7 +534,7 @@ const Footer = styled.footer`
   text-align: center;
   padding: 10px;
   background-color: linear-gradient(to bottom, #000b1e, #1c2b4f); /* Match container background */
-  margin-top: 2rem; /* Push footer to the bottom */
+  margin-top: 4rem; /* Push footer to the bottom */
   font-family: 'VT323', monospace;
   font-size: 0.85em;
   display: flex;
@@ -553,6 +553,7 @@ const Footer = styled.footer`
   }
     
   @media (max-width: 768px) {
+    margin-top: 2rem; /* Push footer to the bottom */
     flex-direction: column; /* Stack vertically on smaller screens */
     justify-content: center; /* Center content in mobile view */
   }
