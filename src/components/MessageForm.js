@@ -3,6 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { getFirestore, collection, addDoc, doc, getDoc } from "firebase/firestore";
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBoxOpen, faVolumeUp } from '@fortawesome/free-solid-svg-icons';
 
 const MessageForm = () => {
   const { userId } = useParams(); // Get userId from URL
@@ -133,9 +135,9 @@ const MessageForm = () => {
                 remove <i className="fas fa-microphone"></i> </button>
             )}
             <button     type="submit" 
-    onClick={handleClick}
-    className={clicked ? "clicked" : ""}
-    disabled={message.trim() === ""}>
+              onClick={handleClick}
+              className={clicked ? "clicked" : ""}
+              disabled={message.trim() === ""}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 36 36"
@@ -188,6 +190,18 @@ const MessageForm = () => {
         }}>
           Do you want to receive anonymous messages?</a></h1>
       </div>
+      <footer className="footer">
+    <div className="footer-content">
+      <h3>
+        Echo<span className="cyan">I</span>n
+        <div>
+          <FontAwesomeIcon icon={faBoxOpen} className="box-icon" />
+        </div>
+        o<span className="red">x</span>
+      </h3>
+      <p>&copy; 2024 EchoInbox. All rights reserved.</p>
+    </div>
+  </footer>
     </StyledWrapper>
   );
 };
@@ -354,6 +368,55 @@ textarea {
   transition: background 0.3s, border-color 0.3s;
 }
 
+  .cyan {
+    color: #00FFFF; /* Cyan color */
+  }
+
+  .red {
+    color: #FF0000; /* Red color */
+  }
+
+  .box-icon {
+    font-size: 1.2em; /* Adjust size as needed */
+    color: #FF0000; /* Red color for the box */
+    z-index: 2;
+  }
+
+  h3 {
+    display: flex;
+    align-items: center;
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    color: #fff;
+    margin: 0;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer {
+  background-color: linear-gradient(to bottom, #000b1e, #1c2b4f);;
+  color: white;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.footer-content p {
+  font-size: 0.9rem;
+}
+
 
   textarea:focus {
     background: #132040; /* Darker blue on focus */
@@ -378,8 +441,8 @@ textarea {
     cursor: pointer;
     border: solid 2px black;
     letter-spacing: 1px;
-    font-weight: 600;
-    font-size: clamp(14px, 2vw, 17px);    
+    font-weight: 700;
+    font-size: clamp(9.5px, 2vw, 17px);    
     background-color: hsl(49deg 98% 60%);
     border-radius: 50px;
     position: relative;

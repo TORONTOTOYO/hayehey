@@ -462,10 +462,11 @@ const StyledWrapper = styled.div`
   h1 {
     display: flex;
     align-items: center;
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-size: clamp(2rem, 4vw, 2.5rem);
     color: #fff;
     margin: 0;
     font-weight: 800;
+    margin-bottom: 1.5rem;
   }
 
   form .form_control {
