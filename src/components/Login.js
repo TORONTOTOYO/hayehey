@@ -5,6 +5,8 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, on
 import { toast, ToastContainer } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import * as THREE from 'three';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBoxOpen, faVolumeUp } from '@fortawesome/free-solid-svg-icons';
 
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -261,7 +263,14 @@ useEffect(() => {
         <input type="checkbox" id="register_toggle" />
         <div className="slider">
           <form className="form" onSubmit={handleLogin}>
-            <span className="title">Login</span>
+          <h1>
+              Echo<span className="cyan">I</span>nBo<span className="red">X</span>
+              <div className="box-container">
+                <FontAwesomeIcon icon={faBoxOpen} className="box-icon" />
+                <FontAwesomeIcon icon={faVolumeUp} className="echo-icon" />
+              </div>
+            </h1>
+          <span className="title">Login</span>
             <div className="form_control">
               <input 
                 type="email" 
@@ -420,6 +429,44 @@ const StyledWrapper = styled.div`
     margin-bottom: 10px;
     color: #00ffff; /* Cyan color for a cosmic feel */
     text-shadow: 1px 1px 3px rgba(0, 255, 255, 0.4);
+  }
+
+  .cyan {
+    color: #00FFFF; /* Cyan color */
+  }
+
+  .red {
+    color: #FF0000; /* Red color */
+  }
+
+  .box-container {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .box-icon {
+    font-size: 1.5em; /* Adjust size as needed */
+    color: #FF0000; /* Red color for the box */
+    z-index: 2;
+  }
+
+  .echo-icon {
+    position: absolute;
+    bottom: 30%; /* Position the echo icon above the box */
+    left: 50%;
+    transform: translateX(-50%) rotate(-90deg); /* Rotate the echo icon */
+    font-size: 1.5em; /* Adjust size as needed */
+    color: #00FFFF; /* Cyan color for the echo */
+    opacity: 0.8;
+  }
+
+  h1 {
+    display: flex;
+    align-items: center;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    color: #fff;
+    margin: 0;
   }
 
   form .form_control {
