@@ -531,7 +531,6 @@ textarea {
 const Footer = styled.footer`
   width: 100%;
   max-width: 100vw;
-  height: 40px;
   text-align: center;
   padding: 10px;
   background-color: linear-gradient(to bottom, #000b1e, #1c2b4f); /* Match container background */
@@ -556,7 +555,6 @@ const Footer = styled.footer`
   @media (max-width: 768px) {
     flex-direction: column; /* Stack vertically on smaller screens */
     justify-content: center; /* Center content in mobile view */
-    height: -10px;
   }
 `;
 export default MessageForm;
