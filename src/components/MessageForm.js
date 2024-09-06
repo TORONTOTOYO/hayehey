@@ -103,7 +103,7 @@ const MessageForm = () => {
   return (
     <StyledWrapper>
       <div className="container">
-        <h2>Send a message to {username}</h2>
+        <h2>Send a anonymous message to {username}</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="message">Message:</label>
@@ -117,13 +117,18 @@ const MessageForm = () => {
           </div>
           <div className="recording-controls">
             {isRecording ? (
-              <button type="button" onClick={stopRecording}>stop meowing</button>
+              <button type="button" onClick={stopRecording}>stop recording</button>
             ) : (
               <button type="button" onClick={startRecording}>
                 <i className="fas fa-microphone"></i>
-                start meowing
-              </button>            )}
-            <button type="submit">
+                voicemail
+              </button>            
+            )}
+            {audio && (
+              <button type="button" onClick={handleAudioRemoval}>
+                remove <i className="fas fa-microphone"></i> </button>
+            )}
+                        <button type="submit">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 36 36"
@@ -167,9 +172,6 @@ const MessageForm = () => {
             <span className="now">sent</span>
             <span className="play">send</span>
             </button>
-            {audio && (
-              <button type="button" onClick={handleAudioRemoval}>remove meowail</button>
-            )}
           </div>
         </form>
         <h1><a onClick={(e) => 
@@ -179,9 +181,6 @@ const MessageForm = () => {
         }}>
           Do you want to receive anonymous messages?</a></h1>
       </div>
-      <Footer>
-        <p className="left">EchoInBox</p>
-      </Footer>
     </StyledWrapper>
   );
 };
@@ -209,7 +208,7 @@ const StyledWrapper = styled.div`
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6); /* Enhanced shadow for depth */
   backdrop-filter: blur(12px); /* Increased blur effect */
   border: 3px solid #00ffff; /* Thicker cyan border */
-  margin-bottom: 15rem;
+  margin-bottom: 10rem;
 }
 
     
@@ -355,12 +354,12 @@ textarea {
     outline: none;
   }
 
-    .recording-controls {
+  .recording-controls {
     display: flex;
-    gap: 10px; /* Add spacing between buttons */
-    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
   }
-
+    
   button {
     display: flex;
     align-items: center;
@@ -373,7 +372,7 @@ textarea {
     border: solid 2px black;
     letter-spacing: 1px;
     font-weight: 600;
-    font-size: clamp(12px, 2vw, 17px);    
+    font-size: clamp(14px, 2vw, 17px);    
     background-color: hsl(49deg 98% 60%);
     border-radius: 50px;
     position: relative;
@@ -427,6 +426,33 @@ textarea {
     button {
       width: 40%; /* Full width on mobile */
       border-radius: 40px; /* Adjust radius for mobile */
+    }
+    
+        .recording-controls {
+      flex-direction: column;
+    }
+
+    .recording-controls button {
+      width: 60%;
+      margin-bottom: 10px;
+    }
+
+    .recording-controls button:last-child {
+      margin-bottom: 0;
+    }
+  }
+      @media (max-width: 768px) {
+    .recording-controls {
+      flex-direction: row;
+    }
+
+    .recording-controls button {
+      width: 45%;
+      margin-bottom: 10px;
+    }
+
+    .recording-controls button:last-child {
+      margin-bottom: 0;
     }
   }
 `;
