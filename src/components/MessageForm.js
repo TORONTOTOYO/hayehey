@@ -542,6 +542,7 @@ const Footer = styled.footer`
   align-items: center;
   justify-content: space-between; /* Center content */
   bottom: 0;
+  position: relative; /* Ensure footer stays in place with respect to the parent */
 
   .left {
     margin-left: 10px; /* Add spacing as needed */
@@ -554,6 +555,9 @@ const Footer = styled.footer`
   @media (max-width: 768px) {
     flex-direction: column; /* Stack vertically on smaller screens */
     justify-content: center; /* Center content in mobile view */
+    margin-top: 10px; /* Move footer a bit up */
+    padding: 15px; /* Adjust padding for better spacing on mobile */
   }
 `;
+
 export default MessageForm;
