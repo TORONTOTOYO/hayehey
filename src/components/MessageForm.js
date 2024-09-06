@@ -191,17 +191,17 @@ const MessageForm = () => {
           Do you want to receive anonymous messages?</a></h1>
       </div>
       <footer className="footer">
-    <div className="footer-content">
-      <h3>
-        Echo<span className="cyan">I</span>n
-        <div>
-          <FontAwesomeIcon icon={faBoxOpen} className="box-icon" />
+        <div className="footer-content">
+          <h3>
+            Echo<span className="cyan">I</span>n
+            <div>
+              <FontAwesomeIcon icon={faBoxOpen} className="box-icon" />
+            </div>
+            o<span className="red">x</span>
+          </h3>
+          <p>&copy; 2024 EchoInbox. All rights reserved.</p>
         </div>
-        o<span className="red">x</span>
-      </h3>
-      <p>&copy; 2024 EchoInbox. All rights reserved.</p>
-    </div>
-  </footer>
+      </footer>
     </StyledWrapper>
   );
 };
@@ -389,15 +389,18 @@ textarea {
     color: #fff;
     margin: 0;
     font-weight: 800;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
 
   .footer {
+  position: absolute; /* or 'fixed' */
+  bottom: 0;
+  left: 0;
+  padding: 10px 0;
   background-color: linear-gradient(to bottom, #000b1e, #1c2b4f);;
   color: white;
   text-align: center;
   position: relative;
-  bottom: 0;
   width: 100%;
 }
 
@@ -406,11 +409,6 @@ textarea {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.footer-content h3 {
-  font-size: 1.5rem;
-  margin-bottom: 5px;
 }
 
 .footer-content p {
