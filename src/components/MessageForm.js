@@ -14,6 +14,7 @@ const MessageForm = () => {
   const [audio, setAudio] = useState(null);
   const [mediaRecorder, setMediaRecorder] = useState(null);
   const db = getFirestore();
+  const [clicked, setClicked] = useState(false);
 
   useEffect(() => {
     const fetchUsername = async () => {
@@ -85,10 +86,10 @@ const MessageForm = () => {
         content: message,
         createdAt: new Date(),
         isAnonymous: false,
-        senderId: null, // Set to null or provide the senderId if available
+        senderId: null, 
         isRead: false,
         isAnswered: false,
-        audio: audio // Store the audio as base64 string
+        audio: audio 
       });
 
       setMessage("");
@@ -98,6 +99,11 @@ const MessageForm = () => {
       console.error("Error adding document:", error);
       alert("Failed to send message. Please try again.");
     }
+  };
+
+  const handleClick = (e) => {
+    setClicked(true); 
+    setTimeout(() => setClicked(false), 1600);
   };
 
   return (
@@ -128,7 +134,10 @@ const MessageForm = () => {
               <button type="button" onClick={handleAudioRemoval}>
                 remove <i className="fas fa-microphone"></i> </button>
             )}
-                        <button type="submit">
+            <button     type="submit" 
+    onClick={handleClick}
+    className={clicked ? "clicked" : ""}
+    disabled={message.trim() === ""}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 36 36"
@@ -396,10 +405,6 @@ textarea {
     transition-delay: 300ms;
   }
 
-  button:hover svg {
-    transform: scale(3) translate(50%);
-  }
-
   .now {
     position: absolute;
     left: 0;
@@ -408,14 +413,23 @@ textarea {
     z-index: 2;
   }
 
-  button:hover .now {
+  .clicked svg {
+    transform: scale(3) translate(50%);
+  }
+
+  .clicked .now {
     transform: translateX(10px);
     transition-delay: 300ms;
   }
 
-  button:hover .play {
+  .clicked .play {
     transform: translateX(200%);
     transition-delay: 300ms;
+  }
+
+  .disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
   }
 
   @media (max-width: 600px) {
