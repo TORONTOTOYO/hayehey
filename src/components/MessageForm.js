@@ -190,8 +190,7 @@ const MessageForm = () => {
         }}>
           Do you want to receive anonymous messages?</a></h1>
       </div>
-      <footer className="footer">
-        <div className="footer-content">
+      <Footer className="footer">
           <h3>
             Echo<span className="cyan">I</span>n
             <div>
@@ -200,8 +199,7 @@ const MessageForm = () => {
             o<span className="red">x</span>
           </h3>
           <p>&copy; 2024 EchoInbox. All rights reserved.</p>
-        </div>
-      </footer>
+      </Footer>
     </StyledWrapper>
   );
 };
@@ -532,17 +530,18 @@ textarea {
 
 const Footer = styled.footer`
   width: 100%;
+  max-width: 100vw;
+  height: 40px;
   text-align: center;
   padding: 10px;
-  background: #1b2a3e; /* Match container background */
-  color: hsl(49, 98%, 60%);
-  border-top: 3px solid #00ffff; /* Cyan border-top */
+  background-color: linear-gradient(to bottom, #000b1e, #1c2b4f); /* Match container background */
   margin-top: auto; /* Push footer to the bottom */
   font-family: 'VT323', monospace;
-  font-size: 1em;
+  font-size: 0.85em;
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: space-between; /* Distribute content */
+  justify-content: space-between; /* Center content */
   position: fixed;
   bottom: 0;
 
@@ -552,6 +551,12 @@ const Footer = styled.footer`
 
   .right {
     margin-right: 10px; /* Add spacing as needed */
+  }
+    
+  @media (max-width: 768px) {
+    flex-direction: column; /* Stack vertically on smaller screens */
+    justify-content: center; /* Center content in mobile view */
+    height: auto; /* Allow height to adjust */
   }
 `;
 export default MessageForm;
