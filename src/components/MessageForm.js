@@ -433,7 +433,7 @@ textarea {
     }
 
     .recording-controls button {
-      width: 55%;
+      width: 50%;
       margin-bottom: 10px;
     }
 
