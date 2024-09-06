@@ -109,7 +109,7 @@ const MessageForm = () => {
   return (
     <StyledWrapper>
       <div className="container">
-        <h2>Send a anonymous message to {username}</h2>
+        <h2>Send anonymous message to {username}</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="message">Message:</label>
