@@ -192,7 +192,7 @@ const MessageForm = () => {
       </div>
       <Footer className="footer">
           <h3>
-            Echo<span className="cyan">I</span>n
+            <span className="yellow">E</span>cho<span className="cyan">I</span>n
             <div>
               <FontAwesomeIcon icon={faBoxOpen} className="box-icon" />
             </div>
@@ -372,6 +372,10 @@ textarea {
 
   .red {
     color: #FF0000; /* Red color */
+  }
+
+  .yellow {
+    color: hsl(49deg 98% 60%); /* yellow color */
   }
 
   .box-icon {

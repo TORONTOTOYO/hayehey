@@ -264,11 +264,11 @@ useEffect(() => {
         <div className="slider">
           <form className="form" onSubmit={handleLogin}>
             <h1>
-              Echo<span className="cyan">I</span>n
-              <div>
+            <span className="yellow">E</span>cho<span className="cyan">I</span>n
+            <div>
               <FontAwesomeIcon icon={faBoxOpen} className="box-icon" />
-              </div>
-              o<span className="red">x</span>
+            </div>
+            o<span className="red">x</span>
             </h1>
             <div className="form_control">
               <input 
@@ -435,6 +435,10 @@ const StyledWrapper = styled.div`
 
   .red {
     color: #FF0000; /* Red color */
+  }
+
+  .yellow {
+    color: #00FF7F; /* spring color */
   }
 
   .box-container {
