@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { getFirestore, collection, addDoc, doc, getDoc } from "firebase/firestore";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-
 const MessageForm = () => {
   const { userId } = useParams(); // Get userId from URL
   const navigate = useNavigate();
@@ -94,7 +93,6 @@ const MessageForm = () => {
 
       setMessage("");
       setAudio(null);
-      alert("Message sent!");
     } catch (error) {
       console.error("Error adding document:", error);
       alert("Failed to send message. Please try again.");
