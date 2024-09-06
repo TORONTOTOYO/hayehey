@@ -227,7 +227,7 @@ const StyledWrapper = styled.div`
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6); /* Enhanced shadow for depth */
   backdrop-filter: blur(12px); /* Increased blur effect */
   border: 3px solid #00ffff; /* Thicker cyan border */
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
 }
 
     
@@ -542,7 +542,7 @@ const Footer = styled.footer`
   align-items: center;
   justify-content: space-between; /* Center content */
   position: fixed;
-  margin-bottom: 1.5rem;
+  bottom: 0;
 
   .left {
     margin-left: 10px; /* Add spacing as needed */
@@ -553,7 +553,6 @@ const Footer = styled.footer`
   }
     
   @media (max-width: 768px) {
-    margin-top: 2rem; /* Push footer to the bottom */
     flex-direction: column; /* Stack vertically on smaller screens */
     justify-content: center; /* Center content in mobile view */
   }
