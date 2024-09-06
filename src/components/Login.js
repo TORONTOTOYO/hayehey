@@ -263,14 +263,13 @@ useEffect(() => {
         <input type="checkbox" id="register_toggle" />
         <div className="slider">
           <form className="form" onSubmit={handleLogin}>
-          <h1>
-              Echo<span className="cyan">I</span>nBo<span className="red">X</span>
-              <div className="box-container">
-                <FontAwesomeIcon icon={faBoxOpen} className="box-icon" />
-                <FontAwesomeIcon icon={faVolumeUp} className="echo-icon" />
+            <h1>
+              Echo<span className="cyan">I</span>n
+              <div>
+              <FontAwesomeIcon icon={faBoxOpen} className="box-icon" />
               </div>
+              o<span className="red">x</span>
             </h1>
-          <span className="title">Login</span>
             <div className="form_control">
               <input 
                 type="email" 
@@ -292,7 +291,6 @@ useEffect(() => {
               <label className="label">Password</label>
             </div>
             <button type="submit">Login</button>
-
             <span className="bottom_text">
               Don't have an account?{" "}
               <label htmlFor="register_toggle" className="switch">
@@ -446,7 +444,7 @@ const StyledWrapper = styled.div`
   }
 
   .box-icon {
-    font-size: 1.5em; /* Adjust size as needed */
+    font-size: 1.2em; /* Adjust size as needed */
     color: #FF0000; /* Red color for the box */
     z-index: 2;
   }
@@ -467,6 +465,7 @@ const StyledWrapper = styled.div`
     font-size: clamp(1.5rem, 4vw, 2.5rem);
     color: #fff;
     margin: 0;
+    font-weight: 800;
   }
 
   form .form_control {
