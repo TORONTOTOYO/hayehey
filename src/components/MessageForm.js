@@ -227,8 +227,7 @@ const StyledWrapper = styled.div`
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6); /* Enhanced shadow for depth */
   backdrop-filter: blur(12px); /* Increased blur effect */
   border: 3px solid #00ffff; /* Thicker cyan border */
-  margin-top: -9rem;
-  margin-bottom: 11rem;
+  margin-bottom: auto;
 }
 
     
@@ -391,28 +390,10 @@ textarea {
     margin-bottom: 1rem;
   }
 
-  .footer {
-  position: absolute; /* or 'fixed' */
-  bottom: 0;
-  left: 0;
-  padding: 10px 0;
-  background-color: linear-gradient(to bottom, #000b1e, #1c2b4f);;
-  color: white;
-  text-align: center;
-  position: relative;
-  width: 100%;
-}
-
-.footer-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.footer-content p {
-  font-size: 0.9rem;
-}
+  .footer p {
+    font-size: 0.9rem;
+    color: #fff;
+  }
 
 
   textarea:focus {
@@ -543,7 +524,7 @@ const Footer = styled.footer`
   align-items: center;
   justify-content: space-between; /* Center content */
   bottom: 0;
-  position: relative; /* Ensure footer stays in place with respect to the parent */
+  position: fixed; /* Ensure footer stays in place with respect to the parent */
 
   .left {
     margin-left: 10px; /* Add spacing as needed */
