@@ -556,7 +556,7 @@ const Footer = styled.footer`
   @media (max-width: 768px) {
     flex-direction: column; /* Stack vertically on smaller screens */
     justify-content: center; /* Center content in mobile view */
-    height: auto; /* Allow height to adjust */
+    height: -10px;
   }
 `;
 export default MessageForm;
