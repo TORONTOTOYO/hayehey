@@ -227,7 +227,8 @@ const StyledWrapper = styled.div`
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6); /* Enhanced shadow for depth */
   backdrop-filter: blur(12px); /* Increased blur effect */
   border: 3px solid #00ffff; /* Thicker cyan border */
-  margin-bottom: 9rem;
+  margin-top: -9rem;
+  margin-bottom: 11rem;
 }
 
     
