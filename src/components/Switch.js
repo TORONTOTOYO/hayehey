@@ -347,7 +347,7 @@ const AmongUsModal = ({ question, choices, selectedAnswer, onChoiceClick, feedba
         <CrewmateIcon />
             <Content>
                 <h2>Emergency Question!!</h2>
-                <p>{question}</p>
+                <p style={{color:'#F5F7F8'}}>{question}</p>
                 <ChoicesContainer>
                     {choices.map((choice, index) => (
                         <Choice 

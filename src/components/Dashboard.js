@@ -646,6 +646,12 @@ const Profile = () => {
     color: '#fff',
     borderColor: '#ff1616',
   },
+
+  dotsP:{
+    color: 'F5F7F8',
+    fontSize: '1.2rem',
+    fontWeight: 'bold' 
+  },
   };
   
   const themeStyles = {
@@ -811,7 +817,7 @@ const Profile = () => {
               ))}
             </Row>
           ) : (
-            <p style={{ color: '#f5a9a9', fontSize: '1.2rem' }}>
+            <p style={themeStyles.dotsP}>
               No meowssages yet. The cats are quiet{dots}
             </p>
           )}
