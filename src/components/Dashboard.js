@@ -2,6 +2,8 @@ import React, { useEffect, useState, useCallback, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc, collection, query, where, updateDoc, onSnapshot } from "firebase/firestore";
+import { getDownloadURL, ref, uploadBytes, deleteObject } from 'firebase/storage';
+import { storage, db } from './firebase';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,7 +11,7 @@ import { Card, Badge, Container, Row, Col } from 'react-bootstrap';
 import themes from './them';
 import Switch from "./Switch";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLink, faSignOutAlt, faEdit, faPalette } from '@fortawesome/free-solid-svg-icons';
+import { faLink, faSignOutAlt, faEdit, faPalette, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
   
 const Profile = () => {
@@ -28,10 +30,14 @@ const Profile = () => {
   const [score, setScore] = useState(0);
   const savedTheme = localStorage.getItem('theme') || 'default';
   const [currentTheme, setCurrentTheme] = useState(savedTheme);
+  const [userId, setUserId] = useState("");
+
 
   const auth = getAuth();
   const db = getFirestore();
   const navigate = useNavigate();
+  const fileInputRef = useRef(null);
+
 
   const generateUniqueLink = useCallback(async (userId) => {
     const userDoc = doc(db, "users", userId);
@@ -90,6 +96,33 @@ const Profile = () => {
     [db]
   );
 
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      if (auth.currentUser) {
+        const userId = auth.currentUser.uid;
+        const userDocRef = doc(db, "users", userId);
+        const userDocSnap = await getDoc(userDocRef);
+  
+        if (userDocSnap.exists()) {
+          const userData = userDocSnap.data();
+          setUsername(userData.username || "");
+          setCustomLink(userData.customLink || "");
+          setScore(userData.score || 0);
+          setUserId(userId);
+          
+          // Set the profile picture URL
+          if (userData.profilePicture) {
+            setProfilePicture(userData.profilePicture);
+          }
+        }
+      }
+    };
+  
+    fetchUserProfile();
+  }, [auth.currentUser]);
+  
+  const [profilePicture, setProfilePicture] = useState('');
+
   const handleShareClick = () => {
     if (customLink) {
       navigator.clipboard
@@ -126,6 +159,38 @@ const Profile = () => {
     return score === 0 || score === 1 ? 'point' : 'points';
   };
 
+  const handleProfileIconClick = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click(); // Programmatically click the hidden file input
+    }
+  };
+
+  const handleFileChange = async (event) => {
+    const file = event.target.files[0];
+    if (file && auth.currentUser) {
+      const userId = auth.currentUser.uid;
+      const storageRef = ref(storage, `profilePictures/${userId}/${file.name}`);
+  
+      try {
+        await uploadBytes(storageRef, file);
+        const downloadURL = await getDownloadURL(storageRef);
+        
+        // Update Firestore with the new profile picture URL
+        const userDocRef = doc(db, "users", userId);
+        await updateDoc(userDocRef, { profilePicture: downloadURL });
+  
+        console.log('File uploaded successfully:', downloadURL);
+        toast.success('Profile picture updated successfully!');
+      } catch (error) {
+        console.error('Error uploading file:', error.code, error.message);
+        toast.error('Failed to upload profile picture. Please try again.');
+      }
+    } else {
+      console.error('User is not authenticated or no file selected');
+    }
+  };
+  
+  
   const closeModal = useCallback(() => {
     setIsModalOpen(false);
     setSelectedMessage(null);
@@ -616,43 +681,75 @@ const Profile = () => {
       <Container style={themeStyles.container}>
         <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
           <h2 style={themeStyles.header}>
-            Meowsername:{' '}
-            {isEditingUsername ? (
-              <input
-                ref={inputRef}
-                type="text"
-                value={newUsername}
-                onChange={(e) => setNewUsername(e.target.value)}
-                onBlur={handleUsernameBlur}
-                onKeyPress={handleUsernameKeyPress}
-                style={{
-                  fontSize: '1.5rem',
-                  color: '#ffffff',
-                  background: 'transparent',
-                  border: 'none',
-                  outline: 'none',
-                  width: '100%',
-                  maxWidth: '200px',
-                  boxSizing: 'border-box',
-                  padding: '0.2rem',
-                }}
-              />
-            ) : (
-              <>
-                {username}
-                <FontAwesomeIcon
-                  icon={faEdit}
-                  style={{
-                    fontSize: '0.75rem',
-                    marginLeft: '10px',
-                    cursor: 'pointer',
-                    verticalAlign: 'middle',
-                  }}
-                  onClick={handleUsernameClick}
+            <span style={{ display: 'flex', alignItems: 'center' }}>
+                  <img
+                    src={profilePicture || ''} // Use an empty string to display the placeholder if no picture is uploaded
+                    alt="profile"
+                    style={{
+                      fontSize: '1rem',
+                      alignContent: 'center',
+                      backgroundColor: 'white',
+                      width: '6rem',
+                      height: '6em',
+                      borderRadius: '50%',
+                      marginRight: '0.5rem',
+                      cursor: 'pointer',
+                      objectFit: profilePicture ? 'cover' : 'none', // Ensure the image is displayed correctly
+                    }}
+                    onClick={handleProfileIconClick}
+                  />
+                <input
+                  type="file"
+                  ref={fileInputRef}
+                  style={{ display: 'none' }} // Hides the input
+                  onChange={handleFileChange} // Handles the file selection
                 />
-              </>
-            )}
-          </h2>
+                {isEditingUsername ? (
+                  <input
+                    ref={inputRef}
+                    type="text"
+                    value={newUsername}
+                    onChange={(e) => setNewUsername(e.target.value)}
+                    onBlur={handleUsernameBlur}
+                    onKeyPress={handleUsernameKeyPress}
+                    style={{
+                      fontSize: '1.5rem',
+                      color: '#ffffff',
+                      background: 'transparent',
+                      border: 'none',
+                      outline: 'none',
+                      width: '100%',
+                      maxWidth: '200px',
+                      boxSizing: 'border-box',
+                      padding: '0.2rem',
+                      textTransform: 'uppercase',
+                    }}
+                  />
+                ) : (
+                  <>
+                    <span
+                      style={{
+                        textTransform: 'uppercase', // Ensure username is formatted as uppercase
+                        fontSize: '2.25rem', // Adjust size if needed
+                        fontWeight: 'bold', // Adjust weight if needed
+                      }}
+                    >
+                      {username}
+                    </span>
+                    <FontAwesomeIcon
+                      icon={faEdit}
+                      style={{
+                        fontSize: '0.75rem',
+                        marginLeft: '10px',
+                        cursor: 'pointer',
+                        verticalAlign: 'middle',
+                      }}
+                      onClick={handleUsernameClick}
+                    />
+                  </>
+                )}
+              </span>
+            </h2>
           <div style={themeStyles.buttonContainer}>
             <button
               style={{

@@ -6,7 +6,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import * as THREE from 'three';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBoxOpen, faVolumeUp } from '@fortawesome/free-solid-svg-icons';
+import { faBoxOpen} from '@fortawesome/free-solid-svg-icons';
 
 import 'react-toastify/dist/ReactToastify.css';
 

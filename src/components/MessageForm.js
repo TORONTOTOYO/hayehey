@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { getFirestore, collection, addDoc, doc, getDoc } from "firebase/firestore";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBoxOpen, faVolumeUp } from '@fortawesome/free-solid-svg-icons';
+import { faBoxOpen, faUserCircle} from '@fortawesome/free-solid-svg-icons';
 
 const MessageForm = () => {
   const { userId } = useParams(); // Get userId from URL
@@ -16,6 +16,7 @@ const MessageForm = () => {
   const [mediaRecorder, setMediaRecorder] = useState(null);
   const db = getFirestore();
   const [clicked, setClicked] = useState(false);
+  const [profilePicture, setProfilePicture] = useState("");
 
   useEffect(() => {
     const fetchUsername = async () => {
@@ -38,6 +39,31 @@ const MessageForm = () => {
     };
 
     fetchUsername();
+  }, [db, userId]);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      if (!userId) {
+        console.error("userId is undefined.");
+        return;
+      }
+      
+      try {
+        const userDoc = doc(db, "users", userId);
+        const userSnap = await getDoc(userDoc);
+        if (userSnap.exists()) {
+          const userData = userSnap.data();
+          setUsername(userData.username);
+          setProfilePicture(userData.profilePicture || ""); // Set profile picture URL
+        } else {
+          console.error("No such user!");
+        }
+      } catch (error) {
+        console.error("Error fetching user:", error);
+      }
+    };
+
+    fetchUserData();
   }, [db, userId]);
 
   const startRecording = () => {
@@ -109,10 +135,34 @@ const MessageForm = () => {
   return (
     <StyledWrapper>
       <div className="container">
-        <h2>Send anonymous message to {username}</h2>
+      <div className="profile-container">
+          {profilePicture ? (
+            <img
+              src={profilePicture}
+              alt="profile"
+              style={{
+                width: '6rem',
+                height: '6rem',
+                borderRadius: '50%',
+                marginRight: '0.5rem',
+                objectFit: 'cover',
+              }}
+            />
+          ) : (
+            <FontAwesomeIcon
+              icon={faUserCircle}
+              style={{
+                fontSize: '2rem',
+                color: '#999',
+                marginRight: '0.5rem',
+              }}
+            />
+          )}
+          <span>{username}</span>
+        </div>
+        <h2>Send anonymous message</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="message">Message:</label>
             <textarea
               id="message"
               value={message}
@@ -230,7 +280,29 @@ const StyledWrapper = styled.div`
   margin-bottom: auto;
 }
 
-    
+  .profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Adjust the width of the container */
+    padding: 1rem; /* Add padding if needed */
+  }
+
+  .profile-container img, .profile-container .faUserCircle {
+    width: 3rem;
+    height: 3rem; 
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 0.5rem; 
+  }
+
+  .profile-container span {
+    font-size: 1.50rem; 
+    color: cyan;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
   h1 {
     margin-top: 2rem;
     cursor: pointer;
@@ -254,6 +326,7 @@ const StyledWrapper = styled.div`
     font-family: 'VT323', monospace; /* Retro font similar to Among Us */
     color: hsl(49deg 98% 60%); 
     font-weight: 500;
+    text-align: center;
     text-shadow: 
       0 2px 4px rgba(0, 255, 255, 0.5),
       0 0 1px rgba(255, 255, 255, 0.5); /* Initial glow */
