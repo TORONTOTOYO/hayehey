@@ -11,7 +11,7 @@ import { Card, Badge, Container, Row, Col } from 'react-bootstrap';
 import themes from './them';
 import Switch from "./Switch";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLink, faSignOutAlt, faEdit, faPalette, faUser, faQuestionCircle, faEnvelope, faGear, faBoxOpen, faGridHorizontal} 
+import { faLink, faSignOutAlt, faEdit, faPalette, faUser, faQuestionCircle, faEnvelope, faGear, faBoxOpen} 
 from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
 
@@ -823,7 +823,7 @@ const Profile = () => {
             onMouseLeave={handleMouseLeave}
                     onClick={() => handleMenuItemClick('profile')}
           >
-            <FontAwesomeIcon icon={faGridHorizontal} style={themeStyles.menuItemIcon} />
+            <FontAwesomeIcon icon={faUser} style={themeStyles.menuItemIcon} />
             <span style={themeStyles.menuItemText}>Dashboard</span>
           </div>
           <div
