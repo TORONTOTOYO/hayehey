@@ -11,8 +11,10 @@ import { Card, Badge, Container, Row, Col } from 'react-bootstrap';
 import themes from './them';
 import Switch from "./Switch";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLink, faSignOutAlt, faEdit, faPalette, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { faLink, faSignOutAlt, faEdit, faPalette, faUser, faQuestionCircle, faEnvelope, faGear, faBoxOpen} 
+from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
+
   
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -31,12 +33,19 @@ const Profile = () => {
   const savedTheme = localStorage.getItem('theme') || 'default';
   const [currentTheme, setCurrentTheme] = useState(savedTheme);
   const [userId, setUserId] = useState("");
+  const [sidebarVisible, setSidebarVisible] = useState(false);
+  const [spinning, setSpinning] = useState(false);
+  const [closing, setClosing] = useState(false);
+  const [hoveredItem, setHoveredItem] = useState(null);
+
 
 
   const auth = getAuth();
   const db = getFirestore();
   const navigate = useNavigate();
   const fileInputRef = useRef(null);
+  const handleMouseEnter = (item) => setHoveredItem(item);
+  const handleMouseLeave = () => setHoveredItem(null);
 
 
   const generateUniqueLink = useCallback(async (userId) => {
@@ -652,6 +661,66 @@ const Profile = () => {
     fontSize: '1.2rem',
     fontWeight: 'bold' 
   },
+  gearIcon: {
+    cursor: 'pointer',
+    transition: 'transform 0.5s ease', // Animation for spinning
+  },
+  sidebar: {
+    position: 'fixed',
+    top: 0,
+    right: 0,
+    width: '180px',
+    height: '35%',
+    borderRadius: '10px 0 10px 10px',
+    background: '#1b2a3e', // Match the sidebar background with the theme
+    boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
+    transform: 'translateX(100%)', // Sidebar starts off-screen
+    transition: 'transform 0.3s ease',
+    zIndex: 1000,
+    padding: '1rem',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+  },
+  sidebarVisible: {
+    transform: 'translateX(0)', // Sidebar slides in
+  },
+  closeButton: {
+    position: 'absolute',
+    top: '0.6rem',
+    right: '1rem',
+    fontSize: '1.5rem',
+    background: 'transparent',
+    border: 'none',
+    cursor: 'pointer',
+    color: '#00ffff', // Color of the close button icon
+  },
+  content: {
+    width: '100%',
+  },
+  menuItem: {
+    display: 'flex',
+    alignItems: 'center',
+    padding: '0.5rem 1rem',
+    width: '100%',
+    borderRadius: '5px',
+    cursor: 'pointer',
+    transition: 'background 0.3s ease, color 0.3s ease', // Add transition for hover effects
+    color: '#e0e0e0', // Default text color
+  },
+  menuItemIcon: {
+    marginRight: '0.5rem',
+  },
+  menuItemText: {
+    fontSize: '1rem',
+  },
+  menuItemHover: {
+    background: '#00ffff', // Hover background color
+    color: '#000000', // Hover text color
+  },
+  reverseSpinning: {
+    transform: 'rotate(-360deg)',
+  },
   };
   
   const themeStyles = {
@@ -671,6 +740,22 @@ const Profile = () => {
     setCurrentTheme(randomTheme);
   };
 
+  const handleGearIconClick = () => {
+    setSpinning(true);
+    setTimeout(() => {
+      setSidebarVisible(!sidebarVisible);
+      setSpinning(false);
+    }, 500); // Duration should match the spinning animation
+  };
+
+  const handleCloseSidebar = () => {
+    setClosing(true);
+    setTimeout(() => {
+      setSidebarVisible(false);
+      setClosing(false);
+    }, 500); // Duration should match the spinning animation
+  };
+
   return (
     <div style={themeStyles.container}>
       <ToastContainer />
@@ -678,11 +763,86 @@ const Profile = () => {
         <strong style={{ fontSize: '0.5rem' }}>
           Emergency question {getScoreLabel(score)}: {score}
         </strong>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
         <FontAwesomeIcon
           icon={faPalette}
-          style={{ ...themeStyles.MagicIcon }}
+          style={{ marginRight: '0.5rem', cursor: 'pointer' }}
           onClick={handleMagicIconClick}
         />
+        <FontAwesomeIcon
+          icon={faGear}
+          style={{
+            ...themeStyles.gearIcon,
+            transform: spinning ? 'rotate(360deg)' : 'none',
+          }}
+          onClick={handleGearIconClick}
+        />
+      </div>
+
+      <div
+      style={{
+        ...themeStyles.sidebar,
+        ...(sidebarVisible ? themeStyles.sidebarVisible : {}),
+      }}
+    >
+      <button
+        style={themeStyles.closeButton}
+        onClick={handleCloseSidebar}
+      >
+        <FontAwesomeIcon
+          icon={faGear}
+          style={{
+            ...themeStyles.gearIcon,
+            ...(closing ? themeStyles.reverseSpinning : {}),
+          }}
+        />
+      </button>
+      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem',
+         background: 'linear-gradient(to bottom, #000b1e, #1c2b4f)', borderRadius: '10px'}}>
+        <h3 style={{ margin: '0', display: 'flex', alignItems: 'center', color: 'white', fontSize: '1.3rem' }}>
+          <span style={{color: 'hsl(49deg 98% 60%)'}}>E</span>cho<span style={{color: 'cyan'}}>I</span>n
+          <div style={{ color: 'red'}}>
+            <FontAwesomeIcon icon={faBoxOpen} className="boxIcon" />
+          </div>
+          o<span style={{color: 'red'}}>x</span>
+        </h3>
+      </div>
+        <div style={themeStyles.content}>
+          <div
+            style={{
+              ...themeStyles.menuItem,
+              ...(hoveredItem === 'profile' ? themeStyles.menuItemHover : {}),
+            }}
+            onMouseEnter={() => handleMouseEnter('profile')}
+            onMouseLeave={handleMouseLeave}
+          >
+            <FontAwesomeIcon icon={faUser} style={themeStyles.menuItemIcon} />
+            <span style={themeStyles.menuItemText}>Profile</span>
+          </div>
+          <div
+            style={{
+              ...themeStyles.menuItem,
+              ...(hoveredItem === 'help' ? themeStyles.menuItemHover : {}),
+            }}
+            onMouseEnter={() => handleMouseEnter('help')}
+            onMouseLeave={handleMouseLeave}
+          >
+            <FontAwesomeIcon icon={faQuestionCircle} style={themeStyles.menuItemIcon} />
+            <span style={themeStyles.menuItemText}>Help</span>
+          </div>
+          <div
+            style={{
+              ...themeStyles.menuItem,
+              ...(hoveredItem === 'feedback' ? themeStyles.menuItemHover : {}),
+            }}
+            onMouseEnter={() => handleMouseEnter('feedback')}
+            onMouseLeave={handleMouseLeave}
+          >
+            <FontAwesomeIcon icon={faEnvelope} style={themeStyles.menuItemIcon} />
+            <span style={themeStyles.menuItemText}>Send Feedback</span>
+          </div>
+        </div>
+      </div>
       </div>
       <Container style={themeStyles.container}>
         <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">

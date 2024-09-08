@@ -345,7 +345,63 @@ export const themes = {
       MagicIconHover: {
         color: '#ff9900',
         textShadow: '0 0 5px rgba(255, 153, 0, 0.8), 0 0 10px rgba(255, 153, 0, 0.6)',
-      }
+      },
+      sidebar: {
+        position: 'fixed',
+        top: 0,
+        right: 0,
+        width: '180px',
+        height: '35%',
+        borderRadius: '10px 0 10px 10px',
+        background: '#87CEFA', // Sky blue gradient background
+        boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
+        transform: 'translateX(100%)', // Sidebar starts off-screen
+        transition: 'transform 0.3s ease',
+        zIndex: 1000,
+        padding: '1rem',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+      },
+      sidebarVisible: {
+        transform: 'translateX(0)', // Sidebar slides in
+      },
+      closeButton: {
+        position: 'absolute',
+        top: '0.6rem',
+        right: '1rem',
+        fontSize: '1.5rem',
+        background: 'transparent',
+        border: 'none',
+        cursor: 'pointer',
+        color: '#FFD700', // Gold color to match the theme
+      },
+      content: {
+        width: '100%',
+      },
+      menuItem: {
+        display: 'flex',
+        alignItems: 'center',
+        padding: '0.5rem 1rem',
+        width: '100%',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        transition: 'background 0.3s ease, color 0.3s ease',
+        color: '#FFFFFF', // White text color
+      },
+      menuItemIcon: {
+        marginRight: '0.5rem',
+      },
+      menuItemText: {
+        fontSize: '1rem',
+      },
+      menuItemHover: {
+        background: '#FF6347', // Tomato red for hover effect
+        color: '#FFFFFF', // White text color for hover effect
+      },
+      reverseSpinning: {
+        transform: 'rotate(-360deg)',
+      },
     },
     adorableHome: {
       container: {
@@ -520,7 +576,63 @@ export const themes = {
       MagicIconHover: {
         color: '#e63946',
         textShadow: '0 0 5px rgba(230, 57, 70, 0.8), 0 0 10px rgba(230, 57, 70, 0.6)',
-      }
+      },
+      sidebar: {
+        position: 'fixed',
+        top: 0,
+        right: 0,
+        width: '180px',
+        height: '35%',
+        borderRadius: '10px 0 10px 10px',
+        background: '#FAD0C4', // Peach background to match the theme
+        boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
+        transform: 'translateX(100%)', // Sidebar starts off-screen
+        transition: 'transform 0.3s ease',
+        zIndex: 1000,
+        padding: '1rem',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+      },
+      sidebarVisible: {
+        transform: 'translateX(0)', // Sidebar slides in
+      },
+      closeButton: {
+        position: 'absolute',
+        top: '0.6rem',
+        right: '1rem',
+        fontSize: '1.5rem',
+        background: 'transparent',
+        border: 'none',
+        cursor: 'pointer',
+        color: '#FF6F61', // Coral color to match the theme
+      },
+      content: {
+        width: '100%',
+      },
+      menuItem: {
+        display: 'flex',
+        alignItems: 'center',
+        padding: '0.5rem 1rem',
+        width: '100%',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        transition: 'background 0.3s ease, color 0.3s ease',
+        color: '#333333', // Dark text color to contrast with background
+      },
+      menuItemIcon: {
+        marginRight: '0.5rem',
+      },
+      menuItemText: {
+        fontSize: '1rem',
+      },
+      menuItemHover: {
+        background: '#FF6F61', // Coral hover background
+        color: '#FFFFFF', // White text on hover
+      },
+      reverseSpinning: {
+        transform: 'rotate(-360deg)',
+      },
     },
     retroAesthetic: {
       container: {
@@ -696,6 +808,62 @@ export const themes = {
       MagicIconHover: {
         color: '#e6006c',
         textShadow: '0 0 5px rgba(230, 0, 108, 0.8), 0 0 10px rgba(230, 0, 108, 0.6)',
+      },
+      sidebar: {
+        position: 'fixed',
+        top: 0,
+        right: 0,
+        width: '180px',
+        height: '35%',
+        borderRadius: '10px 0 10px 10px',
+        background: '#1b2a3e', // Match the sidebar background with the theme
+        boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
+        transform: 'translateX(100%)', // Sidebar starts off-screen
+        transition: 'transform 0.3s ease',
+        zIndex: 1000,
+        padding: '1rem',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+      },
+      sidebarVisible: {
+        transform: 'translateX(0)', // Sidebar slides in
+      },
+      closeButton: {
+        position: 'absolute',
+        top: '0.6rem',
+        right: '1rem',
+        fontSize: '1.5rem',
+        background: 'transparent',
+        border: 'none',
+        cursor: 'pointer',
+        color: '#00ffff', // Color of the close button icon
+      },
+      content: {
+        width: '100%',
+      },
+      menuItem: {
+        display: 'flex',
+        alignItems: 'center',
+        padding: '0.5rem 1rem',
+        width: '100%',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        transition: 'background 0.3s ease, color 0.3s ease', // Add transition for hover effects
+        color: '#e0e0e0', // Default text color
+      },
+      menuItemIcon: {
+        marginRight: '0.5rem',
+      },
+      menuItemText: {
+        fontSize: '1rem',
+      },
+      menuItemHover: {
+        background: '#00ffff', // Hover background color
+        color: '#000000', // Hover text color
+      },
+      reverseSpinning: {
+        transform: 'rotate(-360deg)',
       }
     },
     taylorSwiftRed: {
@@ -876,7 +1044,64 @@ export const themes = {
       MagicIconHover: {
         color: '#d62839',
         textShadow: '0 0 5px rgba(214, 40, 40, 0.8), 0 0 10px rgba(214, 40, 40, 0.6)',
-      }
+      },
+      sidebar: {
+        position: 'fixed',
+        top: 0,
+        right: 0,
+        width: '220px', // Adjusted width for better fit
+        height: '35%', // Full height for the sidebar
+        borderRadius: '10px 0 0 10px',
+        background: '#e80039', // Sidebar background matches the theme
+        boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
+        transform: 'translateX(100%)', // Sidebar starts off-screen
+        transition: 'transform 0.3s ease',
+        zIndex: 1000,
+        padding: '1rem',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        color: '#fff', // Text color inside the sidebar
+      },
+      sidebarVisible: {
+        transform: 'translateX(0)', // Sidebar slides in
+      },
+      closeButton: {
+        position: 'absolute',
+        top: '0.6rem',
+        right: '1rem',
+        fontSize: '1.5rem',
+        background: 'transparent',
+        border: 'none',
+        cursor: 'pointer',
+        color: '#fff', // Color of the close button icon to stand out
+      },
+      content: {
+        width: '100%',
+      },
+      menuItem: {
+        display: 'flex',
+        alignItems: 'center',
+        padding: '0.75rem 1rem', // Adjusted padding for better spacing
+        width: '100%',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        transition: 'background 0.3s ease, color 0.3s ease',
+        color: '#fff', // Default text color
+      },
+      menuItemIcon: {
+        marginRight: '0.5rem',
+      },
+      menuItemText: {
+        fontSize: '1rem',
+      },
+      menuItemHover: {
+        background: '#c70039', // Hover background color
+        color: '#fff', // Hover text color
+      },
+      reverseSpinning: {
+        transform: 'rotate(-360deg)',
+      },
     },
     Bohemian: {
       container: {
@@ -1021,7 +1246,62 @@ export const themes = {
       MagicIconHover: {
         color: '#7c5c40',
         textShadow: '0 0 5px rgba(165, 123, 91, 0.8)',
-      }
+      },
+      sidebar: {
+        position: 'fixed',
+        top: 0,
+        right: 0,
+        width: '180px',
+        height: '35%',
+        borderRadius: '10px 0 10px 10px',
+        background: '#f4e9d8', // Soft beige gradient
+        boxShadow: '-2px 0 5px rgba(0,0,0,0.1)', // Soft shadow
+        transform: 'translateX(100%)', // Sidebar starts off-screen
+        transition: 'transform 0.3s ease',
+        zIndex: 1000,
+        padding: '1rem',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+      },
+      sidebarVisible: {
+        transform: 'translateX(0)', // Sidebar slides in
+      },
+      closeButton: {
+        position: 'absolute',
+        right: '1rem',
+        fontSize: '1.5rem',
+        background: 'transparent',
+        border: 'none',
+        cursor: 'pointer',
+        color: '#c1a383', // Soft brown color for the close button
+      },
+      content: {
+        width: '100%',
+      },
+      menuItem: {
+        display: 'flex',
+        alignItems: 'center',
+        padding: '0.5rem 1rem',
+        width: '100%',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        transition: 'background 0.3s ease, color 0.3s ease', // Add transition for hover effects
+        color: '#5b4636', // Warm brown text
+      },
+      menuItemIcon: {
+        marginRight: '0.5rem',
+      },
+      menuItemText: {
+        fontSize: '1rem',
+      },
+      menuItemHover: {
+        background: '#a67b5b', // Earthy tan for hover background
+        color: '#ffffff', // White text for hover
+      },
+      reverseSpinning: {
+        transform: 'rotate(-360deg)',
+      },
     },
     ModernTeal: {
       container: {
@@ -1166,7 +1446,63 @@ export const themes = {
       MagicIconHover: {
         color: '#128061', // Medium Teal
         textShadow: '0 0 5px rgba(19, 128, 97, 0.7)',
-      }
+      },
+      sidebar: {
+        position: 'fixed',
+        top: 0,
+        right: 0,
+        width: '180px',
+        height: '35%',
+        borderRadius: '10px 0 10px 10px',
+        background: '#B5F7E6', // Very Light Teal
+        boxShadow: '-2px 0 5px rgba(0,0,0,0.2)', // Softer shadow
+        transform: 'translateX(100%)', // Sidebar starts off-screen
+        transition: 'transform 0.3s ease',
+        zIndex: 1000,
+        padding: '1rem',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+      },
+      sidebarVisible: {
+        transform: 'translateX(0)', // Sidebar slides in
+      },
+      closeButton: {
+        position: 'absolute',
+        top: '0.6rem',
+        right: '1rem',
+        fontSize: '1.5rem',
+        background: 'transparent',
+        border: 'none',
+        cursor: 'pointer',
+        color: '#128061', // Medium Teal color for the close button
+      },
+      content: {
+        width: '100%',
+      },
+      menuItem: {
+        display: 'flex',
+        alignItems: 'center',
+        padding: '0.5rem 1rem',
+        width: '100%',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        transition: 'background 0.3s ease, color 0.3s ease', // Add transition for hover effects
+        color: '#266352', // Dark Teal text color
+      },
+      menuItemIcon: {
+        marginRight: '0.5rem',
+      },
+      menuItemText: {
+        fontSize: '1rem',
+      },
+      menuItemHover: {
+        background: '#53C0A2', // Light Teal for hover background
+        color: '#FFFFFF', // White text color on hover
+      },
+      reverseSpinning: {
+        transform: 'rotate(-360deg)',
+      },
     },
     CoralTeal: {
       container: {
@@ -1311,7 +1647,63 @@ export const themes = {
       MagicIconHover: {
         color: '#005C78', // Dark Teal
         textShadow: '0 0 5px rgba(0, 105, 137, 0.7)',
-      }
+      },
+      sidebar: {
+        position: 'fixed',
+        top: 0,
+        right: 0,
+        width: '180px',
+        height: '35%',
+        borderRadius: '10px 0 10px 10px',
+        background: '#F3F7EC', // Soft Cream background
+        boxShadow: '-2px 0 5px rgba(0, 0, 0, 0.3)',
+        transform: 'translateX(100%)', // Sidebar starts off-screen
+        transition: 'transform 0.3s ease',
+        zIndex: 1000,
+        padding: '1rem',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+      },
+      sidebarVisible: {
+        transform: 'translateX(0)', // Sidebar slides in
+      },
+      closeButton: {
+        position: 'absolute',
+        top: '0.6rem',
+        right: '1rem',
+        fontSize: '1.5rem',
+        background: 'transparent',
+        border: 'none',
+        cursor: 'pointer',
+        color: '#E88D67', // Warm Coral close button color
+      },
+      content: {
+        width: '100%',
+      },
+      menuItem: {
+        display: 'flex',
+        alignItems: 'center',
+        padding: '0.5rem 1rem',
+        width: '100%',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        transition: 'background 0.3s ease, color 0.3s ease', // Add transition for hover effects
+        color: '#005C78', // Dark Teal text color
+      },
+      menuItemIcon: {
+        marginRight: '0.5rem',
+      },
+      menuItemText: {
+        fontSize: '1rem',
+      },
+      menuItemHover: {
+        background: '#006989', // Deep Teal hover background color
+        color: '#FFFFFF', // White text color on hover
+      },
+      reverseSpinning: {
+        transform: 'rotate(-360deg)',
+      },
     },
     CharcoalCoral: {
       container: {
@@ -1456,7 +1848,63 @@ export const themes = {
       MagicIconHover: {
         color: '#9B3922', // Burnt Red
         textShadow: '0 0 5px rgba(242, 97, 63, 0.7)',
-      }
+      }, 
+      sidebar: {
+        position: 'fixed',
+        top: 0,
+        right: 0,
+        width: '180px',
+        height: '35%',
+        borderRadius: '10px 0 10px 10px',
+        background: '#0C0C0C', // Deep Charcoal background
+        boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
+        transform: 'translateX(100%)', // Sidebar starts off-screen
+        transition: 'transform 0.3s ease',
+        zIndex: 1000,
+        padding: '1rem',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+      },
+      sidebarVisible: {
+        transform: 'translateX(0)', // Sidebar slides in
+      },
+      closeButton: {
+        position: 'absolute',
+        top: '0.6rem',
+        right: '1rem',
+        fontSize: '1.5rem',
+        background: 'transparent',
+        border: 'none',
+        cursor: 'pointer',
+        color: '#F2613F', // Vibrant Coral for close button
+      },
+      content: {
+        width: '100%',
+      },
+      menuItem: {
+        display: 'flex',
+        alignItems: 'center',
+        padding: '0.5rem 1rem',
+        width: '100%',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        transition: 'background 0.3s ease, color 0.3s ease', // Add transition for hover effects
+        color: '#F3F3F3', // Light text color
+      },
+      menuItemIcon: {
+        marginRight: '0.5rem',
+      },
+      menuItemText: {
+        fontSize: '1rem',
+      },
+      menuItemHover: {
+        background: '#F2613F', // Vibrant Coral for hover
+        color: '#000000', // Black text for hover
+      },
+      reverseSpinning: {
+        transform: 'rotate(-360deg)',
+      },
     },
     PeachyPinkDelight: {
       container: {
@@ -1601,7 +2049,63 @@ export const themes = {
       MagicIconHover: {
         color: '#FC819E', // Bright Pink
         textShadow: '0 0 5px rgba(247, 65, 143, 0.7)',
-      }
+      },
+      sidebar: {
+        position: 'fixed',
+        top: 0,
+        right: 0,
+        width: '180px',
+        height: '35%',
+        borderRadius: '10px 0 10px 10px',
+        background: '#FEC7B4', // Soft Peach background
+        boxShadow: '-2px 0 5px rgba(0, 0, 0, 0.2)', // Soft shadow
+        transform: 'translateX(100%)', // Sidebar starts off-screen
+        transition: 'transform 0.3s ease',
+        zIndex: 1000,
+        padding: '1rem',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+      },
+      sidebarVisible: {
+        transform: 'translateX(0)', // Sidebar slides in
+      },
+      closeButton: {
+        position: 'absolute',
+        top: '0.6rem',
+        right: '1rem',
+        fontSize: '1.5rem',
+        background: 'transparent',
+        border: 'none',
+        cursor: 'pointer',
+        color: '#F7418F', // Deep Pink for the close button icon
+      },
+      content: {
+        width: '100%',
+      },
+      menuItem: {
+        display: 'flex',
+        alignItems: 'center',
+        padding: '0.5rem 1rem',
+        width: '100%',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        transition: 'background 0.3s ease, color 0.3s ease',
+        color: '#F7418F', // Deep Pink text color
+      },
+      menuItemIcon: {
+        marginRight: '0.5rem',
+      },
+      menuItemText: {
+        fontSize: '1rem',
+      },
+      menuItemHover: {
+        background: '#FC819E', // Bright Pink background on hover
+        color: '#FFF3C7', // Light Cream text color on hover
+      },
+      reverseSpinning: {
+        transform: 'rotate(-360deg)',
+      },
     },
     ClassicElegance: {
       container: {
@@ -1747,7 +2251,63 @@ export const themes = {
       MagicIconHover: {
         color: '#3F2305', // Deep Brown
         textShadow: '0 0 5px rgba(223, 215, 191, 0.8)',
-      }
+      },
+      sidebar: {
+        position: 'fixed',
+        top: 0,
+        right: 0,
+        width: '180px',
+        height: '35%',
+        borderRadius: '10px 0 10px 10px',
+        background: '#F2EAD3', // Light Beige background
+        boxShadow: '-2px 0 5px rgba(0, 0, 0, 0.3)',
+        transform: 'translateX(100%)', // Sidebar starts off-screen
+        transition: 'transform 0.3s ease',
+        zIndex: 1000,
+        padding: '1rem',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+      },
+      sidebarVisible: {
+        transform: 'translateX(0)', // Sidebar slides in
+      },
+      closeButton: {
+        position: 'absolute',
+        top: '0.6rem',
+        right: '1rem',
+        fontSize: '1.5rem',
+        background: 'transparent',
+        border: 'none',
+        cursor: 'pointer',
+        color: '#3F2305', // Deep Brown for the close button icon
+      },
+      content: {
+        width: '100%',
+      },
+      menuItem: {
+        display: 'flex',
+        alignItems: 'center',
+        padding: '0.5rem 1rem',
+        width: '100%',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        transition: 'background 0.3s ease, color 0.3s ease',
+        color: '#3F2305', // Deep Brown text color
+      },
+      menuItemIcon: {
+        marginRight: '0.5rem',
+      },
+      menuItemText: {
+        fontSize: '1rem',
+      },
+      menuItemHover: {
+        background: '#DFD7BF', // Soft Taupe for hover background
+        color: '#3F2305', // Deep Brown text color on hover
+      },
+      reverseSpinning: {
+        transform: 'rotate(-360deg)',
+      },
     },
     UrbanSleek: {
       container: {
@@ -1892,7 +2452,63 @@ export const themes = {
       MagicIconHover: {
         color: '#008170', // Teal
         textShadow: '0 0 5px rgba(0, 91, 65, 0.8)',
-      }
+      },
+      sidebar: {
+        position: 'fixed',
+        top: 0,
+        right: 0,
+        width: '180px',
+        height: '35%',
+        borderRadius: '10px 0 10px 10px',
+        background: '#232D3F', // Dark Slate Blue (UrbanSleek theme)
+        boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
+        transform: 'translateX(100%)', // Sidebar starts off-screen
+        transition: 'transform 0.3s ease',
+        zIndex: 1000,
+        padding: '1rem',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+      },
+      sidebarVisible: {
+        transform: 'translateX(0)', // Sidebar slides in
+      },
+      closeButton: {
+        position: 'absolute',
+        top: '0.6rem',
+        right: '1rem',
+        fontSize: '1.5rem',
+        background: 'transparent',
+        border: 'none',
+        cursor: 'pointer',
+        color: '#E0E0E0', // Light Gray (UrbanSleek theme)
+      },
+      content: {
+        width: '100%',
+      },
+      menuItem: {
+        display: 'flex',
+        alignItems: 'center',
+        padding: '0.5rem 1rem',
+        width: '100%',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        transition: 'background 0.3s ease, color 0.3s ease',
+        color: '#E0E0E0', // Light Gray (UrbanSleek theme)
+      },
+      menuItemIcon: {
+        marginRight: '0.5rem',
+      },
+      menuItemText: {
+        fontSize: '1rem',
+      },
+      menuItemHover: {
+        background: '#005B41', // Deep Green (UrbanSleek theme)
+        color: '#E0E0E0', // Light Gray (UrbanSleek theme)
+      },
+      reverseSpinning: {
+        transform: 'rotate(-360deg)',
+      },
     },
     EarthyElegance: {
       container: {
@@ -2038,7 +2654,62 @@ export const themes = {
       MagicIconHover: {
         color: '#CD5C08', // Dark Orange
         textShadow: '0 0 5px rgba(106, 156, 137, 0.8)',
-      }
+      },
+      sidebar: {
+        position: 'fixed',
+        top: 0,
+        right: 0,
+        width: '180px',
+        height: '35%',
+        borderRadius: '10px 0 10px 10px',
+        background: '#C1D8C3', // Light Sage Green
+        boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
+        transform: 'translateX(100%)', // Sidebar starts off-screen
+        transition: 'transform 0.3s ease',
+        zIndex: 1000,
+        padding: '1rem',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+      },
+      sidebarVisible: {
+        transform: 'translateX(0)', // Sidebar slides in
+      },
+      closeButton: {
+        position: 'absolute',
+        top: '0.6rem',
+        right: '1rem',
+        fontSize: '1.5rem',
+        background: 'transparent',
+        border: 'none',
+        cursor: 'pointer',
+      },
+      content: {
+        width: '100%',
+      },
+      menuItem: {
+        display: 'flex',
+        alignItems: 'center',
+        padding: '0.5rem 1rem',
+        width: '100%',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        transition: 'background 0.3s ease, color 0.3s ease',
+        color: '#6A9C89', // Sage Green
+      },
+      menuItemIcon: {
+        marginRight: '0.5rem',
+      },
+      menuItemText: {
+        fontSize: '1rem',
+      },
+      menuItemHover: {
+        background: '#CD5C08', // Dark Orange
+        color: '#FFF5E4', // Creamy Beige
+      },
+      reverseSpinning: {
+        transform: 'rotate(-360deg)',
+      },
     },
   SerenityTheme:{
     container: {
@@ -2183,7 +2854,63 @@ export const themes = {
     MagicIconHover: {
       color: '#E1D7C6', // Lighter beige on hover
       textShadow: '0 0 5px rgba(225, 215, 198, 0.8), 0 0 10px rgba(225, 215, 198, 0.6)',
-    }
+    },
+    sidebar: {
+      position: 'fixed',
+      top: 0,
+      right: 0,
+      width: '180px',
+      height: '35%',
+      borderRadius: '10px 0 10px 10px',
+      background: '#EAE4DD', // Light beige background
+      boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
+      transform: 'translateX(100%)', // Sidebar starts off-screen
+      transition: 'transform 0.3s ease',
+      zIndex: 1000,
+      padding: '1rem',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+    },
+    sidebarVisible: {
+      transform: 'translateX(0)', // Sidebar slides in
+    },
+    closeButton: {
+      position: 'absolute',
+      top: '0.6rem',
+      right: '1rem',
+      fontSize: '1.5rem',
+      background: 'transparent',
+      border: 'none',
+      cursor: 'pointer',
+      color: '#295F98', // Dark blue
+    },
+    content: {
+      width: '100%',
+    },
+    menuItem: {
+      display: 'flex',
+      alignItems: 'center',
+      padding: '0.5rem 1rem',
+      width: '100%',
+      borderRadius: '5px',
+      cursor: 'pointer',
+      transition: 'background 0.3s ease, color 0.3s ease',
+      color: '#295F98', // Dark blue text color
+    },
+    menuItemIcon: {
+      marginRight: '0.5rem',
+    },
+    menuItemText: {
+      fontSize: '1rem',
+    },
+    menuItemHover: {
+      background: '#295F98', // Dark blue background on hover
+      color: '#FFFFFF', // White text on hover
+    },
+    reverseSpinning: {
+      transform: 'rotate(-360deg)',
+    },
   },
   Earthy:{
     container: {
@@ -2328,7 +3055,63 @@ export const themes = {
     MagicIconHover: {
       color: '#FEFAE0', // Cream on hover
       textShadow: '0 0 5px rgba(254, 250, 224, 0.8), 0 0 10px rgba(254, 250, 224, 0.6)',
-    }
+    },
+    sidebar: {
+      position: 'fixed',
+      top: 0,
+      right: 0,
+      width: '180px',
+      height: '35%',
+      borderRadius: '10px 0 10px 10px',
+      background: '#FEFAE0', // Cream background
+      boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
+      transform: 'translateX(100%)', // Sidebar starts off-screen
+      transition: 'transform 0.3s ease',
+      zIndex: 1000,
+      padding: '1rem',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+    },
+    sidebarVisible: {
+      transform: 'translateX(0)', // Sidebar slides in
+    },
+    closeButton: {
+      position: 'absolute',
+      top: '0.6rem',
+      right: '1rem',
+      fontSize: '1.5rem',
+      background: 'transparent',
+      border: 'none',
+      cursor: 'pointer',
+      color: '#B99470', // Earthy brown
+    },
+    content: {
+      width: '100%',
+    },
+    menuItem: {
+      display: 'flex',
+      alignItems: 'center',
+      padding: '0.5rem 1rem',
+      width: '100%',
+      borderRadius: '5px',
+      cursor: 'pointer',
+      transition: 'background 0.3s ease, color 0.3s ease',
+      color: '#B99470', // Earthy brown text color
+    },
+    menuItemIcon: {
+      marginRight: '0.5rem',
+    },
+    menuItemText: {
+      fontSize: '1rem',
+    },
+    menuItemHover: {
+      background: '#A6B37D', // Muted green background on hover
+      color: '#FEFAE0', // Cream text color on hover
+    },
+    reverseSpinning: {
+      transform: 'rotate(-360deg)',
+    },
   },
   Verdant:{
     container: {
@@ -2473,7 +3256,63 @@ export const themes = {
     MagicIconHover: {
       color: '#FCDE70', // Soft yellow on hover
       textShadow: '0 0 5px rgba(252, 222, 112, 0.8), 0 0 10px rgba(252, 222, 112, 0.6)',
-    }
+    },
+    sidebar: {
+      position: 'fixed',
+      top: 0,
+      right: 0,
+      width: '180px',
+      height: '35%',
+      borderRadius: '10px 0 10px 10px',
+      background: '#F5F7F8', // Light gray background
+      boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
+      transform: 'translateX(100%)', // Sidebar starts off-screen
+      transition: 'transform 0.3s ease',
+      zIndex: 1000,
+      padding: '1rem',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+    },
+    sidebarVisible: {
+      transform: 'translateX(0)', // Sidebar slides in
+    },
+    closeButton: {
+      position: 'absolute',
+      top: '0.6rem',
+      right: '1rem',
+      fontSize: '1.5rem',
+      background: 'transparent',
+      border: 'none',
+      cursor: 'pointer',
+      color: '#185519', // Deep green for the close button icon
+    },
+    content: {
+      width: '100%',
+    },
+    menuItem: {
+      display: 'flex',
+      alignItems: 'center',
+      padding: '0.5rem 1rem',
+      width: '100%',
+      borderRadius: '5px',
+      cursor: 'pointer',
+      transition: 'background 0.3s ease, color 0.3s ease',
+      color: '#185519', // Deep green text color
+    },
+    menuItemIcon: {
+      marginRight: '0.5rem',
+    },
+    menuItemText: {
+      fontSize: '1rem',
+    },
+    menuItemHover: {
+      background: '#E8B86D', // Soft orange background on hover
+      color: '#185519', // Deep green text color on hover
+    },
+    reverseSpinning: {
+      transform: 'rotate(-360deg)',
+    },
   },
   Rustic:{
     container: {
@@ -2618,7 +3457,63 @@ export const themes = {
     MagicIconHover: {
       color: '#FCDE70', // Soft yellow on hover
       textShadow: '0 0 5px rgba(252, 222, 112, 0.8), 0 0 10px rgba(252, 222, 112, 0.6)',
-    }
+    },
+    sidebar: {
+      position: 'fixed',
+      top: 0,
+      right: 0,
+      width: '180px',
+      height: '35%',
+      borderRadius: '10px 0 10px 10px',
+      background: '#F2E8C6', // Light beige background
+      boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
+      transform: 'translateX(100%)', // Sidebar starts off-screen
+      transition: 'transform 0.3s ease',
+      zIndex: 1000,
+      padding: '1rem',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+    },
+    sidebarVisible: {
+      transform: 'translateX(0)', // Sidebar slides in
+    },
+    closeButton: {
+      position: 'absolute',
+      top: '0.6rem',
+      right: '1rem',
+      fontSize: '1.5rem',
+      background: 'transparent',
+      border: 'none',
+      cursor: 'pointer',
+      color: '#800000', // Dark red for the close button icon
+    },
+    content: {
+      width: '100%',
+    },
+    menuItem: {
+      display: 'flex',
+      alignItems: 'center',
+      padding: '0.5rem 1rem',
+      width: '100%',
+      borderRadius: '5px',
+      cursor: 'pointer',
+      transition: 'background 0.3s ease, color 0.3s ease',
+      color: '#800000', // Dark red text color
+    },
+    menuItemIcon: {
+      marginRight: '0.5rem',
+    },
+    menuItemText: {
+      fontSize: '1rem',
+    },
+    menuItemHover: {
+      background: '#DAD4B5', // Soft tan background on hover
+      color: '#800000', // Dark red text color on hover
+    },
+    reverseSpinning: {
+      transform: 'rotate(-360deg)',
+    },
   },
   Warm:{
     container: {
@@ -2763,7 +3658,63 @@ export const themes = {
     MagicIconHover: {
       color: '#F6FDC3', // Light yellow on hover
       textShadow: '0 0 5px rgba(246, 253, 195, 0.8), 0 0 10px rgba(246, 253, 195, 0.6)',
-    }
+    },
+    sidebar: {
+      position: 'fixed',
+      top: 0,
+      right: 0,
+      width: '180px',
+      height: '35%',
+      borderRadius: '10px 0 10px 10px',
+      background: '#F6FDC3', // Light yellow background to match the Warm theme
+      boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
+      transform: 'translateX(100%)', // Sidebar starts off-screen
+      transition: 'transform 0.3s ease',
+      zIndex: 1000,
+      padding: '1rem',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+    },
+    sidebarVisible: {
+      transform: 'translateX(0)', // Sidebar slides in
+    },
+    closeButton: {
+      position: 'absolute',
+      top: '0.6rem',
+      right: '1rem',
+      fontSize: '1.5rem',
+      background: 'transparent',
+      border: 'none',
+      cursor: 'pointer',
+      color: '#FF8080', // Warm blush for the close button icon
+    },
+    content: {
+      width: '100%',
+    },
+    menuItem: {
+      display: 'flex',
+      alignItems: 'center',
+      padding: '0.5rem 1rem',
+      width: '100%',
+      borderRadius: '5px',
+      cursor: 'pointer',
+      transition: 'background 0.3s ease, color 0.3s ease',
+      color: '#FF8080', // Warm blush text color
+    },
+    menuItemIcon: {
+      marginRight: '0.5rem',
+    },
+    menuItemText: {
+      fontSize: '1rem',
+    },
+    menuItemHover: {
+      background: '#FFCF96', // Soft peach background on hover
+      color: '#FF8080', // Warm blush text color on hover
+    },
+    reverseSpinning: {
+      transform: 'rotate(-360deg)',
+    },
   },
   Autumn:{
     container: {
@@ -2908,7 +3859,63 @@ export const themes = {
     MagicIconHover: {
       color: '#E2DFD0', // Light beige on hover
       textShadow: '0 0 5px rgba(226, 223, 208, 0.8), 0 0 10px rgba(226, 223, 208, 0.6)',
-    }
+    },
+    sidebar: {
+      position: 'fixed',
+      top: 0,
+      right: 0,
+      width: '180px',
+      height: '35%',
+      borderRadius: '10px 0 10px 10px',
+      background: '#E2DFD0', // Light beige to match the Autumn theme
+      boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
+      transform: 'translateX(100%)', // Sidebar starts off-screen
+      transition: 'transform 0.3s ease',
+      zIndex: 1000,
+      padding: '1rem',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+    },
+    sidebarVisible: {
+      transform: 'translateX(0)', // Sidebar slides in
+    },
+    closeButton: {
+      position: 'absolute',
+      top: '0.6rem',
+      right: '1rem',
+      fontSize: '1.5rem',
+      background: 'transparent',
+      border: 'none',
+      cursor: 'pointer',
+      color: '#F97300', // Warm orange for the close button icon
+    },
+    content: {
+      width: '100%',
+    },
+    menuItem: {
+      display: 'flex',
+      alignItems: 'center',
+      padding: '0.5rem 1rem',
+      width: '100%',
+      borderRadius: '5px',
+      cursor: 'pointer',
+      transition: 'background 0.3s ease, color 0.3s ease',
+      color: '#524C42', // Dark brown for default text color
+    },
+    menuItemIcon: {
+      marginRight: '0.5rem',
+    },
+    menuItemText: {
+      fontSize: '1rem',
+    },
+    menuItemHover: {
+      background: '#F97300', // Warm orange for hover background
+      color: '#FFFFFF', // White text color on hover
+    },
+    reverseSpinning: {
+      transform: 'rotate(-360deg)',
+    },
   },
   FreshGreen:{
     container: {
@@ -3053,7 +4060,63 @@ export const themes = {
     MagicIconHover: {
       color: '#F3FF90', // Light yellow-green on hover
       textShadow: '0 0 5px rgba(243, 255, 144, 0.8), 0 0 10px rgba(243, 255, 144, 0.6)',
-    }
+    },
+    sidebar: {
+      position: 'fixed',
+      top: 0,
+      right: 0,
+      width: '180px',
+      height: '35%',
+      borderRadius: '10px 0 10px 10px',
+      background: '#F3FF90', // Light yellow-green to match the FreshGreen theme
+      boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
+      transform: 'translateX(100%)', // Sidebar starts off-screen
+      transition: 'transform 0.3s ease',
+      zIndex: 1000,
+      padding: '1rem',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+    },
+    sidebarVisible: {
+      transform: 'translateX(0)', // Sidebar slides in
+    },
+    closeButton: {
+      position: 'absolute',
+      top: '0.6rem',
+      right: '1rem',
+      fontSize: '1.5rem',
+      background: 'transparent',
+      border: 'none',
+      cursor: 'pointer',
+      color: '#059212', // Deep green for the close button icon
+    },
+    content: {
+      width: '100%',
+    },
+    menuItem: {
+      display: 'flex',
+      alignItems: 'center',
+      padding: '0.5rem 1rem',
+      width: '100%',
+      borderRadius: '5px',
+      cursor: 'pointer',
+      transition: 'background 0.3s ease, color 0.3s ease',
+      color: '#059212', // Deep green for default text color
+    },
+    menuItemIcon: {
+      marginRight: '0.5rem',
+    },
+    menuItemText: {
+      fontSize: '1rem',
+    },
+    menuItemHover: {
+      background: '#9BEC00', // Bright green for hover background
+      color: '#F3FF90', // Light yellow-green text color on hover
+    },
+    reverseSpinning: {
+      transform: 'rotate(-360deg)',
+    },
   },
   RetroAutumn:{
     container: {
@@ -3198,7 +4261,63 @@ export const themes = {
     MagicIconHover: {
       color: '#C5FF95', // Light green on hover
       textShadow: '0 0 5px rgba(197, 255, 149, 0.8), 0 0 10px rgba(197, 255, 149, 0.6)',
-    }
+    },
+    sidebar: {
+      position: 'fixed',
+      top: 0,
+      right: 0,
+      width: '180px',
+      height: '35%',
+      borderRadius: '10px 0 10px 10px',
+      background: '#5DEBD7', // Aqua blue from RetroAutumn theme
+      boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
+      transform: 'translateX(100%)', // Sidebar starts off-screen
+      transition: 'transform 0.3s ease',
+      zIndex: 1000,
+      padding: '1rem',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+    },
+    sidebarVisible: {
+      transform: 'translateX(0)', // Sidebar slides in
+    },
+    closeButton: {
+      position: 'absolute',
+      top: '0.6rem',
+      right: '1rem',
+      fontSize: '1.5rem',
+      background: 'transparent',
+      border: 'none',
+      cursor: 'pointer',
+      color: '#074173', // Dark blue from RetroAutumn theme
+    },
+    content: {
+      width: '100%',
+    },
+    menuItem: {
+      display: 'flex',
+      alignItems: 'center',
+      padding: '0.5rem 1rem',
+      width: '100%',
+      borderRadius: '5px',
+      cursor: 'pointer',
+      transition: 'background 0.3s ease, color 0.3s ease',
+      color: '#074173', // Dark blue from RetroAutumn theme
+    },
+    menuItemIcon: {
+      marginRight: '0.5rem',
+    },
+    menuItemText: {
+      fontSize: '1rem',
+    },
+    menuItemHover: {
+      background: '#1679AB', // Medium blue from RetroAutumn theme
+      color: '#C5FF95', // Light green from RetroAutumn theme
+    },
+    reverseSpinning: {
+      transform: 'rotate(-360deg)',
+    },
   },
   Greeny:{
     container: {
@@ -3343,7 +4462,63 @@ export const themes = {
     MagicIconHover: {
       color: '#A2C579', // Soft green on hover
       textShadow: '0 0 5px rgba(162, 197, 139, 0.8), 0 0 10px rgba(162, 197, 139, 0.6)',
-    }
+    },
+    sidebar: {
+      position: 'fixed',
+      top: 0,
+      right: 0,
+      width: '180px',
+      height: '35%',
+      borderRadius: '10px 0 10px 10px',
+      background: '#A2C579', // Soft green to match the Greeny theme
+      boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
+      transform: 'translateX(100%)', // Sidebar starts off-screen
+      transition: 'transform 0.3s ease',
+      zIndex: 1000,
+      padding: '1rem',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+    },
+    sidebarVisible: {
+      transform: 'translateX(0)', // Sidebar slides in
+    },
+    closeButton: {
+      position: 'absolute',
+      top: '0.6rem',
+      right: '1rem',
+      fontSize: '1.5rem',
+      background: 'transparent',
+      border: 'none',
+      cursor: 'pointer',
+      color: '#61A3BA', // Soft blue to match the Greeny theme
+    },
+    content: {
+      width: '100%',
+    },
+    menuItem: {
+      display: 'flex',
+      alignItems: 'center',
+      padding: '0.5rem 1rem',
+      width: '100%',
+      borderRadius: '5px',
+      cursor: 'pointer',
+      transition: 'background 0.3s ease, color 0.3s ease', // Add transition for hover effects
+      color: '#61A3BA', // Soft blue to match the Greeny theme
+    },
+    menuItemIcon: {
+      marginRight: '0.5rem',
+    },
+    menuItemText: {
+      fontSize: '1rem',
+    },
+    menuItemHover: {
+      background: '#61A3BA', // Soft blue hover background
+      color: '#FFFFDD', // Light cream text on hover
+    },
+    reverseSpinning: {
+      transform: 'rotate(-360deg)',
+    },
   }, 
   Noir:{
     container: {
@@ -3488,7 +4663,63 @@ export const themes = {
     MagicIconHover: {
       color: '#735F32', // Warm brown on hover
       textShadow: '0 0 5px rgba(115, 95, 50, 0.8), 0 0 10px rgba(115, 95, 50, 0.6)',
-    }
+    },
+    sidebar: {
+      position: 'fixed',
+      top: 0,
+      right: 0,
+      width: '180px',
+      height: '35%',
+      borderRadius: '10px 0 10px 10px',
+      background: '#282A3A', // Dark gray to match the theme
+      boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
+      transform: 'translateX(100%)', // Sidebar starts off-screen
+      transition: 'transform 0.3s ease',
+      zIndex: 1000,
+      padding: '1rem',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+    },
+    sidebarVisible: {
+      transform: 'translateX(0)', // Sidebar slides in
+    },
+    closeButton: {
+      position: 'absolute',
+      top: '0.6rem',
+      right: '1rem',
+      fontSize: '1.5rem',
+      background: 'transparent',
+      border: 'none',
+      cursor: 'pointer',
+      color: '#C69749', // Gold close button icon
+    },
+    content: {
+      width: '100%',
+    },
+    menuItem: {
+      display: 'flex',
+      alignItems: 'center',
+      padding: '0.5rem 1rem',
+      width: '100%',
+      borderRadius: '5px',
+      cursor: 'pointer',
+      transition: 'background 0.3s ease, color 0.3s ease', // Add transition for hover effects
+      color: '#e0e0e0', // Default text color
+    },
+    menuItemIcon: {
+      marginRight: '0.5rem',
+    },
+    menuItemText: {
+      fontSize: '1rem',
+    },
+    menuItemHover: {
+      background: '#C69749', // Gold on hover
+      color: '#000000', // Black text
+    },
+    reverseSpinning: {
+      transform: 'rotate(-360deg)',
+    },
   }, 
   OceanPurple:{
     container: {
@@ -3632,7 +4863,63 @@ export const themes = {
     MagicIconHover: {
       color: '#3A0077', // Deep purple on hover
       textShadow: '0 0 5px rgba(58, 0, 119, 0.8)',
-    }
+    },
+    sidebar: {
+      position: 'fixed',
+      top: 0,
+      right: 0,
+      width: '180px',
+      height: '35%',
+      borderRadius: '10px 0 10px 10px',
+      background: '#A5F2E7', // Aqua to match the theme
+      boxShadow: '-2px 0 5px rgba(0, 0, 0, 0.3)',
+      transform: 'translateX(100%)', // Sidebar starts off-screen
+      transition: 'transform 0.3s ease',
+      zIndex: 1000,
+      padding: '1rem',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+    },
+    sidebarVisible: {
+      transform: 'translateX(0)', // Sidebar slides in
+    },
+    closeButton: {
+      position: 'absolute',
+      top: '0.6rem',
+      right: '1rem',
+      fontSize: '1.5rem',
+      background: 'transparent',
+      border: 'none',
+      cursor: 'pointer',
+      color: '#3A0077', // Deep purple for the close button icon
+    },
+    content: {
+      width: '100%',
+    },
+    menuItem: {
+      display: 'flex',
+      alignItems: 'center',
+      padding: '0.5rem 1rem',
+      width: '100%',
+      borderRadius: '5px',
+      cursor: 'pointer',
+      transition: 'background 0.3s ease, color 0.3s ease',
+      color: '#3A0077', // Deep purple for menu item text
+    },
+    menuItemIcon: {
+      marginRight: '0.5rem',
+    },
+    menuItemText: {
+      fontSize: '1rem',
+    },
+    menuItemHover: {
+      background: '#8983F3', // Soft purple for hover background
+      color: '#FFFCEA', // Cream for hover text color
+    },
+    reverseSpinning: {
+      transform: 'rotate(-360deg)',
+    },
   }, 
   DeepBlack:{
     container: {
@@ -3776,7 +5063,63 @@ export const themes = {
     MagicIconHover: {
       color: '#000000', // Deep black on hover
       textShadow: '0 0 5px rgba(0, 0, 0, 0.8)',
-    }
+    },
+    sidebar: {
+      position: 'fixed',
+      top: 0,
+      right: 0,
+      width: '180px',
+      height: '35%',
+      borderRadius: '10px 0 10px 10px',
+      background: '#000000', // Deep black background for sidebar
+      boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
+      transform: 'translateX(100%)', // Sidebar starts off-screen
+      transition: 'transform 0.3s ease',
+      zIndex: 1000,
+      padding: '1rem',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+    },
+    sidebarVisible: {
+      transform: 'translateX(0)', // Sidebar slides in
+    },
+    closeButton: {
+      position: 'absolute',
+      top: '0.6rem',
+      right: '1rem',
+      fontSize: '1.5rem',
+      background: 'transparent',
+      border: 'none',
+      cursor: 'pointer',
+      color: '#FFFFFF', // White close button icon
+    },
+    content: {
+      width: '100%',
+    },
+    menuItem: {
+      display: 'flex',
+      alignItems: 'center',
+      padding: '0.5rem 1rem',
+      width: '100%',
+      borderRadius: '5px',
+      cursor: 'pointer',
+      transition: 'background 0.3s ease, color 0.3s ease', // Add transition for hover effects
+      color: '#e0e0e0', // Default text color
+    },
+    menuItemIcon: {
+      marginRight: '0.5rem',
+    },
+    menuItemText: {
+      fontSize: '1rem',
+    },
+    menuItemHover: {
+      background: '#FFFFFF', // White background on hover
+      color: '#000000', // Deep black text on hover
+    },
+    reverseSpinning: {
+      transform: 'rotate(-360deg)',
+    },
   }, 
   SoftBold:{
     container: {
@@ -3919,7 +5262,63 @@ export const themes = {
     MagicIconHover: {
       color: '#0C1844', // Dark blue on hover
       textShadow: '0 0 5px rgba(12, 24, 68, 0.8)',
-    }
+    },
+    sidebar: {
+      position: 'fixed',
+      top: 0,
+      right: 0,
+      width: '180px',
+      height: '35%',
+      borderRadius: '10px 0 10px 10px',
+      background: '#FFF5E1', // Soft warm background for the sidebar
+      boxShadow: '-2px 0 5px rgba(0, 24, 68, 0.3)', // Light shadow with dark blue tint
+      transform: 'translateX(100%)', // Sidebar starts off-screen
+      transition: 'transform 0.3s ease',
+      zIndex: 1000,
+      padding: '1rem',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+    },
+    sidebarVisible: {
+      transform: 'translateX(0)', // Sidebar slides in
+    },
+    closeButton: {
+      position: 'absolute',
+      top: '0.6rem',
+      right: '1rem',
+      fontSize: '1.5rem',
+      background: 'transparent',
+      border: 'none',
+      cursor: 'pointer',
+      color: '#C80036', // Bold red for the close button icon
+    },
+    content: {
+      width: '100%',
+    },
+    menuItem: {
+      display: 'flex',
+      alignItems: 'center',
+      padding: '0.5rem 1rem',
+      width: '100%',
+      borderRadius: '5px',
+      cursor: 'pointer',
+      transition: 'background 0.3s ease, color 0.3s ease', // Transition for hover effects
+      color: '#0C1844', // Dark blue text color
+    },
+    menuItemIcon: {
+      marginRight: '0.5rem',
+    },
+    menuItemText: {
+      fontSize: '1rem',
+    },
+    menuItemHover: {
+      background: '#FF6969', // Soft red background on hover
+      color: '#C80036', // Bold red text on hover
+    },
+    reverseSpinning: {
+      transform: 'rotate(-360deg)',
+    },
   },
   Regae:{
     container: {
@@ -4062,7 +5461,63 @@ export const themes = {
     MagicIconHover: {
       color: '#004D40', // Deep teal on hover
       textShadow: '0 0 5px rgba(0, 77, 64, 0.8)',
-    }
+    },
+    sidebar: {
+      position: 'fixed',
+      top: 0,
+      right: 0,
+      width: '180px',
+      height: '35%',
+      borderRadius: '10px 0 10px 10px',
+      background: '#E0F7FA', // Light cyan background to match the theme
+      boxShadow: '-2px 0 5px rgba(0, 77, 64, 0.3)', // Light shadow with teal tint
+      transform: 'translateX(100%)', // Sidebar starts off-screen
+      transition: 'transform 0.3s ease',
+      zIndex: 1000,
+      padding: '1rem',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+    },
+    sidebarVisible: {
+      transform: 'translateX(0)', // Sidebar slides in
+    },
+    closeButton: {
+      position: 'absolute',
+      top: '0.6rem',
+      right: '1rem',
+      fontSize: '1.5rem',
+      background: 'transparent',
+      border: 'none',
+      cursor: 'pointer',
+      color: '#00796B', // Teal green color for close button
+    },
+    content: {
+      width: '100%',
+    },
+    menuItem: {
+      display: 'flex',
+      alignItems: 'center',
+      padding: '0.5rem 1rem',
+      width: '100%',
+      borderRadius: '5px',
+      cursor: 'pointer',
+      transition: 'background 0.3s ease, color 0.3s ease', // Add transition for hover effects
+      color: '#004D40', // Deep teal for menu item text
+    },
+    menuItemIcon: {
+      marginRight: '0.5rem',
+    },
+    menuItemText: {
+      fontSize: '1rem',
+    },
+    menuItemHover: {
+      background: '#004D40', // Deep teal background on hover
+      color: '#E0F7FA', // Light cyan text on hover
+    },
+    reverseSpinning: {
+      transform: 'rotate(-360deg)',
+    },
   },
   Regao:{
     container: {
@@ -4230,6 +5685,62 @@ export const themes = {
       color: '#BC5A94', // Color for a magical look
       textShadow: '0 0 5px rgba(255, 255, 255, 0.8), 0 0 10px rgba(255, 255, 255, 0.6)',
       cursor: 'pointer',
+    },
+    sidebar: {
+      position: 'fixed',
+      top: 0,
+      right: 0,
+      width: '180px',
+      height: '35%',
+      borderRadius: '10px 0 10px 10px',
+      background: '#FFDE95', // Updated to match the theme
+      boxShadow: '-2px 0 5px rgba(0, 0, 0, 0.3)',
+      transform: 'translateX(100%)',
+      transition: 'transform 0.3s ease',
+      zIndex: 1000,
+      padding: '1rem',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+    },
+    sidebarVisible: {
+      transform: 'translateX(0)',
+    },
+    closeButton: {
+      position: 'absolute',
+      top: '0.6rem',
+      right: '1rem',
+      fontSize: '1.5rem',
+      background: 'transparent',
+      border: 'none',
+      cursor: 'pointer',
+      color: '#F075AA', // Updated to match the theme
+    },
+    content: {
+      width: '100%',
+    },
+    menuItem: {
+      display: 'flex',
+      alignItems: 'center',
+      padding: '0.5rem 1rem',
+      width: '100%',
+      borderRadius: '5px',
+      cursor: 'pointer',
+      transition: 'background 0.3s ease, color 0.3s ease',
+      color: '#BC5A94', // Updated to match the theme
+    },
+    menuItemIcon: {
+      marginRight: '0.5rem',
+    },
+    menuItemText: {
+      fontSize: '1rem',
+    },
+    menuItemHover: {
+      background: '#F075AA', // Updated hover background color
+      color: '#FFFFFF', // Updated hover text color
+    },
+    reverseSpinning: {
+      transform: 'rotate(-360deg)',
     },
   }, 
   monochrome: {
@@ -4401,6 +5912,62 @@ export const themes = {
     },
     MagicIconHover: {
       // Add hover styles if needed
+    },
+    sidebar: {
+      position: 'fixed',
+      top: 0,
+      right: 0,
+      width: '180px',
+      height: '35%',
+      borderRadius: '10px 0 10px 10px',
+      background: '#1b1b1b', // Updated to match the theme
+      boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
+      transform: 'translateX(100%)',
+      transition: 'transform 0.3s ease',
+      zIndex: 1000,
+      padding: '1rem',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+    },
+    sidebarVisible: {
+      transform: 'translateX(0)',
+    },
+    closeButton: {
+      position: 'absolute',
+      top: '0.6rem',
+      right: '1rem',
+      fontSize: '1.5rem',
+      background: 'transparent',
+      border: 'none',
+      cursor: 'pointer',
+      color: '#e0e0e0', // Color updated to match theme
+    },
+    content: {
+      width: '100%',
+    },
+    menuItem: {
+      display: 'flex',
+      alignItems: 'center',
+      padding: '0.5rem 1rem',
+      width: '100%',
+      borderRadius: '5px',
+      cursor: 'pointer',
+      transition: 'background 0.3s ease, color 0.3s ease',
+      color: '#e0e0e0',
+    },
+    menuItemIcon: {
+      marginRight: '0.5rem',
+    },
+    menuItemText: {
+      fontSize: '1rem',
+    },
+    menuItemHover: {
+      background: '#333333', // Hover background color updated
+      color: '#ffffff', // Hover text color updated
+    },
+    reverseSpinning: {
+      transform: 'rotate(-360deg)',
     },
   },
   youtube: {
@@ -4576,9 +6143,64 @@ export const themes = {
     MagicIconHover: {
       // Hover styles if needed
     },
+    sidebar: {
+      position: 'fixed',
+      top: 0,
+      right: 0,
+      width: '180px',
+      height: '35%',
+      borderRadius: '10px 0 10px 10px',
+      background: '#282828', // YouTube theme background color
+      boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
+      transform: 'translateX(100%)', // Sidebar starts off-screen
+      transition: 'transform 0.3s ease',
+      zIndex: 1000,
+      padding: '1rem',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+    },
+    sidebarVisible: {
+      transform: 'translateX(0)', // Sidebar slides in
+    },
+    closeButton: {
+      position: 'absolute',
+      top: '0.6rem',
+      right: '1rem',
+      fontSize: '1.5rem',
+      background: 'transparent',
+      border: 'none',
+      cursor: 'pointer',
+      color: '#FF0000', // YouTube Red close button icon
+    },
+    content: {
+      width: '100%',
+    },
+    menuItem: {
+      display: 'flex',
+      alignItems: 'center',
+      padding: '0.5rem 1rem',
+      width: '100%',
+      borderRadius: '5px',
+      cursor: 'pointer',
+      transition: 'background 0.3s ease, color 0.3s ease', // Add transition for hover effects
+      color: '#fff', // Default text color
+    },
+    menuItemIcon: {
+      marginRight: '0.5rem',
+    },
+    menuItemText: {
+      fontSize: '1rem',
+    },
+    menuItemHover: {
+      background: '#FF0000', // YouTube Red hover background color
+      color: '#000000', // Hover text color
+    },
+    reverseSpinning: {
+      transform: 'rotate(-360deg)',
+    },
   },
 
-    // Add more themes here
   };
   
   export default themes;
