@@ -198,7 +198,34 @@ const Profile = () => {
       console.error('User is not authenticated or no file selected');
     }
   };
-  
+
+  useEffect(() => {
+    // Save the selected theme to local storage
+    localStorage.setItem('theme', currentTheme);
+  }, [currentTheme]);
+
+  const handleMagicIconClick = () => {
+    // Randomly select a new theme
+    const themeKeys = Object.keys(themes);
+    const randomTheme = themeKeys[Math.floor(Math.random() * themeKeys.length)];
+    setCurrentTheme(randomTheme);
+  };
+
+  const handleGearIconClick = () => {
+    setSpinning(true);
+    setTimeout(() => {
+      setSidebarVisible(!sidebarVisible);
+      setSpinning(false);
+    }, 500); // Duration should match the spinning animation
+  };
+
+  const handleCloseSidebar = () => {
+    setClosing(true);
+    setTimeout(() => {
+      setSidebarVisible(false);
+      setClosing(false);
+    }, 500); // Duration should match the spinning animation
+  };  
   
   const closeModal = useCallback(() => {
     setIsModalOpen(false);
@@ -670,7 +697,7 @@ const Profile = () => {
     top: 0,
     right: 0,
     width: '180px',
-    height: '35%',
+    height: '30%',
     borderRadius: '10px 0 10px 10px',
     background: '#1b2a3e', // Match the sidebar background with the theme
     boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
@@ -728,32 +755,11 @@ const Profile = () => {
     ...themes[currentTheme], // Apply current theme styles
   };
 
-  useEffect(() => {
-    // Save the selected theme to local storage
-    localStorage.setItem('theme', currentTheme);
-  }, [currentTheme]);
-
-  const handleMagicIconClick = () => {
-    // Randomly select a new theme
-    const themeKeys = Object.keys(themes);
-    const randomTheme = themeKeys[Math.floor(Math.random() * themeKeys.length)];
-    setCurrentTheme(randomTheme);
-  };
-
-  const handleGearIconClick = () => {
-    setSpinning(true);
-    setTimeout(() => {
-      setSidebarVisible(!sidebarVisible);
-      setSpinning(false);
-    }, 500); // Duration should match the spinning animation
-  };
-
-  const handleCloseSidebar = () => {
-    setClosing(true);
-    setTimeout(() => {
-      setSidebarVisible(false);
-      setClosing(false);
-    }, 500); // Duration should match the spinning animation
+  const handleMenuItemClick = (item) => {
+    if (item === 'profile') {
+      navigate('/profile'); // Redirect to the Profile page
+    }
+    // Handle other items if needed
   };
 
   return (
@@ -815,6 +821,7 @@ const Profile = () => {
             }}
             onMouseEnter={() => handleMouseEnter('profile')}
             onMouseLeave={handleMouseLeave}
+                    onClick={() => handleMenuItemClick('profile')}
           >
             <FontAwesomeIcon icon={faUser} style={themeStyles.menuItemIcon} />
             <span style={themeStyles.menuItemText}>Profile</span>
