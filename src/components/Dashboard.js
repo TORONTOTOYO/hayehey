@@ -804,8 +804,8 @@ const Profile = () => {
         />
       </button>
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem',
-         background: 'linear-gradient(to bottom, #000b1e, #1c2b4f)', borderRadius: '10px'}}>
-        <h3 style={{ margin: '0', display: 'flex', alignItems: 'center', color: 'white', fontSize: '1.3rem' }}>
+         background: 'linear-gradient(to bottom, #000b1e, #1c2b4f)', borderRadius: '5px'}}>
+        <h3 style={{ margin: '0', display: 'flex', alignItems: 'center', color: 'white', fontSize: '1.2rem' }}>
           <span style={{color: 'hsl(49deg 98% 60%)'}}>E</span>cho<span style={{color: 'cyan'}}>I</span>n
           <div style={{ color: 'red'}}>
             <FontAwesomeIcon icon={faBoxOpen} className="boxIcon" />
