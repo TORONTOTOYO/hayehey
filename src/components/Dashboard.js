@@ -757,9 +757,12 @@ const Profile = () => {
 
   const handleMenuItemClick = (item) => {
     if (item === 'profile') {
-      navigate('/profile'); // Redirect to the Profile page
+      navigate('/profile');
+    } else if (item === 'help') {
+      navigate('/help');
+    } else if (item === 'feedback') {
+      navigate('/feedback');
     }
-    // Handle other items if needed
   };
 
   return (
@@ -821,7 +824,7 @@ const Profile = () => {
             }}
             onMouseEnter={() => handleMouseEnter('profile')}
             onMouseLeave={handleMouseLeave}
-                    onClick={() => handleMenuItemClick('profile')}
+            onClick={() => handleMenuItemClick('profile')}
           >
             <FontAwesomeIcon icon={faUser} style={themeStyles.menuItemIcon} />
             <span style={themeStyles.menuItemText}>Dashboard</span>
@@ -833,6 +836,7 @@ const Profile = () => {
             }}
             onMouseEnter={() => handleMouseEnter('help')}
             onMouseLeave={handleMouseLeave}
+            onClick={() => handleMenuItemClick('help')}
           >
             <FontAwesomeIcon icon={faQuestionCircle} style={themeStyles.menuItemIcon} />
             <span style={themeStyles.menuItemText}>Help</span>
@@ -844,6 +848,7 @@ const Profile = () => {
             }}
             onMouseEnter={() => handleMouseEnter('feedback')}
             onMouseLeave={handleMouseLeave}
+            onClick={() => handleMenuItemClick('feedback')}
           >
             <FontAwesomeIcon icon={faEnvelope} style={themeStyles.menuItemIcon} />
             <span style={themeStyles.menuItemText}>Send Feedback</span>

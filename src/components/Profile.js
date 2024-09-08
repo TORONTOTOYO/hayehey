@@ -173,7 +173,7 @@ const ProfileDashboard = () => {
       padding: '10px',
       color: '#00ffff',
       cursor: 'pointer',
-      fontSize: '0.5rem'
+      fontSize: '0.75rem',
     },
   };
 
