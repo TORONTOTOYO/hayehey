@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, setPersistence, browserLocalPersistence } from "firebase/auth";import { getFirestore, doc, setDoc } from "firebase/firestore";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, setPersistence, browserLocalPersistence } from "firebase/auth";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
 import { toast, ToastContainer } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import * as THREE from 'three';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBoxOpen} from '@fortawesome/free-solid-svg-icons';
-
 import 'react-toastify/dist/ReactToastify.css';
 
 // Firebase configuration
@@ -52,6 +52,8 @@ const Form = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
 
+    toast.dismiss();
+
       if (!email || !password || !username) {
         toast.error("Please fill in all fields.");
         return;
@@ -90,6 +92,8 @@ const Form = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
+    toast.dismiss();
+
     if (!email || !password) {
         toast.error("Please fill in all fields.");
         return;
@@ -98,7 +102,6 @@ const Form = () => {
       toast.error("Please enter a valid email address.");
       return;
     }
-
     try {
         await signInWithEmailAndPassword(auth, email, password);
         toast.success("Successfully logged in!");

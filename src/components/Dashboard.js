@@ -8,6 +8,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card, Badge, Container, Row, Col } from 'react-bootstrap';
+import defaultStyles from './default';
 import themes from './them';
 import Switch from "./Switch";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -37,7 +38,8 @@ const Profile = () => {
   const [spinning, setSpinning] = useState(false);
   const [closing, setClosing] = useState(false);
   const [hoveredItem, setHoveredItem] = useState(null);
-
+  const [profilePicture, setProfilePicture] = useState('');
+  const [isUploading, setIsUploading] = useState(false);
 
 
   const auth = getAuth();
@@ -46,6 +48,7 @@ const Profile = () => {
   const fileInputRef = useRef(null);
   const handleMouseEnter = (item) => setHoveredItem(item);
   const handleMouseLeave = () => setHoveredItem(null);
+  
 
 
   const generateUniqueLink = useCallback(async (userId) => {
@@ -129,11 +132,35 @@ const Profile = () => {
   
     fetchUserProfile();
   }, [auth.currentUser]);
+
+  useEffect(() => {
+    // Check if the user is authenticated
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        // Redirect to login if not authenticated
+        navigate("/");
+      }
+    });
+
+    // Prevent back navigation to the dashboard after logging out
+    window.history.pushState(null, "", window.location.href);
+    window.onpopstate = () => {
+      window.history.pushState(null, "", window.location.href);
+      navigate("/");
+    };
+
+    return () => {
+      unsubscribe();
+      window.onpopstate = null;
+    };
+  }, [auth, navigate]);
   
-  const [profilePicture, setProfilePicture] = useState('');
 
   const handleShareClick = () => {
     if (customLink) {
+
+      toast.dismiss();
+
       navigator.clipboard
         .writeText(customLink)
         .then(() => {
@@ -176,28 +203,50 @@ const Profile = () => {
 
   const handleFileChange = async (event) => {
     const file = event.target.files[0];
+
+
     if (file && auth.currentUser) {
       const userId = auth.currentUser.uid;
-      const storageRef = ref(storage, `profilePictures/${userId}/${file.name}`);
+      const userDocRef = doc(db, 'users', userId);
+  
+      setIsUploading(true); // Start loading indicator
   
       try {
+        // Get current profile picture URL
+        const userDocSnap = await getDoc(userDocRef);
+        const userData = userDocSnap.data();
+        const oldProfilePictureURL = userData?.profilePicture;
+  
+        // Delete old profile picture from storage if exists
+        if (oldProfilePictureURL) {
+          const oldProfilePictureRef = ref(storage, oldProfilePictureURL);
+          await deleteObject(oldProfilePictureRef);
+        }
+  
+        // Upload the new profile picture
+        const storageRef = ref(storage, `profilePictures/${userId}/${file.name}`);
         await uploadBytes(storageRef, file);
         const downloadURL = await getDownloadURL(storageRef);
-        
+  
         // Update Firestore with the new profile picture URL
-        const userDocRef = doc(db, "users", userId);
         await updateDoc(userDocRef, { profilePicture: downloadURL });
   
-        console.log('File uploaded successfully:', downloadURL);
+        // Update the profile picture URL in the state to reflect the change immediately
+        setProfilePicture(downloadURL);
+  
         toast.success('Profile picture updated successfully!');
+        console.log('File uploaded successfully:', downloadURL);
       } catch (error) {
         console.error('Error uploading file:', error.code, error.message);
         toast.error('Failed to upload profile picture. Please try again.');
+      } finally {
+        setIsUploading(false); // End loading indicator
       }
     } else {
       console.error('User is not authenticated or no file selected');
     }
   };
+  
 
   useEffect(() => {
     // Save the selected theme to local storage
@@ -296,6 +345,7 @@ const Profile = () => {
       confirmButtonText: 'Yes, log out!',
       cancelButtonText: 'Cancel',
     });
+    
   
     if (result.isConfirmed) {
       try {
@@ -512,243 +562,6 @@ const Profile = () => {
       </svg>
     );
   };
-
-  const defaultStyles = {
-    container: {
-      background: 'linear-gradient(to bottom, #000b1e, #1c2b4f)',
-      minHeight: '100vh',
-      color: '#e0e0e0',
-      fontFamily: "'VT323', monospace",
-      padding: '20px',
-    },
-    buttonContainer: {
-      display: 'flex',
-      justifyContent: 'flex-end',
-      gap: '10px',
-    },
-    header: {
-      color: 'hsl(49, 98%, 60%)',
-      textAlign: 'center', // Center text horizontally
-    },
-    card: {
-      backgroundColor: '#1b2a3e',
-      border: '2px solid #00ffff',
-      borderRadius: '10px',
-      color: '#e0e0e0',
-      transition: 'all 0.3s',
-      margin: '0 auto', // Center the card horizontally
-      cursor: 'pointer',
-    },
-    badge: {
-      backgroundColor: '#ff1616',
-      color: '#e0e0e0',
-    },
-    modalOverlay: {
-      position: 'fixed',
-      top: '0',
-      left: '0',
-      right: '0',
-      bottom: '0',
-      backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      zIndex: 9999,
-    },
-    modalContent: {
-      backgroundColor: '#0a1a2f',
-      border: '2px solid #00ffff',
-      color: '#e0e0e0',
-      boxShadow: '0 0 15px #0a1a2f',
-      borderRadius: '8px',
-      padding: '20px',
-      maxHeight: '80vh', // Max height to limit modal size
-      overflowY: 'auto', // Allows vertical scrolling for long content
-      width: '80%', // Width adjustment
-      maxWidth: '400px', // Max width of the modal
-    },
-    modalCloseButton: {
-      position: 'absolute',
-      top: '10px',
-      right: '10px',
-      background: 'none',
-      border: 'none',
-      color: '#00ffff',
-      fontSize: '1.5rem',
-      cursor: 'pointer',
-    },
-    modalHeader: {
-      borderBottom: '2px solid #00ffff',
-      paddingBottom: '10px',
-      marginBottom: '10px',
-      color: '#00ffff',
-      fontSize: '1.5rem',
-    },
-    modalTextStyle: {
-      marginBottom: '1rem',
-      color: '#e0e0e0',
-      wordBreak: 'break-word', // Ensures long words or URLs break properly
-    },
-    modalFont: {
-      color: '#00ffff' 
-    },
-    dateStyle: {
-      color: '#f5a9a9',
-      fontSize: '0.9rem',
-      fontStyle: 'italic',
-    },
-    amongUsSwalContainer: {
-      // Define a class name, not an inline style
-      backgroundColor: '#202020', // Fallback color if gradient doesn't apply
-    },
-    amongUsSwalPopup: {
-      backgroundColor: '#2a2a2a',
-      border: '2px solid #00ffff',
-      borderRadius: '12px',
-    },
-    amongUsSwalTitle: {
-      color: '#00ffff',
-      fontFamily: "'Press Start 2P', cursive",
-    },
-    amongUsSwalContent: {
-      color: '#ffffff',
-      fontFamily: "'Press Start 2P', cursive",
-    },
-    amongUsSwalConfirm: {
-      backgroundColor: '#00ffff',
-      color: '#000000',
-      border: 'none',
-      borderRadius: '8px',
-    },
-    amongUsSwalConfirmHover: {
-      backgroundColor: '#00cccc',
-    },
-    amongUsSwalCancel: {
-      backgroundColor: '#ff1616',
-      color: '#000000',
-      border: 'none',
-      borderRadius: '8px',
-    },
-    amongUsSwalCancelHover: {
-      backgroundColor: '#cc0000',
-    },
-    profilePicture: {
-      width: '50px',
-      height: '50px',
-      backgroundColor: '#ccc', // Placeholder color
-      borderRadius: '50%',
-      marginRight: '10px',
-    },
-    usernameContainer: {
-      flex: 1,
-      display: 'flex',
-      alignItems: 'center',
-    },
-      buttonStyle: {
-    backgroundColor: '#1b2a3e',
-    border: '2px solid #00ffff',
-    color: '#00ffff',
-    fontWeight: 'bold',
-    transition: 'all 0.3s',
-    borderRadius: '50px',
-    padding: '10px 20px',
-    fontSize: '16px',
-    cursor: 'pointer',
-    outline: 'none',
-    margin: '5px',
-  },
-  MagicIcon: {
-    fontSize: '1rem', /* Adjust size as needed */
-    color: '#ffcc00', /* Gold color for a magical look */
-    textShadow: '0 0 5px rgba(255, 204, 0, 0.8), 0 0 10px rgba(255, 204, 0, 0.6)',
-    cursor: 'pointer'
-  },
-  StylesShare: {
-    borderColor: '#00ffff',
-    color: '#00ffff',
-  },
-  StylesEject: {
-    borderColor: '#ff1616',
-    color: '#ff1616',
-  },
-
-  hoverStylesShare: {
-    backgroundColor: '#00ffff',
-    color: '#fff',
-    borderColor: '#1b2a3e',
-  },
-  hoverStylesEject: {
-    backgroundColor: '#ff1616',
-    color: '#fff',
-    borderColor: '#ff1616',
-  },
-
-  dotsP:{
-    color: 'F5F7F8',
-    fontSize: '1.2rem',
-    fontWeight: 'bold' 
-  },
-  gearIcon: {
-    cursor: 'pointer',
-    transition: 'transform 0.5s ease', // Animation for spinning
-  },
-  sidebar: {
-    position: 'fixed',
-    top: 0,
-    right: 0,
-    width: '180px',
-    height: '30%',
-    borderRadius: '10px 0 10px 10px',
-    background: '#1b2a3e', // Match the sidebar background with the theme
-    boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
-    transform: 'translateX(100%)', // Sidebar starts off-screen
-    transition: 'transform 0.3s ease',
-    zIndex: 1000,
-    padding: '1rem',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-  },
-  sidebarVisible: {
-    transform: 'translateX(0)', // Sidebar slides in
-  },
-  closeButton: {
-    position: 'absolute',
-    top: '0.6rem',
-    right: '1rem',
-    fontSize: '1.5rem',
-    background: 'transparent',
-    border: 'none',
-    cursor: 'pointer',
-    color: '#00ffff', // Color of the close button icon
-  },
-  content: {
-    width: '100%',
-  },
-  menuItem: {
-    display: 'flex',
-    alignItems: 'center',
-    padding: '0.5rem 1rem',
-    width: '100%',
-    borderRadius: '5px',
-    cursor: 'pointer',
-    transition: 'background 0.3s ease, color 0.3s ease', // Add transition for hover effects
-    color: '#e0e0e0', // Default text color
-  },
-  menuItemIcon: {
-    marginRight: '0.5rem',
-  },
-  menuItemText: {
-    fontSize: '1rem',
-  },
-  menuItemHover: {
-    background: '#00ffff', // Hover background color
-    color: '#000000', // Hover text color
-  },
-  reverseSpinning: {
-    transform: 'rotate(-360deg)',
-  },
-  };
   
   const themeStyles = {
     ...defaultStyles,
@@ -787,7 +600,6 @@ const Profile = () => {
           onClick={handleGearIconClick}
         />
       </div>
-
       <div
       style={{
         ...themeStyles.sidebar,
@@ -858,76 +670,112 @@ const Profile = () => {
       </div>
       <Container style={themeStyles.container}>
         <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
-          <h2 style={themeStyles.header}>
-            <span style={{ display: 'flex', alignItems: 'center' }}>
-                  <img
-                    src={profilePicture || ''} // Use an empty string to display the placeholder if no picture is uploaded
-                    alt="profile"
-                    style={{
-                      fontSize: '1rem',
-                      alignContent: 'center',
-                      backgroundColor: 'white',
-                      width: '6rem',
-                      height: '6em',
-                      borderRadius: '50%',
-                      marginRight: '0.5rem',
-                      cursor: 'pointer',
-                      objectFit: profilePicture ? 'cover' : 'none', // Ensure the image is displayed correctly
-                    }}
-                    onClick={handleProfileIconClick}
-                  />
-                <input
-                  type="file"
-                  ref={fileInputRef}
-                  style={{ display: 'none' }} // Hides the input
-                  onChange={handleFileChange} // Handles the file selection
+        <h2 style={themeStyles.header}>
+          <span style={{ display: 'flex', alignItems: 'center' }}>
+            <div
+              style={{
+                position: 'relative', // Positioning context for the "Uploading..." text
+                display: 'inline-block',
+                width: '6rem',
+                height: '6rem',
+                marginRight: '10px',
+              }}
+            >
+            <div
+              style={{
+                width: '100px',
+                height: '100px',
+                borderRadius: '50%',
+                backgroundColor: 'white',
+                position: 'relative',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                overflow: 'hidden',
+              }}
+              onClick={handleProfileIconClick}
+              >
+                <img
+                  src={profilePicture}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                  }}
                 />
-                {isEditingUsername ? (
-                  <input
-                    ref={inputRef}
-                    type="text"
-                    value={newUsername}
-                    onChange={(e) => setNewUsername(e.target.value)}
-                    onBlur={handleUsernameBlur}
-                    onKeyPress={handleUsernameKeyPress}
-                    style={{
-                      fontSize: '1.5rem',
-                      color: '#ffffff',
-                      background: 'transparent',
-                      border: 'none',
-                      outline: 'none',
-                      width: '100%',
-                      maxWidth: '200px',
-                      boxSizing: 'border-box',
-                      padding: '0.2rem',
-                      textTransform: 'uppercase',
-                    }}
-                  />
-                ) : (
-                  <>
-                    <span
-                      style={{
-                        textTransform: 'uppercase', // Ensure username is formatted as uppercase
-                        fontSize: '2.25rem', // Adjust size if needed
-                        fontWeight: 'bold', // Adjust weight if needed
-                      }}
-                    >
-                      {username}
-                    </span>
-                    <FontAwesomeIcon
-                      icon={faEdit}
-                      style={{
-                        fontSize: '0.75rem',
-                        marginLeft: '10px',
-                        cursor: 'pointer',
-                        verticalAlign: 'middle',
-                      }}
-                      onClick={handleUsernameClick}
-                    />
-                  </>
-                )}
-              </span>
-            </h2>
+            </div>
+
+              {isUploading && (
+                <p
+                  style={{
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    color: '#000', // Adjust text color if needed
+                    backgroundColor: 'rgba(255, 255, 255, 0.7)', // Slight background for readability
+                    borderRadius: '8px',
+                    fontSize: '0.6rem',
+                  }}
+                >
+                  Uploading{dots}
+                </p>
+              )}
+            </div>
+            <input
+              type="file"
+              ref={fileInputRef}
+              style={{ display: 'none' }} // Hides the input
+              onChange={handleFileChange} // Handles the file selection
+            />
+            {isEditingUsername ? (
+              <input
+                ref={inputRef}
+                type="text"
+                value={newUsername}
+                onChange={(e) => setNewUsername(e.target.value)}
+                onBlur={handleUsernameBlur}
+                onKeyPress={handleUsernameKeyPress}
+                style={{
+                  fontSize: '1.5rem',
+                  color: '#ffffff',
+                  background: 'transparent',
+                  border: 'none',
+                  outline: 'none',
+                  width: '100%',
+                  maxWidth: '200px',
+                  boxSizing: 'border-box',
+                  padding: '0.2rem',
+                  textTransform: 'uppercase',
+                }}
+              />
+            ) : (
+              <>
+                <span
+                  style={{
+                    textTransform: 'uppercase', // Ensure username is formatted as uppercase
+                    fontSize: '2.25rem', // Adjust size if needed
+                    fontWeight: 'bold', // Adjust weight if needed
+                  }}
+                >
+                  {username}
+                </span>
+                <FontAwesomeIcon
+                  icon={faEdit}
+                  style={{
+                    fontSize: '0.75rem',
+                    marginLeft: '10px',
+                    cursor: 'pointer',
+                    verticalAlign: 'middle',
+                  }}
+                  onClick={handleUsernameClick}
+                />
+              </>
+            )}
+          </span>
+        </h2>
+
           <div style={themeStyles.buttonContainer}>
             <button
               style={{
@@ -990,10 +838,9 @@ const Profile = () => {
             </Row>
           ) : (
             <p style={themeStyles.dotsP}>
-              No meowssages yet. The cats are quiet{dots}
+              No meowsages yet. The cats are quiet{dots}
             </p>
           )}
-
           {isModalOpen && (
             <div style={themeStyles.modalOverlay} onClick={handleOverlayClick}>
               <div style={themeStyles.modalContent} onClick={(e) => e.stopPropagation()}>
@@ -1006,7 +853,8 @@ const Profile = () => {
                       <p style={themeStyles.modalTextStyle}>{selectedMessage.content}</p>
                       <p style={themeStyles.dateStyle}>
                         Meowed on:{' '}
-                        {new Date(selectedMessage.createdAt.seconds * 1000).toLocaleDateString()}
+                        {new Date(selectedMessage.createdAt.seconds * 1000).toLocaleDateString()} at{' '}
+                        {new Date(selectedMessage.createdAt.seconds * 1000).toLocaleTimeString()}
                       </p>
                       {selectedMessage.audio && (
                         <div style={{ textAlign: 'center' }}>

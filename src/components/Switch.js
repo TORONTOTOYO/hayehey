@@ -81,58 +81,63 @@ const Button = () => {
   }, [userId]);
 
 
-        const fetchQuestionsFromCategories = async (categories, limit = 5) => {
-          try {
-              const requests = categories.map(category =>
-                  fetch(`https://the-trivia-api.com/api/questions?limit=${limit}&categories=${category}`)
-              );
-      
-              const responses = await Promise.all(requests);
-              const dataArrays = await Promise.all(responses.map(res => res.json()));
-      
-              // Flatten the array of arrays into a single array of questions
-              const allQuestions = dataArrays.flat();
-      
-              // Shuffle the combined questions array
-              allQuestions.sort(() => Math.random() - 0.5);
-      
-              // Ensure the limit is respected
-              const limitedQuestions = allQuestions.slice(0, limit);
-      
-              return limitedQuestions.map(questionData => {
-                  const formattedQuestion = he.decode(questionData.question);
-                  const allChoices = [...questionData.incorrectAnswers, questionData.correctAnswer];
-                  const formattedChoices = allChoices.map(choice => he.decode(choice));
-                  const formattedCorrectAnswer = he.decode(questionData.correctAnswer);
-                  return { question: formattedQuestion, choices: formattedChoices, correctAnswer: formattedCorrectAnswer };
-              });
-              
-          } catch (error) {
-              console.error('Error fetching trivia questions:', error);
-              return [{ question: 'Failed to load questions. Reload the page.', choices: [], correctAnswer: '' }];
-          }
-      };
-  
-      const handleClick = async () => {
-          const categories = ['Science','Technology','Engineering', "Mathematics", "Law"]; 
-          const questions = await fetchQuestionsFromCategories(categories, 5); 
-          if (questions.length > 0) {
-              const question = questions[0];
-              setQuestion(question.question);
-              setChoices(question.choices);
-              setCorrectAnswer(question.correctAnswer);
-              setShowOverlay(true);
-              setShowModal(true);
-              setAnswerLocked(false);
-              setTimer(15);
-              if (sirenSound) sirenSound.play();
-          } else {
-              setQuestion('No questions found. Please try again.');
-              setChoices([]);
-              setCorrectAnswer('');
-          }
-      };
-      
+      const fetchQuestionsFromCategories = async (categories, limit = 5) => {
+        try {
+            const requests = categories.map(category =>
+                fetch(`https://the-trivia-api.com/api/questions?limit=${limit}&categories=${category}`)
+            );
+
+            const responses = await Promise.all(requests);
+            const dataArrays = await Promise.all(responses.map(res => res.json()));
+
+            // Flatten the array of arrays into a single array of questions
+            const allQuestions = dataArrays.flat();
+
+            // Shuffle the combined questions array
+            allQuestions.sort(() => Math.random() - 0.5);
+
+            // Ensure the limit is respected
+            const limitedQuestions = allQuestions.slice(0, limit);
+
+            return limitedQuestions.map(questionData => {
+                const formattedQuestion = he.decode(questionData.question);
+                const allChoices = [...questionData.incorrectAnswers, questionData.correctAnswer];
+                
+                // Shuffle the choices so the correct answer is not always in the same position
+                const shuffledChoices = allChoices.sort(() => Math.random() - 0.5);
+
+                const formattedChoices = shuffledChoices.map(choice => he.decode(choice));
+                const formattedCorrectAnswer = he.decode(questionData.correctAnswer);
+                
+                return { question: formattedQuestion, choices: formattedChoices, correctAnswer: formattedCorrectAnswer };
+            });
+            
+        } catch (error) {
+            console.error('Error fetching trivia questions:', error);
+            return [{ question: 'Failed to load questions. Reload the page.', choices: [], correctAnswer: '' }];
+        }
+    };
+
+    const handleClick = async () => {
+        // Only include the relevant categories for programming, mathematics, and English vocabulary
+        const categories = ['Programming', 'Mathematics', 'English Vocabulary'];
+        const questions = await fetchQuestionsFromCategories(categories, 5); 
+        if (questions.length > 0) {
+            const question = questions[0];
+            setQuestion(question.question);
+            setChoices(question.choices);
+            setCorrectAnswer(question.correctAnswer);
+            setShowOverlay(true);
+            setShowModal(true);
+            setAnswerLocked(false);
+            setTimer(15);
+            if (sirenSound) sirenSound.play();
+        } else {
+            setQuestion('No questions found. Please try again.');
+            setChoices([]);
+            setCorrectAnswer('');
+        }
+    };
 
       const handleChoiceClick = async (choice) => {
         if (answerLocked) return;
@@ -217,7 +222,7 @@ const StyledWrapper = styled.div`
   display: flex;
   justify-content: center; /* Centers horizontally */
   align-items: flex-end; /* Aligns items to the bottom */
-  height: 60vh; /* Height for larger screens */
+  height: 45vh; /* Height for larger screens */
   width: 75vw; /* Width for larger screens */
   position: relative; /* Keeps it within normal document flow */
   margin: 0 auto; /* Center horizontally within the parent container */
@@ -286,7 +291,7 @@ const StyledWrapper = styled.div`
 
   /* Mobile View Adjustments */
   @media (max-width: 768px) {
-    height: 30vh; /* Adjust height for medium screens */
+    height: 40vh; /* Adjust height for medium screens */
     width: 85vw; /* Adjust width for medium screens */
     
     .btn-class-name {
@@ -301,7 +306,7 @@ const StyledWrapper = styled.div`
   }
 
   @media (max-width: 480px) {
-    height: 30vh; /* Further adjust height for small screens */
+    height: 40vh; /* Further adjust height for small screens */
     width: 80vw; /* Further adjust width for small screens */
     
     .btn-class-name {
