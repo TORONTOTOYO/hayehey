@@ -747,14 +747,12 @@ const Profile = () => {
                   maxWidth: '200px',
                   boxSizing: 'border-box',
                   padding: '0.2rem',
-                  textTransform: 'uppercase',
                 }}
               />
             ) : (
               <>
                 <span
                   style={{
-                    textTransform: 'uppercase', // Ensure username is formatted as uppercase
                     fontSize: '2.25rem', // Adjust size if needed
                     fontWeight: 'bold', // Adjust weight if needed
                   }}
