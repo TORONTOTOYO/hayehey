@@ -280,8 +280,9 @@ useEffect(() => {
                 required 
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email"
               />
-              <label className="label">Email</label>
+              <label className="label"></label>
             </div>
             <div className="form_control">
               <input 
@@ -290,8 +291,9 @@ useEffect(() => {
                 required 
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"
               />
-              <label className="label">Password</label>
+              <label className="label"></label>
             </div>
             <button type="submit">Login</button>
             <span className="bottom_text">
@@ -310,8 +312,9 @@ useEffect(() => {
                 required 
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
+                placeholder="Username"
               />
-              <label className="label">Username</label>
+              <label className="label"></label>
             </div>
             <div className="form_control">
               <input 
@@ -320,8 +323,9 @@ useEffect(() => {
                 required 
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email"
               />
-              <label className="label">Email</label>
+              <label className="label"></label>
             </div>
             <div className="form_control">
               <input 
@@ -330,8 +334,9 @@ useEffect(() => {
                 required 
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"
               />
-              <label className="label">Password</label>
+              <label className="label"></label>
             </div>
             <button type="submit">Sign Up</button>
 
@@ -444,27 +449,28 @@ const StyledWrapper = styled.div`
     color: #00FF7F; /* spring color */
   }
 
-  .box-container {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
+  @keyframes customVibrate {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(-5px, 0); } /* Move left */
+    50% { transform: translate(5px, 0); }  /* Move right */
+    75% { transform: translate(0, -5px); } /* Move up */
+    100% { transform: translate(0, 0); }    /* Return to original position */
   }
+
 
   .box-icon {
     font-size: 1.2em; /* Adjust size as needed */
     color: #FF0000; /* Red color for the box */
     z-index: 2;
+    animation: customVibrate 1s infinite; /* Apply vibration animation */
+    transition: transform 0.3s ease; /* Smooth rotation transition */
   }
 
-  .echo-icon {
-    position: absolute;
-    bottom: 30%; /* Position the echo icon above the box */
-    left: 50%;
-    transform: translateX(-50%) rotate(-90deg); /* Rotate the echo icon */
-    font-size: 1.5em; /* Adjust size as needed */
-    color: #00FFFF; /* Cyan color for the echo */
-    opacity: 0.8;
+  .box-icon:hover {
+    animation: none; /* Remove vibration animation on hover */
+    transform: rotate(180deg); /* Rotate 180 degrees on hover */
   }
+
 
   h1 {
     display: flex;
