@@ -136,7 +136,6 @@ const Form = () => {
   
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      toast.success("Successfully logged in!");
       navigate('/dashboard');
       setPassword("");
       setUsername("");
