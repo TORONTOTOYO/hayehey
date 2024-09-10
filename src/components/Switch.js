@@ -224,7 +224,7 @@ const StyledWrapper = styled.div`
   align-items: flex-end; /* Aligns items to the bottom */
   height: 45vh; /* Height for larger screens */
   width: 75vw; /* Width for larger screens */
-  position: relative; /* Keeps it within normal document flow */
+  position: absolute; /* Keeps it within normal document flow */
   margin: 0 auto; /* Center horizontally within the parent container */
   bottom: 0; /* Default bottom position */
   left: 0;
@@ -291,7 +291,7 @@ const StyledWrapper = styled.div`
 
   /* Mobile View Adjustments */
   @media (max-width: 768px) {
-    height: 50vh; /* Adjust height for medium screens */
+    height: 45vh; /* Adjust height for medium screens */
     width: 85vw; /* Adjust width for medium screens */
     
     .btn-class-name {
@@ -306,7 +306,7 @@ const StyledWrapper = styled.div`
   }
 
   @media (max-width: 480px) {
-    height: 50vh; /* Further adjust height for small screens */
+    height: 45vh; /* Further adjust height for small screens */
     width: 80vw; /* Further adjust width for small screens */
     
     .btn-class-name {
