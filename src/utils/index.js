@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    document.addEventListener('contextmenu', function(event) {
+    /*document.addEventListener('contextmenu', function(event) {
         event.preventDefault();
-    });
+    });*/
 });

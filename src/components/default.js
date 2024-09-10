@@ -1,7 +1,7 @@
 export const defaultStyles = {
     container: {
       background: 'linear-gradient(to bottom, #000b1e, #1c2b4f)',
-      minHeight: '100vh',
+      minHeight: '93vh',
       color: '#e0e0e0',
       fontFamily: "'VT323', monospace",
       padding: '20px',
