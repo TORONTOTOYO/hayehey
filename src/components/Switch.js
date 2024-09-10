@@ -224,7 +224,7 @@ const StyledWrapper = styled.div`
   align-items: flex-end; /* Aligns items to the bottom */
   height: 45vh; /* Height for larger screens */
   width: 75vw; /* Width for larger screens */
-  position: absolute; /* Keeps it within normal document flow */
+  position: relative; /* Keeps it within normal document flow */
   margin: 0 auto; /* Center horizontally within the parent container */
   bottom: 0; /* Default bottom position */
   left: 0;
