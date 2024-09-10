@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, setPersistence, browserLocalPersistence } from "firebase/auth";
-import { getFirestore, doc, setDoc } from "firebase/firestore";
+import { getFirestore, doc, setDoc, getDocs, collection, query, where, } from "firebase/firestore";
 import { toast, ToastContainer } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import * as THREE from 'three';
@@ -30,6 +30,7 @@ const Form = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+  const [emailOrUsername, setEmailOrUsername] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -89,32 +90,64 @@ const Form = () => {
     }
   };
 
+  const getEmailByUsername = async (username) => {
+    try {
+      const q = query(collection(db, "users"), where("username", "==", username));
+      const querySnapshot = await getDocs(q);
+  
+      if (!querySnapshot.empty) {
+        // Assuming there's only one document for each username
+        const doc = querySnapshot.docs[0];
+        return doc.data().email;
+      } else {
+        console.log(`Username lookup failed for: ${username}`);
+        toast.error("Username not found.");
+        return null;
+      }
+    } catch (error) {
+      console.error("Failed to fetch email:", error);
+      toast.error("Failed to fetch email.");
+      return null;
+    }
+  };
+  
+
   const handleLogin = async (e) => {
     e.preventDefault();
-
+  
     toast.dismiss();
-
-    if (!email || !password) {
-        toast.error("Please fill in all fields.");
-        return;
-    }
-    if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-      toast.error("Please enter a valid email address.");
+  
+    if (!emailOrUsername || !password) {
+      toast.error("Please fill in all fields.");
       return;
     }
-    try {
-        await signInWithEmailAndPassword(auth, email, password);
-        toast.success("Successfully logged in!");
-        navigate('/dashboard');
-        setEmail("");
-        setPassword("");
-    } catch (error) {
-        console.error('Login error:', error.message); // Log the specific error message
-        toast.error(`Login error: ${error.message}`);
-        setEmail("");
-        setPassword("");
+  
+    let email = emailOrUsername;
+  
+    if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(emailOrUsername)) {
+      // Assume it's a username if it's not a valid email
+      const emailFromUsername = await getEmailByUsername(emailOrUsername);
+      if (emailFromUsername) {
+        email = emailFromUsername;
+      } else {
+        return; // Stop further execution if username lookup fails
+      }
     }
-};
+  
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      toast.success("Successfully logged in!");
+      navigate('/dashboard');
+      setPassword("");
+      setUsername("");
+    } catch (error) {
+      console.error('Login error:', error.message);
+      toast.error(`Login error: ${error.message}`);
+      setEmailOrUsername("");
+      setPassword("");
+    }
+  };
+  
 
 useEffect(() => {
   // Create scene
@@ -274,13 +307,13 @@ useEffect(() => {
             o<span className="red">x</span>
             </h1>
             <div className="form_control">
-              <input 
-                type="email" 
-                className="input" 
-                required 
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email"
+              <input
+                type="text"
+                className="input"
+                required
+                value={emailOrUsername}
+                onChange={(e) => setEmailOrUsername(e.target.value)}
+                placeholder="Email or Username"
               />
               <label className="label"></label>
             </div>
