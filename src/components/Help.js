@@ -85,10 +85,9 @@
             I'm Soojay, the hooman behind this project. If you have any questions or need help, here are some ways to get assistance:
             <ul>
               <li>
-                Explore our <a href="/FAQ" style={defaultStyles.link}>FAQ</a> section for answers to common questions.
+                Explore my <a href="/FAQ" style={defaultStyles.link}>FAQ</a> section for answers to common questions.
               </li>
               <li>Reach out directly for specific issues or inquiries.</li>
-              <li>Check out our community forums for peer support and tips.</li>
             </ul>
           </p>
           <div>

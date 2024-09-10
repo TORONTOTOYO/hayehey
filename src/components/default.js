@@ -182,7 +182,7 @@ export const defaultStyles = {
     top: 0,
     right: 0,
     width: '180px',
-    height: '30%',
+    height: '30vh',
     borderRadius: '10px 0 10px 10px',
     background: '#1b2a3e', // Match the sidebar background with the theme
     boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
