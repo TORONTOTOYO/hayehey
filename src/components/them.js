@@ -2,7 +2,7 @@ export const themes = {
     amongUs: {
         container: {
             background: 'linear-gradient(to bottom, #000b1e, #1c2b4f)',
-            minHeight: '93vh',
+            minHeight: '100vh',
             color: '#e0e0e0',
             fontFamily: "'VT323', monospace",
             padding: '20px',
@@ -176,7 +176,7 @@ export const themes = {
     onePiece: {
       container: {
         background: 'linear-gradient(to bottom, #87CEFA, #4682B4)', // Sky blue gradient
-        minHeight: '93vh',
+        minHeight: '100vh',
         color: '#FFFFFF',
         fontFamily: "'Comic Sans MS', sans-serif",
         padding: '20px',
@@ -406,7 +406,7 @@ export const themes = {
     adorableHome: {
       container: {
         background: 'linear-gradient(to bottom, #FDE2E4, #FAD0C4)', // Soft pink to peach gradient
-        minHeight: '93vh',
+        minHeight: '100vh',
         color: '#333333',
         fontFamily: "'Comic Sans MS'",
         padding: '20px',
@@ -637,7 +637,7 @@ export const themes = {
     retroAesthetic: {
       container: {
         background: 'linear-gradient(to bottom, #f0e8d0, #f7a8a6)', // Soft cream to pink gradient
-        minHeight: '93vh',
+        minHeight: '100vh',
         color: '#333',
         fontFamily: "'Press Start 2P'",
         padding: '20px',
@@ -869,7 +869,7 @@ export const themes = {
     taylorSwiftRed: {
       container: {
         background: 'linear-gradient(to bottom, #f4c2c2, #e80039)', // Light pink to red gradient
-        minHeight: '93vh',
+        minHeight: '100vh',
         color: '#fff',
         fontFamily: "'Arial', sans-serif",
         padding: '20px',
@@ -1106,7 +1106,7 @@ export const themes = {
     Bohemian: {
       container: {
         background: 'linear-gradient(to bottom, #f4e9d8, #e3d1ba)', // Soft beige to light brown gradient
-        minHeight: '93vh',
+        minHeight: '100vh',
         color: '#5b4636', // Warm brown text
         fontFamily: "'Cormorant Garamond', serif",
         padding: '20px',
@@ -1306,7 +1306,7 @@ export const themes = {
     ModernTeal: {
       container: {
         background: 'linear-gradient(to bottom, #B5F7E6, #53C0A2)', // Very Light Teal to Light Teal gradient
-        minHeight: '93vh',
+        minHeight: '100vh',
         color: '#266352', // Dark Teal text
         fontFamily: "'Arial', sans-serif",
         padding: '20px',
@@ -1507,7 +1507,7 @@ export const themes = {
     CoralTeal: {
       container: {
         background: 'linear-gradient(to bottom, #F3F7EC, #E88D67)', // Soft Cream to Warm Coral gradient
-        minHeight: '93vh',
+        minHeight: '100vh',
         color: '#005C78', // Dark Teal text
         fontFamily: "'Arial', sans-serif",
         padding: '20px',
@@ -1708,7 +1708,7 @@ export const themes = {
     CharcoalCoral: {
       container: {
         background: 'linear-gradient(to bottom, #0C0C0C, #481E14)', // Deep Charcoal to Dark Brown gradient
-        minHeight: '93vh',
+        minHeight: '100vh',
         color: '#F2613F', // Vibrant Coral text
         fontFamily: "'Arial', sans-serif",
         padding: '20px',
@@ -1909,7 +1909,7 @@ export const themes = {
     PeachyPinkDelight: {
       container: {
         background: 'linear-gradient(to bottom, #FFF3C7, #FEC7B4)', // Light Cream to Soft Peach gradient
-        minHeight: '93vh',
+        minHeight: '100vh',
         color: '#F7418F', // Deep Pink text
         fontFamily: "'Arial', sans-serif",
         padding: '20px',
@@ -2110,7 +2110,7 @@ export const themes = {
     ClassicElegance: {
       container: {
         background: 'linear-gradient(to bottom, #F5F5F5, #F2EAD3)', // Light Gray to Light Beige gradient
-        minHeight: '93vh',
+        minHeight: '100vh',
         color: '#3F2305', // Deep Brown text
         fontFamily: "'Georgia', serif",
         padding: '20px',
@@ -2312,7 +2312,7 @@ export const themes = {
     UrbanSleek: {
       container: {
         background: '#0F0F0F', // Jet Black
-        minHeight: '93vh',
+        minHeight: '100vh',
         color: '#E0E0E0', // Light Gray text for contrast
         fontFamily: "'Helvetica Neue', sans-serif",
         padding: '20px',
@@ -2513,7 +2513,7 @@ export const themes = {
     EarthyElegance: {
       container: {
         background: '#FFF5E4', // Creamy Beige
-        minHeight: '93vh',
+        minHeight: '100vh',
         color: '#6A9C89', // Sage Green text
         fontFamily: "'Roboto', sans-serif",
         padding: '20px',
@@ -2714,7 +2714,7 @@ export const themes = {
   SerenityTheme:{
     container: {
       background: 'linear-gradient(to bottom, #EAE4DD, #E1D7C6)', // Light beige gradient
-      minHeight: '93vh',
+      minHeight: '100vh',
       color: '#295F98', // Dark blue for text
       fontFamily: "'Arial', sans-serif",
       padding: '20px',
@@ -2915,7 +2915,7 @@ export const themes = {
   Earthy:{
     container: {
       background: 'linear-gradient(to bottom, #FEFAE0, #A6B37D)', // Cream to muted green gradient
-      minHeight: '93vh',
+      minHeight: '100vh',
       color: '#B99470', // Earthy brown for text
       fontFamily: "'Arial', sans-serif",
       padding: '20px',
@@ -3116,7 +3116,7 @@ export const themes = {
   Verdant:{
     container: {
       background: 'linear-gradient(to bottom, #F5F7F8, #E8B86D)', // Light gray to soft orange gradient
-      minHeight: '93vh',
+      minHeight: '100vh',
       color: '#185519', // Deep green for text
       fontFamily: "'Arial', sans-serif",
       padding: '20px',
@@ -3317,7 +3317,7 @@ export const themes = {
   Rustic:{
     container: {
       background: 'linear-gradient(to bottom, #F2E8C6, #DAD4B5)', // Light beige to soft tan gradient
-      minHeight: '93vh',
+      minHeight: '100vh',
       color: '#800000', // Dark red for text
       fontFamily: "'Arial', sans-serif",
       padding: '20px',
@@ -3518,7 +3518,7 @@ export const themes = {
   Warm:{
     container: {
       background: 'linear-gradient(to bottom, #F6FDC3, #CDFADB)', // Soft gradient from light yellow to light teal
-      minHeight: '93vh',
+      minHeight: '100vh',
       color: '#FF8080', // Warm blush for text
       fontFamily: "'Arial', sans-serif",
       padding: '20px',
@@ -3719,7 +3719,7 @@ export const themes = {
   Autumn:{
     container: {
       background: 'linear-gradient(to bottom, #E2DFD0, #524C42)', // Soft gradient from light beige to dark brown
-      minHeight: '93vh',
+      minHeight: '100vh',
       color: '#F97300', // Warm orange for text
       fontFamily: "'Arial', sans-serif",
       padding: '20px',
@@ -3920,7 +3920,7 @@ export const themes = {
   FreshGreen:{
     container: {
       background: 'linear-gradient(to bottom, #F3FF90, #9BEC00)', // Soft gradient from light yellow-green to bright green
-      minHeight: '93vh',
+      minHeight: '100vh',
       color: '#059212', // Deep green for text
       fontFamily: "'Arial', sans-serif",
       padding: '20px',
@@ -4121,7 +4121,7 @@ export const themes = {
   RetroAutumn:{
     container: {
       background: 'linear-gradient(to bottom, #C5FF95, #5DEBD7)', // Gradient from light green to aqua blue
-      minHeight: '93vh',
+      minHeight: '100vh',
       color: '#074173', // Dark blue for text
       fontFamily: "'Arial', sans-serif",
       padding: '20px',
@@ -4322,7 +4322,7 @@ export const themes = {
   Greeny:{
     container: {
       background: 'linear-gradient(to bottom, #FFFFDD, #A2C579)', // Gradient from light cream to soft green
-      minHeight: '93vh',
+      minHeight: '100vh',
       color: '#61A3BA', // Soft blue for text
       fontFamily: "'Arial', sans-serif",
       padding: '20px',
@@ -4523,7 +4523,7 @@ export const themes = {
   Noir:{
     container: {
       background: 'linear-gradient(to bottom, #282A3A, #000000)', // Gradient from dark gray to black
-      minHeight: '93vh',
+      minHeight: '100vh',
       color: '#C69749', // Gold for text
       fontFamily: "'Arial', sans-serif",
       padding: '20px',
@@ -4724,7 +4724,7 @@ export const themes = {
   OceanPurple:{
     container: {
       background: 'linear-gradient(to bottom, #A5F2E7, #FFFCEA)', // Gradient from aqua to light cream
-      minHeight: '93vh',
+      minHeight: '100vh',
       color: '#3A0077', // Deep purple for text
       fontFamily: "'Roboto', sans-serif",
       padding: '20px',
@@ -4924,7 +4924,7 @@ export const themes = {
   DeepBlack:{
     container: {
       backgroundColor: '#000000', // Deep black background
-      minHeight: '93vh',
+      minHeight: '100vh',
       color: '#FFFFFF', // White text
       fontFamily: "'Roboto', sans-serif",
       padding: '20px',
@@ -5124,7 +5124,7 @@ export const themes = {
   SoftBold:{
     container: {
       backgroundColor: '#FFF5E1', // Soft warm background
-      minHeight: '93vh',
+      minHeight: '100vh',
       color: '#0C1844', // Dark blue for text
       fontFamily: "'Roboto', sans-serif",
       padding: '20px',
@@ -5323,7 +5323,7 @@ export const themes = {
   Regae:{
     container: {
       backgroundColor: '#E0F7FA', // Light cyan background
-      minHeight: '93vh',
+      minHeight: '100vh',
       color: '#004D40', // Deep teal for text
       fontFamily: "'Montserrat', sans-serif",
       padding: '20px',
@@ -5522,7 +5522,7 @@ export const themes = {
   Regao:{
     container: {
       background: 'linear-gradient(to bottom, #FFDE95, #ADD899)',
-      minHeight: '93vh',
+      minHeight: '100vh',
       color: '#BC5A94',
       fontFamily: "'VT323', monospace",
       padding: '20px',
@@ -5746,7 +5746,7 @@ export const themes = {
   monochrome: {
     container: {
       background: 'linear-gradient(to bottom, #2d2d2d, #1b1b1b)',
-      minHeight: '93vh',
+      minHeight: '100vh',
       color: '#e0e0e0',
       fontFamily: "'Courier New', monospace",
       padding: '20px',
@@ -5973,7 +5973,7 @@ export const themes = {
   youtube: {
     container: {
       background: '#181818',
-      minHeight: '93vh',
+      minHeight: '100vh',
       color: '#fff',
       fontFamily: "'Roboto', sans-serif",
       padding: '20px',
