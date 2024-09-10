@@ -351,7 +351,7 @@ export const themes = {
         top: 0,
         right: 0,
         width: '180px',
-        height: '25vh',
+        height: '30vh',
         borderRadius: '10px 0 10px 10px',
         background: '#87CEFA', // Sky blue gradient background
         boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
@@ -401,6 +401,18 @@ export const themes = {
       },
       reverseSpinning: {
         transform: 'rotate(-360deg)',
+      },
+
+      '@media (max-width: 600px)': {
+        sidebar: {
+          height: '20vh', // Height for mobile view
+        },
+      },
+  
+      '@media (max-width: 768px)': {
+        sidebar: {
+          height: '20vh', // Height for mobile view
+        },
       },
     },
     adorableHome: {
@@ -582,7 +594,7 @@ export const themes = {
         top: 0,
         right: 0,
         width: '180px',
-        height: '25vh',
+        height: '30vh',
         borderRadius: '10px 0 10px 10px',
         background: '#FAD0C4', // Peach background to match the theme
         boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
@@ -632,6 +644,18 @@ export const themes = {
       },
       reverseSpinning: {
         transform: 'rotate(-360deg)',
+      },
+
+      '@media (max-width: 600px)': {
+        sidebar: {
+          height: '20vh', // Height for mobile view
+        },
+      },
+  
+      '@media (max-width: 768px)': {
+        sidebar: {
+          height: '20vh', // Height for mobile view
+        },
       },
     },
     retroAesthetic: {
@@ -814,7 +838,7 @@ export const themes = {
         top: 0,
         right: 0,
         width: '180px',
-        height: '25vh',
+        height: '30vh',
         borderRadius: '10px 0 10px 10px',
         background: '#1b2a3e', // Match the sidebar background with the theme
         boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
@@ -864,7 +888,19 @@ export const themes = {
       },
       reverseSpinning: {
         transform: 'rotate(-360deg)',
-      }
+      },
+
+      '@media (max-width: 600px)': {
+        sidebar: {
+          height: '20vh', // Height for mobile view
+        },
+      },
+  
+      '@media (max-width: 768px)': {
+        sidebar: {
+          height: '20vh', // Height for mobile view
+        },
+      },
     },
     taylorSwiftRed: {
       container: {
@@ -1050,7 +1086,7 @@ export const themes = {
         top: 0,
         right: 0,
         width: '220px', // Adjusted width for better fit
-        height: '25vh',
+        height: '30vh',
         borderRadius: '10px 0 0 10px',
         background: '#e80039', // Sidebar background matches the theme
         boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
@@ -1101,6 +1137,18 @@ export const themes = {
       },
       reverseSpinning: {
         transform: 'rotate(-360deg)',
+      },
+
+      '@media (max-width: 600px)': {
+        sidebar: {
+          height: '20vh', // Height for mobile view
+        },
+      },
+  
+      '@media (max-width: 768px)': {
+        sidebar: {
+          height: '20vh', // Height for mobile view
+        },
       },
     },
     Bohemian: {
@@ -1252,7 +1300,7 @@ export const themes = {
         top: 0,
         right: 0,
         width: '180px',
-        height: '25vh',
+        height: '30vh',
         borderRadius: '10px 0 10px 10px',
         background: '#f4e9d8', // Soft beige gradient
         boxShadow: '-2px 0 5px rgba(0,0,0,0.1)', // Soft shadow
@@ -1301,6 +1349,18 @@ export const themes = {
       },
       reverseSpinning: {
         transform: 'rotate(-360deg)',
+      },
+
+      '@media (max-width: 600px)': {
+        sidebar: {
+          height: '20vh', // Height for mobile view
+        },
+      },
+  
+      '@media (max-width: 768px)': {
+        sidebar: {
+          height: '20vh', // Height for mobile view
+        },
       },
     },
     ModernTeal: {
@@ -1452,7 +1512,7 @@ export const themes = {
         top: 0,
         right: 0,
         width: '180px',
-        height: '25vh',
+        height: '30vh',
         borderRadius: '10px 0 10px 10px',
         background: '#B5F7E6', // Very Light Teal
         boxShadow: '-2px 0 5px rgba(0,0,0,0.2)', // Softer shadow
@@ -1502,6 +1562,18 @@ export const themes = {
       },
       reverseSpinning: {
         transform: 'rotate(-360deg)',
+      },
+
+      '@media (max-width: 600px)': {
+        sidebar: {
+          height: '20vh', // Height for mobile view
+        },
+      },
+  
+      '@media (max-width: 768px)': {
+        sidebar: {
+          height: '20vh', // Height for mobile view
+        },
       },
     },
     CoralTeal: {
@@ -1653,7 +1725,7 @@ export const themes = {
         top: 0,
         right: 0,
         width: '180px',
-        height: '25vh',
+        height: '30vh',
         borderRadius: '10px 0 10px 10px',
         background: '#F3F7EC', // Soft Cream background
         boxShadow: '-2px 0 5px rgba(0, 0, 0, 0.3)',
@@ -1703,6 +1775,18 @@ export const themes = {
       },
       reverseSpinning: {
         transform: 'rotate(-360deg)',
+      },
+
+      '@media (max-width: 600px)': {
+        sidebar: {
+          height: '20vh', // Height for mobile view
+        },
+      },
+  
+      '@media (max-width: 768px)': {
+        sidebar: {
+          height: '20vh', // Height for mobile view
+        },
       },
     },
     CharcoalCoral: {
@@ -1854,7 +1938,7 @@ export const themes = {
         top: 0,
         right: 0,
         width: '180px',
-        height: '25vh',
+        height: '30vh',
         borderRadius: '10px 0 10px 10px',
         background: '#0C0C0C', // Deep Charcoal background
         boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
@@ -1904,6 +1988,18 @@ export const themes = {
       },
       reverseSpinning: {
         transform: 'rotate(-360deg)',
+      },
+
+      '@media (max-width: 600px)': {
+        sidebar: {
+          height: '20vh', // Height for mobile view
+        },
+      },
+  
+      '@media (max-width: 768px)': {
+        sidebar: {
+          height: '20vh', // Height for mobile view
+        },
       },
     },
     PeachyPinkDelight: {
@@ -2055,7 +2151,7 @@ export const themes = {
         top: 0,
         right: 0,
         width: '180px',
-        height: '25vh',
+        height: '30vh',
         borderRadius: '10px 0 10px 10px',
         background: '#FEC7B4', // Soft Peach background
         boxShadow: '-2px 0 5px rgba(0, 0, 0, 0.2)', // Soft shadow
@@ -2105,6 +2201,18 @@ export const themes = {
       },
       reverseSpinning: {
         transform: 'rotate(-360deg)',
+      },
+
+      '@media (max-width: 600px)': {
+        sidebar: {
+          height: '20vh', // Height for mobile view
+        },
+      },
+  
+      '@media (max-width: 768px)': {
+        sidebar: {
+          height: '20vh', // Height for mobile view
+        },
       },
     },
     ClassicElegance: {
@@ -2257,7 +2365,7 @@ export const themes = {
         top: 0,
         right: 0,
         width: '180px',
-        height: '25vh',
+        height: '30vh',
         borderRadius: '10px 0 10px 10px',
         background: '#F2EAD3', // Light Beige background
         boxShadow: '-2px 0 5px rgba(0, 0, 0, 0.3)',
@@ -2307,6 +2415,18 @@ export const themes = {
       },
       reverseSpinning: {
         transform: 'rotate(-360deg)',
+      },
+      
+      '@media (max-width: 600px)': {
+        sidebar: {
+          height: '20vh', // Height for mobile view
+        },
+      },
+  
+      '@media (max-width: 768px)': {
+        sidebar: {
+          height: '20vh', // Height for mobile view
+        },
       },
     },
     UrbanSleek: {
@@ -2458,7 +2578,7 @@ export const themes = {
         top: 0,
         right: 0,
         width: '180px',
-        height: '25vh',
+        height: '30vh',
         borderRadius: '10px 0 10px 10px',
         background: '#232D3F', // Dark Slate Blue (UrbanSleek theme)
         boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
@@ -2508,6 +2628,18 @@ export const themes = {
       },
       reverseSpinning: {
         transform: 'rotate(-360deg)',
+      },
+
+      '@media (max-width: 600px)': {
+        sidebar: {
+          height: '20vh', // Height for mobile view
+        },
+      },
+  
+      '@media (max-width: 768px)': {
+        sidebar: {
+          height: '20vh', // Height for mobile view
+        },
       },
     },
     EarthyElegance: {
@@ -2660,7 +2792,7 @@ export const themes = {
         top: 0,
         right: 0,
         width: '180px',
-        height: '25vh',
+        height: '30vh',
         borderRadius: '10px 0 10px 10px',
         background: '#C1D8C3', // Light Sage Green
         boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
@@ -2709,6 +2841,18 @@ export const themes = {
       },
       reverseSpinning: {
         transform: 'rotate(-360deg)',
+      },
+
+      '@media (max-width: 600px)': {
+        sidebar: {
+          height: '20vh', // Height for mobile view
+        },
+      },
+  
+      '@media (max-width: 768px)': {
+        sidebar: {
+          height: '20vh', // Height for mobile view
+        },
       },
     },
   SerenityTheme:{
@@ -2860,7 +3004,7 @@ export const themes = {
       top: 0,
       right: 0,
       width: '180px',
-      height: '25vh',
+      height: '30vh',
       borderRadius: '10px 0 10px 10px',
       background: '#EAE4DD', // Light beige background
       boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
@@ -2910,6 +3054,18 @@ export const themes = {
     },
     reverseSpinning: {
       transform: 'rotate(-360deg)',
+    },
+
+    '@media (max-width: 600px)': {
+      sidebar: {
+        height: '20vh', // Height for mobile view
+      },
+    },
+
+    '@media (max-width: 768px)': {
+      sidebar: {
+        height: '20vh', // Height for mobile view
+      },
     },
   },
   Earthy:{
@@ -3061,7 +3217,7 @@ export const themes = {
       top: 0,
       right: 0,
       width: '180px',
-      height: '25vh',
+      height: '30vh',
       borderRadius: '10px 0 10px 10px',
       background: '#FEFAE0', // Cream background
       boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
@@ -3111,6 +3267,18 @@ export const themes = {
     },
     reverseSpinning: {
       transform: 'rotate(-360deg)',
+    },
+
+    '@media (max-width: 600px)': {
+      sidebar: {
+        height: '20vh', // Height for mobile view
+      },
+    },
+
+    '@media (max-width: 768px)': {
+      sidebar: {
+        height: '20vh', // Height for mobile view
+      },
     },
   },
   Verdant:{
@@ -3262,7 +3430,7 @@ export const themes = {
       top: 0,
       right: 0,
       width: '180px',
-      height: '25vh',
+      height: '30vh',
       borderRadius: '10px 0 10px 10px',
       background: '#F5F7F8', // Light gray background
       boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
@@ -3312,6 +3480,18 @@ export const themes = {
     },
     reverseSpinning: {
       transform: 'rotate(-360deg)',
+    },
+
+    '@media (max-width: 600px)': {
+      sidebar: {
+        height: '20vh', // Height for mobile view
+      },
+    },
+
+    '@media (max-width: 768px)': {
+      sidebar: {
+        height: '20vh', // Height for mobile view
+      },
     },
   },
   Rustic:{
@@ -3463,7 +3643,7 @@ export const themes = {
       top: 0,
       right: 0,
       width: '180px',
-      height: '25vh',
+      height: '30vh',
       borderRadius: '10px 0 10px 10px',
       background: '#F2E8C6', // Light beige background
       boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
@@ -3513,6 +3693,18 @@ export const themes = {
     },
     reverseSpinning: {
       transform: 'rotate(-360deg)',
+    },
+
+    '@media (max-width: 600px)': {
+      sidebar: {
+        height: '20vh', // Height for mobile view
+      },
+    },
+
+    '@media (max-width: 768px)': {
+      sidebar: {
+        height: '20vh', // Height for mobile view
+      },
     },
   },
   Warm:{
@@ -3664,7 +3856,7 @@ export const themes = {
       top: 0,
       right: 0,
       width: '180px',
-      height: '25vh',
+      height: '30vh',
       borderRadius: '10px 0 10px 10px',
       background: '#F6FDC3', // Light yellow background to match the Warm theme
       boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
@@ -3714,6 +3906,18 @@ export const themes = {
     },
     reverseSpinning: {
       transform: 'rotate(-360deg)',
+    },
+
+    '@media (max-width: 600px)': {
+      sidebar: {
+        height: '20vh', // Height for mobile view
+      },
+    },
+
+    '@media (max-width: 768px)': {
+      sidebar: {
+        height: '20vh', // Height for mobile view
+      },
     },
   },
   Autumn:{
@@ -3865,7 +4069,7 @@ export const themes = {
       top: 0,
       right: 0,
       width: '180px',
-      height: '25vh',
+      height: '30vh',
       borderRadius: '10px 0 10px 10px',
       background: '#E2DFD0', // Light beige to match the Autumn theme
       boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
@@ -3915,6 +4119,18 @@ export const themes = {
     },
     reverseSpinning: {
       transform: 'rotate(-360deg)',
+    },
+
+    '@media (max-width: 600px)': {
+      sidebar: {
+        height: '20vh', // Height for mobile view
+      },
+    },
+
+    '@media (max-width: 768px)': {
+      sidebar: {
+        height: '20vh', // Height for mobile view
+      },
     },
   },
   FreshGreen:{
@@ -4066,7 +4282,7 @@ export const themes = {
       top: 0,
       right: 0,
       width: '180px',
-      height: '25vh',
+      height: '30vh',
       borderRadius: '10px 0 10px 10px',
       background: '#F3FF90', // Light yellow-green to match the FreshGreen theme
       boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
@@ -4116,6 +4332,18 @@ export const themes = {
     },
     reverseSpinning: {
       transform: 'rotate(-360deg)',
+    },
+
+    '@media (max-width: 600px)': {
+      sidebar: {
+        height: '20vh', // Height for mobile view
+      },
+    },
+
+    '@media (max-width: 768px)': {
+      sidebar: {
+        height: '20vh', // Height for mobile view
+      },
     },
   },
   RetroAutumn:{
@@ -4267,7 +4495,7 @@ export const themes = {
       top: 0,
       right: 0,
       width: '180px',
-      height: '25vh',
+      height: '30vh',
       borderRadius: '10px 0 10px 10px',
       background: '#5DEBD7', // Aqua blue from RetroAutumn theme
       boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
@@ -4317,6 +4545,18 @@ export const themes = {
     },
     reverseSpinning: {
       transform: 'rotate(-360deg)',
+    },
+
+    '@media (max-width: 600px)': {
+      sidebar: {
+        height: '20vh', // Height for mobile view
+      },
+    },
+
+    '@media (max-width: 768px)': {
+      sidebar: {
+        height: '20vh', // Height for mobile view
+      },
     },
   },
   Greeny:{
@@ -4468,7 +4708,7 @@ export const themes = {
       top: 0,
       right: 0,
       width: '180px',
-      height: '25vh',
+      height: '30vh',
       borderRadius: '10px 0 10px 10px',
       background: '#A2C579', // Soft green to match the Greeny theme
       boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
@@ -4518,6 +4758,18 @@ export const themes = {
     },
     reverseSpinning: {
       transform: 'rotate(-360deg)',
+    },
+
+    '@media (max-width: 600px)': {
+      sidebar: {
+        height: '20vh', // Height for mobile view
+      },
+    },
+
+    '@media (max-width: 768px)': {
+      sidebar: {
+        height: '20vh', // Height for mobile view
+      },
     },
   }, 
   Noir:{
@@ -4669,7 +4921,7 @@ export const themes = {
       top: 0,
       right: 0,
       width: '180px',
-      height: '25vh',
+      height: '30vh',
       borderRadius: '10px 0 10px 10px',
       background: '#282A3A', // Dark gray to match the theme
       boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
@@ -4719,6 +4971,18 @@ export const themes = {
     },
     reverseSpinning: {
       transform: 'rotate(-360deg)',
+    },
+
+    '@media (max-width: 600px)': {
+      sidebar: {
+        height: '20vh', // Height for mobile view
+      },
+    },
+
+    '@media (max-width: 768px)': {
+      sidebar: {
+        height: '20vh', // Height for mobile view
+      },
     },
   }, 
   OceanPurple:{
@@ -4869,7 +5133,7 @@ export const themes = {
       top: 0,
       right: 0,
       width: '180px',
-      height: '25vh',
+      height: '30vh',
       borderRadius: '10px 0 10px 10px',
       background: '#A5F2E7', // Aqua to match the theme
       boxShadow: '-2px 0 5px rgba(0, 0, 0, 0.3)',
@@ -4919,6 +5183,18 @@ export const themes = {
     },
     reverseSpinning: {
       transform: 'rotate(-360deg)',
+    },
+
+    '@media (max-width: 600px)': {
+      sidebar: {
+        height: '20vh', // Height for mobile view
+      },
+    },
+
+    '@media (max-width: 768px)': {
+      sidebar: {
+        height: '20vh', // Height for mobile view
+      },
     },
   }, 
   DeepBlack:{
@@ -5069,7 +5345,7 @@ export const themes = {
       top: 0,
       right: 0,
       width: '180px',
-      height: '25vh',
+      height: '30vh',
       borderRadius: '10px 0 10px 10px',
       background: '#000000', // Deep black background for sidebar
       boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
@@ -5119,6 +5395,18 @@ export const themes = {
     },
     reverseSpinning: {
       transform: 'rotate(-360deg)',
+    },
+
+    '@media (max-width: 600px)': {
+      sidebar: {
+        height: '20vh', // Height for mobile view
+      },
+    },
+
+    '@media (max-width: 768px)': {
+      sidebar: {
+        height: '20vh', // Height for mobile view
+      },
     },
   }, 
   SoftBold:{
@@ -5268,7 +5556,7 @@ export const themes = {
       top: 0,
       right: 0,
       width: '180px',
-      height: '25vh',
+      height: '30vh',
       borderRadius: '10px 0 10px 10px',
       background: '#FFF5E1', // Soft warm background for the sidebar
       boxShadow: '-2px 0 5px rgba(0, 24, 68, 0.3)', // Light shadow with dark blue tint
@@ -5318,6 +5606,18 @@ export const themes = {
     },
     reverseSpinning: {
       transform: 'rotate(-360deg)',
+    },
+
+    '@media (max-width: 600px)': {
+      sidebar: {
+        height: '20vh', // Height for mobile view
+      },
+    },
+
+    '@media (max-width: 768px)': {
+      sidebar: {
+        height: '20vh', // Height for mobile view
+      },
     },
   },
   Regae:{
@@ -5467,7 +5767,7 @@ export const themes = {
       top: 0,
       right: 0,
       width: '180px',
-      height: '25vh',
+      height: '30vh',
       borderRadius: '10px 0 10px 10px',
       background: '#E0F7FA', // Light cyan background to match the theme
       boxShadow: '-2px 0 5px rgba(0, 77, 64, 0.3)', // Light shadow with teal tint
@@ -5517,6 +5817,18 @@ export const themes = {
     },
     reverseSpinning: {
       transform: 'rotate(-360deg)',
+    },
+
+    '@media (max-width: 600px)': {
+      sidebar: {
+        height: '20vh', // Height for mobile view
+      },
+    },
+
+    '@media (max-width: 768px)': {
+      sidebar: {
+        height: '20vh', // Height for mobile view
+      },
     },
   },
   Regao:{
@@ -5691,7 +6003,7 @@ export const themes = {
       top: 0,
       right: 0,
       width: '180px',
-      height: '25vh',
+      height: '30vh',
       borderRadius: '10px 0 10px 10px',
       background: '#FFDE95', // Updated to match the theme
       boxShadow: '-2px 0 5px rgba(0, 0, 0, 0.3)',
@@ -5741,6 +6053,18 @@ export const themes = {
     },
     reverseSpinning: {
       transform: 'rotate(-360deg)',
+    },
+
+    '@media (max-width: 600px)': {
+      sidebar: {
+        height: '20vh', // Height for mobile view
+      },
+    },
+
+    '@media (max-width: 768px)': {
+      sidebar: {
+        height: '20vh', // Height for mobile view
+      },
     },
   }, 
   monochrome: {
@@ -5918,7 +6242,7 @@ export const themes = {
       top: 0,
       right: 0,
       width: '180px',
-      height: '25vh',
+      height: '30vh',
       borderRadius: '10px 0 10px 10px',
       background: '#1b1b1b', // Updated to match the theme
       boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
@@ -5968,6 +6292,18 @@ export const themes = {
     },
     reverseSpinning: {
       transform: 'rotate(-360deg)',
+    },
+
+    '@media (max-width: 600px)': {
+      sidebar: {
+        height: '20vh', // Height for mobile view
+      },
+    },
+
+    '@media (max-width: 768px)': {
+      sidebar: {
+        height: '20vh', // Height for mobile view
+      },
     },
   },
   youtube: {
@@ -6148,7 +6484,7 @@ export const themes = {
       top: 0,
       right: 0,
       width: '180px',
-      height: '25vh', // Set the height to 100% of the viewport
+      height: '30vh', // Set the height to 100% of the viewport
       borderRadius: '10px 0 10px 10px',
       background: '#1b2a3e', // Match the sidebar background with the theme
       boxShadow: '-2px 0 5px rgba(0,0,0,0.3)',
@@ -6198,6 +6534,18 @@ export const themes = {
     },
     reverseSpinning: {
       transform: 'rotate(-360deg)',
+    },
+
+    '@media (max-width: 600px)': {
+      sidebar: {
+        height: '20vh', // Height for mobile view
+      },
+    },
+
+    '@media (max-width: 768px)': {
+      sidebar: {
+        height: '20vh', // Height for mobile view
+      },
     },
   },
 

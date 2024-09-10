@@ -233,6 +233,18 @@ export const defaultStyles = {
   reverseSpinning: {
     transform: 'rotate(-360deg)',
   },
+
+  '@media (max-width: 600px)': {
+    sidebar: {
+      height: '20vh', // Height for mobile view
+    },
+  },
+
+  '@media (max-width: 768px)': {
+    sidebar: {
+      height: '20vh', // Height for mobile view
+    },
+  },
   };
 
   export default defaultStyles;
