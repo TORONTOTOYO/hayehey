@@ -91,7 +91,10 @@
             </ul>
           </p>
           <div>
-            <button style={defaultStyles.button}>
+          <button 
+              style={defaultStyles.button}
+              onClick={() => window.open('/morehelp', '_blank')} // Open in a new tab
+            >
               <FontAwesomeIcon icon={faQuestionCircle} /> More Help
             </button>
           </div>

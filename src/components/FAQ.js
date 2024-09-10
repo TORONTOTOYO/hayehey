@@ -5,6 +5,7 @@ import { faPlus, faMinus, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
 const FAQ = () => {
   const [expandedIndex, setExpandedIndex] = useState(null);
+  const [feedback, setFeedback] = useState(Array(4).fill(null)); // Array to track feedback for each FAQ
   const navigate = useNavigate();
 
   const faqs = [
@@ -16,6 +17,12 @@ const FAQ = () => {
 
   const toggleExpansion = (index) => {
     setExpandedIndex(expandedIndex === index ? null : index);
+  };
+
+  const handleFeedback = (index, isHelpful) => {
+    const updatedFeedback = [...feedback];
+    updatedFeedback[index] = isHelpful ? 'Yes' : 'No';
+    setFeedback(updatedFeedback);
   };
 
   const defaultStyles = {
@@ -85,6 +92,25 @@ const FAQ = () => {
       paddingLeft: '1rem',
       borderLeft: '2px solid #00ffff',
     },
+    feedbackContainer: {
+      marginTop: '0.5rem',
+      display: 'flex',
+      gap: '10px',
+      fontSize: '0.8rem',
+    },
+    feedbackButton: {
+      background: '#1b2a3e',
+      color: '#00ffff',
+      border: '1px solid #00ffff',
+      borderRadius: '5px',
+      padding: '5px 10px',
+      cursor: 'pointer',
+    },
+    feedbackMessage: {
+      color: '#00ff00',
+      marginTop: '0.5rem',
+      fontSize: '0.7rem',
+    },
     backButton: {
       position: 'absolute',
       top: '10px',
@@ -110,7 +136,7 @@ const FAQ = () => {
         </h1>
         {faqs.map((faq, index) => (
           <div key={index} style={defaultStyles.questionContainer}>
-            <div 
+            <div
               onClick={() => toggleExpansion(index)}
               style={{
                 ...defaultStyles.question,
@@ -119,19 +145,41 @@ const FAQ = () => {
               onMouseEnter={(e) => e.currentTarget.style.backgroundColor = defaultStyles.questionHover.backgroundColor}
               onMouseLeave={(e) => e.currentTarget.style.backgroundColor = expandedIndex === index ? defaultStyles.expandedQuestion.backgroundColor : defaultStyles.collapsedQuestion.backgroundColor}
             >
-              <FontAwesomeIcon 
-                icon={expandedIndex === index ? faMinus : faPlus} 
+              <FontAwesomeIcon
+                icon={expandedIndex === index ? faMinus : faPlus}
                 style={{
                   ...defaultStyles.icon,
                   ...(expandedIndex === index ? defaultStyles.expandedIcon : defaultStyles.collapsedIcon),
-                }} 
+                }}
               />
               <strong>{faq.question}</strong>
             </div>
             {expandedIndex === index && (
-              <p style={defaultStyles.answer}>
-                {faq.answer}
-              </p>
+              <>
+                <p style={defaultStyles.answer}>
+                  {faq.answer}
+                </p>
+                {feedback[index] === null ? (
+                  <div style={defaultStyles.feedbackContainer}>
+                    <button
+                      style={defaultStyles.feedbackButton}
+                      onClick={() => handleFeedback(index, true)}
+                    >
+                      Yes
+                    </button>
+                    <button
+                      style={defaultStyles.feedbackButton}
+                      onClick={() => handleFeedback(index, false)}
+                    >
+                      No
+                    </button>
+                  </div>
+                ) : (
+                  <p style={defaultStyles.feedbackMessage}>
+                    Thank you for your feedback!
+                  </p>
+                )}
+              </>
             )}
           </div>
         ))}
