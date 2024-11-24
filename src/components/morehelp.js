@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 // Function to generate random styles
 const getRandomStyle = (index) => {
-  const colors = ['#e0e0e0', '#00ffff', '#1b2a3e', '#ff6347', '#ffff00', '#ff00ff'];
+  const colors = ['#FFF6E9'];
   const fonts = ['Arial', 'Courier New', 'Georgia', 'Times New Roman', 'Verdana', 'Tahoma'];
   const fontWeights = ['normal', 'bold', 'bolder', 'lighter'];
   const fontStyles = ['normal', 'italic', 'oblique'];

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const FAQ = () => {
   const [expandedIndex, setExpandedIndex] = useState(null);
@@ -9,8 +10,14 @@ const FAQ = () => {
   const navigate = useNavigate();
 
   const faqs = [
-    { question: 'How do I reset my password?', answer: 'To reset your password, go to the login page and click on "Forgot Password". Follow the instructions to reset your password. Just kidding, this feature isn’t implemented yet. For now, try not to forget your password!' },
-    { question: 'How can I contact support?', answer: 'You can contact support by clicking the "Send Feedback" button in the sidebar or emailing us at fchristianjomar@gmail.com.' },
+    {
+      question: 'How do I reset my password?',
+      answer: 'To reset your password, go to the login page and click on "Forgot Password". Follow the instructions to reset your password. Just kidding, this feature isn’t implemented yet. For now, try not to forget your password!',
+    },
+    {
+      question: 'How can I contact support?',
+      answer: 'You can contact support by clicking the "Send Feedback" button in the sidebar or emailing us at fchristianjomar@gmail.com.',
+    },
     { question: 'Where can I find the latest updates?', answer: 'Last update na to tinatamad na ako' },
     { question: 'How do I delete my account?', answer: 'To delete your account, go to the nearest restroom, place your cellphone in a bowl, and flush it.' },
   ];
@@ -131,19 +138,16 @@ const FAQ = () => {
         <FontAwesomeIcon icon={faArrowLeft} size="lg" />
       </button>
       <div style={defaultStyles.card}>
-        <h1 style={defaultStyles.header}>
-          Frequently Asked Questions
-        </h1>
+        <h1 style={defaultStyles.header}>Frequently Asked Questions</h1>
         {faqs.map((faq, index) => (
           <div key={index} style={defaultStyles.questionContainer}>
-            <div
+            <motion.div
               onClick={() => toggleExpansion(index)}
               style={{
                 ...defaultStyles.question,
                 ...(expandedIndex === index ? defaultStyles.expandedQuestion : defaultStyles.collapsedQuestion),
               }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = defaultStyles.questionHover.backgroundColor}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = expandedIndex === index ? defaultStyles.expandedQuestion.backgroundColor : defaultStyles.collapsedQuestion.backgroundColor}
+              whileHover={{ backgroundColor: defaultStyles.questionHover.backgroundColor }}
             >
               <FontAwesomeIcon
                 icon={expandedIndex === index ? faMinus : faPlus}
@@ -153,34 +157,41 @@ const FAQ = () => {
                 }}
               />
               <strong>{faq.question}</strong>
-            </div>
-            {expandedIndex === index && (
-              <>
-                <p style={defaultStyles.answer}>
-                  {faq.answer}
-                </p>
-                {feedback[index] === null ? (
-                  <div style={defaultStyles.feedbackContainer}>
-                    <button
-                      style={defaultStyles.feedbackButton}
-                      onClick={() => handleFeedback(index, true)}
-                    >
-                      Yes
-                    </button>
-                    <button
-                      style={defaultStyles.feedbackButton}
-                      onClick={() => handleFeedback(index, false)}
-                    >
-                      No
-                    </button>
-                  </div>
-                ) : (
-                  <p style={defaultStyles.feedbackMessage}>
-                    Thank you for your feedback!
-                  </p>
-                )}
-              </>
-            )}
+            </motion.div>
+            <AnimatePresence>
+              {expandedIndex === index && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <p style={defaultStyles.answer}>{faq.answer}</p>
+                  {feedback[index] === null ? (
+                    <div style={defaultStyles.feedbackContainer}>
+                      <motion.button
+                        style={defaultStyles.feedbackButton}
+                        onClick={() => handleFeedback(index, true)}
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                      >
+                        Yes
+                      </motion.button>
+                      <motion.button
+                        style={defaultStyles.feedbackButton}
+                        onClick={() => handleFeedback(index, false)}
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                      >
+                        No
+                      </motion.button>
+                    </div>
+                  ) : (
+                    <p style={defaultStyles.feedbackMessage}>Thank you for your feedback!</p>
+                  )}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         ))}
       </div>
