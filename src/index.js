@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import './index.css';
+import './utils/index.js'; // Ensure you have this file in your project
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

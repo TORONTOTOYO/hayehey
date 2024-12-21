@@ -90,144 +90,210 @@ export default function HomePage() {
         {/* Hero Section */}
         <section
   id="home"
-  className="flex items-center relative py-28 md:py-36 px-4"
+  className="flex items-center relative py-16 px-4 md:py-28"
 >
-  <div className="max-w-[80%] mx-auto px-10 sm:px-16 lg:px-20 rounded-[30px] border border-gray-300 dark:border-gray-700 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md p-20 md:p-28 transform -translate-y-10">
-    <div className="flex flex-col md:flex-row items-center gap-16 md:gap-32">
-      <div className="relative w-80 h-80 md:w-[30rem] md:h-[30rem] rounded-full bg-gradient-to-tr from-blue-600 to-purple-600 flex-shrink-0">
+  <div className="max-w-[80%] sm:max-w-[70%] mx-auto px-6 sm:px-8 rounded-[20px] border border-gray-300 dark:border-gray-700 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md p-10 md:p-20">
+    <div className="flex flex-col md:flex-row items-center gap-12 md:gap-32">
+      <div className="relative w-60 h-60 md:w-80 md:h-80 rounded-full bg-gradient-to-tr from-blue-600 to-purple-600 flex-shrink-0">
         <div className="absolute inset-1 rounded-full bg-white dark:bg-gray-900" />
       </div>
-      <div className="flex flex-col items-center md:items-start gap-8 max-w-2xl">
-        <h2 className="text-5xl md:text-7xl font-bold text-center md:text-left">
-          ROMEL FARAON
-          <span className="block text-blue-600 dark:text-blue-400">DOCTOR</span>
+      <div className="flex flex-col items-center md:items-start gap-6">
+        <h2 className="text-4xl md:text-5xl font-bold text-center md:text-left">
+          ROMEL
+          <span className="block text-blue-600 dark:text-blue-400">FARAON</span>
         </h2>
-        <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 text-center md:text-left leading-relaxed">
-        Lorem ipsum odor amet, consectetuer adipiscing elit. Sapien rhoncus ultrices curae elementum tempor rhoncus. Tortor taciti vulputate placerat pretium integer fringilla. 
+        <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 text-center md:text-left leading-relaxed">
+          Lorem ipsum odor amet, consectetuer adipiscing elit. Sapien rhoncus
+          ultrices curae elementum tempor rhoncus. Tortor taciti vulputate
+          placerat pretium integer fringilla.
         </p>
-        <button className="group flex items-center gap-3 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-full text-lg font-medium transition">
+        <button className="group flex items-center gap-3 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full text-sm md:text-lg font-medium transition">
           Get Started
-          <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition" />
+          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition" />
         </button>
       </div>
     </div>
   </div>
 </section>
 
-{/* Highlights Section */}
-<section id="highlights" className="py-28 md:py-36 flex items-center">
-  <div className="max-w-[80%] mx-auto px-10 sm:px-16 lg:px-20 rounded-[30px] border border-gray-300 dark:border-gray-700 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md p-20 md:p-28 transform -translate-y-8">
-    <h2 className="text-4xl md:text-6xl font-bold text-center mb-24">Highlights</h2>
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
-      {highlights.map((item, index) => (
-        <ScrollAnimation key={index}>
-          <button
-            onClick={() => setSelectedHighlight(index)}
-            className="group flex flex-col items-center gap-6 p-8 rounded-3xl bg-white dark:bg-gray-800 hover:shadow-xl transition duration-300"
-          >
-            <div className="w-24 h-24 flex items-center justify-center text-4xl bg-blue-100 dark:bg-blue-900 rounded-2xl group-hover:scale-110 transition">
-              {item.icon}
+
+
+        {/* Highlights Section */}
+        <section id="highlights" className="py-20 md:py-28 flex items-center">
+          <div className="max-w-[80%] mx-auto px-8 sm:px-12 lg:px-16 rounded-[20px] border border-gray-300 dark:border-gray-700 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md p-16 md:p-20 transform -translate-y-6">
+            <h2 className="text-3xl md:text-5xl font-bold text-center mb-16">Highlights</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {highlights.map((item, index) => (
+                <ScrollAnimation key={index}>
+                  <button
+                    onClick={() => setSelectedHighlight(index)}
+                    className="group flex flex-col items-center gap-4 p-6 rounded-3xl bg-white dark:bg-gray-800 hover:shadow-xl transition duration-300"
+                  >
+                    <div className="w-20 h-20 flex items-center justify-center text-3xl bg-blue-100 dark:bg-blue-900 rounded-2xl group-hover:scale-110 transition">
+                      {item.icon}
+                    </div>
+                    <span className="font-medium text-lg">{item.title}</span>
+                  </button>
+                </ScrollAnimation>
+              ))}
             </div>
-            <span className="font-medium text-lg">{item.title}</span>
-          </button>
-        </ScrollAnimation>
-      ))}
-    </div>
-  </div>
-</section>
-
-{/* About Section */}
-<section
-  id="about"
-  className="py-28 md:py-36 flex items-center bg-gray-50 dark:bg-gray-800/50"
->
-  <div className="max-w-[80%] mx-auto px-10 sm:px-16 lg:px-20 rounded-[30px] border border-gray-300 dark:border-gray-700 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md p-20 md:p-28 transform -translate-y-8">
-    <h2 className="text-4xl md:text-6xl font-bold text-center mb-24">About Us</h2>
-    <div className="grid md:grid-cols-3 gap-12">
-      {[
-        {
-          title: "Our Mission",
-          content:
-            "To provide innovative solutions that empower businesses to thrive in the digital Donec mattis platea in semper adipiscing nibh varius lacus leo. Mi condimentum sed penatibus mattis vulputate nascetur orci facilisis. Montes metus scelerisque curabitur sit nam lacus..",
-          icon: Star,
-        },
-        {
-          title: "Our Vision",
-          content:
-            "Curae nisl lectus justo; sagittis dui ut morbi. Est dignissim sapien augue senectus lorem. Scelerisque odio proin eros cubilia condimentum bibendum dapibus. Himenaeos iaculis dui sapien ante pharetra? Est tortor commodo nisl platea vel augue praesent elementum?",
-          icon: CheckCircle,
-        },
-        {
-          title: "Our Values",
-          content:
-            "Sit ante dignissim proin fermentum blandit dui. Vel vivamus platea dapibus odio fames. Integer per dui platea elit dictumst molestie. Porttitor condimentum leo praesent phasellus est sodales? Enim ridiculus habitant quam justo sodales inceptos. believe in integrity, excellence, and innovation in everything we do.",
-          icon: Star,
-        },
-      ].map((item, index) => (
-        <ScrollAnimation key={index}>
-          <div className="p-12 rounded-3xl bg-white dark:bg-gray-800 hover:shadow-xl transition duration-300">
-            <item.icon className="w-12 h-12 text-blue-600 mb-6" />
-            <h3 className="text-2xl font-bold mb-6">{item.title}</h3>
-            <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-              {item.content}
-            </p>
           </div>
-        </ScrollAnimation>
-      ))}
-    </div>
-  </div>
-</section>
+        </section>
 
-{/* Testimonials Section */}
-<section id="testimonials" className="py-28 md:py-36 flex items-center">
-  <div className="max-w-[80%] mx-auto px-10 sm:px-16 lg:px-20 rounded-[30px] border border-gray-300 dark:border-gray-700 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md p-20 md:p-28 transform -translate-y-8">
-    <h2 className="text-4xl md:text-6xl font-bold text-center mb-24">What Our Clients Say</h2>
-    <div className="grid md:grid-cols-2 gap-12">
-      {[
-        { name: "CJ", role: "CEO, Tech Inc", content: "SUCKING DICK IS THE SATISYING THING A GIRL CAN DO" },
-        { name: "DARIEL", role: "Designer, Creative Co", content: "KAN 2 10" }
-      ].map((item, index) => (
-        <ScrollAnimation key={index}>
-          <div className="p-12 rounded-3xl bg-white dark:bg-gray-800 hover:shadow-xl transition duration-300">
-            <p className="text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">"{item.content}"</p>
-            <div className="flex items-center gap-6">
-              <div className="w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900" />
-              <div>
-                <div className="text-xl font-medium">{item.name}</div>
-                <div className="text-lg text-gray-500 dark:text-gray-400">{item.role}</div>
+
+        <section
+          id="about"
+          className="py-20 md:py-28 flex items-center bg-gray-50 dark:bg-gray-800/50"
+          role="region"
+          aria-labelledby="about-heading"
+        >
+          <div className="max-w-[80%] mx-auto px-8 sm:px-12 lg:px-16 rounded-[20px] border border-gray-300 dark:border-gray-700 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md p-16 md:p-20 transform -translate-y-6">
+            <h2 id="about-heading" className="text-3xl md:text-5xl font-bold text-center mb-16">About Us</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Left Column */}
+              <div className="space-y-8">
+                {/* Our Mission */}
+                <div className="p-8 rounded-3xl bg-white dark:bg-gray-800 hover:shadow-xl transition duration-300">
+                  <Star className="w-10 h-10 text-blue-600 mb-4" aria-hidden="true" />
+                  <h3 className="text-xl font-bold mb-4">Our Mission</h3>
+                  <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                  Quis finibus aliquam commodo massa fames posuere. Faucibus fermentum dapibus volutpat dignissim rhoncus felis nostra diam. Mus ultrices ad fermentum; mollis penatibus nisl. Scelerisque egestas massa nascetur id diam ex cras justo hac.                  </p>
+                </div>
+
+                {/* Our Values */}
+                <div className="p-8 rounded-3xl bg-white dark:bg-gray-800 hover:shadow-xl transition duration-300">
+                  <Star className="w-10 h-10 text-blue-600 mb-4" aria-hidden="true" />
+                  <h3 className="text-xl font-bold mb-4">Our Values</h3>
+                  <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                  Fames tincidunt est interdum est risus dictumst arcu porttitor. Nam sit eros nam vel accumsan dignissim habitasse. Natoque mattis facilisis ante porttitor condimentum accumsan. Sed senectus primis class molestie adipiscing pretium.                  </p>
+                </div>
+              </div>
+
+              {/* Right Column */}
+              <div className="flex items-center">
+                {/* Our Vision */}
+                <div className="p-8 rounded-3xl bg-white dark:bg-gray-800 hover:shadow-xl transition duration-300">
+                  <CheckCircle className="w-10 h-10 text-blue-600 mb-4" aria-hidden="true" />
+                  <h3 className="text-xl font-bold mb-4">Our Vision</h3>
+                  <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                  Volutpat vel pulvinar dictumst ipsum rutrum imperdiet dignissim habitant conubia. Magna tincidunt in egestas etiam magna proin himenaeos. Dolor augue dui quisque congue arcu tortor velit habitant taciti.                  </p>
+                </div>
               </div>
             </div>
           </div>
-        </ScrollAnimation>
-      ))}
-    </div>
-  </div>
-</section>
+        </section>
 
-        {/* Footer */}
-        <footer className="py-16 border-t border-gray-200 dark:border-gray-700">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col items-center gap-8">
-              <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                MARK JOHN QUIDAYAN
-              </h2>
-              <nav>
-                <ul className="flex gap-12">
-                  {["Home", "About", "Testimonials", "Contact"].map((item) => (
-                    <li key={item}>
-                      <a href={`#${item.toLowerCase()}`} className="text-lg text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition">
-                        {item}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-              <div className="text-base text-gray-500 dark:text-gray-400">
-                © 2069 ROMEL FARAON. All rights reserved.
-              </div>
+        {/* Testimonials Section */}
+        <section
+          id="testimonials"
+          className="py-20 md:py-28 flex items-center"
+          aria-labelledby="testimonials-heading"
+        >
+          <div className="max-w-full sm:max-w-[90%] lg:max-w-[80%] mx-auto px-6 sm:px-10 lg:px-16 rounded-[30px] border border-gray-300 dark:border-gray-700 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md p-10 md:p-20 transform -translate-y-8">
+            <h2 id="testimonials-heading" className="text-3xl sm:text-4xl md:text-6xl font-bold text-center mb-16 sm:mb-20">
+              What Our Clients Say
+            </h2>
+            <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8 sm:gap-6">
+              {[{
+                  name: "CJ",
+                  role: "CEO, Tech Inc",
+                  content: "Sucking dick is the most satisfying thing a girl can do to men",
+                  avatar: "/path-to-cj-avatar.jpg",
+                },
+                {
+                  name: "Dariel",
+                  role: "Designer, Creative Co",
+                  content: "Kantotan na Ignition",
+                  avatar: "/path-to-dariel-avatar.jpg",
+                },
+              ].map((item, index) => (
+                <ScrollAnimation key={index} animateIn="fadeIn">
+                  <div className="p-8 sm:p-6 rounded-3xl bg-white dark:bg-gray-800 hover:shadow-xl transition duration-300">
+                    <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 leading-relaxed">"{item.content}"</p>
+                    <div className="flex items-center gap-4 sm:gap-6">
+                      <img
+                        src={item.avatar}
+                        alt={`${item.name}'s avatar`}
+                        className="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover"
+                      />
+                      <div>
+                        <div className="text-lg sm:text-xl font-medium">{item.name}</div>
+                        <div className="text-base sm:text-lg text-gray-500 dark:text-gray-400">{item.role}</div>
+                      </div>
+                    </div>
+                  </div>
+                </ScrollAnimation>
+              ))}
             </div>
           </div>
-        </footer>
+        </section>
+
+
+      {/* Footer */}
+      <footer
+        className="py-16 border-t border-gray-200 dark:border-gray-700"
+        aria-labelledby="footer-heading"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center gap-8">
+            {/* Footer Heading */}
+            <h2
+              id="footer-heading"
+              className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+            >
+              DR. ROMEL FARAON
+            </h2>
+
+            {/* Mobile View Vertical Navigation */}
+            <nav className="block lg:hidden absolute right-4 bottom-16">
+              <ul className="flex flex-col items-center gap-6">
+                {[
+                  { label: "Home", icon: "fa-house", link: "#home" },
+                  { label: "About", icon: "fa-user", link: "#about" },
+                  { label: "Testimonials", icon: "fa-comments", link: "#testimonials" },
+                  { label: "Contact", icon: "fa-envelope", link: "#contact" },
+                ].map(({ label, icon, link }) => (
+                  <li key={label}>
+                    <a
+                      href={link}
+                      className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-400 hover:bg-blue-200 dark:hover:bg-blue-800 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                      aria-label={label}
+                    >
+                      <i className={`fa-solid ${icon} text-lg`} />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            {/* Desktop View Horizontal Navigation */}
+            <nav className="hidden lg:block">
+              <ul className="flex gap-12 justify-center">
+                {[
+                  { label: "Home", link: "#home" },
+                  { label: "About", link: "#about" },
+                  { label: "Testimonials", link: "#testimonials" },
+                  { label: "Contact", link: "#contact" },
+                ].map(({ label, link }) => (
+                  <li key={label}>
+                    <a
+                      href={link}
+                      className="text-lg text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                    >
+                      {label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            {/* Footer Text */}
+            <div className="text-base text-gray-500 dark:text-gray-400">
+              © {new Date().getFullYear()} ROMEL FARAON. All rights reserved.
+            </div>
+          </div>
+        </div>
+      </footer>
       </main>
 
       <AnimatePresence>

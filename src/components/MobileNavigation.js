@@ -30,13 +30,13 @@ export function MobileNavigation() {
         onClick={() => setIsOpen(false)}
       />
 
-      {/* Mobile Menu Panel */}
+      {/* Mobile Menu Panel (opened from the left with max height) */}
       <div
         className={`
-          fixed top-[4rem] right-0 w-64 h-screen bg-white dark:bg-gray-900 
+          fixed top-0 left-0 w-64 h-screen bg-white dark:bg-gray-900 
           shadow-lg z-50 transform transition-transform duration-200 ease-in-out
-          border-l border-gray-200 dark:border-gray-700
-          ${isOpen ? 'translate-x-0' : 'translate-x-full'}
+          border-r border-gray-200 dark:border-gray-700
+          ${isOpen ? 'translate-x-0' : '-translate-x-full'}
         `}
       >
         <nav className="h-full">
