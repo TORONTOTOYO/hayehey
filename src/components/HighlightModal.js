@@ -36,22 +36,22 @@ export function HighlightModal({ highlights, initialIndex, onClose }) {
     }
   };
 
-  // Auto-advance progress
   useEffect(() => {
     if (isPaused) return;
-
+  
     const timer = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
-          goToNext();
+          goToNext(); // This ensures auto-close logic is triggered
           return 0;
         }
         return prev + 0.5;
       });
     }, 30);
-
+  
     return () => clearInterval(timer);
-  }, [isPaused]);
+  }, [isPaused, currentIndex]);
+  
 
   // Keyboard navigation
   useEffect(() => {
@@ -105,23 +105,25 @@ export function HighlightModal({ highlights, initialIndex, onClose }) {
         <div className="relative h-full flex items-center justify-center">
           <div
             className="absolute inset-0 bg-cover bg-center blur-sm opacity-30"
-            style={{ backgroundImage: `url(${highlights[currentIndex].image})` }}
+            style={{
+              backgroundImage: `url(${highlights[currentIndex]?.image || 'path/to/default-image.jpg'})`
+            }}
           />
-
           <div className="relative z-30 h-full w-full flex flex-col items-center justify-center p-8">
             <div className="relative w-full max-w-2xl aspect-video rounded-lg overflow-hidden">
               <img
-                src={highlights[currentIndex].image}
-                alt={highlights[currentIndex].title}
+                src={highlights[currentIndex]?.image || 'path/to/default-image.jpg'}
+                alt={highlights[currentIndex]?.title || 'Default Title'}
                 className="w-full h-full object-cover"
               />
             </div>
-
             <div className="mt-8 text-center max-w-2xl">
               <h3 className="text-2xl font-bold text-white mb-4">
-                {highlights[currentIndex].title}
+                {highlights[currentIndex]?.title || 'Default Title'}
               </h3>
-              <p className="text-lg text-white/90">{highlights[currentIndex].content}</p>
+              <p className="text-lg text-white/90">
+                {highlights[currentIndex]?.content || 'Default Content'}
+              </p>
             </div>
           </div>
 
