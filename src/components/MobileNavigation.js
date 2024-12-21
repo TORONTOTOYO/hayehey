@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
-const navItems = ['HOME', 'ABOUT', 'TESTIMONIALS'];
+const navItems = ['HOME', 'ABOUT', 'HIGHLIGHTS', 'TESTIMONIALS'];
 
 export function MobileNavigation() {
   const [isOpen, setIsOpen] = useState(false);

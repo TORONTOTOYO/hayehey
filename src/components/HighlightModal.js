@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -6,9 +6,7 @@ import { motion } from 'framer-motion';
 const ProgressBar = ({ isActive, progress }) => (
   <div className="h-1 bg-gray-200/30 rounded-full overflow-hidden flex-1">
     <div
-      className={`h-full bg-white transition-all duration-300 ease-linear ${
-        isActive ? '' : 'w-0'
-      }`}
+      className={`h-full bg-white transition-all duration-300 ease-linear ${isActive ? '' : 'w-0'}`}
       style={{ width: `${progress}%` }}
     />
   </div>
@@ -19,6 +17,7 @@ export function HighlightModal({ highlights, initialIndex, onClose }) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [progress, setProgress] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const videoRef = useRef(null);
 
   const goToNext = () => {
     setProgress(0);
@@ -38,20 +37,33 @@ export function HighlightModal({ highlights, initialIndex, onClose }) {
 
   useEffect(() => {
     if (isPaused) return;
-  
-    const timer = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          goToNext(); // This ensures auto-close logic is triggered
-          return 0;
+
+    const updateProgress = () => {
+      const currentContent = highlights[currentIndex];
+      if (currentContent?.video && videoRef.current) {
+        const videoDuration = videoRef.current.duration;
+        const videoCurrentTime = videoRef.current.currentTime;
+        const newProgress = (videoCurrentTime / videoDuration) * 100;
+        setProgress(newProgress);
+
+        if (newProgress >= 100) {
+          goToNext();
         }
-        return prev + 0.5;
-      });
-    }, 30);
-  
+      } else {
+        setProgress((prev) => {
+          if (prev >= 100) {
+            goToNext();
+            return 0;
+          }
+          return prev + 0.5;
+        });
+      }
+    };
+
+    const timer = setInterval(updateProgress, 30);
+
     return () => clearInterval(timer);
-  }, [isPaused, currentIndex]);
-  
+  }, [isPaused, currentIndex, highlights]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -101,7 +113,7 @@ export function HighlightModal({ highlights, initialIndex, onClose }) {
           <X className="w-6 h-6 text-white" />
         </button>
 
-        {/* Main content */}
+        {/* Main content section */}
         <div className="relative h-full flex items-center justify-center">
           <div
             className="absolute inset-0 bg-cover bg-center blur-sm opacity-30"
@@ -111,12 +123,27 @@ export function HighlightModal({ highlights, initialIndex, onClose }) {
           />
           <div className="relative z-30 h-full w-full flex flex-col items-center justify-center p-8">
             <div className="relative w-full max-w-2xl aspect-video rounded-lg overflow-hidden">
-              <img
-                src={highlights[currentIndex]?.image || 'path/to/default-image.jpg'}
-                alt={highlights[currentIndex]?.title || 'Default Title'}
-                className="w-full h-full object-cover"
-              />
+              {highlights[currentIndex]?.video ? (
+                // If there is a video URL, render the video
+                <video
+                  ref={videoRef}
+                  src={highlights[currentIndex].video}
+                  autoPlay
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover"
+                  alt={highlights[currentIndex]?.title || 'Default Title'}
+                />
+              ) : (
+                // Otherwise, render the image
+                <img
+                  src={highlights[currentIndex]?.image || 'path/to/default-image.jpg'}
+                  alt={highlights[currentIndex]?.title || 'Default Title'}
+                  className="w-full h-full object-cover"
+                />
+              )}
             </div>
+
             <div className="mt-8 text-center max-w-2xl">
               <h3 className="text-2xl font-bold text-white mb-4">
                 {highlights[currentIndex]?.title || 'Default Title'}

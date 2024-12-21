@@ -15,13 +15,12 @@ import 'swiper/css/pagination';
 const highlights = [
   {
     title: "Lorem Ipsum 1",
-    icon: "🏆",
-    image: "./highlights/highligh1.jpg",
     content: [
       {
         title: "Lorem Ipsum 2",
         content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        image: "./highlights/highligh2.jpg"
+        image: "./highlights/highligh3.jpg",
+        video: "./highlights/video2.mp4"
       },
       {
         title: "Lorem Ipsum 3",
@@ -37,8 +36,6 @@ const highlights = [
   },
   {
     title: "Lorem Ipsum 5",
-    icon: "🎓",
-    image: "./highlights/highligh5.jpg",
     content: [
       {
         title: "Lorem Ipsum 6",
@@ -48,7 +45,7 @@ const highlights = [
       {
         title: "Lorem Ipsum 7",
         content: "Sed auctor metus a ante scelerisque, non condimentum ante posuere.",
-        image: "./highlights/highligh7.jpg"
+        video: "./highlights/video3.mp4"
       },
       {
         title: "Lorem Ipsum 8",
@@ -59,8 +56,6 @@ const highlights = [
   },
   {
     title: "Lorem Ipsum 9",
-    icon: "💼",
-    image: "./highlights/highligh9.jpg",
     content: [
       {
         title: "Lorem Ipsum 10",
@@ -75,14 +70,12 @@ const highlights = [
       {
         title: "Lorem Ipsum 12",
         content: "Aliquam erat volutpat. Integer laoreet lectus a felis ultricies.",
-        image: "./highlights/highligh12.jpg"
+        video: "./highlights/video4.mp4"
       }
     ]
   },
   {
     title: "Lorem Ipsum 13",
-    icon: "🤝",
-    image: "./highlights/highligh8.jpg",
     content: [
       {
         title: "Lorem Ipsum 14",
@@ -92,7 +85,7 @@ const highlights = [
       {
         title: "Lorem Ipsum 15",
         content: "Nunc vitae sapien interdum, vehicula lectus ut, sodales felis.",
-        image: "./highlights/highligh13.jpg"
+        video: "./highlights/video5.mp4"
       },
       {
         title: "Lorem Ipsum 16",
@@ -119,15 +112,21 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             {/* Logo Section */}
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              DR. RF
-            </h1>
+            <a href="#" onClick={() => {
+                  window.history.replaceState(null, "", window.location.pathname);
+                  window.location.reload();  // Reload the page
+                }}
+              >
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                DR. RF
+              </h1>
+            </a>
 
             {/* Navigation & Theme Toggle */}
             <div className="flex items-center gap-8">
               <nav className="hidden md:block">
                 <ul className="flex gap-12">
-                  {["home", "about", "feedback"].map((section) => (
+                  {["home", "about", "highlights", "feedback"].map((section) => (
                     <li key={section}>
                       <button
                         onClick={() => handleScroll(section)}
@@ -151,7 +150,6 @@ export default function HomePage() {
         </div>
       </header>
 
-
       <main className="pt-20">
         {/* Hero Section */}
         <section
@@ -173,7 +171,10 @@ export default function HomePage() {
                   ultrices curae elementum tempor rhoncus. Tortor taciti vulputate
                   placerat pretium integer fringilla.
                 </p>
-                <button className="group flex items-center gap-3 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full text-sm md:text-lg font-medium transition">
+                <button
+                  onClick={() => handleScroll("highlights")}  // Scroll to 'highlights' section
+                  className="group flex items-center gap-3 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full text-sm md:text-lg font-medium transition"
+                >
                   Get Started
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition" />
                 </button>
