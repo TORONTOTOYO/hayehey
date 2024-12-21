@@ -58,20 +58,6 @@ export function MobileNavigation() {
               </li>
             ))}
           </ul>
-
-          {/* Additional Mobile Menu Content */}
-          <div className="px-6 py-4 border-t border-gray-200 dark:border-gray-700">
-            <button
-              className="
-                w-full px-4 py-2 text-sm font-medium text-white
-                bg-blue-600 hover:bg-blue-700 
-                rounded-lg transition-colors
-              "
-              onClick={() => setIsOpen(false)}
-            >
-              Contact Us
-            </button>
-          </div>
         </nav>
       </div>
     </div>
