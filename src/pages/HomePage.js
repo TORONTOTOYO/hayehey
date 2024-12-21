@@ -196,14 +196,20 @@ export default function HomePage() {
             <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8 sm:gap-6">
               {[{
                   name: "CJ",
-                  role: "CEO, Tech Inc",
-                  content: "Sucking dick is the most satisfying thing a girl can do",
+                  role: "CEO, Creative Co",
+                  content: "Class facilisi curae curae cras mattis varius turpis. Id hendrerit neque libero montes sit quis nunc.",
                   avatar: "/path-to-cj-avatar.jpg",
                 },
                 {
                   name: "Dariel",
-                  role: "Designer, Creative Co",
-                  content: "Kantotan na Ignition",
+                  role: "Lead Designer, Creative Co",
+                  content: "Ad platea ornare quis risus ultrices scelerisque bibendum amet fringilla.",
+                  avatar: "/path-to-dariel-avatar.jpg",
+                },
+                {
+                  name: "Tyron",
+                  role: "Admin, Creative Co",
+                  content: "Gravida pharetra pellentesque sodales, pretium himenaeos justo luctus.",
                   avatar: "/path-to-dariel-avatar.jpg",
                 },
               ].map((item, index) => (
