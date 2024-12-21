@@ -230,67 +230,52 @@ export default function HomePage() {
 
 
       {/* Footer */}
-      <footer
-        className="py-16 border-t border-gray-200 dark:border-gray-700"
-        aria-labelledby="footer-heading"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center gap-8">
-            {/* Footer Heading */}
-            <h2
-              id="footer-heading"
-              className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+      <footer className="py-8 bg-gray-800 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          {/* Footer Heading */}
+          <h2 className="text-2xl font-bold mb-4">
+            DR. ROMEL FARAON
+          </h2>
+
+          {/* Social Media Icons */}
+          <div className="flex justify-center gap-8 mb-4">
+            <a
+              href="https://facebook.com"
+              className="text-white hover:text-blue-500 transition"
+              aria-label="Facebook"
+              target="_blank" rel="noopener noreferrer"
             >
-              DR. ROMEL FARAON
-            </h2>
+              <i className="fa-brands fa-facebook-f text-2xl" />
+            </a>
+            <a
+              href="https://instagram.com"
+              className="text-white hover:text-pink-500 transition"
+              aria-label="Instagram"
+              target="_blank" rel="noopener noreferrer"
+            >
+              <i className="fa-brands fa-instagram text-2xl" />
+            </a>
+            <a
+              href="https://twitter.com"
+              className="text-white hover:text-blue-400 transition"
+              aria-label="Twitter"
+              target="_blank" rel="noopener noreferrer"
+            >
+              <i className="fa-brands fa-twitter text-2xl" />
+            </a>
+            <a
+              href="https://tiktok.com"
+              className="text-white hover:text-black transition"
+              aria-label="TikTok"
+              target="_blank" rel="noopener noreferrer"
+            >
+              <i className="fa-brands fa-tiktok text-2xl" />
+            </a>
+          </div>
 
-            {/* Mobile View Vertical Navigation */}
-            <nav className="block lg:hidden absolute right-4 bottom-16">
-              <ul className="flex flex-col items-center gap-6">
-                {[
-                  { label: "Home", icon: "fa-house", link: "#home" },
-                  { label: "About", icon: "fa-user", link: "#about" },
-                  { label: "Testimonials", icon: "fa-comments", link: "#testimonials" },
-                  { label: "Contact", icon: "fa-envelope", link: "#contact" },
-                ].map(({ label, icon, link }) => (
-                  <li key={label}>
-                    <a
-                      href={link}
-                      className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-400 hover:bg-blue-200 dark:hover:bg-blue-800 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
-                      aria-label={label}
-                    >
-                      <i className={`fa-solid ${icon} text-lg`} />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-
-            {/* Desktop View Horizontal Navigation */}
-            <nav className="hidden lg:block">
-              <ul className="flex gap-12 justify-center">
-                {[
-                  { label: "Home", link: "#home" },
-                  { label: "About", link: "#about" },
-                  { label: "Testimonials", link: "#testimonials" },
-                  { label: "Contact", link: "#contact" },
-                ].map(({ label, link }) => (
-                  <li key={label}>
-                    <a
-                      href={link}
-                      className="text-lg text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
-                    >
-                      {label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-
-            {/* Footer Text */}
-            <div className="text-base text-gray-500 dark:text-gray-400">
-              © {new Date().getFullYear()} ROMEL FARAON. All rights reserved.
-            </div>
+          {/* Footer Text */}
+          <div className="text-base">
+            © {new Date().getFullYear()} ROMEL FARAON. All rights reserved.
           </div>
         </div>
       </footer>
