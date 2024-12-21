@@ -228,58 +228,48 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* Footer */}
+{/* Footer */}
+<footer className="py-8 bg-white/70 dark:bg-gray-800/70 text-gray-900 dark:text-white backdrop-blur-md">
+  <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16 text-center">
+    <div className="flex justify-center gap-8 mb-4">
+      <a
+        href="https://facebook.com"
+        className="text-gray-900 dark:text-white hover:text-blue-500 transition"
+        aria-label="Facebook"
+      >
+        <i className="fa-brands fa-facebook-f text-2xl" />
+      </a>
+      <a
+        href="https://instagram.com"
+        className="text-gray-900 dark:text-white hover:text-pink-500 transition"
+        aria-label="Instagram"
+      >
+        <i className="fa-brands fa-instagram text-2xl" />
+      </a>
+      <a
+        href="https://twitter.com"
+        className="text-gray-900 dark:text-white hover:text-blue-400 transition"
+        aria-label="Twitter"
+      >
+        <i className="fa-brands fa-twitter text-2xl" />
+      </a>
+      <a
+        href="https://tiktok.com"
+        className="text-gray-900 dark:text-white hover:text-black transition"
+        aria-label="TikTok"
+      >
+        <i className="fa-brands fa-tiktok text-2xl" />
+      </a>
+    </div>
+    <p className="text-sm sm:text-base mb-4">
+      © {new Date().getFullYear()} Dr. RF. All Rights Reserved.
+    </p>
+  </div>
+</footer>
 
-      {/* Footer */}
-      <footer className="py-8 bg-gray-800 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          {/* Footer Heading */}
-          <h2 className="text-2xl font-bold mb-4">
-            DR. ROMEL FARAON
-          </h2>
-
-          {/* Social Media Icons */}
-          <div className="flex justify-center gap-8 mb-4">
-            <a
-              href="https://facebook.com"
-              className="text-white hover:text-blue-500 transition"
-              aria-label="Facebook"
-              target="_blank" rel="noopener noreferrer"
-            >
-              <i className="fa-brands fa-facebook-f text-2xl" />
-            </a>
-            <a
-              href="https://instagram.com"
-              className="text-white hover:text-pink-500 transition"
-              aria-label="Instagram"
-              target="_blank" rel="noopener noreferrer"
-            >
-              <i className="fa-brands fa-instagram text-2xl" />
-            </a>
-            <a
-              href="https://twitter.com"
-              className="text-white hover:text-blue-400 transition"
-              aria-label="Twitter"
-              target="_blank" rel="noopener noreferrer"
-            >
-              <i className="fa-brands fa-twitter text-2xl" />
-            </a>
-            <a
-              href="https://tiktok.com"
-              className="text-white hover:text-black transition"
-              aria-label="TikTok"
-              target="_blank" rel="noopener noreferrer"
-            >
-              <i className="fa-brands fa-tiktok text-2xl" />
-            </a>
-          </div>
-
-          {/* Footer Text */}
-          <div className="text-base">
-            © {new Date().getFullYear()} ROMEL FARAON. All rights reserved.
-          </div>
-        </div>
-      </footer>
       </main>
+
 
       <AnimatePresence>
         {selectedHighlight !== null && (
