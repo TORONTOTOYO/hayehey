@@ -197,7 +197,7 @@ export default function HomePage() {
               {[{
                   name: "CJ",
                   role: "CEO, Tech Inc",
-                  content: "Sucking dick is the most satisfying thing a girl can do to men",
+                  content: "Sucking dick is the most satisfying thing a girl can do",
                   avatar: "/path-to-cj-avatar.jpg",
                 },
                 {
