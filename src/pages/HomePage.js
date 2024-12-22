@@ -205,32 +205,38 @@ export default function HomePage() {
           <ScrollAnimation key={index}>
             <button
               onClick={() => setSelectedHighlight(index)} // Update selected highlight
-              className={`group flex flex-col items-center gap-4 p-6 rounded-3xl transition duration-300 ${
+              className={`group flex flex-col items-center gap-4 transition duration-300 ${
                 selectedHighlight === index
-                  ? "bg-blue-300 text-white shadow-lg" // Apply style if selected
-                  : "bg-white dark:bg-gray-800 hover:shadow-xl"
+                  ? "text-white shadow-lg" // Apply style if selected
+                  : ""
               }`}
             >
-              <div className="relative w-20 h-20 flex items-center justify-center text-3xl bg-blue-100 dark:bg-blue-900 rounded-2xl overflow-hidden">
-                {isVideo ? (
-                  // Render video thumbnail
-                  <video
-                    src={firstContent.video}
-                    className="w-full h-full object-cover"
-                    muted
-                    playsInline
-                    preload="metadata"
-                  />
-                ) : (
-                  // Render image thumbnail
-                  <img
-                    src={firstContent?.image || "path/to/default-image.jpg"}
-                    alt={firstContent?.title || "Default Title"}
-                    className="w-full h-full object-cover"
-                  />
-                )}
+              {/* 3D Circular Effect */}
+              <div className="relative flex items-center justify-center">
+                {/* Outer Small Circular Layer with hover effect */}
+                <div className="absolute w-24 h-24 rounded-full bg-gray-100 dark:bg-gray-100 z-0 group-hover:scale-110 group-hover:bg-gray-200 dark:group-hover:bg-gray-200 transition-transform duration-300"></div>
+                {/* Main Circular Thumbnail with hover effect */}
+                <div className="relative w-24 h-24 rounded-full flex items-center justify-center bg-blue-100 dark:bg-blue-900 border border-gray-300 dark:border-gray-700 overflow-hidden z-10 group-hover:scale-110 group-hover:shadow-lg transition-transform duration-300">
+                  {isVideo ? (
+                    // Render video thumbnail
+                    <video
+                      src={firstContent.video}
+                      className="w-full h-full object-cover"
+                      muted
+                      playsInline
+                      preload="metadata"
+                    />
+                  ) : (
+                    // Render image thumbnail
+                    <img
+                      src={firstContent?.image || "path/to/default-image.jpg"}
+                      alt={firstContent?.title || "Default Title"}
+                      className="w-full h-full object-cover"
+                    />
+                  )}
+                </div>
               </div>
-              <span className="font-medium text-lg">{item.title}</span>
+              <span className="font-medium text-lg text-center">{item.title}</span>
             </button>
           </ScrollAnimation>
         );
@@ -239,84 +245,83 @@ export default function HomePage() {
   </div>
 </section>
 
-
         <section
-  id="about"
-  className="py-20 md:py-28 flex items-center bg-gray-50 dark:bg-gray-800/50"
-  role="region"
-  aria-labelledby="about-heading"
->
-  <motion.div
-    className="max-w-[80%] mx-auto px-8 sm:px-12 lg:px-16 rounded-[20px] border border-gray-300 dark:border-gray-700 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md p-16 md:p-20"
-    initial={{ opacity: 0, y: 50 }} // Initial state off-screen
-    whileInView={{ opacity: 1, y: 0 }}  // Animation when in viewport
-    viewport={{ once: true }}  // Trigger animation once on view
-    transition={{ duration: 0.8 }}
-  >
-    <h2 id="about-heading" className="text-3xl md:text-5xl font-bold text-center mb-16">About Us</h2>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-      {/* Left Column */}
-      <motion.div
-        className="space-y-8"
-        initial={{ opacity: 0, x: -50 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        viewport={{ once: true }}
-      >
-        {/* Our Mission */}
-        <motion.div
-          className="p-8 rounded-3xl bg-white dark:bg-gray-800 hover:shadow-xl transition duration-300"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          id="about"
+          className="py-20 md:py-28 flex items-center bg-gray-50 dark:bg-gray-800/50"
+          role="region"
+          aria-labelledby="about-heading"
         >
-          <Star className="w-10 h-10 text-blue-600 mb-4" aria-hidden="true" />
-          <h3 className="text-xl font-bold mb-4">Our Mission</h3>
-          <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-            Quis finibus aliquam commodo massa fames posuere. Faucibus fermentum dapibus volutpat dignissim rhoncus felis nostra diam. Mus ultrices ad fermentum; mollis penatibus nisl. Scelerisque egestas massa nascetur id diam ex cras justo hac.
-          </p>
-        </motion.div>
+          <motion.div
+            className="max-w-[80%] mx-auto px-8 sm:px-12 lg:px-16 rounded-[20px] border border-gray-300 dark:border-gray-700 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md p-16 md:p-20"
+            initial={{ opacity: 0, y: 50 }} // Initial state off-screen
+            whileInView={{ opacity: 1, y: 0 }}  // Animation when in viewport
+            viewport={{ once: true }}  // Trigger animation once on view
+            transition={{ duration: 0.8 }}
+          >
+            <h2 id="about-heading" className="text-3xl md:text-5xl font-bold text-center mb-16">About Us</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Left Column */}
+              <motion.div
+                className="space-y-8"
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                {/* Our Mission */}
+                <motion.div
+                  className="p-8 rounded-3xl bg-white dark:bg-gray-800 hover:shadow-xl transition duration-300"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                >
+                  <Star className="w-10 h-10 text-blue-600 mb-4" aria-hidden="true" />
+                  <h3 className="text-xl font-bold mb-4">Our Mission</h3>
+                  <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Quis finibus aliquam commodo massa fames posuere. Faucibus fermentum dapibus volutpat dignissim rhoncus felis nostra diam. Mus ultrices ad fermentum; mollis penatibus nisl. Scelerisque egestas massa nascetur id diam ex cras justo hac.
+                  </p>
+                </motion.div>
 
-        {/* Our Values */}
-        <motion.div
-          className="p-8 rounded-3xl bg-white dark:bg-gray-800 hover:shadow-xl transition duration-300"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <Star className="w-10 h-10 text-blue-600 mb-4" aria-hidden="true" />
-          <h3 className="text-xl font-bold mb-4">Our Values</h3>
-          <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-            Fames tincidunt est interdum est risus dictumst arcu porttitor. Nam sit eros nam vel accumsan dignissim habitasse. Natoque mattis facilisis ante porttitor condimentum accumsan. Sed senectus primis class molestie adipiscing pretium.
-          </p>
-        </motion.div>
-      </motion.div>
+                {/* Our Values */}
+                <motion.div
+                  className="p-8 rounded-3xl bg-white dark:bg-gray-800 hover:shadow-xl transition duration-300"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                >
+                  <Star className="w-10 h-10 text-blue-600 mb-4" aria-hidden="true" />
+                  <h3 className="text-xl font-bold mb-4">Our Values</h3>
+                  <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Fames tincidunt est interdum est risus dictumst arcu porttitor. Nam sit eros nam vel accumsan dignissim habitasse. Natoque mattis facilisis ante porttitor condimentum accumsan. Sed senectus primis class molestie adipiscing pretium.
+                  </p>
+                </motion.div>
+              </motion.div>
 
-      {/* Right Column */}
-      <motion.div
-        className="flex items-center"
-        initial={{ opacity: 0, x: 50 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, delay: 0.6 }}
-        viewport={{ once: true }}
-      >
-        {/* Our Vision */}
-        <motion.div
-          className="p-8 rounded-3xl bg-white dark:bg-gray-800 hover:shadow-xl transition duration-300"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-        >
-          <CheckCircle className="w-10 h-10 text-blue-600 mb-4" aria-hidden="true" />
-          <h3 className="text-xl font-bold mb-4">Our Vision</h3>
-          <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-            Volutpat vel pulvinar dictumst ipsum rutrum imperdiet dignissim habitant conubia. Magna tincidunt in egestas etiam magna proin himenaeos. Dolor augue dui quisque congue arcu tortor velit habitant taciti.
-          </p>
-        </motion.div>
-      </motion.div>
-    </div>
-  </motion.div>
-</section>
+              {/* Right Column */}
+              <motion.div
+                className="flex items-center"
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                viewport={{ once: true }}
+              >
+                {/* Our Vision */}
+                <motion.div
+                  className="p-8 rounded-3xl bg-white dark:bg-gray-800 hover:shadow-xl transition duration-300"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.8 }}
+                >
+                  <CheckCircle className="w-10 h-10 text-blue-600 mb-4" aria-hidden="true" />
+                  <h3 className="text-xl font-bold mb-4">Our Vision</h3>
+                  <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Volutpat vel pulvinar dictumst ipsum rutrum imperdiet dignissim habitant conubia. Magna tincidunt in egestas etiam magna proin himenaeos. Dolor augue dui quisque congue arcu tortor velit habitant taciti.
+                  </p>
+                </motion.div>
+              </motion.div>
+            </div>
+          </motion.div>
+        </section>
 
         <section
       id="feedback"
