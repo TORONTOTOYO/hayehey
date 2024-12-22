@@ -104,15 +104,6 @@ export function HighlightModal({ highlights, initialIndex, onClose }) {
   const currentContent = highlights[currentIndex] || {};
   const hasVideo = Boolean(currentContent.video && !videoError);
 
-  // Track touch events to simulate pause on hold
-  const handleTouchStart = () => {
-    setIsPaused(true); // Set the paused state when holding
-  };
-
-  const handleTouchEnd = () => {
-    setIsPaused(false); // Reset paused state when the touch ends
-  };
-
   return (
     <motion.div
       className="fixed inset-0 bg-black/90 flex items-center justify-center z-50"
@@ -192,8 +183,6 @@ export function HighlightModal({ highlights, initialIndex, onClose }) {
                   playsInline
                   onError={handleVideoError}
                   className="w-full h-full object-cover"
-                  onTouchStart={handleTouchStart}
-                  onTouchEnd={handleTouchEnd}
                 />
               ) : (
                 <img
