@@ -8,6 +8,7 @@ import { ArrowRight, Star, CheckCircle } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { motion } from 'framer-motion';
+import AppointmentModal from '../components/AppointmentModal';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -97,11 +98,21 @@ const highlights = [
 
 export default function HomePage() {
   const [selectedHighlight, setSelectedHighlight] = useState(null);
+  const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false);
+
   const handleScroll = (sectionId) => {
     const targetSection = document.getElementById(sectionId);
     if (targetSection) {
       targetSection.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const openAppointmentModal = () => {
+    setIsAppointmentModalOpen(true);
+  };
+
+  const closeAppointmentModal = () => {
+    setIsAppointmentModalOpen(false);
   };
   
 
@@ -172,10 +183,10 @@ export default function HomePage() {
                   placerat pretium integer fringilla.
                 </p>
                 <button
-                  onClick={() => handleScroll("highlights")}  // Scroll to 'highlights' section
+                  onClick={openAppointmentModal}
                   className="group flex items-center gap-3 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full text-sm md:text-lg font-medium transition"
                 >
-                  Get Started
+                  Book Now
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition" />
                 </button>
               </div>
@@ -444,6 +455,12 @@ export default function HomePage() {
           />
         )}
       </AnimatePresence>
+
+      
+      <AppointmentModal
+        isOpen={isAppointmentModalOpen}
+        onClose={closeAppointmentModal}
+      />
     </div>
   );
-}
+}   
