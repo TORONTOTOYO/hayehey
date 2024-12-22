@@ -79,7 +79,7 @@ const AppointmentBooking = () => {
       transition={{ duration: 0.5 }}
       className="backdrop-blur-xl bg-white/20 dark:bg-gray-800/20 p-8 rounded-3xl shadow-2xl max-w-lg mx-auto"
     >
-      <h3 className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+      <h3 className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-teal-500 to-cyan-500 bg-clip-text text-transparent">
         Book an Appointment
       </h3>
       <div className="mb-6">
@@ -89,7 +89,7 @@ const AppointmentBooking = () => {
               key={num}
               className={`w-3 h-3 rounded-full ${
                 step >= num
-                  ? 'bg-blue-500'
+                  ? 'bg-cyan-500'
                   : 'bg-gray-500'
               }`}
             />
@@ -141,7 +141,7 @@ const AppointmentBooking = () => {
               <button
                 type="button"
                 onClick={handleNext}
-                className={`${buttonClasses} w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700`}
+                className={`${buttonClasses} w-full bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700`}
               >
                 Next
               </button>
@@ -210,7 +210,7 @@ const AppointmentBooking = () => {
                 <button
                   type="button"
                   onClick={handleNext}
-                  className={`${buttonClasses} flex-1 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700`}
+                  className={`${buttonClasses} flex-1 bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700`}
                 >
                   Next
                 </button>
@@ -252,7 +252,7 @@ const AppointmentBooking = () => {
                 <button
                   type="button"
                   onClick={handleNext}
-                  className={`${buttonClasses} flex-1 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700`}
+                  className={`${buttonClasses} flex-1 bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700`}
                 >
                   Review
                 </button>

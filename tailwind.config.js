@@ -17,6 +17,11 @@ module.exports = {
     },
     extend: {
       colors: {
+        creamBeige: '#F5F0E1', // Light warm neutral
+        latte: '#D8C3A5',       // Soft tan
+        espresso: '#8E7D6A',    // Rich brown
+        mocha: '#3E2723',       // Dark brown
+        darkRoast: '#2C1E1B',   // Very dark brown
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
