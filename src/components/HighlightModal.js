@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-// Progress bar component
 const ProgressBar = ({ isActive, progress }) => (
   <div className="h-1 bg-gray-200/30 rounded-full overflow-hidden flex-1">
     <div
@@ -12,15 +11,17 @@ const ProgressBar = ({ isActive, progress }) => (
   </div>
 );
 
-// HighlightModal Component
 export function HighlightModal({ highlights, initialIndex, onClose }) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [progress, setProgress] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [videoError, setVideoError] = useState(false);
   const videoRef = useRef(null);
+  const backgroundVideoRef = useRef(null);
 
   const goToNext = () => {
     setProgress(0);
+    setVideoError(false);
     if (currentIndex < highlights.length - 1) {
       setCurrentIndex((prev) => prev + 1);
     } else {
@@ -30,17 +31,39 @@ export function HighlightModal({ highlights, initialIndex, onClose }) {
 
   const goToPrevious = () => {
     setProgress(0);
+    setVideoError(false);
     if (currentIndex > 0) {
       setCurrentIndex((prev) => prev - 1);
     }
   };
 
+  const togglePause = () => {
+    setIsPaused((prev) => {
+      const newPausedState = !prev;
+      if (videoRef.current && !videoError) {
+        if (newPausedState) {
+          videoRef.current.pause();
+        } else {
+          videoRef.current.play().catch(() => setVideoError(true));
+        }
+      }
+      return newPausedState;
+    });
+  };
+
   useEffect(() => {
-    if (isPaused) return;
+    if (backgroundVideoRef.current) {
+      backgroundVideoRef.current.pause();
+    }
+    setVideoError(false);
+  }, [currentIndex]);
+
+  useEffect(() => {
+    if (isPaused || videoError) return;
 
     const updateProgress = () => {
       const currentContent = highlights[currentIndex];
-      if (currentContent?.video && videoRef.current) {
+      if (currentContent?.video && videoRef.current && !videoError) {
         const videoDuration = videoRef.current.duration;
         const videoCurrentTime = videoRef.current.currentTime;
         const newProgress = (videoCurrentTime / videoDuration) * 100;
@@ -61,11 +84,9 @@ export function HighlightModal({ highlights, initialIndex, onClose }) {
     };
 
     const timer = setInterval(updateProgress, 30);
-
     return () => clearInterval(timer);
-  }, [isPaused, currentIndex, highlights]);
+  }, [currentIndex, highlights, isPaused, videoError]);
 
-  // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'ArrowRight') goToNext();
@@ -75,6 +96,13 @@ export function HighlightModal({ highlights, initialIndex, onClose }) {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [goToNext, goToPrevious, onClose]);
+
+  const handleVideoError = () => {
+    setVideoError(true);
+  };
+
+  const currentContent = highlights[currentIndex] || {};
+  const hasVideo = Boolean(currentContent.video && !videoError);
 
   return (
     <motion.div
@@ -90,10 +118,7 @@ export function HighlightModal({ highlights, initialIndex, onClose }) {
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.95, opacity: 0 }}
         onClick={(e) => e.stopPropagation()}
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
       >
-        {/* Progress bars */}
         <div className="absolute top-0 left-0 right-0 z-30 p-4 flex gap-2">
           {highlights.map((_, idx) => (
             <ProgressBar
@@ -104,41 +129,65 @@ export function HighlightModal({ highlights, initialIndex, onClose }) {
           ))}
         </div>
 
-        {/* Close button */}
+        {hasVideo && (
+          <button
+            onClick={togglePause}
+            aria-label={isPaused ? 'Play' : 'Pause'}
+            className="absolute top-6 right-16 z-40 p-2 rounded-full bg-black/20 hover:bg-black/40 transition-colors focus:outline-none focus:ring-2 focus:ring-white"
+          >
+            {isPaused ? (
+              <Play className="w-6 h-6 text-white" />
+            ) : (
+              <Pause className="w-6 h-6 text-white" />
+            )}
+          </button>
+        )}
+
         <button
           onClick={onClose}
           aria-label="Close"
-          className="absolute top-2 right-4 z-40 p-2 rounded-full bg-black/20 hover:bg-black/40 transition-colors focus:outline-none focus:ring-2 focus:ring-white"
+          className="absolute top-6 right-4 z-40 p-2 rounded-full bg-black/20 hover:bg-black/40 transition-colors focus:outline-none focus:ring-2 focus:ring-white"
         >
           <X className="w-6 h-6 text-white" />
         </button>
 
-        {/* Main content section */}
         <div className="relative h-full flex items-center justify-center">
-          <div
-            className="absolute inset-0 bg-cover bg-center blur-sm opacity-30"
-            style={{
-              backgroundImage: `url(${highlights[currentIndex]?.image || 'path/to/default-image.jpg'})`
-            }}
-          />
+          <div className="absolute inset-0">
+            {hasVideo ? (
+              <video
+                ref={backgroundVideoRef}
+                src={currentContent.video}
+                muted
+                playsInline
+                onError={handleVideoError}
+                className="w-full h-full object-cover opacity-30"
+              />
+            ) : (
+              <div
+                className="w-full h-full bg-cover bg-center blur-sm opacity-30"
+                style={{
+                  backgroundImage: `url(${currentContent.image || '/api/placeholder/1280/720'})`
+                }}
+              />
+            )}
+          </div>
+
           <div className="relative z-30 h-full w-full flex flex-col items-center justify-center p-8">
             <div className="relative w-full max-w-2xl aspect-video rounded-lg overflow-hidden">
-              {highlights[currentIndex]?.video ? (
-                // If there is a video URL, render the video
+              {hasVideo ? (
                 <video
                   ref={videoRef}
-                  src={highlights[currentIndex].video}
+                  src={currentContent.video}
                   autoPlay
                   muted
                   playsInline
+                  onError={handleVideoError}
                   className="w-full h-full object-cover"
-                  alt={highlights[currentIndex]?.title || 'Default Title'}
                 />
               ) : (
-                // Otherwise, render the image
                 <img
-                  src={highlights[currentIndex]?.image || 'path/to/default-image.jpg'}
-                  alt={highlights[currentIndex]?.title || 'Default Title'}
+                  src={currentContent.image || '/api/placeholder/1280/720'}
+                  alt={currentContent.title || 'Content'}
                   className="w-full h-full object-cover"
                 />
               )}
@@ -146,15 +195,14 @@ export function HighlightModal({ highlights, initialIndex, onClose }) {
 
             <div className="mt-8 text-center max-w-2xl">
               <h3 className="text-2xl font-bold text-white mb-4">
-                {highlights[currentIndex]?.title || 'Default Title'}
+                {currentContent.title || 'Content'}
               </h3>
               <p className="text-lg text-white/90">
-                {highlights[currentIndex]?.content || 'Default Content'}
+                {currentContent.content || ''}
               </p>
             </div>
           </div>
 
-          {/* Navigation arrows */}
           <button
             onClick={goToPrevious}
             aria-label="Previous"

@@ -19,7 +19,6 @@ const highlights = [
       {
         title: "Lorem Ipsum 2",
         content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        image: "./highlights/highligh3.jpg",
         video: "./highlights/video2.mp4"
       },
       {
@@ -104,6 +103,7 @@ export default function HomePage() {
       targetSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
+  
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
@@ -184,37 +184,50 @@ export default function HomePage() {
         </section>
 
         <section id="highlights" className="py-20 md:py-28 flex items-center">
-          <div className="max-w-[80%] mx-auto px-8 sm:px-12 lg:px-16 rounded-[20px] border border-gray-300 dark:border-gray-700 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md p-16 md:p-20 transform -translate-y-6">
-            <h2 className="text-3xl md:text-5xl font-bold text-center mb-16">Highlights</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {highlights.map((item, index) => {
-                const firstContent = item.content[0]; // Get the first content of the highlight
-                return (
-                  <ScrollAnimation key={index}>
-                    <button
-                      onClick={() => setSelectedHighlight(index)} // Update selected highlight
-                      className={`group flex flex-col items-center gap-4 p-6 rounded-3xl transition duration-300 ${
-                        selectedHighlight === index
-                          ? "bg-blue-300 text-white shadow-lg" // Apply style if selected
-                          : "bg-white dark:bg-gray-800 hover:shadow-xl"
-                      }`}
-                    >
-                      <div className="relative w-20 h-20 flex items-center justify-center text-3xl bg-blue-100 dark:bg-blue-900 rounded-2xl overflow-hidden">
-                        {/* Display the first image */}
-                        <img
-                          src={firstContent?.image || "path/to/default-image.jpg"}
-                          alt={firstContent?.title || "Default Title"}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <span className="font-medium text-lg">{item.title}</span>
-                    </button>
-                  </ScrollAnimation>
-                );
-              })}
-            </div>
-          </div>
-        </section>
+  <div className="max-w-[80%] mx-auto px-8 sm:px-12 lg:px-16 rounded-[20px] border border-gray-300 dark:border-gray-700 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md p-16 md:p-20 transform -translate-y-6">
+    <h2 className="text-3xl md:text-5xl font-bold text-center mb-16">Highlights</h2>
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+      {highlights.map((item, index) => {
+        const firstContent = item.content[0]; // Get the first content of the highlight
+        const isVideo = !!firstContent?.video; // Check if the first content is a video
+        return (
+          <ScrollAnimation key={index}>
+            <button
+              onClick={() => setSelectedHighlight(index)} // Update selected highlight
+              className={`group flex flex-col items-center gap-4 p-6 rounded-3xl transition duration-300 ${
+                selectedHighlight === index
+                  ? "bg-blue-300 text-white shadow-lg" // Apply style if selected
+                  : "bg-white dark:bg-gray-800 hover:shadow-xl"
+              }`}
+            >
+              <div className="relative w-20 h-20 flex items-center justify-center text-3xl bg-blue-100 dark:bg-blue-900 rounded-2xl overflow-hidden">
+                {isVideo ? (
+                  // Render video thumbnail
+                  <video
+                    src={firstContent.video}
+                    className="w-full h-full object-cover"
+                    muted
+                    playsInline
+                    preload="metadata"
+                  />
+                ) : (
+                  // Render image thumbnail
+                  <img
+                    src={firstContent?.image || "path/to/default-image.jpg"}
+                    alt={firstContent?.title || "Default Title"}
+                    className="w-full h-full object-cover"
+                  />
+                )}
+              </div>
+              <span className="font-medium text-lg">{item.title}</span>
+            </button>
+          </ScrollAnimation>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
 
         <section
   id="about"
