@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ScrollAnimation } from '../components/ScrollAnimation';
 import { HighlightModal } from '../components/HighlightModal';
 import { ThemeToggle } from '../components/ThemeToggle';
@@ -99,6 +100,7 @@ const highlights = [
 export default function HomePage() {
   const [selectedHighlight, setSelectedHighlight] = useState(null);
   const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleScroll = (sectionId) => {
     const targetSection = document.getElementById(sectionId);
@@ -115,72 +117,91 @@ export default function HomePage() {
     setIsAppointmentModalOpen(false);
   };
   
+  const handleNavigation = (section) => {
+    if (section === 'profile') {
+      navigate('/profile'); // If using React Router
+    } else {
+      handleScroll(section);
+    }
+  };
 
   return (
-<div className="min-h-screen bg-gradient-to-b from-gray-100 to-white dark:from-gray-800 dark:to-gray-900">
+<div className="min-h-screen bg-white dark:bg-black">
   {/* Header */}
-  <header className="fixed top-0 left-0 right-0 z-50 bg-white/70 dark:bg-gray-800/70 backdrop-blur-lg border-b border-gray-200 dark:border-gray-700">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="flex justify-between items-center h-20">
-        {/* Logo Section */}
-        <a
-          href="#"
-          onClick={() => {
-            window.history.replaceState(null, "", window.location.pathname);
-            window.location.reload(); // Reload the page
-          }}
+  <header className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-black border-b border-gray-200 dark:border-gray-800">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex justify-between items-center h-20">
+      {/* Logo Section */}
+      <a
+        href="#"
+        onClick={() => {
+          window.history.replaceState(null, "", window.location.pathname);
+          window.location.reload(); // Reload the page
+        }}
+        className="relative"
+      >
+        <h1
+          className="text-2xl font-extrabold text-black dark:text-white tracking-wider transform transition-transform duration-300 hover:scale-105 hover:underline underline-offset-4"
+          style={{ fontFamily: "'Poppins', sans-serif" }}
         >
-          <h1 className="text-xl font-semibold bg-gradient-to-r from-teal-500 to-cyan-500 bg-clip-text text-transparent tracking-wide">
-            DR. RF
-          </h1>
-        </a>
+          DR. RF
+        </h1>
+      </a>
 
-        {/* Navigation & Theme Toggle */}
-        <div className="flex items-center gap-6">
-          <nav className="hidden md:block">
-            <ul className="flex gap-8">
-              {["home", "about", "highlights", "feedback"].map((section) => (
-                <li key={section}>
-                  <button
-                    onClick={() => handleScroll(section)}
-                    className="text-sm font-medium text-gray-600 hover:text-teal-500 dark:text-gray-300 dark:hover:text-cyan-400 transition-all duration-200 transform hover:scale-105"
-                    aria-label={`Go to ${section} section`}
-                  >
-                    {section.toUpperCase()}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </nav>
+      {/* Navigation & Theme Toggle */}
+      <div className="flex items-center gap-6">
+      <nav className="hidden md:block">
+                <ul className="flex gap-8">
+                  {["home", "about", "highlights", "feedback", "profile"].map((section) => (
+                    <li key={section}>
+                      <button
+                        onClick={() => handleNavigation(section)} // Use handleNavigation
+                        className="text-sm font-medium text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-all duration-200 transform hover:scale-105"
+                        aria-label={`Go to ${section} section`}
+                      >
+                        {section.toUpperCase()}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
 
-          {/* Theme Toggle Button */}
-          <ThemeToggle />
+        {/* Theme Toggle Button */}
+        <ThemeToggle />
 
-          {/* Mobile Navigation */}
-          <MobileNavigation />
-        </div>
+        {/* Mobile Navigation */}
+        <MobileNavigation />
       </div>
     </div>
-  </header>
+  </div>
+</header>
+
 
       <main className="pt-20">
         {/* Hero Section */}
         <section
   id="home"
-  className="flex items-center relative py-8 sm:py-12 md:py-16 lg:py-20 px-4"
+  className="flex items-center relative py-4 sm:py-6 md:py-8 lg:py-10 px-4"
 >
-  <div className="w-[95%] sm:w-[85%] md:w-[80%] lg:w-[75%] mx-auto px-4 sm:px-8 md:px-12 lg:px-16 rounded-3xl border border-gray-200 dark:border-gray-700 bg-white/60 dark:bg-gray-800/60 backdrop-blur-lg p-6 sm:p-8 md:p-12 lg:p-16 shadow-md">
+  <div className="w-[95%] sm:w-[85%] md:w-[80%] lg:w-[75%] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-black p-4 sm:p-6 md:p-8 lg:p-10 shadow-md">
     <div className="flex flex-col md:flex-row items-center gap-8 md:gap-20 lg:gap-32">
       {/* Profile Image */}
-      <div className="relative w-48 sm:w-56 md:w-64 lg:w-80 h-48 sm:h-56 md:h-64 lg:h-80 rounded-full bg-gradient-to-tr from-teal-500 to-cyan-500 flex-shrink-0">
-        <div className="absolute inset-1 rounded-full bg-white dark:bg-gray-900" />
+      <div className="relative w-48 sm:w-56 md:w-64 lg:w-80 h-48 sm:h-56 md:h-64 lg:h-80">
+        <div className="absolute inset-0 rounded-full border-4 border-cyan-400" />
+        <div className="absolute inset-[4px] rounded-full bg-gray-900 overflow-hidden">
+          <img
+            src="/Icons/Profile.png"
+            alt="Profile"
+            className="w-full h-full object-cover rounded-full"
+          />
+        </div>
       </div>
 
       {/* Content Section */}
       <div className="flex flex-col items-center md:items-start gap-8">
-        <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold  text-center md:text-left leading-tight text-gray-800 dark:text-gray-200">
+        <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-center md:text-left leading-tight text-black dark:text-white">
           ROMEL
-          <span className="block bg-gradient-to-r from-teal-500 to-cyan-500 bg-clip-text text-transparent">
+          <span className="block text-gray-600 dark:text-gray-400">
             FARAON
           </span>
         </h2>
@@ -190,7 +211,7 @@ export default function HomePage() {
         </p>
         <button
           onClick={openAppointmentModal}
-          className="group flex items-center gap-4 px-8 py-4 bg-teal-500 hover:bg-teal-600 text-white rounded-full text-lg md:text-xl font-medium transition"
+          className="group flex items-center gap-4 px-6 py-3 bg-black hover:bg-gray-800 text-white dark:bg-white dark:hover:bg-gray-200 dark:text-black rounded-full text-lg md:text-xl font-medium transition"
         >
           Book Now
           <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
@@ -200,8 +221,8 @@ export default function HomePage() {
   </div>
 </section>
 
-<section id="highlights" className="py-8 md:py-12 flex items-center">
-  <div className="max-w-[80%] mx-auto px-8 sm:px-12 lg:px-16 rounded-[20px] border border-gray-300 dark:border-gray-700 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md p-8 md:p-12 transform -translate-y-6">
+<section id="highlights" className="py-4 md:py-6 flex items-center">
+  <div className="max-w-[80%] mx-auto px-6 sm:px-8 lg:px-10 rounded-[16px] border border-gray-300 dark:border-gray-700 bg-white dark:bg-black p-6 md:p-8 transform -translate-y-4">
   <h2       
   className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center text-gray-800 dark:text-white mb-8"
   >Highlights</h2>
@@ -256,12 +277,12 @@ export default function HomePage() {
 
 <section
   id="about"
-  className="py-8 md:py-12 flex items-center bg-gray-50 dark:bg-gray-800/50"
+  className="py-4 md:py-6 flex items-center bg-gray-50 dark:bg-black"
   role="region"
   aria-labelledby="about-heading"
 >
   <motion.div
-    className="max-w-[80%] mx-auto px-6 sm:px-10 lg:px-12 rounded-[20px] border border-gray-300 dark:border-gray-700 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md p-8 md:p-12"
+    className="max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 rounded-[16px] border border-gray-300 dark:border-gray-700 bg-white dark:bg-black p-6 md:p-8"
     initial={{ opacity: 0, y: 50 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
@@ -331,9 +352,9 @@ export default function HomePage() {
 
 <section
   id="feedback"
-  className="py-12 md:py-16 bg-gradient-to-b from-blue-50 to-white dark:from-gray-800 dark:to-gray-900"
+  className="py-6 md:py-8 bg-gray-50 dark:bg-black"
 >
-  <div className="max-w-[90%] lg:max-w-[80%] mx-auto px-6 sm:px-8 lg:px-12">
+  <div className="max-w-[90%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
     <h2
       id="testimonials-heading"
       className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center text-gray-800 dark:text-white mb-8"
@@ -405,8 +426,8 @@ export default function HomePage() {
 
 
         {/* Footer */}
-        <footer className="py-8 bg-white/70 dark:bg-gray-800/70 text-gray-900 dark:text-white backdrop-blur-md">
-  <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-16 text-center">
+        <footer className="py-6 bg-white dark:bg-black text-gray-900 dark:text-white">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
     <div className="flex justify-center gap-8 mb-4">
       <a
         href="https://facebook.com"
@@ -470,4 +491,5 @@ export default function HomePage() {
       />
     </div>
   );
-}   
+}
+
