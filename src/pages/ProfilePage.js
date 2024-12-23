@@ -89,7 +89,7 @@ export default function ProfilePage() {
                   <div className="absolute inset-0 rounded-full border-4 border-white/50" />
                   <div className="absolute inset-[4px] rounded-full bg-gray-900 overflow-hidden">
                     <img
-                      src="/Icons/Profile.png"
+                      src="/Icons/profile.png"
                       alt="Profile"
                       className="w-full h-full object-cover"
                     />
