@@ -3,7 +3,7 @@ import { Menu, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const navItems = [
-  { name: 'HOME', path: '/' },
+  { name: 'HOME', path: '#home' },
   { name: 'ABOUT', path: '#about' },
   { name: 'HIGHLIGHTS', path: '#highlights' },
   { name: 'FEEDBACK', path: '#feedback' },
