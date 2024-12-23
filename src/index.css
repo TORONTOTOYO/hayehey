@@ -15,4 +15,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+:root {
+  --progress-height: 4px;
+  --progress-color: #e67e22; /* Your retro accent color */
+}
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: var(--progress-height);
+  background-color: var(--progress-color);
+  z-index: 100;
+  transition: width 0.25s ease-out;
+}
+
 
