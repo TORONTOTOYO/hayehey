@@ -1,0 +1,105 @@
+{
+    "highlights": [
+      {
+        "title": "Lorem Ipsum 1",
+        "content": [
+          {
+            "title": "Lorem Ipsum 2",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "video": "./highlights/video2.mp4"
+          },
+          {
+            "title": "Lorem Ipsum 3",
+            "content": "Nullam vehicula dui euismod, convallis augue at, auctor ipsum.",
+            "image": "./highlights/highligh3.jpg"
+          },
+          {
+            "title": "Lorem Ipsum 4",
+            "content": "Curabitur vitae sem at libero dignissim euismod.",
+            "image": "./highlights/highligh4.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Lorem Ipsum 5",
+        "content": [
+          {
+            "title": "Lorem Ipsum 6",
+            "content": "Mauris nec velit eget risus tincidunt tincidunt.",
+            "image": "./highlights/highligh6.jpg"
+          },
+          {
+            "title": "Lorem Ipsum 7",
+            "content": "Sed auctor metus a ante scelerisque, non condimentum ante posuere.",
+            "video": "./highlights/video3.mp4"
+          },
+          {
+            "title": "Lorem Ipsum 8",
+            "content": "Phasellus sed justo vitae metus tincidunt dapibus.",
+            "image": "./highlights/highligh8.jpg"
+          }
+        ]
+      },
+      {
+        "title": "Lorem Ipsum 9",
+        "content": [
+          {
+            "title": "Lorem Ipsum 10",
+            "content": "Proin luctus urna a magna pretium, eu suscipit sapien lacinia.",
+            "image": "./highlights/highligh10.jpg"
+          },
+          {
+            "title": "Lorem Ipsum 11",
+            "content": "Donec auctor purus vel nunc maximus, ac auctor enim hendrerit.",
+            "image": "./highlights/highligh11.jpg"
+          },
+          {
+            "title": "Lorem Ipsum 12",
+            "content": "Aliquam erat volutpat. Integer laoreet lectus a felis ultricies.",
+            "video": "./highlights/video4.mp4"
+          }
+        ]
+      },
+      {
+        "title": "Lorem Ipsum 13",
+        "content": [
+          {
+            "title": "Lorem Ipsum 14",
+            "content": "Aliquam tristique sapien ut turpis bibendum, eget vehicula lorem volutpat.",
+            "image": "./highlights/highligh4.jpg"
+          },
+          {
+            "title": "Lorem Ipsum 15",
+            "content": "Nunc vitae sapien interdum, vehicula lectus ut, sodales felis.",
+            "video": "./highlights/video5.mp4"
+          },
+          {
+            "title": "Lorem Ipsum 16",
+            "content": "Fusce ac libero ac felis tincidunt tincidunt.",
+            "image": "./highlights/highligh5.jpg"
+          }
+        ]
+      }
+    ],
+    "testimonials": [
+      {
+        "name": "CJ",
+        "role": "CEO, Creative Co",
+        "content": "Class facilisi curae curae cras mattis varius turpis. Id hendrerit neque libero montes sit quis nunc.",
+        "avatar": "./Icons/profile.png"
+      },
+      {
+        "name": "Dariel",
+        "role": "Lead Designer, Creative Co",
+        "content": "Ad platea ornare quis risus ultrices scelerisque bibendum amet fringilla.",
+        "avatar": "./Icons/profile.png"
+      },
+      {
+        "name": "Tyron",
+        "role": "Admin, Creative Co",
+        "content": "Gravida pharetra pellentesque sodales, pretium himenaeos justo luctus.",
+        "avatar": "./Icons/profile.png"
+      }
+    ]
+  }
+  
