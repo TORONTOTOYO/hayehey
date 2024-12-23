@@ -206,8 +206,8 @@ export default function HomePage() {
           </span>
         </h2>
         <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-400 text-center md:text-left leading-relaxed max-w-2xl">
-          Simplify and elevate your digital experience. Aesthetic design, clean
-          code, and seamless interaction for modern solutions.
+        Donec maecenas hendrerit commodo molestie parturient. 
+        Elementum mus molestie pulvinar himenaeos eget viverra.
         </p>
         <button
           onClick={openAppointmentModal}
