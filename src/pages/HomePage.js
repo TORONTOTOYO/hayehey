@@ -11,6 +11,7 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { motion } from 'framer-motion';
 import AppointmentModal from '../components/AppointmentModal';
 import ProgressIndicator from "../components/ProgressIndicator";
+import MedicalServicesSection from '../components/MedicalServicesSection';
 import content from './content.json';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -224,7 +225,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section id="highlights" className="py-8 md:py-6 flex items-center">
+        <section id="highlights" className="py-8 md:py-6 flex items-center ">
       <div className="max-w-[80%] mx-auto px-6 sm:px-8 lg:px-10 rounded-[16px] border border-gray-300 dark:border-gray-700 bg-white dark:bg-black p-6 md:p-8 transform -translate-y-4">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center text-gray-800 dark:text-white mb-8">Highlights</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -271,7 +272,7 @@ export default function HomePage() {
             transition={{ duration: 0.8 }}
           >
             <h2 id="about-heading"       
-            className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center text-gray-800 dark:text-white mb-8"
+            className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-left text-gray-800 dark:text-white mb-8"
             >About Us</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <motion.div
@@ -331,6 +332,8 @@ export default function HomePage() {
             </div>
           </motion.div>
         </section>
+
+        <MedicalServicesSection />
 
         <section
           id="feedback"
