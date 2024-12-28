@@ -53,13 +53,12 @@ const AppointmentBooking = () => {
   };
 
   const ReviewField = ({ label, value }) => (
-    <div className="mb-2">
+    <div className="mb-2 break-words">
       <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">{label}</p>
-      <p className="text-sm text-gray-900 dark:text-white">{value || 'Not provided'}</p>
+      <p className="text-sm text-gray-900 dark:text-white overflow-hidden">{value || 'Not provided'}</p>
     </div>
   );
 
-  // Updated input classes to handle autofill
   const inputClasses = `mt-2 block w-full px-4 py-3 rounded-xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-colors duration-200 ease-in-out text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500
   [&:-webkit-autofill]:!fill-none 
   [&:-webkit-autofill]:[transition:background-color_9999999s_ease-in-out_0s]
@@ -269,15 +268,13 @@ const AppointmentBooking = () => {
           >
             <div className="space-y-4">
               <div className="bg-white/30 dark:bg-gray-800/30 rounded-xl p-4 backdrop-blur-sm">
-                <h4 className="text-base font-semibold mb-3 text-gray-900 dark:text-white">Review Your Information</h4>
-                <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+                <h4 className="text-base font-semibold mb-4 text-gray-900 dark:text-white">Review Your Information</h4>
+                <div className="space-y-3">
                   <ReviewField label="Name" value={formData.name} />
                   <ReviewField label="Email" value={formData.email} />
                   <ReviewField label="Phone" value={formData.phone} />
                   <ReviewField label="Date" value={formatDate(formData.date)} />
                   <ReviewField label="Time" value={formatTime(formData.time)} />
-                </div>
-                <div className="mt-3">
                   <ReviewField label="Reason for Visit" value={formData.reason} />
                 </div>
               </div>

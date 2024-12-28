@@ -1,0 +1,24 @@
+{
+    "testimonials": [
+      {
+        "name": "CJ",
+        "role": "CEO, Creative Co",
+        "content": "Class facilisi curae curae cras mattis varius turpis. Id hendrerit neque libero montes sit quis nunc.",
+        "avatar": "./Icons/profile.png"
+      },
+      {
+        "name": "Dariel",
+        "role": "Lead Designer, Creative Co",
+        "content": "Ad platea ornare quis risus ultrices scelerisque bibendum amet fringilla.",
+        "avatar": "./Icons/profile.png"
+      },
+      {
+        "name": "Tyron",
+        "role": "Admin, Creative Co",
+        "content": "Gravida pharetra pellentesque sodales, pretium himenaeos justo luctus.",
+        "avatar": "./Icons/profile.png"
+      }
+    ]
+  }
+  
+  

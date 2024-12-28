@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
-import AppointmentBooking from './AppointmentBooking';
+import AppointmentBooking from '../components/AppointmentBooking';
 
 const AppointmentModal = ({ isOpen, onClose }) => {
   return (

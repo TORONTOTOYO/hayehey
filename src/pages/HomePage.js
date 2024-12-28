@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ScrollAnimation } from '../components/ScrollAnimation';
 import { HighlightModal } from '../components/HighlightModal';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { MobileNavigation } from '../components/MobileNavigation';
@@ -12,93 +11,12 @@ import { motion } from 'framer-motion';
 import AppointmentModal from '../components/AppointmentModal';
 import ProgressIndicator from "../components/ProgressIndicator";
 import MedicalServicesSection from '../components/MedicalServicesSection';
-import content from './content.json';
+import highlightsData from '../pages/highlightsData.json';
+import testimonialsData from '../pages/testimonialsData.json'
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-const highlights = [
-  {
-    title: "Lorem Ipsum 1",
-    content: [
-      {
-        title: "Lorem Ipsum 2",
-        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        video: "./highlights/video2.mp4"
-      },
-      {
-        title: "Lorem Ipsum 3",
-        content: "Nullam vehicula dui euismod, convallis augue at, auctor ipsum.",
-        image: "./highlights/highligh3.jpg"
-      },
-      {
-        title: "Lorem Ipsum 4",
-        content: "Curabitur vitae sem at libero dignissim euismod.",
-        image: "./highlights/highligh4.jpg"
-      }
-    ]
-  },
-  {
-    title: "Lorem Ipsum 5",
-    content: [
-      {
-        title: "Lorem Ipsum 6",
-        content: "Mauris nec velit eget risus tincidunt tincidunt.",
-        image: "./highlights/highligh6.jpg"
-      },
-      {
-        title: "Lorem Ipsum 7",
-        content: "Sed auctor metus a ante scelerisque, non condimentum ante posuere.",
-        video: "./highlights/video3.mp4"
-      },
-      {
-        title: "Lorem Ipsum 8",
-        content: "Phasellus sed justo vitae metus tincidunt dapibus.",
-        image: "./highlights/highligh8.jpg"
-      }
-    ]
-  },
-  {
-    title: "Lorem Ipsum 9",
-    content: [
-      {
-        title: "Lorem Ipsum 10",
-        content: "Proin luctus urna a magna pretium, eu suscipit sapien lacinia.",
-        image: "./highlights/highligh10.jpg"
-      },
-      {
-        title: "Lorem Ipsum 11",
-        content: "Donec auctor purus vel nunc maximus, ac auctor enim hendrerit.",
-        image: "./highlights/highligh11.jpg"
-      },
-      {
-        title: "Lorem Ipsum 12",
-        content: "Aliquam erat volutpat. Integer laoreet lectus a felis ultricies.",
-        video: "./highlights/video4.mp4"
-      }
-    ]
-  },
-  {
-    title: "Lorem Ipsum 13",
-    content: [
-      {
-        title: "Lorem Ipsum 14",
-        content: "Aliquam tristique sapien ut turpis bibendum, eget vehicula lorem volutpat.",
-        image: "./highlights/highligh4.jpg"
-      },
-      {
-        title: "Lorem Ipsum 15",
-        content: "Nunc vitae sapien interdum, vehicula lectus ut, sodales felis.",
-        video: "./highlights/video5.mp4"
-      },
-      {
-        title: "Lorem Ipsum 16",
-        content: "Fusce ac libero ac felis tincidunt tincidunt.",
-        image: "./highlights/highligh5.jpg"
-      }
-    ]
-  }
-];
 
 export default function HomePage() {
   const [selectedHighlight, setSelectedHighlight] = useState(null);
@@ -129,57 +47,57 @@ export default function HomePage() {
   };
 
   return (
-<div className="min-h-screen bg-white dark:bg-black">
-<>
-<ProgressIndicator />
-  {/* Header */}
-  <header className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-black border-b border-gray-200 dark:border-gray-800">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="flex justify-between items-center h-20">
-      {/* Logo Section */}
-      <a
-        href="#"
-        onClick={() => {
-          window.history.replaceState(null, "", window.location.pathname);
-          window.location.reload(); // Reload the page
-        }}
-        className="relative"
-      >
-        <h1
-          className="text-2xl font-extrabold text-black dark:text-white tracking-wider transform transition-transform duration-300 hover:scale-105 hover:underline underline-offset-4"
-          style={{ fontFamily: "'Poppins', sans-serif" }}
-        >
-          DR. RF
-        </h1>
-      </a>
+  <div className="min-h-screen bg-white dark:bg-black">
+    <>
+    <ProgressIndicator />
+      {/* Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-black border-b border-gray-200 dark:border-gray-800">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center h-20">
+              {/* Logo Section */}
+              <a
+                href="#"
+                onClick={() => {
+                  window.history.replaceState(null, "", window.location.pathname);
+                  window.location.reload(); // Reload the page
+                }}
+                className="relative"
+              >
+                <h1
+                  className="text-2xl font-extrabold text-black dark:text-white tracking-wider transform transition-transform duration-300 hover:scale-105 hover:underline underline-offset-4"
+                  style={{ fontFamily: "'Poppins', sans-serif" }}
+                >
+                  DR. RF
+                </h1>
+              </a>
 
-      {/* Navigation & Theme Toggle */}
-      <div className="flex items-center gap-6">
-      <nav className="hidden md:block">
-                <ul className="flex gap-8">
-                  {["home", "about", "highlights", "feedback", "profile"].map((section) => (
-                    <li key={section}>
-                      <button
-                        onClick={() => handleNavigation(section)} // Use handleNavigation
-                        className="text-sm font-medium text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-all duration-200 transform hover:scale-105"
-                        aria-label={`Go to ${section} section`}
-                      >
-                        {section.toUpperCase()}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
+              {/* Navigation & Theme Toggle */}
+              <div className="flex items-center gap-6">
+              <nav className="hidden md:block">
+                        <ul className="flex gap-8">
+                          {["home", "about", "highlights", "feedback", "profile"].map((section) => (
+                            <li key={section}>
+                              <button
+                                onClick={() => handleNavigation(section)} // Use handleNavigation
+                                className="text-sm font-medium text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-all duration-200 transform hover:scale-105"
+                                aria-label={`Go to ${section} section`}
+                              >
+                                {section.toUpperCase()}
+                              </button>
+                            </li>
+                          ))}
+                        </ul>
+                      </nav>
 
-        {/* Theme Toggle Button */}
-        <ThemeToggle />
+                {/* Theme Toggle Button */}
+                <ThemeToggle />
 
-        {/* Mobile Navigation */}
-        <MobileNavigation />
-      </div>
-    </div>
-  </div>
-</header>
+                {/* Mobile Navigation */}
+                <MobileNavigation />
+              </div>
+            </div>
+          </div>
+        </header>
 
       <main className="pt-20">
         {/* Hero Section */}
@@ -225,13 +143,13 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section id="highlights" className="py-8 md:py-6 flex items-center ">
+        <section id="highlights" className="py-8 md:py-6 flex items-center">
       <div className="max-w-[80%] mx-auto px-6 sm:px-8 lg:px-10 rounded-[16px] border border-gray-300 dark:border-gray-700 bg-white dark:bg-black p-6 md:p-8 transform -translate-y-4">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center text-gray-800 dark:text-white mb-8">Highlights</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {content.highlights.map((item, index) => {
+          {highlightsData.highlights.map((item, index) => {
             const firstContent = item.content[0];
-            const isVideo = !!firstContent?.video;
+            const isVideo = !!firstContent.video;
             return (
               <button
                 key={index}
@@ -246,7 +164,7 @@ export default function HomePage() {
                     {isVideo ? (
                       <video src={firstContent.video} className="w-full h-full object-cover" muted playsInline preload="metadata" />
                     ) : (
-                      <img src={firstContent?.image || 'path/to/default-image.jpg'} alt={firstContent?.title || 'Default Title'} className="w-full h-full object-cover" />
+                      <img src={firstContent.image || '/path/to/default-image.jpg'} alt={firstContent.title || 'Default Title'} className="w-full h-full object-cover" />
                     )}
                   </div>
                 </div>
@@ -336,78 +254,56 @@ export default function HomePage() {
         <MedicalServicesSection />
 
         <section
-          id="feedback"
-          className="py-6 md:py-8 bg-white dark:bg-black"
+      id="feedback"
+      className="py-6 md:py-8 bg-white dark:bg-black"
+    >
+      <div className="max-w-[90%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
+        <h2
+          id="testimonials-heading"
+          className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center text-gray-800 dark:text-white mb-8"
         >
-          <div className="max-w-[90%] lg:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
-            <h2
-              id="testimonials-heading"
-              className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center text-gray-800 dark:text-white mb-8"
-            >
-              What Our Clients Say
-            </h2>
+          What Our Clients Say
+        </h2>
 
-            <Swiper
-              modules={[Navigation, Pagination, Autoplay]}
-              spaceBetween={20}
-              slidesPerView={1}
-              navigation
-              pagination={{ clickable: true }}
-              autoplay={{ delay: 4000 }}
-              breakpoints={{
-                768: { slidesPerView: 2 },
-              }}
-              className="testimonial-swiper"
-            >
-              {[ 
-                {
-                  name: 'CJ',
-                  role: 'CEO, Creative Co',
-                  content:
-                    '“Class facilisi curae curae cras mattis varius turpis. Id hendrerit neque libero montes sit quis nunc.”',
-                  avatar: './Icons/profile.png',
-                },
-                {
-                  name: 'Dariel',
-                  role: 'Lead Designer, Creative Co',
-                  content:
-                    '“Ad platea ornare quis risus ultrices scelerisque bibendum amet fringilla.”',
-                  avatar: './Icons/profile.png',
-                },
-                {
-                  name: 'Tyron',
-                  role: 'Admin, Creative Co',
-                  content:
-                    '“Gravida pharetra pellentesque sodales, pretium himenaeos justo luctus.”',
-                  avatar: './Icons/profile.png',
-                },
-              ].map((item, index) => (
-                <SwiperSlide key={index}>
-                  <div className="p-6 sm:p-8 bg-gradient-to-r from-white to-blue-50 dark:from-gray-800 dark:to-gray-700 rounded-3xl shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
-                    <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 italic mb-4">
-                      {item.content}
-                    </p>
-                    <div className="flex items-center gap-4">
-                      <img
-                        src={item.avatar}
-                        alt={`${item.name}'s avatar`}
-                        className="w-14 h-14 rounded-full border-2 border-blue-500 object-cover"
-                      />
-                      <div>
-                        <div className="text-lg sm:text-xl font-semibold text-gray-800 dark:text-white">
-                          {item.name}
-                        </div>
-                        <div className="text-sm text-blue-500 dark:text-blue-400">
-                          {item.role}
-                        </div>
-                      </div>
+        <Swiper
+          modules={[Navigation, Pagination, Autoplay]}
+          spaceBetween={20}
+          slidesPerView={1}
+          navigation
+          pagination={{ clickable: true }}
+          autoplay={{ delay: 4000 }}
+          breakpoints={{
+            768: { slidesPerView: 2 },
+          }}
+          className="testimonial-swiper"
+        >
+          {testimonialsData.testimonials.map((item, index) => (
+            <SwiperSlide key={index}>
+              <div className="p-6 sm:p-8 bg-gradient-to-r from-white to-blue-50 dark:from-gray-800 dark:to-gray-700 rounded-3xl shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+                <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 italic mb-4">
+                  "{item.content}"
+                </p>
+                <div className="flex items-center gap-4">
+                  <img
+                    src={item.avatar}
+                    alt={`${item.name}'s avatar`}
+                    className="w-14 h-14 rounded-full border-2 border-blue-500 object-cover"
+                  />
+                  <div>
+                    <div className="text-lg sm:text-xl font-semibold text-gray-800 dark:text-white">
+                      {item.name}
+                    </div>
+                    <div className="text-sm text-blue-500 dark:text-blue-400">
+                      {item.role}
                     </div>
                   </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
-        </section>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+    </section>
 
         {/* Footer */}
         <footer className="py-6 bg-white dark:bg-black text-gray-900 dark:text-white">
@@ -461,7 +357,7 @@ export default function HomePage() {
       <AnimatePresence>
         {selectedHighlight !== null && (
           <HighlightModal
-            highlights={highlights[selectedHighlight].content}
+            highlightsData={highlightsData[selectedHighlight].content}
             initialIndex={0}
             onClose={() => setSelectedHighlight(null)}
           />
@@ -475,6 +371,7 @@ export default function HomePage() {
       />
       </>
     </div>
+    
   );
 }
 
